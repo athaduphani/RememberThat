@@ -1,0 +1,99 @@
+{
+  "id": "75bdfe7a-40da-4760-b7e5-0fee1b8f08ef",
+  "name": "Car",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "auto",
+      "synonyms": [
+        "auto"
+      ]
+    },
+    {
+      "value": "automobile",
+      "synonyms": [
+        "automobile"
+      ]
+    },
+    {
+      "value": "bus",
+      "synonyms": [
+        "bus"
+      ]
+    },
+    {
+      "value": "convertible",
+      "synonyms": [
+        "convertible"
+      ]
+    },
+    {
+      "value": "jeep",
+      "synonyms": [
+        "jeep"
+      ]
+    },
+    {
+      "value": "limousine",
+      "synonyms": [
+        "limousine"
+      ]
+    },
+    {
+      "value": "machine",
+      "synonyms": [
+        "machine"
+      ]
+    },
+    {
+      "value": "motor",
+      "synonyms": [
+        "motor"
+      ]
+    },
+    {
+      "value": "pickup",
+      "synonyms": [
+        "pickup"
+      ]
+    },
+    {
+      "value": "ride",
+      "synonyms": [
+        "ride"
+      ]
+    },
+    {
+      "value": "station wagon",
+      "synonyms": [
+        "station wagon"
+      ]
+    },
+    {
+      "value": "truck",
+      "synonyms": [
+        "truck"
+      ]
+    },
+    {
+      "value": "van",
+      "synonyms": [
+        "van"
+      ]
+    },
+    {
+      "value": "wagon",
+      "synonyms": [
+        "wagon"
+      ]
+    },
+    {
+      "value": "car",
+      "synonyms": [
+        "car"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

@@ -1,0 +1,42 @@
+{
+  "id": "4a56b496-4ab2-4793-bf79-70290ef08817",
+  "name": "Vegetable",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Vegetables",
+      "synonyms": [
+        "Onion",
+        " Tomatoes",
+        " Potato",
+        " Sweet Potato",
+        " Cauliflower",
+        " Mushroom",
+        " Eggplant",
+        " Brocolli",
+        " Lettuce",
+        " Cucumber",
+        " Pumpkin",
+        " Cabbage",
+        " Radish",
+        " Asparagus",
+        " Lettuce",
+        " Zucchini",
+        " Green Beans",
+        " Celery",
+        " Squash",
+        " Red Pepper",
+        " Avocado",
+        " Okra",
+        " Beetroot",
+        " Brussels Sprout",
+        " Corn",
+        " Cassava",
+        " Green Pepper",
+        " Yello Pepper"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

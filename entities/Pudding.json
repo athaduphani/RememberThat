@@ -1,0 +1,50 @@
+{
+  "id": "a9e30e2c-16db-43ac-bc27-49cdecc81f10",
+  "name": "Pudding",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Pudding",
+      "synonyms": [
+        "Pudding",
+        "Pudding",
+        "Almond jelly",
+        "Ashure",
+        "Asida",
+        "Pudim Abade de Priscos",
+        "Banana pudding",
+        "Bánh chuối",
+        "Bebinca",
+        "Black pudding",
+        "Blancmange",
+        "Blodpalt",
+        "Bread and butter pudding",
+        "Bread pudding",
+        "Brown Betty",
+        "Cabinet pudding",
+        "Butterscotch pudding",
+        "Chè",
+        "Chireta",
+        "Chocolate pudding",
+        "Chocolate Biscuit pudding",
+        "Christmas pudding",
+        "Clootie dumpling",
+        "Coconut bread pudding",
+        "Coconut pudding",
+        "Cottage Pudding",
+        "Cơm rượu",
+        "Crème caramel",
+        "Diplomat pudding",
+        "Dock pudding",
+        "Drisheen",
+        "Dutch baby pancake",
+        "Espasol",
+        "Eve\u0027s pudding",
+        "Firni",
+        "Figgy duff"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

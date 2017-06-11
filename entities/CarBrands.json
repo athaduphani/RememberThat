@@ -1,0 +1,340 @@
+{
+  "id": "db7cd33f-ced8-40c7-ae26-aa417ba83454",
+  "name": "CarBrands",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Acura",
+      "synonyms": [
+        "Acura"
+      ]
+    },
+    {
+      "value": "Alfa Romeo",
+      "synonyms": [
+        "Alfa Romeo"
+      ]
+    },
+    {
+      "value": "Aston Martin",
+      "synonyms": [
+        "Aston Martin"
+      ]
+    },
+    {
+      "value": "Audi",
+      "synonyms": [
+        "Audi"
+      ]
+    },
+    {
+      "value": "Bentley Motors",
+      "synonyms": [
+        "Bentley Motors"
+      ]
+    },
+    {
+      "value": "BMW",
+      "synonyms": [
+        "BMW"
+      ]
+    },
+    {
+      "value": "Buick",
+      "synonyms": [
+        "Buick"
+      ]
+    },
+    {
+      "value": "Cadillac",
+      "synonyms": [
+        "Cadillac"
+      ]
+    },
+    {
+      "value": "Chevrolet",
+      "synonyms": [
+        "Chevrolet"
+      ]
+    },
+    {
+      "value": "Chrysler",
+      "synonyms": [
+        "Chrysler"
+      ]
+    },
+    {
+      "value": "Dodge",
+      "synonyms": [
+        "Dodge"
+      ]
+    },
+    {
+      "value": "Ferrari",
+      "synonyms": [
+        "Ferrari"
+      ]
+    },
+    {
+      "value": "Fiat",
+      "synonyms": [
+        "Fiat"
+      ]
+    },
+    {
+      "value": "Ford",
+      "synonyms": [
+        "Ford"
+      ]
+    },
+    {
+      "value": "Geely",
+      "synonyms": [
+        "Geely"
+      ]
+    },
+    {
+      "value": "GM",
+      "synonyms": [
+        "GM",
+        "General Motors"
+      ]
+    },
+    {
+      "value": "GMC",
+      "synonyms": [
+        "GMC"
+      ]
+    },
+    {
+      "value": "Honda",
+      "synonyms": [
+        "Honda"
+      ]
+    },
+    {
+      "value": "Hummer",
+      "synonyms": [
+        "Hummer"
+      ]
+    },
+    {
+      "value": "Hyundai",
+      "synonyms": [
+        "Hyundai"
+      ]
+    },
+    {
+      "value": "Infiniti",
+      "synonyms": [
+        "Infiniti"
+      ]
+    },
+    {
+      "value": "Isuzu",
+      "synonyms": [
+        "Isuzu"
+      ]
+    },
+    {
+      "value": "Jaguar",
+      "synonyms": [
+        "Jaguar"
+      ]
+    },
+    {
+      "value": "Jeep",
+      "synonyms": [
+        "Jeep"
+      ]
+    },
+    {
+      "value": "Kia",
+      "synonyms": [
+        "Kia"
+      ]
+    },
+    {
+      "value": "Laforza",
+      "synonyms": [
+        "Laforza"
+      ]
+    },
+    {
+      "value": "Lamborghini",
+      "synonyms": [
+        "Lamborghini"
+      ]
+    },
+    {
+      "value": "Lancia",
+      "synonyms": [
+        "Lancia"
+      ]
+    },
+    {
+      "value": "Land Rover",
+      "synonyms": [
+        "Land Rover"
+      ]
+    },
+    {
+      "value": "Lexus",
+      "synonyms": [
+        "Lexus"
+      ]
+    },
+    {
+      "value": "Lincoln",
+      "synonyms": [
+        "Lincoln"
+      ]
+    },
+    {
+      "value": "Lotus",
+      "synonyms": [
+        "Lotus"
+      ]
+    },
+    {
+      "value": "Maserati",
+      "synonyms": [
+        "Maserati"
+      ]
+    },
+    {
+      "value": "Mazda",
+      "synonyms": [
+        "Mazda"
+      ]
+    },
+    {
+      "value": "Mercedes-Benz",
+      "synonyms": [
+        "Mercedes-Benz"
+      ]
+    },
+    {
+      "value": "Mercury",
+      "synonyms": [
+        "Mercury"
+      ]
+    },
+    {
+      "value": "MINI",
+      "synonyms": [
+        "MINI"
+      ]
+    },
+    {
+      "value": "Mitsubishi",
+      "synonyms": [
+        "Mitsubishi"
+      ]
+    },
+    {
+      "value": "Nissan",
+      "synonyms": [
+        "Nissan"
+      ]
+    },
+    {
+      "value": "Oldsmobile",
+      "synonyms": [
+        "Oldsmobile"
+      ]
+    },
+    {
+      "value": "Peugeot",
+      "synonyms": [
+        "Peugeot"
+      ]
+    },
+    {
+      "value": "Pontiac",
+      "synonyms": [
+        "Pontiac"
+      ]
+    },
+    {
+      "value": "Porsche",
+      "synonyms": [
+        "Porsche"
+      ]
+    },
+    {
+      "value": "Renault",
+      "synonyms": [
+        "Renault"
+      ]
+    },
+    {
+      "value": "Rolls-Royce",
+      "synonyms": [
+        "Rolls-Royce"
+      ]
+    },
+    {
+      "value": "Saab",
+      "synonyms": [
+        "Saab"
+      ]
+    },
+    {
+      "value": "Saturn",
+      "synonyms": [
+        "Saturn"
+      ]
+    },
+    {
+      "value": "Scion",
+      "synonyms": [
+        "Scion"
+      ]
+    },
+    {
+      "value": "Subaru",
+      "synonyms": [
+        "Subaru"
+      ]
+    },
+    {
+      "value": "Suzuki",
+      "synonyms": [
+        "Suzuki"
+      ]
+    },
+    {
+      "value": "Tesla Motors",
+      "synonyms": [
+        "Tesla Motors"
+      ]
+    },
+    {
+      "value": "Toyota",
+      "synonyms": [
+        "Toyota"
+      ]
+    },
+    {
+      "value": "Volkswagen",
+      "synonyms": [
+        "Volkswagen"
+      ]
+    },
+    {
+      "value": "Volvo",
+      "synonyms": [
+        "Volvo"
+      ]
+    },
+    {
+      "value": "benz",
+      "synonyms": [
+        "benz"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

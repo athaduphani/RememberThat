@@ -1,0 +1,48 @@
+{
+  "id": "dc5815c4-52b6-4a5e-9b22-fa966a5535b7",
+  "name": "Actions",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Bought",
+      "synonyms": [
+        "Bought",
+        "buy",
+        "purchase"
+      ]
+    },
+    {
+      "value": "Sold",
+      "synonyms": [
+        "Sold"
+      ]
+    },
+    {
+      "value": "cooked",
+      "synonyms": [
+        "cooked"
+      ]
+    },
+    {
+      "value": "baked",
+      "synonyms": [
+        "baked"
+      ]
+    },
+    {
+      "value": "fried",
+      "synonyms": [
+        "fried",
+        "deep fried"
+      ]
+    },
+    {
+      "value": "ate",
+      "synonyms": [
+        "ate"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

@@ -1,0 +1,909 @@
+{
+  "id": "e8d5f984-47e9-4c59-bf43-e5a2da5bfe8c",
+  "name": "DealersUSA",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "AutoNation Inc.",
+      "synonyms": [
+        "AutoNation Inc."
+      ]
+    },
+    {
+      "value": "Penske Automotive Group Inc.",
+      "synonyms": [
+        "Penske Automotive Group Inc."
+      ]
+    },
+    {
+      "value": "Group 1 Automotive Inc.",
+      "synonyms": [
+        "Group 1 Automotive Inc."
+      ]
+    },
+    {
+      "value": "Sonic Automotive Inc.",
+      "synonyms": [
+        "Sonic Automotive Inc."
+      ]
+    },
+    {
+      "value": "Lithia Motors Inc.",
+      "synonyms": [
+        "Lithia Motors Inc."
+      ]
+    },
+    {
+      "value": "Hendrick Automotive Group",
+      "synonyms": [
+        "Hendrick Automotive Group"
+      ]
+    },
+    {
+      "value": "Asbury Automotive Group Inc.",
+      "synonyms": [
+        "Asbury Automotive Group Inc."
+      ]
+    },
+    {
+      "value": "Ken Garff Automotive Group",
+      "synonyms": [
+        "Ken Garff Automotive Group"
+      ]
+    },
+    {
+      "value": "Staluppi Auto Group",
+      "synonyms": [
+        "Staluppi Auto Group"
+      ]
+    },
+    {
+      "value": "Larry H. Miller Dealerships",
+      "synonyms": [
+        "Larry H. Miller Dealerships"
+      ]
+    },
+    {
+      "value": "Greenway Automotive",
+      "synonyms": [
+        "Greenway Automotive"
+      ]
+    },
+    {
+      "value": "David Wilson Automotive Group",
+      "synonyms": [
+        "David Wilson Automotive Group"
+      ]
+    },
+    {
+      "value": "Keyes Automotive Group",
+      "synonyms": [
+        "Keyes Automotive Group"
+      ]
+    },
+    {
+      "value": "Jim Koons Automotive Cos.",
+      "synonyms": [
+        "Jim Koons Automotive Cos."
+      ]
+    },
+    {
+      "value": "Suburban Collection",
+      "synonyms": [
+        "Suburban Collection"
+      ]
+    },
+    {
+      "value": "Herb Chambers Cos.",
+      "synonyms": [
+        "Herb Chambers Cos."
+      ]
+    },
+    {
+      "value": "Potamkin Automotive Group Inc.",
+      "synonyms": [
+        "Potamkin Automotive Group Inc."
+      ]
+    },
+    {
+      "value": "CAR Group, The",
+      "synonyms": [
+        "CAR Group, The"
+      ]
+    },
+    {
+      "value": "Earnhardt Auto Centers ",
+      "synonyms": [
+        "Earnhardt Auto Centers "
+      ]
+    },
+    {
+      "value": "West-Herr Automotive Group Inc.",
+      "synonyms": [
+        "West-Herr Automotive Group Inc."
+      ]
+    },
+    {
+      "value": "Serra Automotive Inc.",
+      "synonyms": [
+        "Serra Automotive Inc."
+      ]
+    },
+    {
+      "value": "RML Automotive",
+      "synonyms": [
+        "RML Automotive"
+      ]
+    },
+    {
+      "value": "Rick Case Automotive Group",
+      "synonyms": [
+        "Rick Case Automotive Group"
+      ]
+    },
+    {
+      "value": "Findlay Automotive Group",
+      "synonyms": [
+        "Findlay Automotive Group"
+      ]
+    },
+    {
+      "value": "Fletcher Jones Automotive Group",
+      "synonyms": [
+        "Fletcher Jones Automotive Group"
+      ]
+    },
+    {
+      "value": "Victory Automotive Group",
+      "synonyms": [
+        "Victory Automotive Group"
+      ]
+    },
+    {
+      "value": "Ourisman Automotive Group",
+      "synonyms": [
+        "Ourisman Automotive Group"
+      ]
+    },
+    {
+      "value": "DARCARS Automotive Group",
+      "synonyms": [
+        "DARCARS Automotive Group"
+      ]
+    },
+    {
+      "value": "Ganley Auto Group",
+      "synonyms": [
+        "Ganley Auto Group"
+      ]
+    },
+    {
+      "value": "Braman Dealerships",
+      "synonyms": [
+        "Braman Dealerships"
+      ]
+    },
+    {
+      "value": "Servco Pacific Inc.",
+      "synonyms": [
+        "Servco Pacific Inc."
+      ]
+    },
+    {
+      "value": "Galpin Motors Inc.",
+      "synonyms": [
+        "Galpin Motors Inc."
+      ]
+    },
+    {
+      "value": "Sheehy Auto Stores",
+      "synonyms": [
+        "Sheehy Auto Stores"
+      ]
+    },
+    {
+      "value": "Premier Automotive",
+      "synonyms": [
+        "Premier Automotive"
+      ]
+    },
+    {
+      "value": "Mac Haik Auto Group",
+      "synonyms": [
+        "Mac Haik Auto Group"
+      ]
+    },
+    {
+      "value": "Napleton Automotive Group",
+      "synonyms": [
+        "Napleton Automotive Group"
+      ]
+    },
+    {
+      "value": "Pohanka Automotive Group",
+      "synonyms": [
+        "Pohanka Automotive Group"
+      ]
+    },
+    {
+      "value": "Kahlig Auto Group",
+      "synonyms": [
+        "Kahlig Auto Group"
+      ]
+    },
+    {
+      "value": "Summit Automotive Partners",
+      "synonyms": [
+        "Summit Automotive Partners"
+      ]
+    },
+    {
+      "value": "Jeff Wyler Automotive Family Inc.",
+      "synonyms": [
+        "Jeff Wyler Automotive Family Inc."
+      ]
+    },
+    {
+      "value": "Prime Motor Group",
+      "synonyms": [
+        "Prime Motor Group"
+      ]
+    },
+    {
+      "value": "Chapman Automotive Group",
+      "synonyms": [
+        "Chapman Automotive Group"
+      ]
+    },
+    {
+      "value": "Bob Rohrman Auto Group",
+      "synonyms": [
+        "Bob Rohrman Auto Group"
+      ]
+    },
+    {
+      "value": "Del Grande Dealer Group",
+      "synonyms": [
+        "Del Grande Dealer Group"
+      ]
+    },
+    {
+      "value": "Ken Page Auto Group",
+      "synonyms": [
+        "Ken Page Auto Group"
+      ]
+    },
+    {
+      "value": "Performance Automotive Network",
+      "synonyms": [
+        "Performance Automotive Network"
+      ]
+    },
+    {
+      "value": "Ray Catena Motor Car Corp.",
+      "synonyms": [
+        "Ray Catena Motor Car Corp."
+      ]
+    },
+    {
+      "value": "Tuttle-Click Automotive Group",
+      "synonyms": [
+        "Tuttle-Click Automotive Group"
+      ]
+    },
+    {
+      "value": "RFJ Auto Partners Holdings Inc.",
+      "synonyms": [
+        "RFJ Auto Partners Holdings Inc."
+      ]
+    },
+    {
+      "value": "Gillman Companies",
+      "synonyms": [
+        "Gillman Companies"
+      ]
+    },
+    {
+      "value": "Holman Automotive Group Inc.",
+      "synonyms": [
+        "Holman Automotive Group Inc."
+      ]
+    },
+    {
+      "value": "Priority Auto Group",
+      "synonyms": [
+        "Priority Auto Group"
+      ]
+    },
+    {
+      "value": "Shammas Automotive Group",
+      "synonyms": [
+        "Shammas Automotive Group"
+      ]
+    },
+    {
+      "value": "Sullivan Automotive Group",
+      "synonyms": [
+        "Sullivan Automotive Group"
+      ]
+    },
+    {
+      "value": "John Eagle Auto Group",
+      "synonyms": [
+        "John Eagle Auto Group"
+      ]
+    },
+    {
+      "value": "Piercey Automotive Group",
+      "synonyms": [
+        "Piercey Automotive Group"
+      ]
+    },
+    {
+      "value": "Balise Motor Sales Co.",
+      "synonyms": [
+        "Balise Motor Sales Co."
+      ]
+    },
+    {
+      "value": "Car Pros Automotive Group",
+      "synonyms": [
+        "Car Pros Automotive Group"
+      ]
+    },
+    {
+      "value": "Open Road Auto Group",
+      "synonyms": [
+        "Open Road Auto Group"
+      ]
+    },
+    {
+      "value": "Lia Auto Group",
+      "synonyms": [
+        "Lia Auto Group"
+      ]
+    },
+    {
+      "value": "Rosatti/Plaza Auto Group",
+      "synonyms": [
+        "Rosatti/Plaza Auto Group"
+      ]
+    },
+    {
+      "value": "McCombs Automotive",
+      "synonyms": [
+        "McCombs Automotive"
+      ]
+    },
+    {
+      "value": "Kuni Automotive",
+      "synonyms": [
+        "Kuni Automotive"
+      ]
+    },
+    {
+      "value": "Rosenthal Automotive Organization",
+      "synonyms": [
+        "Rosenthal Automotive Organization"
+      ]
+    },
+    {
+      "value": "Fitzgerald Auto Malls",
+      "synonyms": [
+        "Fitzgerald Auto Malls"
+      ]
+    },
+    {
+      "value": "Zeigler Auto Group",
+      "synonyms": [
+        "Zeigler Auto Group"
+      ]
+    },
+    {
+      "value": "Ancira Enterprises",
+      "synonyms": [
+        "Ancira Enterprises"
+      ]
+    },
+    {
+      "value": "John Elway Dealerships",
+      "synonyms": [
+        "John Elway Dealerships"
+      ]
+    },
+    {
+      "value": "Anderson Automotive Group",
+      "synonyms": [
+        "Anderson Automotive Group"
+      ]
+    },
+    {
+      "value": "Germain Motor Co.",
+      "synonyms": [
+        "Germain Motor Co."
+      ]
+    },
+    {
+      "value": "World Class Automotive Group",
+      "synonyms": [
+        "World Class Automotive Group"
+      ]
+    },
+    {
+      "value": "Bergstrom Automotive",
+      "synonyms": [
+        "Bergstrom Automotive"
+      ]
+    },
+    {
+      "value": "Ferman Automotive Group",
+      "synonyms": [
+        "Ferman Automotive Group"
+      ]
+    },
+    {
+      "value": "Wilde Automotive Group",
+      "synonyms": [
+        "Wilde Automotive Group"
+      ]
+    },
+    {
+      "value": "Bommarito Automotive Group",
+      "synonyms": [
+        "Bommarito Automotive Group"
+      ]
+    },
+    {
+      "value": "Prestige Management Services",
+      "synonyms": [
+        "Prestige Management Services"
+      ]
+    },
+    {
+      "value": "LaFontaine Automotive Group",
+      "synonyms": [
+        "LaFontaine Automotive Group"
+      ]
+    },
+    {
+      "value": "Morgan Auto Group",
+      "synonyms": [
+        "Morgan Auto Group"
+      ]
+    },
+    {
+      "value": "Price Simms Auto Group",
+      "synonyms": [
+        "Price Simms Auto Group"
+      ]
+    },
+    {
+      "value": "Future Automotive Group",
+      "synonyms": [
+        "Future Automotive Group"
+      ]
+    },
+    {
+      "value": "#1 Cochran Automotive",
+      "synonyms": [
+        "#1 Cochran Automotive"
+      ]
+    },
+    {
+      "value": "Piazza Auto Group",
+      "synonyms": [
+        "Piazza Auto Group"
+      ]
+    },
+    {
+      "value": "Sam Pack Auto Group",
+      "synonyms": [
+        "Sam Pack Auto Group"
+      ]
+    },
+    {
+      "value": "Kenwood Dealer Group Inc.",
+      "synonyms": [
+        "Kenwood Dealer Group Inc."
+      ]
+    },
+    {
+      "value": "Chapman Auto Group",
+      "synonyms": [
+        "Chapman Auto Group"
+      ]
+    },
+    {
+      "value": "Colonial Automotive Group",
+      "synonyms": [
+        "Colonial Automotive Group"
+      ]
+    },
+    {
+      "value": "Boucher Group Inc.",
+      "synonyms": [
+        "Boucher Group Inc."
+      ]
+    },
+    {
+      "value": "Rusnak Auto Group",
+      "synonyms": [
+        "Rusnak Auto Group"
+      ]
+    },
+    {
+      "value": "Fox Motors",
+      "synonyms": [
+        "Fox Motors"
+      ]
+    },
+    {
+      "value": "Gettel Automotive",
+      "synonyms": [
+        "Gettel Automotive"
+      ]
+    },
+    {
+      "value": "Gunther Motor Company",
+      "synonyms": [
+        "Gunther Motor Company"
+      ]
+    },
+    {
+      "value": "Ed Morse Automotive Group",
+      "synonyms": [
+        "Ed Morse Automotive Group"
+      ]
+    },
+    {
+      "value": "Ron Tonkin Family of Dealerships",
+      "synonyms": [
+        "Ron Tonkin Family of Dealerships"
+      ]
+    },
+    {
+      "value": "Carbone Automotive Group",
+      "synonyms": [
+        "Carbone Automotive Group"
+      ]
+    },
+    {
+      "value": "Grossinger Auto Group ",
+      "synonyms": [
+        "Grossinger Auto Group "
+      ]
+    },
+    {
+      "value": "Phil Smith Automotive Group",
+      "synonyms": [
+        "Phil Smith Automotive Group"
+      ]
+    },
+    {
+      "value": "Garber Management Group",
+      "synonyms": [
+        "Garber Management Group"
+      ]
+    },
+    {
+      "value": "Huffines Auto Dealerships",
+      "synonyms": [
+        "Huffines Auto Dealerships"
+      ]
+    },
+    {
+      "value": "Gunn Automotive Group",
+      "synonyms": [
+        "Gunn Automotive Group"
+      ]
+    },
+    {
+      "value": "Kelly Automotive Group ",
+      "synonyms": [
+        "Kelly Automotive Group "
+      ]
+    },
+    {
+      "value": "Reedman-Toll Auto World",
+      "synonyms": [
+        "Reedman-Toll Auto World"
+      ]
+    },
+    {
+      "value": "Bob Moore Auto Group",
+      "synonyms": [
+        "Bob Moore Auto Group"
+      ]
+    },
+    {
+      "value": "Lester Glenn Auto Group",
+      "synonyms": [
+        "Lester Glenn Auto Group"
+      ]
+    },
+    {
+      "value": "David Stanley Auto Group",
+      "synonyms": [
+        "David Stanley Auto Group"
+      ]
+    },
+    {
+      "value": "Mike Shaw Automotive",
+      "synonyms": [
+        "Mike Shaw Automotive"
+      ]
+    },
+    {
+      "value": "Lou Fusz Automotive Network Inc.",
+      "synonyms": [
+        "Lou Fusz Automotive Network Inc."
+      ]
+    },
+    {
+      "value": "Continental Motors Group",
+      "synonyms": [
+        "Continental Motors Group"
+      ]
+    },
+    {
+      "value": "Blaise Alexander Family Dealerships",
+      "synonyms": [
+        "Blaise Alexander Family Dealerships"
+      ]
+    },
+    {
+      "value": "Crain Automotive Team",
+      "synonyms": [
+        "Crain Automotive Team"
+      ]
+    },
+    {
+      "value": "Sansone Auto Network",
+      "synonyms": [
+        "Sansone Auto Network"
+      ]
+    },
+    {
+      "value": "Criswell Automotive",
+      "synonyms": [
+        "Criswell Automotive"
+      ]
+    },
+    {
+      "value": "Metro Motor Group",
+      "synonyms": [
+        "Metro Motor Group"
+      ]
+    },
+    {
+      "value": "Phil Long Dealerships",
+      "synonyms": [
+        "Phil Long Dealerships"
+      ]
+    },
+    {
+      "value": "Fletcher Auto Group",
+      "synonyms": [
+        "Fletcher Auto Group"
+      ]
+    },
+    {
+      "value": "CarMax Inc.",
+      "synonyms": [
+        "CarMax Inc."
+      ]
+    },
+    {
+      "value": "Byers Automotive Group",
+      "synonyms": [
+        "Byers Automotive Group"
+      ]
+    },
+    {
+      "value": "AutoFair Automotive Group",
+      "synonyms": [
+        "AutoFair Automotive Group"
+      ]
+    },
+    {
+      "value": "Hertrich Family of Auto Dealerships",
+      "synonyms": [
+        "Hertrich Family of Auto Dealerships"
+      ]
+    },
+    {
+      "value": "Green Family Stores Inc.",
+      "synonyms": [
+        "Green Family Stores Inc."
+      ]
+    },
+    {
+      "value": "Kenny Ross Automotive Group",
+      "synonyms": [
+        "Kenny Ross Automotive Group"
+      ]
+    },
+    {
+      "value": "Serra Automotive Group",
+      "synonyms": [
+        "Serra Automotive Group"
+      ]
+    },
+    {
+      "value": "Russ Darrow Group",
+      "synonyms": [
+        "Russ Darrow Group"
+      ]
+    },
+    {
+      "value": "Mullinax Auto Group",
+      "synonyms": [
+        "Mullinax Auto Group"
+      ]
+    },
+    {
+      "value": "World Auto Group",
+      "synonyms": [
+        "World Auto Group"
+      ]
+    },
+    {
+      "value": "Richardson \u0026 Partners",
+      "synonyms": [
+        "Richardson \u0026 Partners"
+      ]
+    },
+    {
+      "value": "Headquarter Automotive",
+      "synonyms": [
+        "Headquarter Automotive"
+      ]
+    },
+    {
+      "value": "Bobby Rahal Automotive Group",
+      "synonyms": [
+        "Bobby Rahal Automotive Group"
+      ]
+    },
+    {
+      "value": "Hitchcock Automotive Resources",
+      "synonyms": [
+        "Hitchcock Automotive Resources"
+      ]
+    },
+    {
+      "value": "Holler Classic Automotive Group ",
+      "synonyms": [
+        "Holler Classic Automotive Group "
+      ]
+    },
+    {
+      "value": "Bob Baker Auto Group",
+      "synonyms": [
+        "Bob Baker Auto Group"
+      ]
+    },
+    {
+      "value": "Perry Automotive Group",
+      "synonyms": [
+        "Perry Automotive Group"
+      ]
+    },
+    {
+      "value": "Southwest Dealer Group",
+      "synonyms": [
+        "Southwest Dealer Group"
+      ]
+    },
+    {
+      "value": "Cardinale Automotive Group",
+      "synonyms": [
+        "Cardinale Automotive Group"
+      ]
+    },
+    {
+      "value": "Noarus Auto Group",
+      "synonyms": [
+        "Noarus Auto Group"
+      ]
+    },
+    {
+      "value": "Shelly Automotive Group",
+      "synonyms": [
+        "Shelly Automotive Group"
+      ]
+    },
+    {
+      "value": "Day Automotive Group",
+      "synonyms": [
+        "Day Automotive Group"
+      ]
+    },
+    {
+      "value": "Momentum Auto Group ",
+      "synonyms": [
+        "Momentum Auto Group "
+      ]
+    },
+    {
+      "value": "Performance Cos.",
+      "synonyms": [
+        "Performance Cos."
+      ]
+    },
+    {
+      "value": "Don Davis Auto Group",
+      "synonyms": [
+        "Don Davis Auto Group"
+      ]
+    },
+    {
+      "value": "AutoFocus Inc.",
+      "synonyms": [
+        "AutoFocus Inc."
+      ]
+    },
+    {
+      "value": "Stewart Management Group Inc.",
+      "synonyms": [
+        "Stewart Management Group Inc."
+      ]
+    },
+    {
+      "value": "FRL Automotive",
+      "synonyms": [
+        "FRL Automotive"
+      ]
+    },
+    {
+      "value": "Murgado Automotive Group",
+      "synonyms": [
+        "Murgado Automotive Group"
+      ]
+    },
+    {
+      "value": "Jim Hudson Automotive Group",
+      "synonyms": [
+        "Jim Hudson Automotive Group"
+      ]
+    },
+    {
+      "value": "Sanderson Automotive",
+      "synonyms": [
+        "Sanderson Automotive"
+      ]
+    },
+    {
+      "value": "Safford Automotive Group",
+      "synonyms": [
+        "Safford Automotive Group"
+      ]
+    },
+    {
+      "value": "Martin Management Group",
+      "synonyms": [
+        "Martin Management Group"
+      ]
+    },
+    {
+      "value": "Ron Marhofer Auto Family",
+      "synonyms": [
+        "Ron Marhofer Auto Family"
+      ]
+    },
+    {
+      "value": "Magnussen Dealership Group",
+      "synonyms": [
+        "Magnussen Dealership Group"
+      ]
+    },
+    {
+      "value": "Voss Auto Network",
+      "synonyms": [
+        "Voss Auto Network"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

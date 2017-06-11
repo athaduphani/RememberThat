@@ -1,0 +1,28 @@
+{
+  "id": "695e2204-cdf6-4c20-89e2-fd0b743ce845",
+  "name": "Yogurt",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Yogurt",
+      "synonyms": [
+        "Low-fat Yogurt",
+        "Fat-free Yogurt",
+        "Light Yogurt",
+        "No Added Sugar Yogurt",
+        "Sugar free Yogurt",
+        "Lactose-free Yogurt",
+        "Probiotic Yogurt",
+        "Prebiotic Yogurt",
+        "Enriched Yogurt",
+        "Organic Yogurt",
+        "Drinkable Yogurt",
+        "Tube Yogurt",
+        "Frozen Yogurt",
+        "Kefir"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

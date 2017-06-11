@@ -1,0 +1,32 @@
+{
+  "id": "0b04d19b-a8e2-46bd-8504-e78b9162682a",
+  "name": "Milk",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Milk",
+      "synonyms": [
+        "Milk",
+        "Whole Milk",
+        "Partly Skimmed Milks",
+        "Skim Milk",
+        "Chocolate Milk",
+        "Buttermilk",
+        "Raw or Unpasteurized Milk",
+        "Filtered Milk",
+        "Lactose-Free Milk",
+        "Milk with DHA",
+        "Omega-3 Milk Beverage",
+        "Organic Milk",
+        "Prebiotic Fibre Milk Beverage",
+        "Probiotic Milk Beverage",
+        "Evaporated Milk",
+        "Sweetened Condensed Milk",
+        "Powdered Milk",
+        "UHT Milk"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

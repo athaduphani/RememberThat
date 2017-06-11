@@ -1,0 +1,47 @@
+{
+  "id": "83835b65-fc27-4ce8-a2c4-655609e700f6",
+  "name": "IceCream",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "IceCream",
+      "synonyms": [
+        "IceCream",
+        "Ice Cream",
+        "Banana",
+        "Birthday Cake",
+        "Black Raspberry Crunch",
+        "Blue Moon",
+        "Caramel Praline",
+        "Chocolate",
+        "Chocolate Brownies",
+        "Choco Cherry",
+        "Chocolate Chip",
+        "Chocolate Custard",
+        "Coffee",
+        "Coffee Molasses Chip",
+        "Computer Chip",
+        "Cookies \u0026 Dough",
+        "Cotton Candy",
+        "French Vanilla",
+        "Fudge Marble",
+        "Industrial Chocolate",
+        "Jolly Apple",
+        "Kulfi",
+        "Lavender Honey",
+        "Lemon Cookie or Lemon Chiffon",
+        "Lychee",
+        "Marshmallow Treat",
+        "Masala Chai",
+        "Mexican Chocolate",
+        "Mint Chocolate Chip",
+        "Mocha Almond Fudge",
+        "No-Tell-AHHH!",
+        "Peppermint Chip",
+        "Pistachio Almond"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

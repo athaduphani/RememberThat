@@ -1,0 +1,93 @@
+{
+  "id": "d0f27718-9ff6-4087-8392-0f2d3cf205b3",
+  "name": "Meat",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Chicken",
+      "synonyms": [
+        "Chicken"
+      ]
+    },
+    {
+      "value": " Fish",
+      "synonyms": [
+        " Fish"
+      ]
+    },
+    {
+      "value": " Beef",
+      "synonyms": [
+        " Beef"
+      ]
+    },
+    {
+      "value": " Ham",
+      "synonyms": [
+        " Ham"
+      ]
+    },
+    {
+      "value": " Pork",
+      "synonyms": [
+        " Pork"
+      ]
+    },
+    {
+      "value": "Sausage",
+      "synonyms": [
+        "Sausage"
+      ]
+    },
+    {
+      "value": " Bacon",
+      "synonyms": [
+        " Bacon"
+      ]
+    },
+    {
+      "value": " Bison",
+      "synonyms": [
+        " Bison"
+      ]
+    },
+    {
+      "value": " Alligator",
+      "synonyms": [
+        " Alligator"
+      ]
+    },
+    {
+      "value": " Steak",
+      "synonyms": [
+        " Steak"
+      ]
+    },
+    {
+      "value": " Duck",
+      "synonyms": [
+        " Duck"
+      ]
+    },
+    {
+      "value": " Lamb",
+      "synonyms": [
+        " Lamb"
+      ]
+    },
+    {
+      "value": " Mutton",
+      "synonyms": [
+        " Mutton"
+      ]
+    },
+    {
+      "value": " Salami",
+      "synonyms": [
+        " Salami"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

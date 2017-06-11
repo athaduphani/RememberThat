@@ -1,0 +1,65 @@
+{
+  "userSays": [
+    {
+      "id": "633ecbca-1b5a-4ae3-9bb3-e1ff4c8b13b3",
+      "data": [
+        {
+          "text": "Hi Tareek"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "c0c9ede2-c3ce-4a7f-ae21-dc7fa71c5140",
+      "data": [
+        {
+          "text": "Talk to Tareek"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "dcd7ac23-3b3d-41bc-9a2d-e8dc30b2ec0e",
+      "data": [
+        {
+          "text": "i want to talk to tareek"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "e52dda82-592e-478d-b1e3-43e494541ad4",
+  "name": "Default Welcome Intent",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.welcome",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": [
+            "Sure. What do u want me to remember?",
+            "Hello! What do you want me to save?",
+            "Hi! What did you do today?"
+          ]
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "WELCOME"
+    }
+  ]
+}

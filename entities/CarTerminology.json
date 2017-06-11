@@ -1,0 +1,64 @@
+{
+  "id": "cf101625-200f-48e4-a561-e7b47713a1ab",
+  "name": "CarTerminology",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Service",
+      "synonyms": [
+        "Service"
+      ]
+    },
+    {
+      "value": "Warranty",
+      "synonyms": [
+        "Warranty"
+      ]
+    },
+    {
+      "value": "repair",
+      "synonyms": [
+        "repair"
+      ]
+    },
+    {
+      "value": "accident",
+      "synonyms": [
+        "accident"
+      ]
+    },
+    {
+      "value": "payment",
+      "synonyms": [
+        "payment",
+        "pay",
+        "bill"
+      ]
+    },
+    {
+      "value": "buying price",
+      "synonyms": [
+        "buying price",
+        "price"
+      ]
+    },
+    {
+      "value": "sell",
+      "synonyms": [
+        "sell",
+        "selling price"
+      ]
+    },
+    {
+      "value": "car wash",
+      "synonyms": [
+        "car wash",
+        "wash",
+        "clean",
+        "vaccum"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}
