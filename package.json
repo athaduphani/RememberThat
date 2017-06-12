@@ -1,0 +1,19 @@
+{
+  "name": "RememberThat",
+  "version": "1.0.0",
+  "description": "Remember dates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/athaduphani/RememberThat.git"
+  },
+  "author": "Phani Vuyyuru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/athaduphani/RememberThat/issues"
+  },
+  "homepage": "https://github.com/athaduphani/RememberThat#readme"
+}
