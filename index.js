@@ -1,8 +1,8 @@
-'use strict';
+// 'use strict';
 
-process.env.DEBUG = 'actions-on-google:*';
-let ApiAiApp = require('actions-on-google').ApiAiApp;
-let sprintf = require('sprintf-js').sprintf;
+// process.env.DEBUG = 'actions-on-google:*';
+// let ApiAiApp = require('actions-on-google').ApiAiApp;
+// let sprintf = require('sprintf-js').sprintf;
 // Tareekh is the product name
 
 
@@ -37,7 +37,7 @@ let sprintf = require('sprintf-js').sprintf;
 // prompts
 const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tareekh!', 'Hi! This is Tareekh',
     'Welcome back to Tareekh.'];
-
+console.log("Hello");
     // Utility function to pick prompts
     function getRandomPrompt (app, array) {
       let lastPrompt = app.data.lastPrompt;
