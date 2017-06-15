@@ -1,8 +1,8 @@
-// 'use strict';
+'use strict';
 
-// process.env.DEBUG = 'actions-on-google:*';
-// let ApiAiApp = require('actions-on-google').ApiAiApp;
-// let sprintf = require('sprintf-js').sprintf;
+process.env.DEBUG = 'actions-on-google:*';
+let ApiAiApp = require('actions-on-google').ApiAiApp;
+let sprintf = require('sprintf-js').sprintf;
 // Tareekh is the product name
 
 
