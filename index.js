@@ -55,7 +55,7 @@ const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tar
       return prompt;
     }
 
-  exports.tareekh = function (request, response) {
+  exports.rememberThat = function (request, response) {
     console.log('headers: ' + JSON.stringify(request.headers));
     console.log('body: ' + JSON.stringify(request.body));
 
@@ -67,6 +67,7 @@ const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tar
       let title = getRandomPrompt(app, GREETING_PROMPTS);
     const action = app.getArgument(ACTIONS_ARGUMENT);
     const meat = app.getArgument(MEAT_ARGUMENT);
+
     app.tell('You said Action is' + action + 'and the meat is' + meat);
     }
     // Adding intents to Action Map
@@ -74,3 +75,16 @@ const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tar
     actionMap.set(PRODUCE_SAVE_INTENT, produceSave);
     app.handleRequest(actionMap);
 }
+// var pg = require('pg');
+
+// app.get('/db', function (request, response) {
+//   pg.connect(process.env.postgresql-corrugated-68396, function(err, client, done) {
+//     client.query('SELECT * FROM test_table', function(err, result) {
+//       done();
+//       if (err)
+//        { console.error(err); response.send("Error " + err); }
+//       else
+//        { response.render('pages/db', {results: result.rows} ); }
+//     });
+//   });
+// });
