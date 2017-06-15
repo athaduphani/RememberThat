@@ -2,7 +2,7 @@
   "name": "RememberThat",
   "version": "1.0.0",
   "description": "Remember dates",
-  /*"main": "index.js",*/
+  "main": "index.js",
   "scripts": {
     "lint": "semistandard \"**/*.js\"",
     "start": "functions deploy rememberThat --trigger-http",
