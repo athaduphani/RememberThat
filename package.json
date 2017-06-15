@@ -4,7 +4,10 @@
   "description": "Remember dates",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "semistandard \"**/*.js\"",
+    "start": "functions deploy rememberThat --trigger-http",
+    "deploy": "gcloud beta functions deploy rememberThat --trigger-http --stage-bucket <storage_bucket_name>",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,8 @@
     "pg": "6.x",
     "ejs": "2.5.6",
     "express": "4.15.2",
-    "cool-ascii-faces": "1.3.4"
+    "cool-ascii-faces": "1.3.4",
+    "sprintf-js": "^1.0.3",
+    "actions-on-google": "^1.1.0"
 }
 }
