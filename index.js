@@ -1,8 +1,8 @@
 // 'use strict';
 
-process.env.DEBUG = 'actions-on-google:*';
-let ApiAiApp = require('actions-on-google').ApiAiApp;
-let sprintf = require('sprintf-js').sprintf;
+// process.env.DEBUG = 'actions-on-google:*';
+// let ApiAiApp = require('actions-on-google').ApiAiApp;
+// let sprintf = require('sprintf-js').sprintf;
 // Tareekh is the product name
 
 
@@ -54,6 +54,13 @@ console.log("Hello");
       }
       return prompt;
     }
+    // module.exports = MyFunction;
+    // MyFunction = function functionName() {
+    //
+    // }
+    module.exports.mine = function (){
+      console.log("Hello World");
+    };
 
   exports.rememberThat = function (request, response) {
     console.log('headers: ' + JSON.stringify(request.headers));
