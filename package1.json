@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Remember dates",
   "main": "index.js",
+  "scripts": {
+    "lint": "semistandard \"**/*.js\"",
+    "start": "functions deploy rememberThat --trigger-http",
+    "deploy": "gcloud beta functions deploy rememberThat --trigger-http --stage-bucket <storage_bucket_name>",
+    "test": "npm run lint"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/athaduphani/RememberThat.git"
@@ -21,5 +27,10 @@
     "body-parser": "^1.15.0",
     "sprintf-js": "1.0.3",
     "actions-on-google": "1.1.0"
-}
+}, "scripts": {
+    "start": "node index.js"
+  },
+"devDependencies": {
+    "semistandard": "^9.1.0"
   }
+}
