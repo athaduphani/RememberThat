@@ -45,15 +45,22 @@ restService.use(bodyParser.json());
 const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tareekh!', 'Hi! This is Tareekh',
     'Welcome back to Tareekh.'];
 
-    restService.post('/produceSave', function(req, res) {
+    restService.post('/producesave', function(req, res) {
         var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+        console.log("Entered Function");
         return res.json({
             // speech: speech,
             displayText: speech,
             // source: 'webhook-echo-sample'
         });
     });
-
+    restService.listen((process.env.PORT || 8000), function() {
+        console.log("Server up and listening");
+    });
+    function producecall(value){
+      console.log(value);
+      console.log("Inside Produce Call");
+    }
 // var pg = require('pg');
 
 // app.get('/db', function (request, response) {
