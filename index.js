@@ -46,12 +46,14 @@ const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tar
     'Welcome back to Tareekh.'];
 
     restService.post('/producesave', function(req, res) {
-        var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-        console.log("Entered Function");
+        var action = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.Actions : "Seems like some problem. Speak again."
+        var vegetable = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.Vegetable : "Seems like some problem. Speak again."
+        var date = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.Date : "Seems like some problem. Speak again."
+
         return res.json({
-            // speech: speech,
-            displayText: speech,
-            // source: 'webhook-echo-sample'
+            speech: "Action is " + action +" Vegetable is "+ vegetable + " Date is " + date,
+            displayText: "Action is " + action +" Vegetable is "+ vegetable + " Date is " + date,
+            source: 'RememberThat'
         });
     });
     restService.listen((process.env.PORT || 8000), function() {
