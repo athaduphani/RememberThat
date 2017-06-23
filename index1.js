@@ -1,15 +1,8 @@
 'use strict';
 
-const express = require('express');
-const bodyParser = require('body-parser');
-
-const restService = express();
-
-restService.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-restService.use(bodyParser.json());
+process.env.DEBUG = 'actions-on-google:*';
+let ApiAiApp = require('actions-on-google').ApiAiApp;
+let sprintf = require('sprintf-js').sprintf;
 // Tareekh is the product name
 
 
@@ -44,16 +37,51 @@ restService.use(bodyParser.json());
 // prompts
 const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tareekh!', 'Hi! This is Tareekh',
     'Welcome back to Tareekh.'];
+console.log("Hello");
+    // Utility function to pick prompts
+    function getRandomPrompt (app, array) {
+      let lastPrompt = app.data.lastPrompt;
+      let prompt;
+      if (lastPrompt) {
+        for (let index in array) {
+          prompt = array[index];
+          if (prompt != lastPrompt) {
+            break;
+          }
+        }
+      } else {
+        prompt = array[Math.floor(Math.random() * (array.length))];
+      }
+      return prompt;
+    }
+    // module.exports = MyFunction;
+    // MyFunction = function functionName() {
+    //
+    // }
+    module.exports.mine = function (){
+      console.log("Hello World");
+    };
 
-    restService.post('/produceSave', function(req, res) {
-        var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-        return res.json({
-            // speech: speech,
-            displayText: speech,
-            // source: 'webhook-echo-sample'
-        });
-    });
+  exports.rememberThat = function (request, response) {
+    console.log('headers: ' + JSON.stringify(request.headers));
+    console.log('body: ' + JSON.stringify(request.body));
 
+    const app = new ApiAiApp({request, response});
+
+    function produceSave (app) {
+      console.log('produceSave');
+      app.data.fallbackCount = 0;
+      let title = getRandomPrompt(app, GREETING_PROMPTS);
+    const action = app.getArgument(ACTIONS_ARGUMENT);
+    const meat = app.getArgument(MEAT_ARGUMENT);
+
+    app.tell('You said Action is' + action + 'and the meat is' + meat);
+    }
+    // Adding intents to Action Map
+    let actionMap = new Map();
+    actionMap.set(PRODUCE_SAVE_INTENT, produceSave);
+    app.handleRequest(actionMap);
+}
 // var pg = require('pg');
 
 // app.get('/db', function (request, response) {
