@@ -20,7 +20,7 @@ const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tar
       var purpose = req.body.result && req.body.result.parameters && req.body.result.parameters.purpose ? req.body.result.parameters.purpose : "Seems like some problem. Speak again."
       var vegetable = req.body.result && req.body.result.parameters && req.body.result.parameters.Vegetable ? req.body.result.parameters.Vegetable : "Seems like some problem. Speak again."
       var date = req.body.result && req.body.result.parameters && req.body.result.parameters.date ? req.body.result.parameters.date : "Seems like some problem. Speak again."
-        if (purpose = "save") {
+        // if (purpose = "save") {
           // pg.connect(process.env.postgresql-corrugated-68396, function(err, client, done) {
           //   client.query('SELECT * FROM test_table', function(err, result) {
           //     done();
@@ -35,9 +35,9 @@ const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tar
               displayText: "Action is " + action +" Vegetable is "+ vegetable + " Date is " + date,
               source: 'RememberThat'
         });
-      }else if (true) {
-
-      }
+      // }else if (true) {
+      //
+      // }
     });
 
     restService.listen((process.env.PORT || 8000), function() {
