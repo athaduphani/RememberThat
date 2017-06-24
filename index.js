@@ -45,10 +45,26 @@ restService.use(bodyParser.json());
 const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tareekh!', 'Hi! This is Tareekh',
     'Welcome back to Tareekh.'];
 
-    restService.post('/producesave', function(req, res) {
-        var action = req.body.result && req.body.result.parameters && req.body.result.parameters.Actions ? req.body.result.parameters.Actions : "Seems like some problem. Speak again."
-        var vegetable = req.body.result && req.body.result.parameters && req.body.result.parameters.Vegetable ? req.body.result.parameters.Vegetable : "Seems like some problem. Speak again."
-        var date = req.body.result && req.body.result.parameters && req.body.result.parameters.Date ? req.body.result.parameters.Date : "Seems like some problem. Speak again."
+    restService.post('/Rememberthat', function(req, res) {
+      var mainaction = req.body.result.action
+      var action = req.body.result && req.body.result.parameters && req.body.result.parameters.Actions ? req.body.result.parameters.Actions : "Seems like some problem. Speak again."
+      var vegetable = req.body.result && req.body.result.parameters && req.body.result.parameters.Vegetable ? req.body.result.parameters.Vegetable : "Seems like some problem. Speak again."
+      var date = req.body.result && req.body.result.parameters && req.body.result.parameters.date ? req.body.result.parameters.Date : "Seems like some problem. Speak again."
+
+      // if (mainaction = "save.produce"){
+      //
+      // }else if (mainaction = "remove.produce") {
+      //
+      // }else if (mainaction = "remind.expiry") {
+      //
+      // }else if (mainaction = "retrieve.expiry") {
+      //
+      // }else{
+        // return res.json({
+        //     speech: "Sorry! I don't know how to help with that yet",
+        //     displayText: "Sorry! I don't know how to help with that yet ",
+        //     source: 'RememberThat'
+      // }
 
         return res.json({
             speech: "Action is " + action +" Vegetable is "+ vegetable + " Date is " + date,
@@ -59,10 +75,7 @@ const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tar
     restService.listen((process.env.PORT || 8000), function() {
         console.log("Server up and listening");
     });
-    function producecall(value){
-      console.log(value);
-      console.log("Inside Produce Call");
-    }
+
 // var pg = require('pg');
 
 // app.get('/db', function (request, response) {
