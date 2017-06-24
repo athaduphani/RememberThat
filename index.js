@@ -49,7 +49,7 @@ const GREETING_PROMPTS = ['Hello!Let\'s save some dates today' , 'Welcome to Tar
       var mainaction = req.body.result.action
       var action = req.body.result && req.body.result.parameters && req.body.result.parameters.Actions ? req.body.result.parameters.Actions : "Seems like some problem. Speak again."
       var vegetable = req.body.result && req.body.result.parameters && req.body.result.parameters.Vegetable ? req.body.result.parameters.Vegetable : "Seems like some problem. Speak again."
-      var date = req.body.result && req.body.result.parameters && req.body.result.parameters.date ? req.body.result.parameters.Date : "Seems like some problem. Speak again."
+      var date = req.body.result && req.body.result.parameters && req.body.result.parameters.date ? req.body.result.parameters.date : "Seems like some problem. Speak again."
 
       // if (mainaction = "save.produce"){
       //
