@@ -18,6 +18,7 @@ restService.post('/transaction', function(req, res) {
             speech: "Action is " + action +" Vegetable is "+ vegetable + " Date is " + date,
             displayText: "Action is " + action +" Vegetable is "+ vegetable + " Date is " + date,
             source: 'RememberThat'
+          });
       }else if (purpose = "delete") {
 
       }else{
@@ -25,9 +26,8 @@ restService.post('/transaction', function(req, res) {
             speech: "Action is " + action +" Vegetable is "+ vegetable + " Date is " + date,
             displayText: "Action is " + action +" Vegetable is "+ vegetable + " Date is " + date,
             source: 'RememberThat'
-      }
-
-        });
+      });
+    }
     });
     restService.listen((process.env.PORT || 8000), function() {
         console.log("Server up and listening");
