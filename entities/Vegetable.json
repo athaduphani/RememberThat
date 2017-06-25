@@ -806,6 +806,12 @@
       "synonyms": [
         "Zucchini"
       ]
+    },
+    {
+      "value": "cilantro",
+      "synonyms": [
+        "cilantro"
+      ]
     }
   ],
   "isEnum": false,

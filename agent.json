@@ -1,5 +1,5 @@
 {
-  "description": "Remember That will hwlp in remembering the dates",
+  "description": "Remember That will help in remembering the dates",
   "language": "en",
   "enabledDomainFeatures": [
     "smalltalk-domain-new"
@@ -26,7 +26,7 @@
   },
   "defaultTimezone": "America/New_York",
   "webhook": {
-    "url": "https://rememberthat.herokuapp.com/save.produce",
+    "url": "https://rememberthat.herokuapp.com/transaction/",
     "headers": {
       "": ""
     },

@@ -1,0 +1,182 @@
+{
+  "userSays": [
+    {
+      "id": "2dfe8002-b429-44fb-a848-35dba24b36f7",
+      "data": [
+        {
+          "text": "i "
+        },
+        {
+          "text": "brought",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "cilantro",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "today",
+          "alias": "date",
+          "meta": "@sys.date",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e46e7026-4d57-4a03-be15-8382506c0a87",
+      "data": [
+        {
+          "text": "i "
+        },
+        {
+          "text": "have",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "onions",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "59b47af8-7c37-48b9-acaa-6107eaae35ab",
+      "data": [
+        {
+          "text": "i "
+        },
+        {
+          "text": "bought",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "oranges",
+          "alias": "Fruit",
+          "meta": "@Fruit",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "today",
+          "alias": "date",
+          "meta": "@sys.date",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "79edaaf9-f2d2-42a0-b246-e71f7e92fff3",
+      "data": [
+        {
+          "text": "i "
+        },
+        {
+          "text": "bought",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "tomatoes",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "today",
+          "alias": "date",
+          "meta": "@sys.date",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "fa8fde8b-8dac-4428-87cc-4d363ac8ed8c",
+  "name": "transaction",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "save.produce",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@purpose",
+          "name": "purpose",
+          "value": "$purpose",
+          "isList": false
+        },
+        {
+          "dataType": "@Vegetable",
+          "name": "Vegetable",
+          "value": "$Vegetable",
+          "isList": false
+        },
+        {
+          "dataType": "@sys.date",
+          "name": "date",
+          "value": "$date",
+          "isList": false
+        },
+        {
+          "dataType": "@Fruit",
+          "name": "Fruit",
+          "value": "$Fruit",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": [
+        "google"
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

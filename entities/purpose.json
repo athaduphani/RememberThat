@@ -27,6 +27,12 @@
         "used",
         "consumed"
       ]
+    },
+    {
+      "value": "brought",
+      "synonyms": [
+        "brought"
+      ]
     }
   ],
   "isEnum": false,
