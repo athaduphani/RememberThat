@@ -1,0 +1,311 @@
+{
+  "userSays": [
+    {
+      "id": "b588ab7d-0806-4944-ae60-99954a822fb7",
+      "data": [
+        {
+          "text": "I "
+        },
+        {
+          "text": "used",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        },
+        {
+          "text": " my "
+        },
+        {
+          "text": "cauliflower",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "c84bb4dd-012c-48d7-8a4c-e47c5eaac703",
+      "data": [
+        {
+          "text": "When does "
+        },
+        {
+          "text": "Foodbrand",
+          "alias": "Food_Brands",
+          "meta": "@Food_Brands",
+          "userDefined": true
+        },
+        {
+          "text": " expire?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ee7401a5-5294-411f-82e6-c88a67d02c5e",
+      "data": [
+        {
+          "text": "When does "
+        },
+        {
+          "text": "Hershey\u0027s",
+          "alias": "Food_Brands",
+          "meta": "@Food_Brands",
+          "userDefined": true
+        },
+        {
+          "text": " expire?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "b1934be9-1d31-42af-8d4b-84220f18b782",
+      "data": [
+        {
+          "text": "Has the "
+        },
+        {
+          "text": "pudding",
+          "alias": "Pudding",
+          "meta": "@Pudding",
+          "userDefined": true
+        },
+        {
+          "text": " expired?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "b18fb4aa-a26b-44dc-8af1-93044d57753c",
+      "data": [
+        {
+          "text": "Has the "
+        },
+        {
+          "text": "icecream",
+          "alias": "IceCream",
+          "meta": "@IceCream",
+          "userDefined": true
+        },
+        {
+          "text": " expired?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a4b067cb-26e4-496e-8742-bd821d70b857",
+      "data": [
+        {
+          "text": "Has the "
+        },
+        {
+          "text": "butter",
+          "alias": "Butter",
+          "meta": "@Butter",
+          "userDefined": true
+        },
+        {
+          "text": " expired?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "aa73c8ed-f75a-40f9-b95f-9d28cf888e9a",
+      "data": [
+        {
+          "text": "The "
+        },
+        {
+          "text": "yogurt",
+          "alias": "Yogurt",
+          "meta": "@Yogurt",
+          "userDefined": true
+        },
+        {
+          "text": " I got, has it expired?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "360466f1-a855-4230-b641-0f01888ab63b",
+      "data": [
+        {
+          "text": "Anything spoilt in my "
+        },
+        {
+          "text": "fridge",
+          "alias": "storage",
+          "meta": "@storage",
+          "userDefined": false
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ee79d912-e053-4d62-9327-a3adc600c92b",
+      "data": [
+        {
+          "text": "What all "
+        },
+        {
+          "text": "groceries",
+          "alias": "Groceries",
+          "meta": "@Groceries",
+          "userDefined": true
+        },
+        {
+          "text": " in my "
+        },
+        {
+          "text": "fridge",
+          "alias": "storage",
+          "meta": "@storage",
+          "userDefined": false
+        },
+        {
+          "text": " has expired?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "23f0103b-7305-412d-8251-9325515daaec",
+      "data": [
+        {
+          "text": "Has my "
+        },
+        {
+          "text": "milk",
+          "alias": "Milk",
+          "meta": "@Milk",
+          "userDefined": false
+        },
+        {
+          "text": " expired?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "85441f26-0acc-400c-9904-5c680877923d",
+      "data": [
+        {
+          "text": "Has any of my "
+        },
+        {
+          "text": "vegetables",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": true
+        },
+        {
+          "text": " expired?"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "e918d232-afcc-44fe-945a-4b455cb48102",
+  "name": "remind.expiry",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@Vegetable",
+          "name": "Vegetable",
+          "value": "$Vegetable",
+          "isList": false
+        },
+        {
+          "dataType": "@Milk",
+          "name": "Milk",
+          "value": "$Milk",
+          "isList": false
+        },
+        {
+          "dataType": "@storage",
+          "name": "storage",
+          "value": "$storage",
+          "isList": false
+        },
+        {
+          "dataType": "@Groceries",
+          "name": "Groceries",
+          "value": "$Groceries",
+          "isList": false
+        },
+        {
+          "dataType": "@Yogurt",
+          "name": "Yogurt",
+          "value": "$Yogurt",
+          "isList": false
+        },
+        {
+          "dataType": "@Butter",
+          "name": "Butter",
+          "value": "$Butter",
+          "isList": false
+        },
+        {
+          "dataType": "@IceCream",
+          "name": "IceCream",
+          "value": "$IceCream",
+          "isList": false
+        },
+        {
+          "dataType": "@Pudding",
+          "name": "Pudding",
+          "value": "$Pudding",
+          "isList": false
+        },
+        {
+          "dataType": "@Food_Brands",
+          "name": "Food_Brands",
+          "value": "$Food_Brands",
+          "isList": false
+        },
+        {
+          "dataType": "@purpose",
+          "name": "purpose",
+          "value": "$purpose",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

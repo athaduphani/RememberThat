@@ -1,0 +1,35 @@
+{
+  "id": "f310f26d-b5c9-4e38-99d5-bed394bbeea3",
+  "name": "time",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "time",
+      "synonyms": [
+        "time",
+        "last time"
+      ]
+    },
+    {
+      "value": "last",
+      "synonyms": [
+        "last",
+        "latest"
+      ]
+    },
+    {
+      "value": "old",
+      "synonyms": [
+        "old"
+      ]
+    },
+    {
+      "value": "long",
+      "synonyms": [
+        "long"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

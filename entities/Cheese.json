@@ -4,52 +4,315 @@
   "isOverridable": true,
   "entries": [
     {
-      "value": "Cheese",
+      "value": "ACKAWI",
       "synonyms": [
-        "Cheese",
-        "Cheese",
-        "ACKAWI",
-        "ASADERO",
-        "ASIAGO",
-        "BABY SWISS",
-        "BAKERS CHEESE",
-        "BALADI",
-        "BASKET CHEESE",
-        "BREAKFAST CHEESE",
-        "BRIE",
-        "BRIE",
-        "CAMEMBERT",
-        "CARMODY",
-        "CHANTALENO",
-        "CHEDDAR",
-        "CHEDDAR",
-        "COLBY",
-        "COLBY/JACK",
-        "COTIJA",
-        "COTIJA",
-        "COTTAGE CHEESE",
-        "CREAM CHEESE",
-        "CRESCENZA",
-        "CURD",
-        "DRY JACK",
-        "EDAM",
-        "ENCHILADO",
-        "ENCHILADO ANEJO",
-        "FETA",
-        "FOLDED CHEESE",
-        "FONTINA",
-        "FROMAGE BLANC",
-        "FRYING CHEESE",
-        "GOUDA",
-        "GOUDA",
-        "HAVARTI",
-        "LONGHORN",
-        "MANCHEGO",
-        "MARBLE CHEDDAR",
-        "MASCARPONE",
-        "MENONITA",
-        "MONTEREY JACK",
-        "Mozzarella"
+        "ACKAWI"
+      ]
+    },
+    {
+      "value": "ASADERO",
+      "synonyms": [
+        "ASADERO"
+      ]
+    },
+    {
+      "value": "ASIAGO",
+      "synonyms": [
+        "ASIAGO"
+      ]
+    },
+    {
+      "value": "BABY SWISS",
+      "synonyms": [
+        "BABY SWISS"
+      ]
+    },
+    {
+      "value": "BAKERS CHEESE",
+      "synonyms": [
+        "BAKERS CHEESE"
+      ]
+    },
+    {
+      "value": "BALADI",
+      "synonyms": [
+        "BALADI"
+      ]
+    },
+    {
+      "value": "BASKET CHEESE",
+      "synonyms": [
+        "BASKET CHEESE"
+      ]
+    },
+    {
+      "value": "BREAKFAST CHEESE",
+      "synonyms": [
+        "BREAKFAST CHEESE"
+      ]
+    },
+    {
+      "value": "BRIE",
+      "synonyms": [
+        "BRIE"
+      ]
+    },
+    {
+      "value": "CAMEMBERT",
+      "synonyms": [
+        "CAMEMBERT"
+      ]
+    },
+    {
+      "value": "CARMODY",
+      "synonyms": [
+        "CARMODY"
+      ]
+    },
+    {
+      "value": "CHANTALENO",
+      "synonyms": [
+        "CHANTALENO"
+      ]
+    },
+    {
+      "value": "CHEDDAR",
+      "synonyms": [
+        "CHEDDAR"
+      ]
+    },
+    {
+      "value": "COLBY",
+      "synonyms": [
+        "COLBY"
+      ]
+    },
+    {
+      "value": "COTIJA",
+      "synonyms": [
+        "COTIJA"
+      ]
+    },
+    {
+      "value": "COTTAGE CHEEse",
+      "synonyms": [
+        "COTTAGE CHEEse"
+      ]
+    },
+    {
+      "value": "CREAM CHEESE",
+      "synonyms": [
+        "CREAM CHEESE"
+      ]
+    },
+    {
+      "value": "CRESCENZA",
+      "synonyms": [
+        "CRESCENZA"
+      ]
+    },
+    {
+      "value": "CURD",
+      "synonyms": [
+        "CURD"
+      ]
+    },
+    {
+      "value": "DRY JACK",
+      "synonyms": [
+        "DRY JACK"
+      ]
+    },
+    {
+      "value": "EDAM",
+      "synonyms": [
+        "EDAM"
+      ]
+    },
+    {
+      "value": "ENCHILADO",
+      "synonyms": [
+        "ENCHILADO"
+      ]
+    },
+    {
+      "value": "ENCHILADO ANEJO",
+      "synonyms": [
+        "ENCHILADO ANEJO"
+      ]
+    },
+    {
+      "value": "FETA",
+      "synonyms": [
+        "FETA"
+      ]
+    },
+    {
+      "value": "FOLDED CHEESE",
+      "synonyms": [
+        "FOLDED CHEESE"
+      ]
+    },
+    {
+      "value": "FONTINA",
+      "synonyms": [
+        "FONTINA"
+      ]
+    },
+    {
+      "value": "FROMAGE BLANC",
+      "synonyms": [
+        "FROMAGE BLANC"
+      ]
+    },
+    {
+      "value": "FRYING CHEESE",
+      "synonyms": [
+        "FRYING CHEESE"
+      ]
+    },
+    {
+      "value": "GOUDA",
+      "synonyms": [
+        "GOUDA"
+      ]
+    },
+    {
+      "value": "GOUDA",
+      "synonyms": [
+        "GOUDA"
+      ]
+    },
+    {
+      "value": "HAVARTI",
+      "synonyms": [
+        "HAVARTI"
+      ]
+    },
+    {
+      "value": "LONGHORN",
+      "synonyms": [
+        "LONGHORN"
+      ]
+    },
+    {
+      "value": "MANCHEGO",
+      "synonyms": [
+        "MANCHEGO"
+      ]
+    },
+    {
+      "value": "MARBLE CHEDDAR",
+      "synonyms": [
+        "MARBLE CHEDDAR"
+      ]
+    },
+    {
+      "value": "MASCARPONE",
+      "synonyms": [
+        "MASCARPONE"
+      ]
+    },
+    {
+      "value": "MENONITA",
+      "synonyms": [
+        "MENONITA"
+      ]
+    },
+    {
+      "value": "MONTEREY JACK",
+      "synonyms": [
+        "MONTEREY JACK"
+      ]
+    },
+    {
+      "value": "MOZZARELLA",
+      "synonyms": [
+        "MOZZARELLA"
+      ]
+    },
+    {
+      "value": "OAXACA",
+      "synonyms": [
+        "OAXACA"
+      ]
+    },
+    {
+      "value": "PANELA",
+      "synonyms": [
+        "PANELA"
+      ]
+    },
+    {
+      "value": "PORT SALUT",
+      "synonyms": [
+        "PORT SALUT"
+      ]
+    },
+    {
+      "value": "PROVOLONE",
+      "synonyms": [
+        "PROVOLONE"
+      ]
+    },
+    {
+      "value": "QUARK",
+      "synonyms": [
+        "QUARK"
+      ]
+    },
+    {
+      "value": "QUESO BLANCO",
+      "synonyms": [
+        "QUESO BLANCO"
+      ]
+    },
+    {
+      "value": "QUESO FRESCO",
+      "synonyms": [
+        "QUESO FRESCO"
+      ]
+    },
+    {
+      "value": "REQUESON",
+      "synonyms": [
+        "REQUESON"
+      ]
+    },
+    {
+      "value": "RICOTTA",
+      "synonyms": [
+        "RICOTTA"
+      ]
+    },
+    {
+      "value": "ROMANO",
+      "synonyms": [
+        "ROMANO"
+      ]
+    },
+    {
+      "value": "SCAMORZA",
+      "synonyms": [
+        "SCAMORZA"
+      ]
+    },
+    {
+      "value": "SCHLOSS",
+      "synonyms": [
+        "SCHLOSS"
+      ]
+    },
+    {
+      "value": "SYRIAN CHEESE",
+      "synonyms": [
+        "SYRIAN CHEESE"
+      ]
+    },
+    {
+      "value": "TELEME",
+      "synonyms": [
+        "TELEME"
       ]
     }
   ],

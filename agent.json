@@ -26,13 +26,14 @@
   },
   "defaultTimezone": "America/New_York",
   "webhook": {
-    "available": false,
+    "url": "https://rememberthat.herokuapp.com/save.produce",
+    "headers": {
+      "": ""
+    },
+    "available": true,
     "useForDomains": false
   },
   "isPrivate": true,
   "customClassifierMode": "use.after",
-  "mlMinConfidence": 0.3,
-  "httpExecution": {
-     "url": "http://7bcf15df.ngrok.io/"
-   }
+  "mlMinConfidence": 0.3
 }

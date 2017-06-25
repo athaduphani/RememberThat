@@ -1,0 +1,114 @@
+{
+  "userSays": [
+    {
+      "id": "729776f7-dd8c-4e76-afbe-4e7197c3a350",
+      "data": [
+        {
+          "text": "i had "
+        },
+        {
+          "text": "oranges",
+          "alias": "Fruit",
+          "meta": "@Fruit",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "today",
+          "alias": "date",
+          "meta": "@sys.date",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "79edaaf9-f2d2-42a0-b246-e71f7e92fff3",
+      "data": [
+        {
+          "text": "i "
+        },
+        {
+          "text": "bought",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "tomatoes",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "today",
+          "alias": "date",
+          "meta": "@sys.date",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "fa8fde8b-8dac-4428-87cc-4d363ac8ed8c",
+  "name": "save",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "save",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@purpose",
+          "name": "purpose",
+          "value": "$purpose",
+          "isList": false
+        },
+        {
+          "dataType": "@Vegetable",
+          "name": "Vegetable",
+          "value": "$Vegetable",
+          "isList": false
+        },
+        {
+          "dataType": "@sys.date",
+          "name": "date",
+          "value": "$date",
+          "isList": false
+        },
+        {
+          "dataType": "@Fruit",
+          "name": "Fruit",
+          "value": "$Fruit",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": [
+        "google"
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": true,
+  "fallbackIntent": false,
+  "events": []
+}

@@ -1,0 +1,34 @@
+{
+  "id": "d99dd8d0-2edd-4b85-aac0-47da1805af1a",
+  "name": "storage",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Fridge",
+      "synonyms": [
+        "Fridge",
+        "refrigerator"
+      ]
+    },
+    {
+      "value": "cooler",
+      "synonyms": [
+        "cooler"
+      ]
+    },
+    {
+      "value": "pantry",
+      "synonyms": [
+        "pantry"
+      ]
+    },
+    {
+      "value": "home",
+      "synonyms": [
+        "home"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

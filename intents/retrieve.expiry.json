@@ -1,0 +1,173 @@
+{
+  "userSays": [
+    {
+      "id": "224794e5-ff6f-4bd9-ba83-0336cd6acf53",
+      "data": [
+        {
+          "text": "When is my "
+        },
+        {
+          "text": "milk",
+          "alias": "Milk",
+          "meta": "@Milk",
+          "userDefined": false
+        },
+        {
+          "text": " expiring"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "1614d240-4c96-43b9-a5f0-7fd54ed6f079",
+      "data": [
+        {
+          "text": "Are my "
+        },
+        {
+          "text": "tomatoes",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": false
+        },
+        {
+          "text": " fresh"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2d9d98e1-57d2-4216-a4aa-3c842bab48bd",
+      "data": [
+        {
+          "text": "Do I have enough groceries for "
+        },
+        {
+          "text": "the week",
+          "alias": "date-period",
+          "meta": "@sys.date-period",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "4703d43f-dad9-4b49-a249-3d9472fc59b2",
+      "data": [
+        {
+          "text": "Do I need to restock my groceries"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "74b6a244-03e4-42a1-a046-3824b2dce363",
+      "data": [
+        {
+          "text": "What can I cook "
+        },
+        {
+          "text": "today",
+          "alias": "date",
+          "meta": "@sys.date",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "58ee5fb6-2883-45e5-af70-21623e763a22",
+      "data": [
+        {
+          "text": "What vegetables do I have in my fridge"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ae24c469-b829-4e01-9f30-4b03314d2f46",
+      "data": [
+        {
+          "text": "How old are my "
+        },
+        {
+          "text": "tomatoes",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "efef84ae-26a8-46c8-9c3d-ce12c78cea9d",
+      "data": [
+        {
+          "text": "How long has it been since I got "
+        },
+        {
+          "text": "tomatoes",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "53caacf6-cf70-47b0-87a7-21f1a165598d",
+  "name": "retrieve.expiry",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@Vegetable",
+          "name": "Vegetable",
+          "value": "$Vegetable",
+          "isList": false
+        },
+        {
+          "dataType": "@sys.date",
+          "name": "date",
+          "value": "$date",
+          "isList": false
+        },
+        {
+          "dataType": "@sys.date-period",
+          "name": "date-period",
+          "value": "$date-period",
+          "isList": false
+        },
+        {
+          "dataType": "@Milk",
+          "name": "Milk",
+          "value": "$Milk",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

@@ -1,0 +1,105 @@
+{
+  "userSays": [
+    {
+      "id": "4b5cc0e2-fbeb-4f04-8fa1-07501b737b80",
+      "data": [
+        {
+          "text": "used",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": true
+        },
+        {
+          "text": " my "
+        },
+        {
+          "text": "cauliflower",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "5791d761-52fa-4601-9e78-8d7fe321b291",
+      "data": [
+        {
+          "text": "consumed",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": true
+        },
+        {
+          "text": " my "
+        },
+        {
+          "text": "cucumber",
+          "alias": "Fruit",
+          "meta": "@Fruit",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "0c5a748f-2ac8-4978-9cb0-7deab32dd43c",
+      "data": [
+        {
+          "text": "delete my "
+        },
+        {
+          "text": "tomatoes",
+          "alias": "Vegetable",
+          "meta": "@Vegetable",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "678efc48-994f-4dea-93a0-34b607c64075",
+  "name": "remove.produce",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@Vegetable",
+          "name": "Vegetable",
+          "value": "$Vegetable",
+          "isList": false
+        },
+        {
+          "dataType": "@Fruit",
+          "name": "Fruit",
+          "value": "$Fruit",
+          "isList": false
+        },
+        {
+          "dataType": "@purpose",
+          "name": "purpose",
+          "value": "$purpose",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

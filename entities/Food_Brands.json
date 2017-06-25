@@ -228,6 +228,12 @@
       "synonyms": [
         "Hershey\u0027s"
       ]
+    },
+    {
+      "value": "Foodbrand",
+      "synonyms": [
+        "Foodbrand"
+      ]
     }
   ],
   "isEnum": false,

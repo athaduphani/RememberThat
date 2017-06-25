@@ -1,0 +1,62 @@
+{
+  "id": "445c9bff-6ef3-476d-a6d6-06eff2ff51b0",
+  "name": "Groceries",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Fruits",
+      "synonyms": [
+        "Fruits"
+      ]
+    },
+    {
+      "value": "Vegetables",
+      "synonyms": [
+        "vegetables"
+      ]
+    },
+    {
+      "value": "cereal",
+      "synonyms": [
+        "cereal"
+      ]
+    },
+    {
+      "value": "breakfast",
+      "synonyms": [
+        "breakfast bars",
+        "oats",
+        "break",
+        "jam",
+        "bread spread",
+        "pancakes",
+        "bagel",
+        "bagels",
+        "donuts",
+        "donut"
+      ]
+    },
+    {
+      "value": "milk",
+      "synonyms": [
+        "milk"
+      ]
+    },
+    {
+      "value": "eggs",
+      "synonyms": [
+        "eggs",
+        "egg"
+      ]
+    },
+    {
+      "value": "chips",
+      "synonyms": [
+        "chips",
+        "potato chips"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

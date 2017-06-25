@@ -21,6 +21,12 @@
         "Frozen Yogurt",
         "Kefir"
       ]
+    },
+    {
+      "value": "yogurt",
+      "synonyms": [
+        "yogurt"
+      ]
     }
   ],
   "isEnum": false,
