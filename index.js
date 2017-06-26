@@ -14,12 +14,12 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 restService.post('/transaction', function(req, res) {
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
-  db.createCollection("users1", function(err, res) {
-    if (err) throw err;
-    console.log("Table created!");
-    // db.close();
-  });
-  var myobj = { name: "Company Inc1", address: "Highway 371" };
+  // db.createCollection("users1", function(err, res) {
+  //   if (err) throw err;
+  //   console.log("Table created!");
+  //   // db.close();
+  // });
+  var myobj = req.body.result.parameters;
   db.collection("users").insertOne(myobj, function(err, res) {
     if (err) throw err;
     console.log("1 record inserted");
