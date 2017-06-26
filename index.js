@@ -19,7 +19,12 @@ MongoClient.connect(url, function(err, db) {
   //   console.log("Table created!");
   //   // db.close();
   // });
-  var myobj = req.body.result.parameters;
+  // var myobj = req.body.result.parameters;
+  var myobj = {
+      purpose: purpose,
+      vegetable: vegetable,
+      date: date
+};
   db.collection("users").insertOne(myobj, function(err, res) {
     if (err) throw err;
     console.log("1 record inserted");
@@ -40,9 +45,9 @@ MongoClient.connect(url, function(err, db) {
       var date = req.body.result && req.body.result.parameters && req.body.result.parameters.date ? req.body.result.parameters.date : "Seems like some problem. Speak again."
       if (purpose = "save"){
         return res.json({
-            speech: "Purpose is " + purpose + ", vegetable is " + vegetable + ", date is "+ date,
-            displayText: "Purpose is " + purpose + ", vegetable is " + vegetable + ", date is "+ date,
-            source: 'RememberThat'
+            purpose: purpose,
+            vegetable: vegetable,
+            date: date
       });
       }else if (purpose = "delete") {
 
