@@ -7,6 +7,12 @@
     "type": "git",
     "url": "git+https://github.com/athaduphani/RememberThat.git"
   },
+  "scripts": {
+      "lint": "semistandard index.js",
+      "start": "functions deploy transaction --trigger-http",
+      "deploy": "gcloud beta functions deploy transaction --trigger-http --stage-bucket <storage_bucket_name>",
+      "test": "npm run lint"
+    },
   "author": "Phani Vuyyuru",
   "license": "ISC",
   "bugs": {
