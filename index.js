@@ -30,7 +30,7 @@ restService.post('/transaction', function(req, res) {
             displayText: "1 record inserted",
             source: 'RememberThat'
           });
-        }else if{
+        }else{
           return res.json({
             speech: "Sorry! Something went wrong. Please try again",
             displayText: "Sorry! Something went wrong. Please try again",
