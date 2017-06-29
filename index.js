@@ -19,10 +19,19 @@ restService.post('/transaction', function(req, res) {
           db.collection("users").insertOne(myobj, function(err, res) {
             if (err) throw err;
             console.log("1 record inserted");
+            return res.json({
+              speech: "1 record inserted",
+              displayText: "1 record inserted",
+              source: 'RememberThat'
+            });
             db.close();
           });
         });
-        return myobj;
+        return res.json({
+          speech: "Sorry! Something went wrong. Please try again",
+          displayText: "Sorry! Something went wrong. Please try again",
+          source: 'RememberThat'
+        });
     }else if (purpose = "retrieve") {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
