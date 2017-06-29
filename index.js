@@ -12,31 +12,37 @@ restService.post('/transaction', function(req, res) {
       var purpose = req.body.result && req.body.result.parameters && req.body.result.parameters.purpose ? req.body.result.parameters.purpose : "Seems like some problem. Speak again."
       var vegetable = req.body.result && req.body.result.parameters && req.body.result.parameters.Vegetable ? req.body.result.parameters.Vegetable : "Seems like some problem. Speak again."
       var date = req.body.result && req.body.result.parameters && req.body.result.parameters.date ? req.body.result.parameters.date : "Seems like some problem. Speak again."
+      var saved = "failed"
       if (purpose = "save"){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           var myobj = req.body.result.parameters;
-          db.collection("users").insertOne(myobj, function(err, res) {
+          db.collection("transaction").insertOne(myobj, function(err, res) {
             if (err) throw err;
             console.log("1 record inserted");
-            return res.json({
-              speech: "1 record inserted",
-              displayText: "1 record inserted",
-              source: 'RememberThat'
-            });
+            saved = "success"
             db.close();
           });
         });
-        return res.json({
-          speech: "Sorry! Something went wrong. Please try again",
-          displayText: "Sorry! Something went wrong. Please try again",
-          source: 'RememberThat'
-        });
+        if (saved = "success"){
+          return res.json({
+            speech: "1 record inserted",
+            displayText: "1 record inserted",
+            source: 'RememberThat'
+          });
+        }else if{
+          return res.json({
+            speech: "Sorry! Something went wrong. Please try again",
+            displayText: "Sorry! Something went wrong. Please try again",
+            source: 'RememberThat'
+          });
+        }
+
     }else if (purpose = "retrieve") {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var myobj = req.body.result.parameters;
-        db.collection("users").insertOne(myobj, function(err, res) {
+        db.collection("transaction").insertOne(myobj, function(err, res) {
           if (err) throw err;
           console.log("1 record inserted");
           db.close();
