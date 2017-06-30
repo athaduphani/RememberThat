@@ -35,7 +35,7 @@ app.post('/transaction', function(req, res) {
         });
         return res.json({
             speech: assistant.getArgument('vegetable'),
-            displayText: assistant.getArgument('vegetable'),
+            displayText: assistant.getUser().userId,
             source: 'RememberThat'
           });
       } // end save function
