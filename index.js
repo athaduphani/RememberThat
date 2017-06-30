@@ -37,6 +37,7 @@ app.post('/transaction', function(req, res) {
             speech: assistant.getArgument('vegetable'),
             displayText: assistant.getArgument('vegetable'),
             source: 'RememberThat'
+          });
       } // end save function
       // start retrieve function
       function retrieve (app) {
