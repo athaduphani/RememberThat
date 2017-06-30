@@ -33,6 +33,7 @@ app.post('/transaction', function(req, res) {
             db.close();
           });
         });
+
       } // end save function
       // start retrieve function
       function retrieve (app) {
@@ -43,6 +44,11 @@ app.post('/transaction', function(req, res) {
           if (err) throw err;
           console.log("1 record inserted");
           db.close();
+        });
+        return res.json({
+          speech: "Sorry! Something went wrong. Please try again",
+          displayText: "Sorry! Something went wrong. Please try again",
+          source: 'RememberThat'
         });
       });
     } // End retrieve function
