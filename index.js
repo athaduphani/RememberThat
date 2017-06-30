@@ -30,7 +30,6 @@ app.post('/transaction', function(req, res) {
           db.collection("transaction").insertOne(myobj, function(err, res) {
             if (err) throw err;
             console.log("1 record inserted");
-            saved = "success"
             db.close();
           });
         });
@@ -55,7 +54,7 @@ app.post('/transaction', function(req, res) {
     // Mapping the actions
     let actionMap = new Map();
     actionMap.set(SAVE, save);
-    app.handleRequest(actionMap);
+    assistant.handleRequest(actionMap);
     });
     app.listen((process.env.PORT || 8000), function() {
         console.log("Server up and listening");
