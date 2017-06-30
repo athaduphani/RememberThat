@@ -23,7 +23,8 @@ app.post('/transaction', function(req, res) {
   });
       // purpose = req.body.result && req.body.result.parameters && req.body.result.parameters.purpose ? req.body.result.parameters.purpose : "Seems like some problem. Speak again."
 //start save function
-      function save (app){
+      function save (assistant){
+        
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           var myobj = req.body;
