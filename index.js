@@ -8,10 +8,9 @@ restService.use(bodyParser.urlencoded({extended: true}));
 restService.use(bodyParser.json());
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
+var purpose ="";
 restService.post('/transaction', function(req, res) {
-      var purpose = req.body.result && req.body.result.parameters && req.body.result.parameters.purpose ? req.body.result.parameters.purpose : "Seems like some problem. Speak again."
-      var vegetable = req.body.result && req.body.result.parameters && req.body.result.parameters.Vegetable ? req.body.result.parameters.Vegetable : "Seems like some problem. Speak again."
-      var date = req.body.result && req.body.result.parameters && req.body.result.parameters.date ? req.body.result.parameters.date : "Seems like some problem. Speak again."
+      purpose = req.body.result && req.body.result.parameters && req.body.result.parameters.purpose ? req.body.result.parameters.purpose : "Seems like some problem. Speak again."
       var saved = "failed"
       if (purpose = "save"){
         MongoClient.connect(url, function(err, db) {
