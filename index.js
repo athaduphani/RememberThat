@@ -5,25 +5,37 @@ process.env.DEBUG = 'actions-on-google:*';
 let Assistant = require('actions-on-google').ApiAiApp;
 let express = require('express');
 let bodyParser = require('body-parser');
-let app = express();
+let restService = express();
 
 const SAVE = 'save';
 
 var mongo = require('mongodb');
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+restService.use(bodyParser.urlencoded({extended: true}));
+restService.use(bodyParser.json());
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 // var purpose ="";
 // Start of transaction function
-app.post('/transaction', function(req, res) {
-  const assistant = new Assistant({
-  request: req,
-  response: res
-  });
-      // purpose = req.body.result && req.body.result.parameters && req.body.result.parameters.purpose ? req.body.result.parameters.purpose : "Seems like some problem. Speak again."
+restService.post('/transaction', function(req, res) {
+  const app = new Assistant({request: req, response: res });
+// Utility function to pick prompts
+  function getRandomPrompt (app, array) {
+    let lastPrompt = app.data.lastPrompt;
+    let prompt;
+    if (lastPrompt) {
+      for (let index in array) {
+        prompt = array[index];
+        if (prompt != lastPrompt) {
+          break;
+        }
+      }
+    } else {
+      prompt = array[Math.floor(Math.random() * (array.length))];
+    }
+    return prompt;
+  }
 //start save function
-      function save (assistant){
+      function save (app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           var myobj = req.body;
@@ -34,8 +46,8 @@ app.post('/transaction', function(req, res) {
           });
         });
         return res.json({
-            speech: assistant.getArgument('vegetable'),
-            displayText: assistant.getUser().userId,
+            speech: app.getArgument('vegetable'),
+            displayText: app.getArgument('vegetable'),
             source: 'RememberThat'
           });
       } // end save function
@@ -64,8 +76,9 @@ app.post('/transaction', function(req, res) {
     // Mapping the actions
     let actionMap = new Map();
     actionMap.set(SAVE, save);
-    assistant.handleRequest(actionMap);
+    app.handleRequest(actionMap);
     });
-    app.listen((process.env.PORT || 8000), function() {
+    // app is listening on the port 8000
+    restService.listen((process.env.PORT || 8000), function() {
         console.log("Server up and listening");
     });
