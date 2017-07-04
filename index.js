@@ -9,6 +9,9 @@ let restService = express();
 
 const SAVE = 'save';
 const RETRIEVE = 'retrieve';
+const GREETING_PROMPTS = ['Welcome to Products Bot!', 'Hi! This is Products Bot.',
+    'Welcome back to Products Bot.'];
+const INVOCATION_PROMPT = ['I can save, retrieve and update any dates for you. How can I help you today? '];
 
 var mongo = require('mongodb');
 restService.use(bodyParser.urlencoded({extended: true}));
@@ -38,6 +41,24 @@ restService.post('/transaction', function(req, res) {
       prompt = array[Math.floor(Math.random() * (array.length))];
     }
     return prompt;
+  }
+  // start welcome function
+  function welcome(app){
+    console.log('welcome Intent');
+
+
+    let title = getRandomPrompt(app, GREETING_PROMPTS);
+    let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPT));
+    // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
+    //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
+    //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
+    //   let richResponse = app.buildRichResponse()
+    //     .addSimpleResponse(prompt)
+    //     .addBasicCard(basicCard);
+    //   ask(app, richResponse);
+    // } else {
+      ask(app, prompt);
+    // }
   }
 //start save function
       function save (app){
