@@ -48,9 +48,9 @@ restService.post('/transaction', function(req, res) {
               id: req.body.id,
               Session Id: req.body.result.parameters.sessionId,
               item: req.body.result.parameters.Vegetable[i],
-              type: "Vegetable",
+              type: 'Vegetable',
               date: req.body.result.parameters.date,
-              expiry: "07-31-2017"
+              expiry-date: '07-31-2017'
             )};
             db.collection("transaction").insertOne(transactions[i], function(err, res) {
               if (err) throw err;
