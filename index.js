@@ -13,7 +13,7 @@ const RETRIEVE = 'retrieve';
 const WELCOME = 'welcome';
 const GREETING_PROMPTS = ['Welcome to Products Bot!', 'Hi! This is Products Bot.',
     'Welcome back to Products Bot.'];
-const INVOCATION_PROMPT = ['I can save, retrieve and update any dates for you. How can I help you today? ', 'How can i help you today'];
+const INVOCATION_PROMPTS = ['I can save, retrieve and update any dates for you. How can I help you today? ', 'How can i help you today'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you',
     'We can stop here. Let\'s talk again soon.'];
 const CONTINUATION_PROMPTS = ['Do you want to save anything else?', 'is there anything I can help you with?','Do you want to save any other dates'];
@@ -50,7 +50,7 @@ restService.post('/transaction', function(req, res) {
   function welcome(app){
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
-    let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPT));
+    let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
@@ -86,7 +86,7 @@ restService.post('/transaction', function(req, res) {
             });
           });
           let title = "I saved that you" + req.body.result.parameters.purpose + "on" + req.body.result.parameters.date;
-          prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPT));
+          prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         // return res.json({
         //     speech: req.body.result.parameters.Vegetable[1],
         //     displayText: req.body.result.parameters.Vegetable[1],
