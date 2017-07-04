@@ -40,19 +40,18 @@ restService.post('/transaction', function(req, res) {
   }
 //start save function
       function save (app){
-        var transactions = [];
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           for (var i = 0; i < parameters_vegetables.length; i++) {
-            transactions.push({
+          var transactions = {
               id: req.body.id,
               Session Id: req.body.result.parameters.sessionId,
               item: req.body.result.parameters.Vegetable[i],
               type: 'Vegetable',
               date: req.body.result.parameters.date,
               expiry-date: '07-31-2017'
-            )};
-            db.collection("transaction").insertOne(transactions[i], function(err, res) {
+            };
+            db.collection("transaction").insertOne(transactions, function(err, res) {
               if (err) throw err;
               console.log("1 record inserted");
               db.close();
@@ -61,8 +60,8 @@ restService.post('/transaction', function(req, res) {
 
         });
         return res.json({
-            speech: app.getArgument('vegetable'),
-            displayText: app.getArgument('vegetable'),
+            speech: app.getArgument('Vegetable'),
+            displayText: app.getArgument('Vegetable'),
             source: 'RememberThat'
           });
       } // end save function
