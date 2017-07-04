@@ -18,6 +18,10 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 // Start of transaction function
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
+  var body_app = req.body;
+  var result_app = req.body.result;
+  var parameters_app = req.body.result.parameters;
+  var parameters_vegetables = req.body.result.parameters.Vegetable;
 // Utility function to pick prompts
   function getRandomPrompt (app, array) {
     let lastPrompt = app.data.lastPrompt;
@@ -36,14 +40,25 @@ restService.post('/transaction', function(req, res) {
   }
 //start save function
       function save (app){
+        var transactions = [];
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          var myobj = req.body.result && req.body.result.parameters
-          db.collection("transaction").insertOne(myobj, function(err, res) {
-            if (err) throw err;
-            console.log("1 record inserted");
-            db.close();
-          });
+          for (var i = 0; i < parameters_vegetables.length; i++) {
+            transactions.push({
+              id: req.body.id,
+              Session Id: req.body.result.parameters.sessionId,
+              item: req.body.result.parameters.Vegetable[i],
+              type: "Vegetable",
+              date: req.body.result.parameters.date,
+              expiry: "07-31-2017"
+            )};
+            db.collection("transaction").insertOne(transactions[i], function(err, res) {
+              if (err) throw err;
+              console.log("1 record inserted");
+              db.close();
+            });
+          }
+
         });
         return res.json({
             speech: app.getArgument('vegetable'),
