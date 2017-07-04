@@ -82,11 +82,11 @@ restService.post('/transaction', function(req, res) {
             db.collection("transaction").insertMany(transactions, function(err, res) {
               if (err) throw err;
               console.log("1 record inserted");
-              let title = "I saved that you" + req.body.result.parameters.purpose + "on" + req.body.result.parameters.date;
-              prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPT));
               db.close();
             });
           });
+          let title = "I saved that you" + req.body.result.parameters.purpose + "on" + req.body.result.parameters.date;
+          prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPT));
         // return res.json({
         //     speech: req.body.result.parameters.Vegetable[1],
         //     displayText: req.body.result.parameters.Vegetable[1],
