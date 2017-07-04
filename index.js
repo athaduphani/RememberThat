@@ -39,7 +39,7 @@ restService.post('/transaction', function(req, res) {
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           var myobj = {
-            vegetable:app.getArgument('vegetable')
+            vegetable:app.getArgument('vegetable'),
             id: app.getArgument('id')
           };
           db.collection("transaction").insertOne(myobj, function(err, res) {
