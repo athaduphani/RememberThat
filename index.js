@@ -38,7 +38,7 @@ restService.post('/transaction', function(req, res) {
       function save (app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          var myobj = json{
+          var myobj = {
             vegetable:app.getArgument('vegetable')
             id: app.getArgument('id')
           };
