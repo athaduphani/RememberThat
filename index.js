@@ -40,7 +40,7 @@ restService.post('/transaction', function(req, res) {
   }
 //start save function
       function save (app){
-      for (var i = 0; i < parameters_vegetables.length; i++) {
+      for (var i = 0; i < 2; i++) {
         var transactions = {
             id: req.body.id,
             SessionId: req.body.sessionId,
