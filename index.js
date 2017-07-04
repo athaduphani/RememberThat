@@ -41,6 +41,7 @@ restService.post('/transaction', function(req, res) {
 //start save function
       function save (app){
       for (var i = 0; i < 2; i++) {
+        
         var transactions = {
             transactionId: req.body.id,
             SessionId: req.body.sessionId,
@@ -51,7 +52,7 @@ restService.post('/transaction', function(req, res) {
           };
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-            db.collection("transaction").insertOne(transactions, function(err, res) {
+            db.collection("transaction").insert(transactions, function(err, res) {
               if (err) throw err;
               console.log("1 record inserted");
               db.close();
