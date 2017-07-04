@@ -64,7 +64,7 @@ restService.post('/transaction', function(req, res) {
   }
 //start save function
       function save (app){
-        let prompt = "Something went wrong. Please try again";
+        var prompt = "Something went wrong. Please try again";
     var transactions = [];
       for (var i = 0; i < 2; i++) {
          transactions[i] = {
