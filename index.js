@@ -29,7 +29,7 @@ restService.post('/transaction', function(req, res) {
   // var body_app = req.body;
   // var result_app = req.body.result;
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-  var parameters_vegetables = req.body.result.parameters.Vegetable;
+  // var parameters_vegetables = JSON.parse(req.body.result.parameters.Vegetable);
 // Utility function to pick prompts
   function getRandomPrompt (app, array) {
     let lastPrompt = app.data.lastPrompt;
@@ -66,7 +66,7 @@ restService.post('/transaction', function(req, res) {
       function save (app){
         var prompt = "Something went wrong. Please try again";
     var transactions = [];
-      for (var i = 0; i < parameters_vegetables.length; i++) {
+      for (var i = 0; i < parameters_app.Vegetable.length; i++) {
          transactions[i] = {
             transactionId: req.body.id,
             SessionId: req.body.sessionId,
