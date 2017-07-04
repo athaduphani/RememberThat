@@ -64,7 +64,7 @@ restService.post('/transaction', function(req, res) {
   }
 //start save function
       function save (app){
-        var prompt = "Something went wrong. Please try again";
+        let prompt = "Something went wrong. Please try again";
     var transactions = [];
       for (var i = 0; i < 2; i++) {
          transactions[i] = {
@@ -82,7 +82,7 @@ restService.post('/transaction', function(req, res) {
             db.collection("transaction").insertMany(transactions, function(err, res) {
               if (err) throw err;
               console.log("1 record inserted");
-              var title = "I saved that you" + req.body.result.parameters.purpose + "on" + req.body.result.parameters.date;
+              let title = "I saved that you" + req.body.result.parameters.purpose + "on" + req.body.result.parameters.date;
               prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPT));
               db.close();
             });
