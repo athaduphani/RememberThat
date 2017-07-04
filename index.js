@@ -70,17 +70,17 @@ restService.post('/transaction', function(req, res) {
       } // end save function
       // start retrieve function
       function retrieve (app) {
-      MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
-var retrievedObj = db.transaction.find(
-  {     $and: [
-    {"sessionId":req.body.sessionId},{"item":req.body.result.parameters.Vegetable}
-]
-});
-      });
+//       MongoClient.connect(url, function(err, db) {
+//         if (err) throw err;
+// var retrievedObj = db.transaction.find(
+//   {     $and: [
+//     {"sessionId":req.body.sessionId},{"item":req.body.result.parameters.Vegetable}
+// ]
+// });
+//       });
       return res.json({
-          speech: retrieveObj.date,
-          displayText: retrieveObj.date,
+          speech: "Retrieve",
+          displayText: "Retrieve",
           source: 'RememberThat'
         });
     } // End retrieve function
