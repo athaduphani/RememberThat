@@ -38,11 +38,7 @@ restService.post('/transaction', function(req, res) {
       function save (app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          var myobj = {
-            date: app.getArgument('date'),
-            vegetable:app.getContexts('result'),
-            id: app.getArgument('id')
-          };
+          var myobj = req.body.result && req.body.result.parameters
           db.collection("transaction").insertOne(myobj, function(err, res) {
             if (err) throw err;
             console.log("1 record inserted");
