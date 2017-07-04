@@ -40,7 +40,7 @@ restService.post('/transaction', function(req, res) {
           if (err) throw err;
           var myobj = {
             date: app.getArgument('date'),
-            vegetable:app.getContext('result'),
+            vegetable:app.getContexts('result'),
             id: app.getArgument('id')
           };
           db.collection("transaction").insertOne(myobj, function(err, res) {
