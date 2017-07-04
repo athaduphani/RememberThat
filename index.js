@@ -57,7 +57,12 @@ restService.post('/transaction', function(req, res) {
     //     .addBasicCard(basicCard);
     //   ask(app, richResponse);
     // } else {
-      ask(app, prompt);
+    return res.json({
+        speech: prompt,
+        displayText: prompt,
+        source: 'RememberThat'
+      });
+      // ask(app, prompt);
     // }
   }
 //start save function
