@@ -13,7 +13,8 @@ const WELCOME = 'welcome';
 const GREETING_PROMPTS = ['Welcome to Products Bot!', 'Hi! This is Products Bot.',
     'Welcome back to Products Bot.'];
 const INVOCATION_PROMPT = ['I can save, retrieve and update any dates for you. How can I help you today? '];
-
+const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you',
+    'We can stop here. Let\'s talk again soon.'];
 var mongo = require('mongodb');
 restService.use(bodyParser.urlencoded({extended: true}));
 restService.use(bodyParser.json());
@@ -46,8 +47,6 @@ restService.post('/transaction', function(req, res) {
   // start welcome function
   function welcome(app){
     console.log('welcome Intent');
-
-
     let title = getRandomPrompt(app, GREETING_PROMPTS);
     let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPT));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
@@ -110,14 +109,28 @@ restService.post('/transaction', function(req, res) {
       function fallback (app){
 
       } // End of fallback function
-// End of Transaction function
+      function ask (app, prompt, persist) {
+        console.log('ask: ' + prompt);
+        doPersist(persist);
+        app.ask(prompt, NO_INPUT_PROMPTS);
+      }
+      function doPersist (persist) {
+        if (persist === undefined || persist) {
+          app.data.lastPrompt = app.data.printed;
+        }
+      }
+      function printf(prompt) {
+        console.log('printf: ' + prompt);
+        app.data.printed = prompt;
+        return sprintf.apply(this, arguments);
+      }
     // Mapping the actions
     let actionMap = new Map();
     actionMap.set(SAVE, save);
     actionMap.set(RETRIEVE, retrieve);
     actionMap.set(WELCOME, welcome);
     app.handleRequest(actionMap);
-    });
+    }); // End of Transaction function
     // app is listening on the port 8000
     restService.listen((process.env.PORT || 8000), function() {
         console.log("Server up and listening");
