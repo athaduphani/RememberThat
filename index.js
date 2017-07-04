@@ -16,6 +16,7 @@ const GREETING_PROMPTS = ['Welcome to Products Bot!', 'Hi! This is Products Bot.
 const INVOCATION_PROMPT = ['I can save, retrieve and update any dates for you. How can I help you today? ', 'How can i help you today'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you',
     'We can stop here. Let\'s talk again soon.'];
+const CONTINUATION_PROMPTS = ['Do you want to save anything else?', 'is there anything I can help you with?','Do you want to save any other dates'];
 var mongo = require('mongodb');
 restService.use(bodyParser.urlencoded({extended: true}));
 restService.use(bodyParser.json());
@@ -58,19 +59,13 @@ restService.post('/transaction', function(req, res) {
     //     .addBasicCard(basicCard);
     //   ask(app, richResponse);
     // } else {
-    // return res.json({
-    //     speech: prompt,
-    //     displayText: prompt,
-    //     source: 'RememberThat'
-    //   });
       ask(app, prompt);
     // }
   }
 //start save function
       function save (app){
-        // var allTransactions = {
+        var prompt = "Something went wrong. Please try again";
     var transactions = [];
-// };
       for (var i = 0; i < 2; i++) {
          transactions[i] = {
             transactionId: req.body.id,
@@ -78,7 +73,8 @@ restService.post('/transaction', function(req, res) {
             item: req.body.result.parameters.Vegetable[i],
             type: "Vegetable",
             date: req.body.result.parameters.date,
-            expiryDate: "07-31-2017"
+            expiryDate: "07-31-2017",
+            purpose: req.body.result.parameters.purpose
           };
         }
         MongoClient.connect(url, function(err, db) {
@@ -86,14 +82,17 @@ restService.post('/transaction', function(req, res) {
             db.collection("transaction").insertMany(transactions, function(err, res) {
               if (err) throw err;
               console.log("1 record inserted");
+              var title = "I saved that you" + req.body.result.parameters.purpose + "on" + req.body.result.parameters.date;
+              prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPT));
               db.close();
             });
           });
-        return res.json({
-            speech: req.body.result.parameters.Vegetable[1],
-            displayText: req.body.result.parameters.Vegetable[1],
-            source: 'RememberThat'
-          });
+        // return res.json({
+        //     speech: req.body.result.parameters.Vegetable[1],
+        //     displayText: req.body.result.parameters.Vegetable[1],
+        //     source: 'RememberThat'
+        //   });
+        ask(app, prompt);
       } // end save function
       // start retrieve function
       function retrieve (app) {
