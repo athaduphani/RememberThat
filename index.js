@@ -40,22 +40,22 @@ restService.post('/transaction', function(req, res) {
   }
 //start save function
       function save (app){
-        var allTransactions = {
-    transactions: []
-};
+        // var allTransactions = {
+    var transactions = [];
+// };
       for (var i = 0; i < 2; i++) {
-         allTransactions.transactions.push({
+         transactions[i] = {
             transactionId: req.body.id,
             SessionId: req.body.sessionId,
             item: req.body.result.parameters.Vegetable[i],
             type: "Vegetable",
             date: req.body.result.parameters.date,
             expiryDate: "07-31-2017"
-          });
+          };
         }
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-            db.collection("transaction").insertMany(allTransactions, function(err, res) {
+            db.collection("transaction").insertMany(transactions, function(err, res) {
               if (err) throw err;
               console.log("1 record inserted");
               db.close();
