@@ -9,6 +9,7 @@ let restService = express();
 
 const SAVE = 'save';
 const RETRIEVE = 'retrieve';
+const WELCOME = 'welcome';
 const GREETING_PROMPTS = ['Welcome to Products Bot!', 'Hi! This is Products Bot.',
     'Welcome back to Products Bot.'];
 const INVOCATION_PROMPT = ['I can save, retrieve and update any dates for you. How can I help you today? '];
@@ -114,6 +115,7 @@ restService.post('/transaction', function(req, res) {
     let actionMap = new Map();
     actionMap.set(SAVE, save);
     actionMap.set(RETRIEVE, retrieve);
+    actionMap.set(WELCOME, welcome);
     app.handleRequest(actionMap);
     });
     // app is listening on the port 8000
