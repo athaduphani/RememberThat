@@ -18,10 +18,10 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 // Start of transaction function
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
-  var body_app = req.body;
-  var result_app = req.body.result;
-  var parameters_app = req.body.result.parameters;
-  var parameters_vegetables = req.body.result.parameters.Vegetable;
+  // var body_app = req.body;
+  // var result_app = req.body.result;
+  var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
+  // var parameters_vegetables = req.body.result.parameters.Vegetable;
 // Utility function to pick prompts
   function getRandomPrompt (app, array) {
     let lastPrompt = app.data.lastPrompt;
@@ -47,26 +47,26 @@ restService.post('/transaction', function(req, res) {
             console.log("1 record inserted");
             // db.close();
           });
-          for (var i = 0; i < parameters_vegetables.length; i++) {
-          var transactions = {
-              id: req.body.id,
-              Session Id: req.body.result.parameters.sessionId,
-              item: req.body.result.parameters.Vegetable[i],
-              type: 'Vegetable',
-              date: req.body.result.parameters.date,
-              expiry-date: '07-31-2017'
-            };
-            db.collection("transaction").insertOne(transactions, function(err, res) {
-              if (err) throw err;
-              console.log("1 record inserted");
-              db.close();
-            });
-          }
+          // for (var i = 0; i < parameters_vegetables.length; i++) {
+          // var transactions = {
+          //     id: req.body.id,
+          //     Session Id: req.body.result.parameters.sessionId,
+          //     item: req.body.result.parameters.Vegetable[i],
+          //     type: 'Vegetable',
+          //     date: req.body.result.parameters.date,
+          //     expiry-date: '07-31-2017'
+          //   };
+          //   db.collection("transaction").insertOne(transactions, function(err, res) {
+          //     if (err) throw err;
+          //     console.log("1 record inserted");
+          //     db.close();
+          //   });
+          // }
 
         });
         return res.json({
-            speech: app.getArgument('Vegetable'),
-            displayText: app.getArgument('Vegetable'),
+            speech: req.body.result.parameters.Vegetable[1],
+            displayText: req.body.result.parameters.Vegetable[1],
             source: 'RememberThat'
           });
       } // end save function
