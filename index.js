@@ -74,9 +74,9 @@ restService.post('/transaction', function(req, res) {
         if (err) throw err;
 var retrievedObj = db.transaction.find(
   {     $and: [
-    {"sessionId":req.sessionId},{"item":req.body.result.parameters.Vegetable}
+    {"sessionId":req.body.sessionId},{"item":req.body.result.parameters.Vegetable}
 ]
-})
+});
       });
       return res.json({
           speech: retrieveObj.date,
