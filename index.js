@@ -8,6 +8,7 @@ let bodyParser = require('body-parser');
 let restService = express();
 
 const SAVE = 'save';
+const RETRIEVE = 'retrieve';
 
 var mongo = require('mongodb');
 restService.use(bodyParser.urlencoded({extended: true}));
@@ -71,18 +72,17 @@ restService.post('/transaction', function(req, res) {
       function retrieve (app) {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        var myobj = req.body.result.parameters;
-        db.collection("transaction").insertOne(myobj, function(err, res) {
-          if (err) throw err;
-          console.log("1 record inserted");
-          db.close();
-        });
-        return res.json({
-          speech: "Sorry! Something went wrong. Please try again",
-          displayText: "Sorry! Something went wrong. Please try again",
+var retrievedObj = db.transaction.find(
+  {     $and: [
+    {"sessionId":req.sessionId},{"item":req.body.result.parameters.Vegetable}
+]
+})
+      });
+      return res.json({
+          speech: retrieveObj.date,
+          displayText: retrieveObj.date,
           source: 'RememberThat'
         });
-      });
     } // End retrieve function
     //Start fallback function
       function fallback (app){
@@ -92,6 +92,7 @@ restService.post('/transaction', function(req, res) {
     // Mapping the actions
     let actionMap = new Map();
     actionMap.set(SAVE, save);
+    actionMap.set(RETRIEVE, retrieve);
     app.handleRequest(actionMap);
     });
     // app is listening on the port 8000
