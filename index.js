@@ -42,7 +42,7 @@ restService.post('/transaction', function(req, res) {
       function save (app){
       for (var i = 0; i < 2; i++) {
         var transactions = {
-            id: req.body.id,
+            transactionId: req.body.id,
             SessionId: req.body.sessionId,
             item: req.body.result.parameters.Vegetable[i],
             type: "Vegetable",
