@@ -72,17 +72,17 @@ restService.post('/transaction', function(req, res) {
       function retrieve (app) {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-      var retrievedObj = db.transaction.find(
-        {     $and: [
-          {"sessionId":req.body.sessionId},{"item":req.body.result.parameters.Vegetable}
-      ]
-      });
-      });
-      return res.json({
-          speech: "Retrieve " + retrievedObj,
-          displayText: "Retrieve "+ retrievedObj,
-          source: 'RememberThat'
+        db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.Vegetable[0]}]}).toArray(function(err, result){
+        if (err) throw err;
+        console.log(result[0].date);
+        db.close();
+        return res.json({
+            speech: "Date is " + result[0].date,
+            displayText: "Date is "+ result[0].date,
+            source: 'RememberThat'
+          });
         });
+
     } // End retrieve function
     //Start fallback function
       function fallback (app){
