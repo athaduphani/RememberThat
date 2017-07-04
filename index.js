@@ -54,7 +54,7 @@ restService.post('/transaction', function(req, res) {
             db.collection("transaction").insertOne(transactions, function(err, res) {
               if (err) throw err;
               console.log("1 record inserted");
-              db.close();
+              // db.close();
             });
           });
 
