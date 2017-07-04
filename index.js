@@ -42,6 +42,11 @@ restService.post('/transaction', function(req, res) {
       function save (app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
+          db.collection("transaction").insertOne(parameters_app, function(err, res) {
+            if (err) throw err;
+            console.log("1 record inserted");
+            // db.close();
+          });
           for (var i = 0; i < parameters_vegetables.length; i++) {
           var transactions = {
               id: req.body.id,
