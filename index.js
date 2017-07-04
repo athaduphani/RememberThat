@@ -54,10 +54,9 @@ restService.post('/transaction', function(req, res) {
             db.collection("transaction").insertOne(transactions, function(err, res) {
               if (err) throw err;
               console.log("1 record inserted");
-              // db.close();
+              db.close();
             });
           });
-
         }
         return res.json({
             speech: req.body.result.parameters.Vegetable[1],
