@@ -59,8 +59,8 @@ restService.post('/transaction', function(req, res) {
     //   ask(app, richResponse);
     // } else {
     return res.json({
-        speech: title,
-        displayText: title,
+        speech: prompt,
+        displayText: prompt,
         source: 'RememberThat'
       });
       // ask(app, prompt);
