@@ -72,7 +72,7 @@ restService.post('/transaction', function(req, res) {
       function retrieve (app) {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.Vegetable[0]}]}).toArray(function(err, result){
+        db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.Vegetable}]}).toArray(function(err, result){
         if (err) throw err;
         console.log(result[0].date);
         db.close();
@@ -81,9 +81,9 @@ restService.post('/transaction', function(req, res) {
             displayText: "Date is "+ result[0].date,
             source: 'RememberThat'
           });
-        });
-
-    } // End retrieve function
+        }); // End DB Function
+    });
+  } // End retrieve function
     //Start fallback function
       function fallback (app){
 
