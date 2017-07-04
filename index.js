@@ -3,6 +3,7 @@
 process.env.DEBUG = 'actions-on-google:*';
 
 let Assistant = require('actions-on-google').ApiAiApp;
+let sprintf = require('sprintf-js').sprintf;
 let express = require('express');
 let bodyParser = require('body-parser');
 let restService = express();
@@ -12,7 +13,7 @@ const RETRIEVE = 'retrieve';
 const WELCOME = 'welcome';
 const GREETING_PROMPTS = ['Welcome to Products Bot!', 'Hi! This is Products Bot.',
     'Welcome back to Products Bot.'];
-const INVOCATION_PROMPT = ['I can save, retrieve and update any dates for you. How can I help you today? '];
+const INVOCATION_PROMPT = ['I can save, retrieve and update any dates for you. How can I help you today? ', 'How can i help you today'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you',
     'We can stop here. Let\'s talk again soon.'];
 var mongo = require('mongodb');
@@ -48,7 +49,7 @@ restService.post('/transaction', function(req, res) {
   function welcome(app){
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
-    // let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPT));
+    let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPT));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
