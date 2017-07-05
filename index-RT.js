@@ -66,11 +66,11 @@ restService.post('/transaction', function(req, res) {
       function save (app){
         var prompt = "Something went wrong. Please try again";
     var transactions = [];
-      for (var i = 0; i < parameters_app.item.length; i++) {
+      for (var i = 0; i < parameters_app.Vegetable.length; i++) {
          transactions[i] = {
             transactionId: req.body.id,
             SessionId: req.body.sessionId,
-            item: req.body.result.parameters.item[i],
+            item: req.body.result.parameters.Vegetable[i],
             type: "Vegetable",
             date: req.body.result.parameters.date,
             expiryDate: "07-31-2017",
