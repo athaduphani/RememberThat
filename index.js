@@ -61,8 +61,8 @@ restService.post('/transaction', function(req, res) {
     // } else {
       // ask(app, prompt);
       return res.json({
-          speech: "Date is " + parameters_app.date,
-          displayText: "Date is "+ parameters_app.date,
+          speech: "Date is " + parameters_app.Vegetable,
+          displayText: "Date is "+ parameters_app.Vegetable,
           source: 'RememberThat'
         });
     // }
