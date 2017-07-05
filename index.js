@@ -66,7 +66,7 @@ restService.post('/transaction', function(req, res) {
       function save (app){
         var prompt = "Something went wrong. Please try again";
     var transactions = [];
-      for (var i = 0; i < parameters_app.vegetable.length; i++) {
+      for (var i = 0; i < 2; i++) {
          transactions[i] = {
             transactionId: req.body.id,
             SessionId: req.body.sessionId,
