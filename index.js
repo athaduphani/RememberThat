@@ -28,7 +28,7 @@ restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   // var body_app = req.body;
   // var result_app = req.body.result;
-  // var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
+  var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
   // var parameters_app_parsed = JSON.parse(parameters_app);
 // Utility function to pick prompts
   function getRandomPrompt (app, array) {
@@ -48,9 +48,9 @@ restService.post('/transaction', function(req, res) {
   }
   // start welcome function
   function welcome(app){
-    console.log('welcome Intent');
-    let title = getRandomPrompt(app, GREETING_PROMPTS);
-    let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPTS));
+    // console.log('welcome Intent');
+    // let title = getRandomPrompt(app, GREETING_PROMPTS);
+    // let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
@@ -59,7 +59,12 @@ restService.post('/transaction', function(req, res) {
     //     .addBasicCard(basicCard);
     //   ask(app, richResponse);
     // } else {
-      ask(app, prompt);
+      // ask(app, prompt);
+      return res.json({
+          speech: "Date is " + parameters_app.date,
+          displayText: "Date is "+ parameters_app.date,
+          source: 'RememberThat'
+        });
     // }
   }
 //start save function
@@ -87,11 +92,6 @@ restService.post('/transaction', function(req, res) {
           });
           let title = "I saved that you" + req.body.result.parameters.purpose + "on" + req.body.result.parameters.date;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-        // return res.json({
-        //     speech: req.body.result.parameters.Vegetable[1],
-        //     displayText: req.body.result.parameters.Vegetable[1],
-        //     source: 'RememberThat'
-        //   });
         ask(app, prompt);
       } // end save function
       // start retrieve function
