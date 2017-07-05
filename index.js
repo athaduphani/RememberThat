@@ -70,7 +70,7 @@ restService.post('/transaction', function(req, res) {
          transactions[i] = {
             transactionId: req.body.id,
             SessionId: req.body.sessionId,
-            item: req.body.result.parameters.vegetable[i],
+            item: req.body.result.parameters.Vegetable[i],
             type: "Vegetable",
             date: req.body.result.parameters.date,
             expiryDate: "07-31-2017",
