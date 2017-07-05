@@ -29,7 +29,7 @@ restService.post('/transaction', function(req, res) {
   // var body_app = req.body;
   // var result_app = req.body.result;
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-  // var parameters_app_parsed = JSON.parse(parameters_app);
+
 // Utility function to pick prompts
   function getRandomPrompt (app, array) {
     let lastPrompt = app.data.lastPrompt;
@@ -48,9 +48,9 @@ restService.post('/transaction', function(req, res) {
   }
   // start welcome function
   function welcome(app){
-    // console.log('welcome Intent');
-    // let title = getRandomPrompt(app, GREETING_PROMPTS);
-    // let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPTS));
+    console.log('welcome Intent');
+    let title = getRandomPrompt(app, GREETING_PROMPTS);
+    let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
@@ -59,12 +59,7 @@ restService.post('/transaction', function(req, res) {
     //     .addBasicCard(basicCard);
     //   ask(app, richResponse);
     // } else {
-      // ask(app, prompt);
-      return res.json({
-          speech: "Date is " + parameters_app.Vegetable.length,
-          displayText: "Date is "+ parameters_app.Vegetable.length,
-          source: 'RememberThat'
-        });
+      ask(app, prompt);
     // }
   }
 //start save function
