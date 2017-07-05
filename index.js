@@ -11,8 +11,8 @@ let restService = express();
 const SAVE = 'save';
 const RETRIEVE = 'retrieve';
 const WELCOME = 'welcome';
-const GREETING_PROMPTS = ['Welcome to Products Bot!', 'Hi! This is Products Bot.',
-    'Welcome back to Products Bot.'];
+const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.',
+    'Welcome back to Dates Bot.'];
 const INVOCATION_PROMPTS = ['I can save, retrieve and update any dates for you. How can I help you today? ', 'How can i help you today'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you',
     'We can stop here. Let\'s talk again soon.'];
