@@ -59,8 +59,13 @@ restService.post('/transaction', function(req, res) {
     //     .addBasicCard(basicCard);
     //   ask(app, richResponse);
     // } else {
-      ask(app, parameters_app_parsed.Vegetable.length);
+      // ask(app, prompt);
     // }
+    return res.json({
+        speech: req.body.result.parameters.Vegetable.length,
+        displayText: req.body.result.parameters.Vegetable.length,
+        source: 'RememberThat'
+      });
   }
 //start save function
       function save (app){
