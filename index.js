@@ -66,11 +66,11 @@ restService.post('/transaction', function(req, res) {
       function save (app){
         var prompt = "Something went wrong. Please try again";
     var transactions = [];
-      for (var i = 0; i < parameters_app.item.length; i++) {
+      for (var i = 0; i < parameters_app.Items.length; i++) {
          transactions[i] = {
             transactionId: req.body.id,
             SessionId: req.body.sessionId,
-            item: req.body.result.parameters.item[i],
+            item: req.body.result.parameters.Items[i],
             type: "Vegetable",
             date: req.body.result.parameters.date,
             expiryDate: "07-31-2017",
@@ -93,7 +93,7 @@ restService.post('/transaction', function(req, res) {
       function retrieve (app) {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.Vegetable}]}).toArray(function(err, result){
+        db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.items}]}).toArray(function(err, result){
         if (err) throw err;
         console.log(result[0].date);
         db.close();
