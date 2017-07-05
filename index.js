@@ -29,7 +29,7 @@ restService.post('/transaction', function(req, res) {
   // var body_app = req.body;
   // var result_app = req.body.result;
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-  var parameters_app_parsed = JSON.parse(parameters_app);
+  // var parameters__parsed = JSON.parse(parameters_app);
 // Utility function to pick prompts
   function getRandomPrompt (app, array) {
     let lastPrompt = app.data.lastPrompt;
@@ -49,8 +49,8 @@ restService.post('/transaction', function(req, res) {
   // start welcome function
   function welcome(app){
     console.log('welcome Intent');
-    // let title = getRandomPrompt(app, GREETING_PROMPTS);
-    // let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPTS));
+    let title = getRandomPrompt(app, GREETING_PROMPTS);
+    let prompt = printf(title + ' ' + getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
@@ -59,23 +59,18 @@ restService.post('/transaction', function(req, res) {
     //     .addBasicCard(basicCard);
     //   ask(app, richResponse);
     // } else {
-      // ask(app, prompt);
+      ask(app, prompt);
     // }
-    return res.json({
-        speech: req.body.result.parameters.Vegetable.length,
-        displayText: req.body.result.parameters.Vegetable.length,
-        source: 'RememberThat'
-      });
   }
 //start save function
       function save (app){
         var prompt = "Something went wrong. Please try again";
     var transactions = [];
-      for (var i = 0; i < parameters_app_parsed.Vegetable.length; i++) {
+      for (var i = 0; i < parameters_app.vegetable.length; i++) {
          transactions[i] = {
             transactionId: req.body.id,
             SessionId: req.body.sessionId,
-            item: req.body.result.parameters.Vegetable[i],
+            item: req.body.result.parameters.vegetable[i],
             type: "Vegetable",
             date: req.body.result.parameters.date,
             expiryDate: "07-31-2017",
