@@ -100,7 +100,7 @@ restService.post('/transaction', function(req, res) {
               db.close();
             });
           });
-          let title = "I saved that you " + req.body.result.parameters.purpose +" " items_list + " on" + req.body.result.parameters.date;
+          let title = "I saved that you " + req.body.result.parameters.purpose + " on" + req.body.result.parameters.date;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS_SAVE));
         ask(app, prompt);
       } // end save function
