@@ -153,7 +153,7 @@ restService.post('/transaction', function(req, res) {
       }
     // Mapping the actions
     let actionMap = new Map();
-    // actionMap.set(SAVE_ACTION, save);
+    actionMap.set(SAVE_ACTION, save);
     // actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(WELCOME_ACTION, welcome);
     // actionMap.set(SAVE_YES_ACTION, saveYes);
