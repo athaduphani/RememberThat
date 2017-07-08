@@ -19,7 +19,7 @@ const WELCOME_ACTION = 'welcome';
 const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.','Welcome back to Dates Bot.'];
 const INVOCATION_PROMPTS = ['I can save, retrieve and update any dates for you. How can I help you today? ', 'How can i help you today'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you','We can stop here. Let\'s talk again soon.'];
-// const CONTINUATION_PROMPTS_SAVE = ['Do you want to save anything else?','is there anything I can help you with?','Do you want to save any other dates'];
+const CONTINUATION_PROMPTS_SAVE = ['Do you want to save anything else?','is there anything I can help you with?','Do you want to save any other dates'];
 // const RE_PROMPT = ['Great!', 'Awesome!', 'Cool!'];
 // const SAVE_CONTEXT = 'save';
 // const SAVE_YES_NO_CONTEXT = 'save_yes_no';
@@ -27,15 +27,15 @@ const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you
 // const QUIT_PROMPTS = ['Alright, talk to you later then.', 'OK, till next time.','OK, Make sure to ask me if you want any date you saved.','See you later.', 'OK, Make sure to ask me what items you have and how fresh they are next time'];
 restService.use(bodyParser.urlencoded({extended: true}));
 restService.use(bodyParser.json());
-// var MongoClient = require('mongodb').MongoClient;
-// var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 
 // Start of transaction function
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   // var body_app = req.body;
   // var result_app = req.body.result;
-  // var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
+  var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
 
 // Utility function to pick prompts
   function getRandomPrompt (app, array) {
@@ -70,40 +70,40 @@ restService.post('/transaction', function(req, res) {
     // }
   }
 //start save function
-  //     function save (app){
-  //       var prompt = "Something went wrong. Please try again";
-  //       var transactions = [];
-  //       var items_list;
-  //     for (var i = 0; i < parameters_app.Items.length; i++) {
-  //        transactions[i] = {
-  //           transactionId: req.body.id,
-  //           SessionId: req.body.sessionId,
-  //           item: req.body.result.parameters.Items[i],
-  //           type: "Vegetable",
-  //           date: req.body.result.parameters.date,
-  //           expiryDate: "07-31-2017",
-  //           purpose: req.body.result.parameters.purpose
-  //         };
-  //         if (parameters_app.Items.length==1) {
-  //           items_list = req.body.result.parameters.Items[i]
-  //         }else if (i = parameters_app.Items.length-1) {
-  //           items_list = items_list + " and " + req.body.result.parameters.Items[i];
-  //         }else {
-  //           items_list = items_list + "," + req.body.result.parameters.Items[i];
-  //         }
-  //       }
-  //       MongoClient.connect(url, function(err, db) {
-  //         if (err) throw err;
-  //           db.collection("transaction").insertMany(transactions, function(err, res) {
-  //             if (err) throw err;
-  //             console.log("1 record inserted");
-  //             db.close();
-  //           });
-  //         });
-  //         let title = "I saved that you " + req.body.result.parameters.purpose +" " items_list + " on" + req.body.result.parameters.date;
-  //         prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS_SAVE));
-  //       ask(app, prompt);
-  //     } // end save function
+      function save (app){
+        var prompt = "Something went wrong. Please try again";
+        var transactions = [];
+        var items_list;
+      for (var i = 0; i < parameters_app.Items.length; i++) {
+         transactions[i] = {
+            transactionId: req.body.id,
+            SessionId: req.body.sessionId,
+            item: req.body.result.parameters.Items[i],
+            type: "Vegetable",
+            date: req.body.result.parameters.date,
+            expiryDate: "07-31-2017",
+            purpose: req.body.result.parameters.purpose
+          };
+          if (parameters_app.Items.length==1) {
+            items_list = req.body.result.parameters.Items[i]
+          }else if (i = parameters_app.Items.length-1) {
+            items_list = items_list + " and " + req.body.result.parameters.Items[i];
+          }else {
+            items_list = items_list + "," + req.body.result.parameters.Items[i];
+          }
+        }
+        MongoClient.connect(url, function(err, db) {
+          if (err) throw err;
+            db.collection("transaction").insertMany(transactions, function(err, res) {
+              if (err) throw err;
+              console.log("1 record inserted");
+              db.close();
+            });
+          });
+          let title = "I saved that you " + req.body.result.parameters.purpose +" " items_list + " on" + req.body.result.parameters.date;
+          prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS_SAVE));
+        ask(app, prompt);
+      } // end save function
   //     // start retrieve function
   //     function retrieve (app) {
   //     MongoClient.connect(url, function(err, db) {
