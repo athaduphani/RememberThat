@@ -92,14 +92,14 @@ restService.post('/transaction', function(req, res) {
           //   items_list = items_list + "," + req.body.result.parameters.Items[i];
           // }
         // }
-        MongoClient.connect(url, function(err, db) {
-          if (err) throw err;
-            db.collection("transaction").insertMany(transactions, function(err, res) {
-              if (err) throw err;
-              console.log("1 record inserted");
-              db.close();
-            });
-          });
+        // MongoClient.connect(url, function(err, db) {
+        //   if (err) throw err;
+        //     db.collection("transaction").insertMany(transactions, function(err, res) {
+        //       if (err) throw err;
+        //       console.log("1 record inserted");
+        //       db.close();
+        //     });
+        //   });
           let title = "I saved that you " + req.body.result.parameters.purpose + " on " + req.body.result.parameters.date;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS_SAVE));
         ask(app, prompt);
