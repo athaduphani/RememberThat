@@ -92,7 +92,7 @@ restService.post('/transaction', function(req, res) {
         //   }else {
         //     items_list = items_list + "," + req.body.result.parameters.Items[i];
         //   }
-        // }
+        }
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
             db.collection("transaction").insertMany(transactions, function(err, res) {
