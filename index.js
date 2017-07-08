@@ -84,14 +84,18 @@ restService.post('/transaction', function(req, res) {
             expiryDate: "07-31-2017",
             purpose: req.body.result.parameters.purpose
           };
-          items_list = items_list + req.body.result.parameters.Items[i] + ', ';
-          // if (i = 0) {
-          //   items_list = req.body.result.parameters.Items[i];
-          // // }else if (i = parameters_app.Items.length-1) {
-          // //   items_list = items_list + " and " + req.body.result.parameters.Items[i];
-          // }else {
-          //   items_list = items_list + ", " + req.body.result.parameters.Items[i];
-          // }
+        //   if (i != parameters_app.Items.length-1){
+        //   items_list = items_list +' '+ req.body.result.parameters.Items[i] + ', ';
+        // }else{
+        //   items_list = items_list +'  '+ req.body.result.parameters.Items[i] + ', ';
+        // }
+          if (i = 0) {
+            items_list = req.body.result.parameters.Items[i];
+          }else if (i = parameters_app.Items.length-1) {
+            items_list = items_list + ' and ' + req.body.result.parameters.Items[i];
+          }else {
+            items_list = items_list + ', ' + req.body.result.parameters.Items[i];
+          }
         }
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
