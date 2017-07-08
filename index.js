@@ -35,7 +35,7 @@ restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   // var body_app = req.body;
   // var result_app = req.body.result;
-  var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
+  // var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
 
 // Utility function to pick prompts
   function getRandomPrompt (app, array) {
@@ -70,40 +70,40 @@ restService.post('/transaction', function(req, res) {
     // }
   }
 //start save function
-      function save (app){
-        var prompt = "Something went wrong. Please try again";
-        var transactions = [];
-        // var items_list;
-      for (var i = 0; i < parameters_app.Items.length; i++) {
-         transactions[i] = {
-            transactionId: req.body.id,
-            SessionId: req.body.sessionId,
-            item: req.body.result.parameters.Items[i],
-            type: "Vegetable",
-            date: req.body.result.parameters.date,
-            expiryDate: "07-31-2017",
-            purpose: req.body.result.parameters.purpose
-          };
-          // if (parameters_app.Items.length==1) {
-          //   items_list = req.body.result.parameters.Items[i]
-          // }else if (i = parameters_app.Items.length-1) {
-          //   items_list = items_list + " and " + req.body.result.parameters.Items[i];
-          // }else {
-          //   items_list = items_list + "," + req.body.result.parameters.Items[i];
-          // }
-        }
-        MongoClient.connect(url, function(err, db) {
-          if (err) throw err;
-            db.collection("transaction").insertMany(transactions, function(err, res) {
-              if (err) throw err;
-              console.log("1 record inserted");
-              db.close();
-            });
-          });
-          let title = "I saved that you " + req.body.result.parameters.purpose + " on" + req.body.result.parameters.date;
-          prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS_SAVE));
-        ask(app, prompt);
-      } // end save function
+      // function save (app){
+      //   var prompt = "Something went wrong. Please try again";
+      //   var transactions = [];
+      //   // var items_list;
+      // for (var i = 0; i < parameters_app.Items.length; i++) {
+      //    transactions[i] = {
+      //       transactionId: req.body.id,
+      //       SessionId: req.body.sessionId,
+      //       item: req.body.result.parameters.Items[i],
+      //       type: "Vegetable",
+      //       date: req.body.result.parameters.date,
+      //       expiryDate: "07-31-2017",
+      //       purpose: req.body.result.parameters.purpose
+      //     };
+      //     // if (parameters_app.Items.length==1) {
+      //     //   items_list = req.body.result.parameters.Items[i]
+      //     // }else if (i = parameters_app.Items.length-1) {
+      //     //   items_list = items_list + " and " + req.body.result.parameters.Items[i];
+      //     // }else {
+      //     //   items_list = items_list + "," + req.body.result.parameters.Items[i];
+      //     // }
+      //   }
+      //   MongoClient.connect(url, function(err, db) {
+      //     if (err) throw err;
+      //       db.collection("transaction").insertMany(transactions, function(err, res) {
+      //         if (err) throw err;
+      //         console.log("1 record inserted");
+      //         db.close();
+      //       });
+      //     });
+      //     let title = "I saved that you " + req.body.result.parameters.purpose + " on" + req.body.result.parameters.date;
+      //     prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS_SAVE));
+      //   ask(app, prompt);
+      // } // end save function
   //     // start retrieve function
   //     function retrieve (app) {
   //     MongoClient.connect(url, function(err, db) {
@@ -153,7 +153,7 @@ restService.post('/transaction', function(req, res) {
       }
     // Mapping the actions
     let actionMap = new Map();
-    actionMap.set(SAVE_ACTION, save);
+    // actionMap.set(SAVE_ACTION, save);
     // actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(WELCOME_ACTION, welcome);
     // actionMap.set(SAVE_YES_ACTION, saveYes);
