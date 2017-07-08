@@ -35,7 +35,7 @@ restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   // var body_app = req.body;
   // var result_app = req.body.result;
-  // var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
+  var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
 
 // Utility function to pick prompts
   function getRandomPrompt (app, array) {
