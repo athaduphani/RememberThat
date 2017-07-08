@@ -73,7 +73,7 @@ restService.post('/transaction', function(req, res) {
       function save (app){
         var prompt = "Something went wrong. Please try again";
         var transactions = [];
-        // var items_list;
+        var items_list = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
          transactions[i] = {
             transactionId: req.body.id,
@@ -84,13 +84,13 @@ restService.post('/transaction', function(req, res) {
             expiryDate: "07-31-2017",
             purpose: req.body.result.parameters.purpose
           };
-          // if (parameters_app.Items.length==1) {
-          //   items_list = req.body.result.parameters.Items[i]
-          // }else if (i = parameters_app.Items.length-1) {
-          //   items_list = items_list + " and " + req.body.result.parameters.Items[i];
-          // }else {
-          //   items_list = items_list + "," + req.body.result.parameters.Items[i];
-          // }
+          if (parameters_app.Items.length==1) {
+            items_list = req.body.result.parameters.Items[i]
+          }else if (i = parameters_app.Items.length-1) {
+            items_list = items_list + " and " + req.body.result.parameters.Items[i];
+          }else {
+            items_list = items_list + "," + req.body.result.parameters.Items[i];
+          }
         }
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
@@ -100,7 +100,7 @@ restService.post('/transaction', function(req, res) {
               db.close();
             });
           });
-          let title = "I saved that you " + req.body.result.parameters.purpose + " on " + req.body.result.parameters.date;
+          let title = "I saved that you " + req.body.result.parameters.purpose + items_list + " on " + req.body.result.parameters.date;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS_SAVE));
         ask(app, prompt);
       } // end save function
