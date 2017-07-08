@@ -13,23 +13,3 @@ var data;
 // });
 //
 // });
-
-
-
-
-MongoClient.connect(url, function (err, db) {
-    if (err) {
-      console.log('Unable to connect to the mongoDB server. Error:', err);
-    } else {
-      console.log('Connection established to', url);
-      var collection = db.collection('iters_data');
-      readData=fs.createReadStream('x.csv').pipe(csv())
-                   .on('data',function(data){
-                      collection.insert({'data': data});
-                   })
-                   .on('end',function(data){
-                      console.log('Read finished');
-                   })
-
-    }
-  });
