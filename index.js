@@ -74,16 +74,16 @@ restService.post('/transaction', function(req, res) {
         var prompt = "Something went wrong. Please try again";
         var transactions = [];
         // var items_list;
-      // for (var i = 0; i < 2; i++) {
-      //    transactions[i] = {
-      //       transactionId: req.body.id,
-      //       SessionId: req.body.sessionId,
-      //       item: req.body.result.parameters.Items[i],
-      //       type: "Vegetable",
-      //       date: req.body.result.parameters.date,
-      //       expiryDate: "07-31-2017",
-      //       purpose: req.body.result.parameters.purpose
-      //     };
+      for (var i = 0; i < 2; i++) {
+         transactions[i] = {
+            transactionId: req.body.id,
+            SessionId: req.body.sessionId,
+            item: req.body.result.parameters.Items[i],
+            type: "Vegetable",
+            date: req.body.result.parameters.date,
+            expiryDate: "07-31-2017",
+            purpose: req.body.result.parameters.purpose
+          };
           // if (parameters_app.Items.length==1) {
           //   items_list = req.body.result.parameters.Items[i]
           // }else if (i = parameters_app.Items.length-1) {
@@ -92,14 +92,14 @@ restService.post('/transaction', function(req, res) {
           //   items_list = items_list + "," + req.body.result.parameters.Items[i];
           // }
         // }
-        // MongoClient.connect(url, function(err, db) {
-        //   if (err) throw err;
-        //     db.collection("transaction").insertMany(transactions, function(err, res) {
-        //       if (err) throw err;
-        //       console.log("1 record inserted");
-        //       db.close();
-        //     });
-        //   });
+        MongoClient.connect(url, function(err, db) {
+          if (err) throw err;
+            db.collection("transaction").insertMany(transactions, function(err, res) {
+              if (err) throw err;
+              console.log("1 record inserted");
+              db.close();
+            });
+          });
           let title = "I saved that you " + req.body.result.parameters.purpose + " on " + req.body.result.parameters.date;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS_SAVE));
         ask(app, prompt);
