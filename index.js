@@ -22,7 +22,7 @@ const INVOCATION_PROMPTS = ['I can save, retrieve and update any dates for you. 
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you',
     'We can stop here. Let\'s talk again soon.'];
 const CONTINUATION_PROMPTS_SAVE = ['Do you want to save anything else?','is there anything I can help you with?','Do you want to save any other dates']
-
+const SAVE_CONTEXT = 'save';
 const SAVE_YES_NO_CONTEXT = 'save_yes_no';
 const RE_PROMPT = ['Great!', 'Awesome!', 'Cool!'];
 const SAVE_RE_INVOCATION_PROMPT = ['What do you want me to save?'];
@@ -132,7 +132,7 @@ restService.post('/transaction', function(req, res) {
   // Start of saveNo function
   function saveNo (app) {
     console.log('saveNo');
-    app.setContext(GAME_CONTEXT, 1);
+    app.setContext(SAVE_CONTEXT, 1);
     app.tell(printf(getRandomPrompt(app, QUIT_PROMPTS)));
   } // End of saveNo function
     //Start fallback function
