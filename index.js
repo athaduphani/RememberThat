@@ -85,7 +85,7 @@ restService.post('/transaction', function(req, res) {
             purpose: req.body.result.parameters.purpose
           };
           if (i = 0) {
-            items_list = '' + req.body.result.parameters.Items[i];
+            items_list = req.body.result.parameters.Items[i];
           // }else if (i = parameters_app.Items.length-1) {
           //   items_list = items_list + " and " + req.body.result.parameters.Items[i];
           }else {
