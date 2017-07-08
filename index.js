@@ -56,8 +56,8 @@ restService.post('/transaction', function(req, res) {
   // start welcome function
   function welcome(app){
     console.log('welcome Intent');
-    // let title = getRandomPrompt(app, GREETING_PROMPTS);
-    // let prompt = printf(title +  getRandomPrompt(app, INVOCATION_PROMPTS));
+    let title = getRandomPrompt(app, GREETING_PROMPTS);
+    let prompt = printf(title +  getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
@@ -66,7 +66,7 @@ restService.post('/transaction', function(req, res) {
     //     .addBasicCard(basicCard);
     //   ask(app, richResponse);
     // } else {
-      ask(app, "prompt");
+      ask(app, prompt);
     // }
   }
 //start save function
