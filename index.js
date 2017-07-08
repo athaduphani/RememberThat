@@ -16,17 +16,17 @@ const DELETE_ACTION = 'delete';
 const MODIFY_ACTION = 'modify';
 const SAVE_YES_ACTION = 'save_yes';
 const SAVE_NO_ACTION = 'save_no';
-const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.',
-    'Welcome back to Dates Bot.'];
+const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.','Welcome back to Dates Bot.'];
 const INVOCATION_PROMPTS = ['I can save, retrieve and update any dates for you. How can I help you today? ', 'How can i help you today'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you',
     'We can stop here. Let\'s talk again soon.'];
 const CONTINUATION_PROMPTS_SAVE = ['Do you want to save anything else?','is there anything I can help you with?','Do you want to save any other dates']
+const RE_PROMPT = ['Great!', 'Awesome!', 'Cool!'];
 const SAVE_CONTEXT = 'save';
 const SAVE_YES_NO_CONTEXT = 'save_yes_no';
-const RE_PROMPT = ['Great!', 'Awesome!', 'Cool!'];
+
 const SAVE_RE_INVOCATION_PROMPT = ['What do you want me to save?'];
-const QUIT_PROMPTS = ['Alright, talk to you later then.', 'OK, till next time.','OK, Make sure to ask me if you want any date you saved.'
+const QUIT_PROMPTS = ['Alright, talk to you later then.', 'OK, till next time.','OK, Make sure to ask me if you want any date you saved.',
     'See you later.', 'OK, Make sure to ask me what items you have and how fresh they are next time'];
 restService.use(bodyParser.urlencoded({extended: true}));
 restService.use(bodyParser.json());
