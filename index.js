@@ -85,21 +85,21 @@ restService.post('/transaction', function(req, res) {
     // }
   }
   // Start UserExists Function
-  function userExists(sessionId){
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      db.collection("transaction").find({"sessionId":sessionId}).toArray(function(err, result){
-      if (err) throw err;
-      console.log(result[0].date);
-      db.close();
-      if (result.length = 0) {
-        return true;
-      }else{
-        return false;
-      }
-  }); // End DB Function
-  });
-}// End UserExists Function
+//   function userExists(sessionId){
+//     MongoClient.connect(url, function(err, db) {
+//       if (err) throw err;
+//       db.collection("transaction").find({"sessionId":sessionId}).toArray(function(err, result){
+//       if (err) throw err;
+//       console.log(result[0].date);
+//       db.close();
+//       if (result.length = 0) {
+//         return true;
+//       }else{
+//         return false;
+//       }
+//   }); // End DB Function
+//   });
+// }// End UserExists Function
 //start save function
       function save (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
