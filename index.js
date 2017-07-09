@@ -66,14 +66,14 @@ restService.post('/transaction', function(req, res) {
     let title = getRandomPrompt(app, GREETING_PROMPTS);
     var sessionId = req.body.sessionId;
     // var firstTimeUser = userExists(SessionId);
-    var firstTimeUserPrompt = 'jhk';
+    var firstTimeUserPrompt = '';
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           db.collection("transaction").find({"SessionId":sessionId}).toArray(function(err, result){
           if (err) throw err;
           console.log(result[0].date);
           db.close();
-          // firstTimeUserPrompt = 'result length ' + result.length;
+          firstTimeUserPrompt = 'result length ';
           // if (result.length = 0) {
           //   return true;
           // }else{
