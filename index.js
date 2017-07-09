@@ -66,16 +66,17 @@ restService.post('/transaction', function(req, res) {
     let title = getRandomPrompt(app, GREETING_PROMPTS);
 
     // var firstTimeUser = userExists(SessionId);
-    var firstTimeUserPrompt = 'asdasd';
+
         MongoClient.connect(url, function(err, db) {
+          let firstTimeUserPrompt = 'asdasd';
           if (err) throw err;
           db.collection("transaction").find({"SessionId":'a9ac51ae-3dbd-4cd9-91ee-9af3e4796646'}).toArray(function(err, result){
           if (err) throw err;
-          if (result.length = 46) {
-            firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
-          }else{
-            firstTimeUserPrompt = '';
-          }
+          // if (result.length = 46) {
+          //   firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
+          // }else{
+          //   firstTimeUserPrompt = '';
+          // }
           let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
           ask(app, prompt);
           // if (result.length = 0) {
@@ -96,7 +97,7 @@ restService.post('/transaction', function(req, res) {
     // } else {
       // ask(app, prompt);
     // }
-  }
+  } //End Welcome Function
   // Start UserExists Function
 //   function userExists(sessionId){
 //     MongoClient.connect(url, function(err, db) {
