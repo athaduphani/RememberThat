@@ -72,7 +72,7 @@ restService.post('/transaction', function(req, res) {
           if (err) throw err;
           db.collection("transaction").find({"SessionId":req.body.sessionId}).toArray(function(err, result){
           if (err) throw err;
-          if (result.length = 1) {
+          if (result.length == 0) {
             firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
           }else{
             firstTimeUserPrompt = ' ';
