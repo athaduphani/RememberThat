@@ -73,7 +73,7 @@ restService.post('/transaction', function(req, res) {
           if (err) throw err;
           console.log(result[0].date);
           db.close();
-          firstTimeUserPrompt = 'result length ';
+          firstTimeUserPrompt = result[0].date;
           // if (result.length = 0) {
           //   return true;
           // }else{
