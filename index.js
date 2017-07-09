@@ -65,13 +65,13 @@ restService.post('/transaction', function(req, res) {
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
     var SessionId = req.body.sessionId;
-    var firstTimeUser = userExists(SessionId);
+    // var firstTimeUser = userExists(SessionId);
     let firstTimeUserPrompt = '';
-    if (firstTimeUser) {
-      firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
-    }else{
-      firstTimeUserPrompt = '';
-    }
+    // if (firstTimeUser) {
+    //   firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
+    // }else{
+    //   firstTimeUserPrompt = '';
+    // }
     let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
