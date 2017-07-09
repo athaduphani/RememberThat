@@ -64,7 +64,7 @@ restService.post('/transaction', function(req, res) {
   function welcome(app){
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
-    // var SessionId = req.body.sessionId;
+    var SessionId = req.body.sessionId;
     // var firstTimeUser = userExists(SessionId);
     let firstTimeUserPrompt = '';
     // if (firstTimeUser) {
