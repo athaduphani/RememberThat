@@ -71,8 +71,12 @@ restService.post('/transaction', function(req, res) {
           if (err) throw err;
           db.collection("transaction").find({"SessionId":'a9ac51ae-3dbd-4cd9-91ee-9af3e4796646'}).toArray(function(err, result){
           if (err) throw err;
-          firstTimeUserPrompt = result.length;
-          let prompt = printf(firstTimeUserPrompt);
+          if (result.length = 46) {
+            firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
+          }else{
+            firstTimeUserPrompt = '';
+          }
+          let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
           ask(app, prompt);
           // if (result.length = 0) {
           //   return true;
@@ -81,13 +85,7 @@ restService.post('/transaction', function(req, res) {
           // }
       }); // End DB Function
       });
-    // if (firstTimeUser) {
-    //   firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
-    // }else{
-    //   firstTimeUserPrompt = '';
-    // }
-    // let prompt = printf(firstTimeUserPrompt);
-    // let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
+
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
