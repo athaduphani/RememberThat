@@ -190,7 +190,7 @@ restService.post('/transaction', function(req, res) {
     // actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(WELCOME_ACTION, welcome);
     actionMap.set(REPEAT_YES_ACTION, repeatYes);
-    // actionMap.set(REPEAT_NO_ACTION, repeatNo);
+    actionMap.set(REPEAT_NO_ACTION, repeatNo);
     app.handleRequest(actionMap);
     }); // End of Transaction function
     // app is listening on the port 8000
