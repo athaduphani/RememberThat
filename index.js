@@ -121,12 +121,12 @@ restService.post('/transaction', function(req, res) {
     ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' +
       getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
   }// End of saveYes function
-  // // Start of saveNo function
-  // function saveNo (app) {
-  //   console.log('saveNo');
-  //   app.setContext(SAVE_CONTEXT, 1);
-  //   app.tell(printf(getRandomPrompt(app, QUIT_PROMPTS)));
-  // } // End of saveNo function
+  // Start of saveNo function
+  function saveNo (app) {
+    console.log('saveNo');
+    app.setContext(SAVE_CONTEXT, 1);
+    app.tell(printf(getRandomPrompt(app, QUIT_PROMPTS)));
+  } // End of saveNo function
   //   //Start fallback function
   //     function fallback (app){
   //
@@ -152,7 +152,7 @@ restService.post('/transaction', function(req, res) {
     // actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(WELCOME_ACTION, welcome);
     actionMap.set(SAVE_YES_ACTION, saveYes);
-    // actionMap.set(SAVE_NO_ACTION, saveNo);
+    actionMap.set(SAVE_NO_ACTION, saveNo);
     app.handleRequest(actionMap);
     }); // End of Transaction function
     // app is listening on the port 8000
