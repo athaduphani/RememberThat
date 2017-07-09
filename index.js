@@ -131,41 +131,41 @@ restService.post('/transaction', function(req, res) {
         ask(app, prompt);
       } // end save function
       // start retrieve function
-      function retrieve (app) {
-      MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
-        db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.items}]}).toArray(function(err, result){
-        if (err) throw err;
-        console.log(result[0].date);
-        db.close();
-        return res.json({
-            speech: "Date is " + result[0].date,
-            displayText: "Date is "+ result[0].date,
-            source: 'RememberThat'
-          });
-        }); // End DB Function
-    });
-  } // End retrieve function
+  //     function retrieve (app) {
+  //     MongoClient.connect(url, function(err, db) {
+  //       if (err) throw err;
+  //       db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.items}]}).toArray(function(err, result){
+  //       if (err) throw err;
+  //       console.log(result[0].date);
+  //       db.close();
+  //       return res.json({
+  //           speech: "Date is " + result[0].date,
+  //           displayText: "Date is "+ result[0].date,
+  //           source: 'RememberThat'
+  //         });
+  //       }); // End DB Function
+  //   });
+  // } // End retrieve function
   // // Start of saveYes function
-  function repeatYes (app) {
-    console.log('repeatYes');
-    var purpose = parameters_app.purpose;
-    if (purpose == "save"){
-      app.setContext(SAVE_CONTEXT);
-    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
-  }else if (purpose == "retrieve") {
-    app.setContext(RETRIEVE_CONTEXT);
-    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, RETRIEVE_RE_INVOCATION_PROMPT)));
-  }else if (purpose == "modify") {
-    app.setContext(MODIFY_CONTEXT);
-    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, MODIFY_RE_INVOCATION_PROMPT)));
-  }else if (purpose == "delete") {
-    app.setContext(DELETE_CONTEXT);
-    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, DELETE_RE_INVOCATION_PROMPT)));
-  }else {
-    ask(app, "Sorry I didnt understand.You can say Save, Retrieve, Modify or Delete");
-  }
-  }// End of saveYes function
+  // function repeatYes (app) {
+  //   console.log('repeatYes');
+  //   var purpose = parameters_app.purpose;
+  //   if (purpose == "save"){
+  //     app.setContext(SAVE_CONTEXT);
+  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
+  // }else if (purpose == "retrieve") {
+  //   app.setContext(RETRIEVE_CONTEXT);
+  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, RETRIEVE_RE_INVOCATION_PROMPT)));
+  // }else if (purpose == "modify") {
+  //   app.setContext(MODIFY_CONTEXT);
+  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, MODIFY_RE_INVOCATION_PROMPT)));
+  // }else if (purpose == "delete") {
+  //   app.setContext(DELETE_CONTEXT);
+  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, DELETE_RE_INVOCATION_PROMPT)));
+  // }else {
+  //   ask(app, "Sorry I didnt understand.You can say Save, Retrieve, Modify or Delete");
+  // }
+  // }// End of saveYes function
   // Start of saveNo function
   function saveNo (app) {
     console.log('saveNo');
@@ -196,8 +196,8 @@ restService.post('/transaction', function(req, res) {
     actionMap.set(SAVE_ACTION, save);
     // actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(WELCOME_ACTION, welcome);
-    actionMap.set(REPEAT_YES_ACTION, repeatYes);
-    actionMap.set(REPEAT_NO_ACTION, repeatNo);
+    // actionMap.set(REPEAT_YES_ACTION, repeatYes);
+    // actionMap.set(REPEAT_NO_ACTION, repeatNo);
     app.handleRequest(actionMap);
     }); // End of Transaction function
     // app is listening on the port 8000
