@@ -71,7 +71,7 @@ restService.post('/transaction', function(req, res) {
   }
 //start save function
       function save (app){
-        app.setContext(YES_NO_CONTEXT);
+        app.setContext(SAVE_YES_NO_CONTEXT);
         var prompt = "Something went wrong. Please try again";
         var transactions = [];
         var items_list = '';
@@ -151,7 +151,7 @@ restService.post('/transaction', function(req, res) {
     actionMap.set(SAVE_ACTION, save);
     // actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(WELCOME_ACTION, welcome);
-    // actionMap.set(SAVE_YES_ACTION, saveYes);
+    actionMap.set(SAVE_YES_ACTION, saveYes);
     // actionMap.set(SAVE_NO_ACTION, saveNo);
     app.handleRequest(actionMap);
     }); // End of Transaction function
