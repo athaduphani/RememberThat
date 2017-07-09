@@ -66,7 +66,7 @@ restService.post('/transaction', function(req, res) {
     let title = getRandomPrompt(app, GREETING_PROMPTS);
     var sessionId = req.body.sessionId;
     // var firstTimeUser = userExists(SessionId);
-    var firstTimeUserPrompt = '';
+    var firstTimeUserPrompt = 'jhk';
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           db.collection("transaction").find({"SessionId":sessionId}).toArray(function(err, result){
@@ -86,7 +86,7 @@ restService.post('/transaction', function(req, res) {
     // }else{
     //   firstTimeUserPrompt = '';
     // }
-    let prompt = printf("firstTimeUserPrompt");
+    let prompt = printf(firstTimeUserPrompt);
     // let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
