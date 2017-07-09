@@ -66,13 +66,28 @@ restService.post('/transaction', function(req, res) {
     let title = getRandomPrompt(app, GREETING_PROMPTS);
     var SessionId = req.body.sessionId;
     // var firstTimeUser = userExists(SessionId);
-    let firstTimeUserPrompt = SessionId;
+    let firstTimeUserPrompt = '';
+        MongoClient.connect(url, function(err, db) {
+          if (err) throw err;
+          db.collection("transaction").find({"sessionId":sessionId}).toArray(function(err, result){
+          if (err) throw err;
+          console.log(result[0].date);
+          db.close();
+          firstTimeUserPrompt = 'result length ' + result.length;
+          // if (result.length = 0) {
+          //   return true;
+          // }else{
+          //   return false;
+          // }
+      }); // End DB Function
+      });
     // if (firstTimeUser) {
     //   firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
     // }else{
     //   firstTimeUserPrompt = '';
     // }
-    let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
+    let prompt = printf(firstTimeUserPrompt);
+    // let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
