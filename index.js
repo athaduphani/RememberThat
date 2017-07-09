@@ -75,7 +75,7 @@ restService.post('/transaction', function(req, res) {
           if (result.length = 0) {
             firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
           }else{
-            firstTimeUserPrompt = '';
+            firstTimeUserPrompt = ' ';
           }
           let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
           ask(app, prompt);
