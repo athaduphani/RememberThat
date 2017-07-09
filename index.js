@@ -10,7 +10,7 @@ let restService = express();
 var mongo = require('mongodb');
 
 const SAVE_ACTION = 'save';
-// const RETRIEVE_ACTION = 'retrieve';
+const RETRIEVE_ACTION = 'retrieve';
 const WELCOME_ACTION = 'welcome';
 // const DELETE_ACTION = 'delete';
 // const MODIFY_ACTION = 'modify';
@@ -64,7 +64,7 @@ restService.post('/transaction', function(req, res) {
   function welcome(app){
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
-    var SessionId = req.body.sessionId;
+    // var SessionId = req.body.sessionId;
     // var firstTimeUser = userExists(SessionId);
     let firstTimeUserPrompt = '';
     // if (firstTimeUser) {
