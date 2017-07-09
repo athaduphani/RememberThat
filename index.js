@@ -72,11 +72,11 @@ restService.post('/transaction', function(req, res) {
           if (err) throw err;
           db.collection("transaction").find({"SessionId":'a9ac51ae-3dbd-4cd9-91ee-9af3e4796646'}).toArray(function(err, result){
           if (err) throw err;
-          // if (result.length = 46) {
+          if (result.length = 46) {
             firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
-          // }else{
-          //   firstTimeUserPrompt = '';
-          // }
+          }else{
+            firstTimeUserPrompt = '';
+          }
           let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
           ask(app, prompt);
           // if (result.length = 0) {
