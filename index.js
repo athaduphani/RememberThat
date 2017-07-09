@@ -14,16 +14,23 @@ const SAVE_ACTION = 'save';
 const WELCOME_ACTION = 'welcome';
 // const DELETE_ACTION = 'delete';
 // const MODIFY_ACTION = 'modify';
-const SAVE_YES_ACTION = 'save_yes';
-const SAVE_NO_ACTION = 'save_no';
+const REPEAT_YES_ACTION = 'repeat_yes';
+const REPEAT_NO_ACTION = 'repeat_no';
+const FIRST_INTERACTION_EXAMPLES = ['I can save, retrieve and update dates for your household items. For Example, You can say \"I bought milk today\".']
 const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.','Welcome back to Dates Bot.'];
-const INVOCATION_PROMPTS = ['I can save, retrieve and update any dates for you. How can I help you today? ', 'How can i help you today'];
+const INVOCATION_PROMPTS = ['How can i help you today', 'What do you want to do today?'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you','We can stop here. Let\'s talk again soon.'];
-const CONTINUATION_PROMPTS_SAVE = ['Do you want to save anything else?','is there anything I can help you with?','Do you want to save any other dates'];
+const CONTINUATION_PROMPTS = ['is there anything I can help you with?'];
 const RE_PROMPT = ['Great!', 'Awesome!', 'Cool!'];
 const SAVE_CONTEXT = 'save';
-const SAVE_YES_NO_CONTEXT = 'save_yes_no';
-const SAVE_RE_INVOCATION_PROMPT = ['What do you want me to save?'];
+const RETRIEVE_CONTEXT = 'retrieve';
+const MODIFY_CONTEXT = 'modify';
+const DELETE_CONTEXT = 'delete';
+const REPEAT_YES_NO_CONTEXT = 'repeat_yes_no';
+const SAVE_RE_INVOCATION_PROMPT = ['What do you want to save?'];
+const RETRIEVE_RE_INVOCATION_PROMPT = ['What do you want to retrieve?'];
+const MODIFY_RE_INVOCATION_PROMPT = ['What do you want to modify?'];
+const DELETE_RE_INVOCATION_PROMPT = ['What do you want to delete?'];
 const QUIT_PROMPTS = ['Alright, talk to you later then.', 'OK, till next time.','OK, Make sure to ask me if you want any date you saved.','See you later.', 'OK, Make sure to ask me what items you have and how fresh they are next time'];
 restService.use(bodyParser.urlencoded({extended: true}));
 restService.use(bodyParser.json());
@@ -57,7 +64,15 @@ restService.post('/transaction', function(req, res) {
   function welcome(app){
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
-    let prompt = printf(title +  getRandomPrompt(app, INVOCATION_PROMPTS));
+    var SessionId = req.body.sessionId;
+    var firstTimeUser = userExists(SessionId);
+    let firstTimeUserPrompt = '';
+    if (firstTimeUser) {
+      firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
+    }else{
+      firstTimeUserPrompt = '';
+    }
+    let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
@@ -69,9 +84,25 @@ restService.post('/transaction', function(req, res) {
       ask(app, prompt);
     // }
   }
+  // Start UserExists Function
+  function userExists(sessionId){
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      db.collection("transaction").find({"sessionId":sessionId}).toArray(function(err, result){
+      if (err) throw err;
+      console.log(result[0].date);
+      db.close();
+      if (result.length = 0) {
+        return true;
+      }else{
+        return false;
+      }
+  }); // End DB Function
+  });
+}// End UserExists Function
 //start save function
       function save (app){
-        app.setContext(SAVE_YES_NO_CONTEXT);
+        app.setContext(REPEAT_YES_NO_CONTEXT);
         var prompt = "Something went wrong. Please try again";
         var transactions = [];
         var items_list = '';
@@ -96,30 +127,44 @@ restService.post('/transaction', function(req, res) {
             });
           });
           let title = "I saved that you " + req.body.result.parameters.purpose + items_list + " on " + req.body.result.parameters.date;
-          prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS_SAVE));
+          prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       } // end save function
-  //     // start retrieve function
-  //     function retrieve (app) {
-  //     MongoClient.connect(url, function(err, db) {
-  //       if (err) throw err;
-  //       db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.items}]}).toArray(function(err, result){
-  //       if (err) throw err;
-  //       console.log(result[0].date);
-  //       db.close();
-  //       return res.json({
-  //           speech: "Date is " + result[0].date,
-  //           displayText: "Date is "+ result[0].date,
-  //           source: 'RememberThat'
-  //         });
-  //       }); // End DB Function
-  //   });
-  // } // End retrieve function
+      // start retrieve function
+      function retrieve (app) {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.items}]}).toArray(function(err, result){
+        if (err) throw err;
+        console.log(result[0].date);
+        db.close();
+        return res.json({
+            speech: "Date is " + result[0].date,
+            displayText: "Date is "+ result[0].date,
+            source: 'RememberThat'
+          });
+        }); // End DB Function
+    });
+  } // End retrieve function
   // // Start of saveYes function
-  function saveYes (app) {
-    console.log('saveYes');
-    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' +
-      getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
+  function repeatYes (app) {
+    console.log('repeatYes');
+    var purpose = parameters_app.purpose;
+    if (purpose == "save"){
+      app.setContext(SAVE_CONTEXT);
+    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
+  }else if (purpose == "retrieve") {
+    app.setContext(RETRIEVE_CONTEXT);
+    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, RETRIEVE_RE_INVOCATION_PROMPT)));
+  }else if (purpose == "modify") {
+    app.setContext(MODIFY_CONTEXT);
+    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, MODIFY_RE_INVOCATION_PROMPT)));
+  }else if (purpose == "delete") {
+    app.setContext(DELETE_CONTEXT);
+    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, DELETE_RE_INVOCATION_PROMPT)));
+  }else {
+    ask(app, "Sorry I didnt understand.You can say Save, Retrieve, Modify or Delete");
+  }
   }// End of saveYes function
   // Start of saveNo function
   function saveNo (app) {
@@ -151,8 +196,8 @@ restService.post('/transaction', function(req, res) {
     actionMap.set(SAVE_ACTION, save);
     // actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(WELCOME_ACTION, welcome);
-    actionMap.set(SAVE_YES_ACTION, saveYes);
-    actionMap.set(SAVE_NO_ACTION, saveNo);
+    actionMap.set(REPEAT_YES_ACTION, repeatYes);
+    actionMap.set(REPEAT_NO_ACTION, repeatNo);
     app.handleRequest(actionMap);
     }); // End of Transaction function
     // app is listening on the port 8000
