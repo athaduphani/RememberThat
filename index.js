@@ -16,7 +16,7 @@ const WELCOME_ACTION = 'welcome';
 // const MODIFY_ACTION = 'modify';
 const REPEAT_YES_ACTION = 'repeat_yes';
 const REPEAT_NO_ACTION = 'repeat_no';
-const FIRST_INTERACTION_EXAMPLES = ['I can save, retrieve and update dates for your household items. For Example, You can say \"I bought milk today\".']
+const FIRST_INTERACTION_EXAMPLES = ['I can save, retrieve and update dates for your household items. For Example, You can say \"I bought milk today\".', 'I can save, retrieve and update dates for your household items. For Example, You can say \"I bought apples today\".','I can save, retrieve and update dates for your household items. For Example, You can say \"I bought toyota camry today\".']
 const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.','Welcome back to Dates Bot.'];
 const INVOCATION_PROMPTS = ['How can i help you today', 'What do you want to do today?'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you','We can stop here. Let\'s talk again soon.'];
@@ -93,22 +93,6 @@ restService.post('/transaction', function(req, res) {
       // ask(app, prompt);
     // }
   } //End Welcome Function
-  // Start UserExists Function
-//   function userExists(sessionId){
-//     MongoClient.connect(url, function(err, db) {
-//       if (err) throw err;
-//       db.collection("transaction").find({"sessionId":sessionId}).toArray(function(err, result){
-//       if (err) throw err;
-//       console.log(result[0].date);
-//       db.close();
-//       if (result.length = 0) {
-//         return true;
-//       }else{
-//         return false;
-//       }
-//   }); // End DB Function
-//   });
-// }// End UserExists Function
 //start save function
       function save (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
@@ -155,30 +139,30 @@ restService.post('/transaction', function(req, res) {
   //       }); // End DB Function
   //   });
   // } // End retrieve function
-  // // Start of saveYes function
-  // function repeatYes (app) {
-  //   console.log('repeatYes');
-  //   var purpose = parameters_app.purpose;
-  //   if (purpose == "save"){
-  //     app.setContext(SAVE_CONTEXT);
-  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
-  // }else if (purpose == "retrieve") {
-  //   app.setContext(RETRIEVE_CONTEXT);
-  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, RETRIEVE_RE_INVOCATION_PROMPT)));
-  // }else if (purpose == "modify") {
-  //   app.setContext(MODIFY_CONTEXT);
-  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, MODIFY_RE_INVOCATION_PROMPT)));
-  // }else if (purpose == "delete") {
-  //   app.setContext(DELETE_CONTEXT);
-  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, DELETE_RE_INVOCATION_PROMPT)));
-  // }else {
-  //   ask(app, "Sorry I didnt understand.You can say Save, Retrieve, Modify or Delete");
-  // }
-  // }// End of saveYes function
+  // Start of repeatYes function
+  function repeatYes (app) {
+    console.log('repeatYes');
+    var purpose = parameters_app.purpose;
+    if (purpose == "save"){
+      app.setContext(SAVE_CONTEXT);
+    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
+  }else if (purpose == "retrieve") {
+    app.setContext(RETRIEVE_CONTEXT);
+    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, RETRIEVE_RE_INVOCATION_PROMPT)));
+  }else if (purpose == "modify") {
+    app.setContext(MODIFY_CONTEXT);
+    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, MODIFY_RE_INVOCATION_PROMPT)));
+  }else if (purpose == "delete") {
+    app.setContext(DELETE_CONTEXT);
+    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, DELETE_RE_INVOCATION_PROMPT)));
+  }else {
+    ask(app, "Sorry I didnt understand.You can say Save, Retrieve, Modify or Delete");
+  }
+  }// End of repeatYes function
   // Start of saveNo function
-  function saveNo (app) {
-    console.log('saveNo');
-    app.setContext(SAVE_CONTEXT, 1);
+  function repeatNo (app) {
+    console.log('repeatNo');
+    // app.setContext(SAVE_CONTEXT, 1);
     app.tell(printf(getRandomPrompt(app, QUIT_PROMPTS)));
   } // End of saveNo function
   //   //Start fallback function
@@ -205,7 +189,7 @@ restService.post('/transaction', function(req, res) {
     actionMap.set(SAVE_ACTION, save);
     // actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(WELCOME_ACTION, welcome);
-    // actionMap.set(REPEAT_YES_ACTION, repeatYes);
+    actionMap.set(REPEAT_YES_ACTION, repeatYes);
     // actionMap.set(REPEAT_NO_ACTION, repeatNo);
     app.handleRequest(actionMap);
     }); // End of Transaction function
