@@ -69,7 +69,7 @@ restService.post('/transaction', function(req, res) {
     let firstTimeUserPrompt = '';
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          db.collection("transaction").find({"sessionId":sessionId}).toArray(function(err, result){
+          db.collection("transaction").find({"SessionId":sessionId}).toArray(function(err, result){
           if (err) throw err;
           console.log(result[0].date);
           db.close();
