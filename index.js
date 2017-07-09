@@ -73,7 +73,7 @@ restService.post('/transaction', function(req, res) {
           if (err) throw err;
           console.log(result[0].date);
           db.close();
-          firstTimeUserPrompt = 'result length ' + result.length;
+          // firstTimeUserPrompt = 'result length ' + result.length;
           // if (result.length = 0) {
           //   return true;
           // }else{
@@ -86,7 +86,7 @@ restService.post('/transaction', function(req, res) {
     // }else{
     //   firstTimeUserPrompt = '';
     // }
-    let prompt = printf(firstTimeUserPrompt);
+    let prompt = printf("firstTimeUserPrompt");
     // let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
