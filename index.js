@@ -66,7 +66,7 @@ restService.post('/transaction', function(req, res) {
     let title = getRandomPrompt(app, GREETING_PROMPTS);
     var SessionId = req.body.sessionId;
     // var firstTimeUser = userExists(SessionId);
-    let firstTimeUserPrompt = '';
+    let firstTimeUserPrompt = SessionId;
     // if (firstTimeUser) {
     //   firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
     // }else{
