@@ -132,7 +132,7 @@ restService.post('/transaction', function(req, res) {
         // for (var i = 0; i < result.length; i++) {
         //     response = response +'  '+ result[i].Items + ' on ' + result[i].date;
         //   }
-        prompt = printf(responseDate + result.length);
+        prompt = printf(responseDate);
       ask(app, prompt);
         }); // End DB Function
     });
