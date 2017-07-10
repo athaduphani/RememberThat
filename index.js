@@ -125,17 +125,16 @@ restService.post('/transaction', function(req, res) {
       function retrieve (app) {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({"item":req.body.result.parameters.items[0]}).toArray(function(err, result){
+        db.collection("transaction").find({"item":req.body.result.parameters.Items[0]}).toArray(function(err, result){
         if (err) throw err;
         db.close();
-        let response = 'You bought ';
+        let responseDate = 'You bought ';
         // for (var i = 0; i < result.length; i++) {
         //     response = response +'  '+ result[i].Items + ' on ' + result[i].date;
         //   }
-        prompt = printf(response + result.length);
+        prompt = printf(responseDate + result.length);
       ask(app, prompt);
         }); // End DB Function
-
     });
   } // End retrieve function
   // Start of repeatYes function
