@@ -123,6 +123,7 @@ restService.post('/transaction', function(req, res) {
       } // end save function
       // start retrieve function
       function retrieve (app) {
+        app.setContext(REPEAT_YES_NO_CONTEXT);
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         db.collection("transaction").find({"item":req.body.result.parameters.Items[0]}).toArray(function(err, result){
@@ -132,7 +133,7 @@ restService.post('/transaction', function(req, res) {
         for (var i = 0; i < result.length; i++) {
             responseDate = responseDate +'  '+ result[i].item + ' on ' + result[i].date;
           }
-        let prompt = printf(responseDate);
+        let prompt = printf(responseDate + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
         }); // End DB Function
     });
