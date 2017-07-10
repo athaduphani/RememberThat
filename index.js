@@ -126,7 +126,7 @@ restService.post('/transaction', function(req, res) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({"item":{$in req.body.result.parameters.Items}}).toArray(function(err, result){
+        db.collection("transaction").find({"item":{$in: req.body.result.parameters.Items}}).toArray(function(err, result){
         if (err) throw err;
         db.close();
         let responseDate = 'You bought ';
