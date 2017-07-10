@@ -124,21 +124,22 @@ restService.post('/transaction', function(req, res) {
         ask(app, prompt);
       } // end save function
       // start retrieve function
-  //     function retrieve (app) {
-  //     MongoClient.connect(url, function(err, db) {
-  //       if (err) throw err;
-  //       db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.items}]}).toArray(function(err, result){
-  //       if (err) throw err;
-  //       console.log(result[0].date);
-  //       db.close();
-  //       return res.json({
-  //           speech: "Date is " + result[0].date,
-  //           displayText: "Date is "+ result[0].date,
-  //           source: 'RememberThat'
-  //         });
-  //       }); // End DB Function
-  //   });
-  // } // End retrieve function
+      function retrieve (app) {
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.items[0]}]}).toArray(function(err, result){
+        if (err) throw err;
+        db.close();
+        let result = 'You bought ';
+        // for (var i = 0; i < result.length; i++) {
+        //     result = result +'  '+ result[i].Items + ' on ' + result[i].date;
+        //   }
+        prompt = printf(result + result.length);
+      ask(app, prompt);
+        }); // End DB Function
+
+    });
+  } // End retrieve function
   // Start of repeatYes function
   function repeatYes (app) {
     console.log('repeatYes');
