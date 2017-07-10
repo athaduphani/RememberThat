@@ -130,7 +130,7 @@ restService.post('/transaction', function(req, res) {
         db.close();
         let responseDate = 'You bought ';
         for (var i = 0; i < result.length; i++) {
-            responseDate = responseDate +'  '+ result[i].Items + ' on ' + result[i].date;
+            responseDate = responseDate +'  '+ result[i].item + ' on ' + result[i].date;
           }
         let prompt = printf(responseDate);
       ask(app, prompt);
