@@ -129,9 +129,9 @@ restService.post('/transaction', function(req, res) {
         if (err) throw err;
         db.close();
         let responseDate = 'You bought ';
-        // for (var i = 0; i < result.length; i++) {
-        //     response = response +'  '+ result[i].Items + ' on ' + result[i].date;
-        //   }
+        for (var i = 0; i < result.length; i++) {
+            responseDate = responseDate +'  '+ result[i].Items + ' on ' + result[i].date;
+          }
         let prompt = printf(responseDate);
       ask(app, prompt);
         }); // End DB Function
