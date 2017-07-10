@@ -128,11 +128,11 @@ restService.post('/transaction', function(req, res) {
         db.collection("transaction").find({"item":req.body.result.parameters.items[0]}).toArray(function(err, result){
         if (err) throw err;
         db.close();
-        let result = 'You bought ';
+        let response = 'You bought ';
         // for (var i = 0; i < result.length; i++) {
-        //     result = result +'  '+ result[i].Items + ' on ' + result[i].date;
+        //     response = response +'  '+ result[i].Items + ' on ' + result[i].date;
         //   }
-        prompt = printf(result + result.length);
+        prompt = printf(response + result.length);
       ask(app, prompt);
         }); // End DB Function
 
