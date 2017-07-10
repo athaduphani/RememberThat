@@ -40,8 +40,6 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 // Start of transaction function
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
-  // var body_app = req.body;
-  // var result_app = req.body.result;
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
 
 // Utility function to pick prompts
@@ -188,7 +186,7 @@ restService.post('/transaction', function(req, res) {
     // Mapping the actions
     let actionMap = new Map();
     actionMap.set(SAVE_ACTION, save);
-    // actionMap.set(RETRIEVE_ACTION, retrieve);
+    actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(WELCOME_ACTION, welcome);
     actionMap.set(REPEAT_YES_ACTION, repeatYes);
     actionMap.set(REPEAT_NO_ACTION, repeatNo);
