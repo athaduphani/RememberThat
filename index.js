@@ -125,7 +125,7 @@ restService.post('/transaction', function(req, res) {
       function retrieve (app) {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({$and: [{"type":"Vegetable"},{"item":req.body.result.parameters.items[0]}]}).toArray(function(err, result){
+        db.collection("transaction").find({"item":req.body.result.parameters.items[0]}).toArray(function(err, result){
         if (err) throw err;
         db.close();
         let result = 'You bought ';
