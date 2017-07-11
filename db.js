@@ -30,7 +30,7 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
         //   }else {
         //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
         //   }
-          responseDate = responseDate + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
+          responseDate = responseDate + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
           itemName = result[i].item;
         // }
         }
