@@ -126,7 +126,7 @@ restService.post('/transaction', function(req, res) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({$or:[{"type":req.body.result.parameters.type},{"item":{$in: req.body.result.parameters.Items}]}}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$or:[{"type":req.body.result.parameters.type},{"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         db.close();
         let responseDate = '';
@@ -150,7 +150,6 @@ restService.post('/transaction', function(req, res) {
       ask(app, prompt);
         }); // End DB Function
     });
-
   } // End retrieve function
   // Start of repeatYes function
   function repeatYes (app) {
