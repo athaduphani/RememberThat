@@ -137,7 +137,12 @@ restService.post('/transaction', function(req, res) {
             responseDate = responseDate + ',' + result[i].date;
           }
           else{
-            responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  +result[i].date;
+            if(i=0){
+              responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  +result[i].date;
+            }else {
+              responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
+            }
+
             itemName = result[i].item;
           }
           }
