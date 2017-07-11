@@ -136,7 +136,7 @@ restService.post('/transaction', function(req, res) {
           //   responseDate = responseDate + ',' + result[i].date;
           // }
           // else{
-            responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  result[i].date;
+            responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  +result[i].date;
           // }
           }
         let prompt = printf(responseDate + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
