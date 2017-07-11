@@ -129,7 +129,9 @@ restService.post('/transaction', function(req, res) {
         db.collection("transaction").find({$or:[{"type":{$in: req.body.result.parameters.type}},{"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         db.close();
-        let responseDate = '';
+        let responseForWhat = '';
+        let responseForWhen = '';
+        let responseGeneral='';
         let itemName ='NA';
         for (var i = 0; i < result.length; i++) {
 
@@ -142,11 +144,18 @@ restService.post('/transaction', function(req, res) {
           //   }else {
           //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
           //   }
-            responseDate = responseDate + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
+          if(req.body.result.parameters.questionTag == "what"){
+            responseForWhat = responseForWhat + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
+          }else if{
+            responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
+          }else{
+            response = '';
+          }
+            response = response + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
             itemName = result[i].item;
           // }
           }
-        let prompt = printf(responseDate + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+        let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
         }); // End DB Function
     });
