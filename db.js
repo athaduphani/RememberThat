@@ -12,18 +12,29 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 //
 // });
     var firstTimeUserPrompt = '';
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  db.collection("transaction").find({"SessionId":'a9ac51ae-3dbd-4cd9-91ee-9af3e4796646'}).toArray(function(err, result){
-  if (err) throw err;
-  if (result.length == 0) {
-    firstTimeUserPrompt = 'getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES)';
-  }else{
-    firstTimeUserPrompt = ' Nope ';
-  }
-  console.log(firstTimeUserPrompt);
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      db.collection("transaction").find({$or:[{"type":"Vegetable"},{"item":{$in: []}}]}).sort({"item":1}).toArray(function(err, result){
+      if (err) throw err;
+      db.close();
+      let responseDate = '';
+      let itemName ='NA';
+      for (var i = 0; i < result.length; i++) {
 
-  db.close();
+        // if(result[i].item == itemName){
+        //   responseDate = responseDate + ',' + result[i].date;
+        // }
+        // else{
+        //   if(i == 0){
+        //     responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  + result[i].date;
+        //   }else {
+        //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
+        //   }
+          responseDate = responseDate + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
+          itemName = result[i].item;
+        // }
+        }
+        console.log(responseDate);
   // firstTimeUserPrompt = 'result length ' + result.length;
   // if (result.length = 0) {
   //   return true;
