@@ -132,6 +132,7 @@ restService.post('/transaction', function(req, res) {
         let responseForWhat = '';
         let responseForWhen = '';
         let responseGeneral='';
+        let response = '';
         let itemName ='NA';
         for (var i = 0; i < result.length; i++) {
 
@@ -145,14 +146,14 @@ restService.post('/transaction', function(req, res) {
           //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
           //   }
           if(req.body.result.parameters.questionTag == "what"){
-            responseForWhat = responseForWhat + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
-          }else if{
+            responseForWhat = responseForWhat + result[i].item + ', ';
+          }else if(req.body.result.parameters.questionTag == "when"){
             responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
           }else{
-            response = '';
+            responseGeneral = '';
           }
-            response = response + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
-            itemName = result[i].item;
+            response = responseForWhat + responseForWhen + responseGeneral;
+            // itemName = result[i].item;
           // }
           }
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
