@@ -136,7 +136,7 @@ restService.post('/transaction', function(req, res) {
         let response = '';
         let itemName ='NA';
         if(result.length == 0){
-          if (req.body.result.parameters.Items.length ==0) {
+          if (req.body.result.parameters.Items.length == 0) {
             for (var i = 0; i < req.body.result.parameters.type.length; i++) {
               responseGeneral = responseGeneral + req.body.result.parameters.type[i] ;
             }
@@ -168,12 +168,13 @@ restService.post('/transaction', function(req, res) {
           }else{
             responseForWhat = '';
           }
-            response = responseForWhat + responseForWhen + responseGeneral;
+
             itemName = result[i].item;
 
           // }
           }
         }
+        response = responseForWhat + responseForWhen + responseGeneral;
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
         }); // End DB Function
