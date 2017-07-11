@@ -129,15 +129,15 @@ restService.post('/transaction', function(req, res) {
         db.collection("transaction").find({"item":{$in: req.body.result.parameters.Items}}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         db.close();
-        let responseDate = 'Hi ';
+        let responseDate = '';
         for (var i = 0; i < result.length; i++) {
-          // let itemName ='NA';
-          // if(result[i].item == itemName){
-          //   responseDate = responseDate + ',' + result[i].date;
-          // }
-          // else{
+          let itemName ='NA';
+          if(result[i].item == itemName){
+            responseDate = responseDate + ',' + result[i].date;
+          }
+          else{
             responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  +result[i].date;
-          // }
+          }
           }
         let prompt = printf(responseDate + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
