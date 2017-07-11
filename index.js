@@ -135,7 +135,7 @@ restService.post('/transaction', function(req, res) {
         let response = '';
         let itemName ='NA';
         for (var i = 0; i < result.length; i++) {
-
+if (itemName != result[i].item){
           // if(result[i].item == itemName){
           //   responseDate = responseDate + ',' + result[i].date;
           // }
@@ -153,7 +153,8 @@ restService.post('/transaction', function(req, res) {
             responseGeneral = '';
           }
             response = responseForWhat + responseForWhen + responseGeneral;
-            // itemName = result[i].item;
+            itemName = result[i].item;
+          }
           // }
           }
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
