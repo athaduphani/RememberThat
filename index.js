@@ -132,9 +132,20 @@ restService.post('/transaction', function(req, res) {
         db.close();
         let responseForWhat = 'You have ';
         let responseForWhen = '';
-        let responseGeneral='You dont have ';
+        let responseGeneral='You dont have any ';
         let response = '';
         let itemName ='NA';
+        if(result.length == 0){
+          if (req.body.result.parameters.Items.length ==0) {
+            for (var i = 0; i < req.body.result.parameters.type.length; i++) {
+              responseGeneral = responseGeneral + req.body.result.parameters.type[i] ;
+            }
+          }else{
+          for (var i = 0; i < req.body.result.parameters.Items.length; i++) {
+            responseGeneral = responseGeneral + req.body.result.parameters.Items[i] ;
+          }
+        }
+      }else{
         for (var i = 0; i < result.length; i++) {
 
           // if(result[i].item == itemName){
@@ -153,16 +164,16 @@ restService.post('/transaction', function(req, res) {
           }
           }else if(req.body.result.parameters.questionTag == "when"){
             responseForWhat = '';
-            responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
+            responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
           }else{
             responseForWhat = '';
-            responseGeneral = responseGeneral + result[i].item ;
           }
             response = responseForWhat + responseForWhen + responseGeneral;
             itemName = result[i].item;
 
           // }
           }
+        }
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
         }); // End DB Function
