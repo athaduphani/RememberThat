@@ -132,7 +132,7 @@ restService.post('/transaction', function(req, res) {
         db.close();
         let responseForWhat = 'You have ';
         let responseForWhen = '';
-        let responseGeneral='';
+        let responseGeneral='You dont have ';
         let response = '';
         let itemName ='NA';
         for (var i = 0; i < result.length; i++) {
@@ -147,6 +147,7 @@ restService.post('/transaction', function(req, res) {
           //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
           //   }
           if(req.body.result.parameters.questionTag == "what"){
+            responseGeneral='';
             if (itemName != result[i].item){
             responseForWhat = responseForWhat + result[i].item + ', ';
           }
@@ -154,7 +155,8 @@ restService.post('/transaction', function(req, res) {
             responseForWhat = '';
             responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
           }else{
-            responseGeneral = '';
+            responseForWhat = '';
+            responseGeneral = responseGeneral + result[i].item ;
           }
             response = responseForWhat + responseForWhen + responseGeneral;
             itemName = result[i].item;
