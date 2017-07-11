@@ -133,16 +133,16 @@ restService.post('/transaction', function(req, res) {
         let itemName ='NA';
         for (var i = 0; i < result.length; i++) {
 
-          if(result[i].item == itemName){
-            responseDate = responseDate + ',' + result[i].date;
-          }
-          else{
-            if(i == 0){
-              responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  + result[i].date;
-            }else {
-              responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
-            }
-
+          // if(result[i].item == itemName){
+          //   responseDate = responseDate + ',' + result[i].date;
+          // }
+          // else{
+          //   if(i == 0){
+          //     responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  + result[i].date;
+          //   }else {
+          //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
+          //   }
+            responseDate = responseDate + 'You Bought' + result[i].item + ' on'  + result[i].date + '\n';
             itemName = result[i].item;
           }
           }
