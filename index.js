@@ -129,13 +129,13 @@ restService.post('/transaction', function(req, res) {
         db.collection("transaction").find({$or:[{"type":{$in: req.body.result.parameters.type}},{"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         db.close();
-        let responseForWhat = '';
+        let responseForWhat = 'You have ';
         let responseForWhen = '';
         let responseGeneral='';
         let response = '';
         let itemName ='NA';
         for (var i = 0; i < result.length; i++) {
-if (itemName != result[i].item){
+
           // if(result[i].item == itemName){
           //   responseDate = responseDate + ',' + result[i].date;
           // }
@@ -146,7 +146,9 @@ if (itemName != result[i].item){
           //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
           //   }
           if(req.body.result.parameters.questionTag == "what"){
+            if (itemName != result[i].item){
             responseForWhat = responseForWhat + result[i].item + ', ';
+          }
           }else if(req.body.result.parameters.questionTag == "when"){
             responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
           }else{
@@ -154,7 +156,7 @@ if (itemName != result[i].item){
           }
             response = responseForWhat + responseForWhen + responseGeneral;
             itemName = result[i].item;
-          }
+
           // }
           }
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
