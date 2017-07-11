@@ -130,13 +130,15 @@ restService.post('/transaction', function(req, res) {
         if (err) throw err;
         db.close();
         let responseDate = '';
+        let itemName ='NA';
         for (var i = 0; i < result.length; i++) {
-          let itemName ='NA';
+
           if(result[i].item == itemName){
             responseDate = responseDate + ',' + result[i].date;
           }
           else{
             responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  +result[i].date;
+            itemName = result[i].item;
           }
           }
         let prompt = printf(responseDate + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
