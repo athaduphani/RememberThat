@@ -150,6 +150,7 @@ restService.post('/transaction', function(req, res) {
             responseForWhat = responseForWhat + result[i].item + ', ';
           }
           }else if(req.body.result.parameters.questionTag == "when"){
+            responseForWhat = '';
             responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '\n.';
           }else{
             responseGeneral = '';
