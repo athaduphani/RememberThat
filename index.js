@@ -192,9 +192,9 @@ restService.post('/transaction', function(req, res) {
         //     //  });
         //       db.collection('transaction').deleteMany({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]});
         //    });
-           let response = req.body.result.parameters.Items + ' removed from your items';
-           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-         ask(app, prompt);
+        //    let response = req.body.result.parameters.Items + ' removed from your items';
+        //    let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+        //  ask(app, prompt);
   }
   // Start of repeatYes function
   function repeatYes (app) {
