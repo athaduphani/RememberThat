@@ -8,9 +8,9 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
-const items = {
-  "vegetable"= []
-}
+// const items = {
+//   "vegetable"= []
+// }
 const SAVE_ACTION = 'save';
 const RETRIEVE_ACTION = 'retrieve';
 const WELCOME_ACTION = 'welcome';
