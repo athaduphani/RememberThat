@@ -183,16 +183,16 @@ restService.post('/transaction', function(req, res) {
   } // End retrieve function
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
-        //  MongoClient.connect(url, function(err, db) {
-        //    if (err) throw err;
-        //     //  db.collection("transaction").insertMany(transactions, function(err, res) {
-        //     //    if (err) throw err;
-        //     //    console.log("1 record inserted");
-        //     //    db.close();
-        //     //  });
-        //       db.collection('transaction').deleteMany({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]});
-        //    });
-           let response = req.body.result.parameters.Items + ' removed from your items';
+         MongoClient.connect(url, function(err, db) {
+           if (err) throw err;
+            //  db.collection("transaction").insertMany(transactions, function(err, res) {
+            //    if (err) throw err;
+            //    console.log("1 record inserted");
+            //    db.close();
+            //  });
+              db.collection('transaction').deleteMany({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]});
+           });
+           let response = req.body.result.parameters.Items[0] + ' removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
   }
