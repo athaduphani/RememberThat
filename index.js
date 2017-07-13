@@ -181,7 +181,7 @@ restService.post('/transaction', function(req, res) {
         }); // End DB Function
     });
   } // End retrieve function
-  function remove(app){
+  function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
          MongoClient.connect(url, function(err, db) {
            if (err) throw err;
