@@ -14,34 +14,15 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
     var firstTimeUserPrompt = '';
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-      db.collection("transaction").find({$or:[{"type":"Vegetable"},{"item":{$in: []}}]}).sort({"item":1}).toArray(function(err, result){
-      if (err) throw err;
-      db.close();
-      let responseDate = '';
-      let itemName ='NA';
-      for (var i = 0; i < result.length; i++) {
-
-        // if(result[i].item == itemName){
-        //   responseDate = responseDate + ',' + result[i].date;
-        // }
-        // else{
-        //   if(i == 0){
-        //     responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  + result[i].date;
-        //   }else {
-        //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
-        //   }
-          responseDate = responseDate + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-          itemName = result[i].item;
-        // }
-        }
-        console.log(responseDate);
-  // firstTimeUserPrompt = 'result length ' + result.length;
-  // if (result.length = 0) {
-  //   return true;
-  // }else{
-  //   return false;
-  // }
-}); // End DB Function
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+         //  db.collection("transaction").insertMany(transactions, function(err, res) {
+         //    if (err) throw err;
+         //    console.log("1 record inserted");
+         //    db.close();
+         //  });
+           db.collection('transaction').deleteMany({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]});
+        });
 });
 // transactions[0] = {
 //    transactionId: 213123,
