@@ -190,7 +190,7 @@ restService.post('/transaction', function(req, res) {
             //    console.log("1 record inserted");
             //    db.close();
             //  });
-              db.transaction.remove({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item":{$in: req.body.result.parameters.Items}}]});
+              db.transaction.deleteMany({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]});
            });
            let response = req.body.result.parameters.Items + ' removed from your items';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
