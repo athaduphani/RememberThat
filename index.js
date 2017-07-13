@@ -127,7 +127,7 @@ restService.post('/transaction', function(req, res) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({$or:[{"type":{$in: req.body.result.parameters.type}},{"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:["sessionId": req.body.result.parameters.sessionId, {$or:[{"type":{$in: req.body.result.parameters.type}},{"item":{$in: req.body.result.parameters.Items}}]}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         db.close();
         let responseForWhat = 'You have ';
@@ -158,6 +158,7 @@ restService.post('/transaction', function(req, res) {
           //   }else {
           //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
           //   }
+        // }
           if(req.body.result.parameters.questionTag == "what"){
             responseGeneral='';
             if (itemName != result[i].item){
@@ -169,10 +170,7 @@ restService.post('/transaction', function(req, res) {
           }else{
             responseForWhat = '';
           }
-
             itemName = result[i].item;
-
-          // }
           }
         }
         response = responseForWhat + responseForWhen + responseGeneral;
@@ -181,6 +179,9 @@ restService.post('/transaction', function(req, res) {
         }); // End DB Function
     });
   } // End retrieve function
+  function remove(){
+        app.setContext(REPEAT_YES_NO_CONTEXT);
+  }
   // Start of repeatYes function
   function repeatYes (app) {
     console.log('repeatYes');
