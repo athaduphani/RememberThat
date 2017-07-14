@@ -18,6 +18,7 @@ const REMOVE_ACTION = 'remove';
 // const MODIFY_ACTION = 'modify';
 const REPEAT_YES_ACTION = 'repeat_yes';
 const REPEAT_NO_ACTION = 'repeat_no';
+const DEFAULT_FALLBACK_ACTION = 'input.unknown';
 const FIRST_INTERACTION_EXAMPLES = ['I can save dates for your household items and tell you when u need them. For Example, You can say \"I bought milk today\".', 'I can save, retrieve and update dates for your household items. For Example, You can say \"I bought apples today\".','I can save, retrieve and update dates for your household items. For Example, You can say \"I bought toyota camry today\".']
 const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.','Welcome back to Dates Bot.'];
 const INVOCATION_PROMPTS = ['How can i help you today?', 'How may I assist you today?'];
@@ -31,6 +32,8 @@ const REMOVE_CONTEXT = 'remove';
 const REPEAT_YES_NO_CONTEXT = 'repeat_yes_no';
 const SAVE_RE_INVOCATION_PROMPT = ['What do you want to save?'];
 const RETRIEVE_RE_INVOCATION_PROMPT = ['What do you want to retrieve?'];
+const FALLBACK_PROMPT_1 = ['Are you done playing Number Genie?'];
+const FALLBACK_PROMPT_2 = ['Since I\'m still having trouble, I\'ll stop here. Let’s play again soon.'];
 // const MODIFY_RE_INVOCATION_PROMPT = ['What do you want to modify?'];
 const REMOVE_RE_INVOCATION_PROMPT = ['What do you want to remove?'];
 const QUIT_PROMPTS = ['Alright, talk to you later then.', 'OK, till next time.','OK, Make sure to ask me if you want any date you saved.','See you later.', 'OK, Make sure to ask me what items you have and how fresh they are next time'];
@@ -223,9 +226,21 @@ restService.post('/transaction', function(req, res) {
     app.tell(printf(getRandomPrompt(app, QUIT_PROMPTS)));
   } // End of saveNo function
   //   //Start fallback function
-  //     function fallback (app){
-  //
-  //     } // End of fallback function
+  function defaultFallback (app) {
+    console.log('defaultFallback: ' + app.data.fallbackCount);
+    if (app.data.fallbackCount === undefined) {
+      app.data.fallbackCount = 0;
+    }
+    app.data.fallbackCount++;
+    // Provide two prompts before ending game
+    if (app.data.fallbackCount === 1) {
+      app.setContext(REPEAT_YES_NO_CONTEXT);
+      ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
+    } else {
+      app.tell(printf(getRandomPrompt(app, FALLBACK_PROMPT_2)));
+    }
+  }
+ // End of fallback function
       function ask (app, prompt, persist) {
         console.log('ask: ' + prompt);
         doPersist(persist);
@@ -249,6 +264,7 @@ restService.post('/transaction', function(req, res) {
     actionMap.set(WELCOME_ACTION, welcome);
     actionMap.set(REPEAT_YES_ACTION, repeatYes);
     actionMap.set(REPEAT_NO_ACTION, repeatNo);
+    actionMap.set(DEFAULT_FALLBACK_ACTION, defaultFallback);
     app.handleRequest(actionMap);
     }); // End of Transaction function
     // app is listening on the port 8000
