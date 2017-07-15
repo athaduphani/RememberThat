@@ -222,7 +222,7 @@ restService.post('/transaction', function(req, res) {
     app.setContext(REMOVE_CONTEXT);
     ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, REMOVE_RE_INVOCATION_PROMPT)));
   }else if (req.body.result.resolvedQuery == 'yes') {
-      app.setContext(REMOVE_CONTEXT);
+    app.setContext(REPEAT_YES_NO_CONTEXT);
       ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' You can say Save, Retrieve or Remove '));
     }else {
     ask(app, "Sorry I didn\'t understand.You can say Save, Retrieve or Remove");
