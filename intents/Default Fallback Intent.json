@@ -1,38 +1,29 @@
 {
   "userSays": [],
-  "id": "b660164a-ec6d-495b-9f94-d1829a11bec3",
+  "id": "b2ed7b9f-ad0d-4f54-ae5b-6f7b2cb06b7a",
   "name": "Default Fallback Intent",
-  "auto": true,
+  "auto": false,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
       "action": "input.unknown",
-      "affectedContexts": [],
-      "parameters": [],
-      "messages": [
+      "affectedContexts": [
         {
-          "type": 0,
-          "speech": [
-            "I didn\u0027t get that. Can you say it again?",
-            "I missed what you said. Say it again?",
-            "Sorry, could you say that again?",
-            "Sorry, can you say that again?",
-            "Can you say that again?",
-            "Sorry, I didn\u0027t get that.",
-            "Sorry, what was that?",
-            "One more time?",
-            "What was that?",
-            "Say that again?",
-            "I didn\u0027t get that.",
-            "I missed that."
-          ]
+          "name": "DefaultFallbackIntent-followup",
+          "parameters": {},
+          "lifespan": 2
         }
-      ]
+      ],
+      "parameters": [],
+      "messages": [],
+      "defaultResponsePlatforms": {
+        "google": true
+      }
     }
   ],
   "priority": 500000,
-  "webhookUsed": false,
+  "webhookUsed": true,
   "webhookForSlotFilling": false,
   "fallbackIntent": true,
   "events": []

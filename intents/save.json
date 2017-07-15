@@ -1,15 +1,33 @@
 {
   "userSays": [
     {
-      "id": "729776f7-dd8c-4e76-afbe-4e7197c3a350",
+      "id": "620f9ea5-f3b6-4810-9fff-2afe2de89d1b",
       "data": [
         {
-          "text": "i had "
+          "text": "i "
         },
         {
-          "text": "oranges",
-          "alias": "Fruit",
-          "meta": "@Fruit",
+          "text": "bought",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "5",
+          "alias": "number",
+          "meta": "@sys.number",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "apples",
+          "alias": "Items",
+          "meta": "@Items",
           "userDefined": false
         },
         {
@@ -26,7 +44,54 @@
       "count": 0
     },
     {
-      "id": "79edaaf9-f2d2-42a0-b246-e71f7e92fff3",
+      "id": "8fcaf216-e570-4f9c-aeb8-ef3762052b7f",
+      "data": [
+        {
+          "text": "save",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "aba7b3f8-f227-4498-bed7-9abf236ab5c0",
+      "data": [
+        {
+          "text": "i "
+        },
+        {
+          "text": "purchased",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        },
+        {
+          "text": " a "
+        },
+        {
+          "text": "chromecast",
+          "alias": "Items",
+          "meta": "@Items",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "on 07/10/2017",
+          "alias": "date",
+          "meta": "@sys.date",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "8ce37e46-5eec-4fe4-a1cb-41386023a98d",
       "data": [
         {
           "text": "i "
@@ -41,9 +106,61 @@
           "text": " "
         },
         {
+          "text": "cauliflower",
+          "alias": "Items",
+          "meta": "@Items",
+          "userDefined": false
+        },
+        {
+          "text": " and "
+        },
+        {
           "text": "tomatoes",
-          "alias": "Vegetable",
-          "meta": "@Vegetable",
+          "alias": "Items",
+          "meta": "@Items",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "yesterday",
+          "alias": "date",
+          "meta": "@sys.date",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f5a1e82f-1cb5-492f-86de-48eedd4dd83a",
+      "data": [
+        {
+          "text": "i "
+        },
+        {
+          "text": "bought",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "oranges",
+          "alias": "Items",
+          "meta": "@Items",
+          "userDefined": false
+        },
+        {
+          "text": " and "
+        },
+        {
+          "text": "bananas",
+          "alias": "Items",
+          "meta": "@Items",
           "userDefined": false
         },
         {
@@ -60,10 +177,12 @@
       "count": 0
     }
   ],
-  "id": "fa8fde8b-8dac-4428-87cc-4d363ac8ed8c",
+  "id": "8e993435-abb0-4818-b135-8d0b580935c5",
   "name": "save",
   "auto": true,
-  "contexts": [],
+  "contexts": [
+    "welcome"
+  ],
   "responses": [
     {
       "resetContexts": false,
@@ -77,21 +196,31 @@
           "isList": false
         },
         {
-          "dataType": "@Vegetable",
-          "name": "Vegetable",
-          "value": "$Vegetable",
-          "isList": false
+          "required": true,
+          "dataType": "@Items",
+          "name": "Items",
+          "value": "$Items.original",
+          "prompts": [
+            "Sorry! I didn\u0027t understand that. Which items do u want me to save?"
+          ],
+          "isList": true
         },
         {
+          "required": true,
           "dataType": "@sys.date",
           "name": "date",
           "value": "$date",
+          "prompts": [
+            "when did u get these $Items"
+          ],
           "isList": false
         },
         {
-          "dataType": "@Fruit",
-          "name": "Fruit",
-          "value": "$Fruit",
+          "dataType": "@sys.number",
+          "name": "number",
+          "value": "$number",
+          "prompts": [],
+          "defaultValue": "1",
           "isList": false
         }
       ],
@@ -101,14 +230,14 @@
           "speech": []
         }
       ],
-      "defaultResponsePlatforms": [
-        "google"
-      ]
+      "defaultResponsePlatforms": {
+        "google": true
+      }
     }
   ],
   "priority": 500000,
   "webhookUsed": true,
-  "webhookForSlotFilling": true,
+  "webhookForSlotFilling": false,
   "fallbackIntent": false,
   "events": []
 }

@@ -1,0 +1,113 @@
+{
+  "userSays": [
+    {
+      "id": "b2e280be-bb0f-4367-8365-c1b7d7f30e25",
+      "data": [
+        {
+          "text": "when",
+          "alias": "questionTag",
+          "meta": "@questionTag",
+          "userDefined": false
+        },
+        {
+          "text": " did i "
+        },
+        {
+          "text": "buy",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "onions",
+          "alias": "Items",
+          "meta": "@Items",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ef47170f-3a3c-48fa-bbb5-a441df46cd63",
+      "data": [
+        {
+          "text": "what",
+          "alias": "questionTag",
+          "meta": "@questionTag",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "vegetables",
+          "alias": "type",
+          "meta": "@type",
+          "userDefined": false
+        },
+        {
+          "text": " do i have"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "438df5a0-3964-4dba-b72e-59d4fdf73631",
+  "name": "retrieve",
+  "auto": true,
+  "contexts": [
+    "welcome"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "retrieve",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@purpose",
+          "name": "purpose",
+          "value": "$purpose",
+          "isList": false
+        },
+        {
+          "dataType": "@questionTag",
+          "name": "questionTag",
+          "value": "$questionTag",
+          "isList": false
+        },
+        {
+          "dataType": "@type",
+          "name": "type",
+          "value": "$type",
+          "isList": true
+        },
+        {
+          "dataType": "@Items",
+          "name": "Items",
+          "value": "$Items.original",
+          "isList": true
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {
+        "google": true
+      }
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

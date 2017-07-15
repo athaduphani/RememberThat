@@ -1,60 +1,98 @@
 {
   "userSays": [
     {
-      "id": "633ecbca-1b5a-4ae3-9bb3-e1ff4c8b13b3",
+      "id": "004b85c7-06b8-4ccb-8994-a6b3bfda44b8",
       "data": [
         {
-          "text": "Hi Tareek"
+          "text": "Talk to DatesBot"
         }
       ],
       "isTemplate": false,
       "count": 0
     },
     {
-      "id": "c0c9ede2-c3ce-4a7f-ae21-dc7fa71c5140",
+      "id": "8ca6e059-a0ad-4b01-9ca2-2429864ae8ef",
       "data": [
         {
-          "text": "Talk to Tareek"
+          "text": "i want to talk to "
+        },
+        {
+          "text": "datesbot",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "b044603f-4da9-4673-bfb5-2f58b33fc783",
+      "data": [
+        {
+          "text": "connect me to "
+        },
+        {
+          "text": "datesbot",
+          "meta": "@sys.ignore",
+          "userDefined": false
         }
       ],
       "isTemplate": false,
       "count": 0
     },
     {
-      "id": "dcd7ac23-3b3d-41bc-9a2d-e8dc30b2ec0e",
+      "id": "c410c818-5617-444b-a323-190018d6bdba",
       "data": [
         {
-          "text": "i want to talk to tareek"
+          "text": "datesbot",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "date",
+          "meta": "@sys.ignore",
+          "userDefined": false
+        },
+        {
+          "text": " remembering app"
         }
       ],
       "isTemplate": false,
       "count": 0
     }
   ],
-  "id": "e52dda82-592e-478d-b1e3-43e494541ad4",
+  "id": "512d5700-2845-452d-958d-10fcfd1261ac",
   "name": "Default Welcome Intent",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "action": "input.welcome",
-      "affectedContexts": [],
+      "action": "welcome",
+      "affectedContexts": [
+        {
+          "name": "welcome",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
       "parameters": [],
       "messages": [
         {
           "type": 0,
-          "speech": [
-            "Sure. What do u want me to remember?",
-            "Hello! What do you want me to save?",
-            "Hi! What did you do today?"
-          ]
+          "speech": []
         }
-      ]
+      ],
+      "defaultResponsePlatforms": {
+        "google": true
+      }
     }
   ],
   "priority": 500000,
-  "webhookUsed": false,
+  "webhookUsed": true,
   "webhookForSlotFilling": false,
   "fallbackIntent": false,
   "events": [

@@ -1,0 +1,54 @@
+{
+  "userSays": [
+    {
+      "id": "3be5de8d-9aef-40a8-9658-379d08c30edc",
+      "data": [
+        {
+          "text": "you too!"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "9e3e1b7c-a383-4950-a298-cb7e1ccc99b2",
+      "data": [
+        {
+          "text": "Thank you!"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "5ab2de70-0242-45e0-ae42-4b957993ef29",
+  "name": "conversation-end",
+  "auto": true,
+  "contexts": [
+    "conv_end"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "speech": [
+            "You are welcome! Have a good day!",
+            "Have a good day!",
+            "Talk to you soon!",
+            ":-)"
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {}
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

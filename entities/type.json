@@ -1,0 +1,36 @@
+{
+  "id": "73bc45b2-e87a-4714-9767-ff8f58788e03",
+  "name": "type",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "Vegetable",
+      "synonyms": [
+        "vegetables",
+        "vegetables"
+      ]
+    },
+    {
+      "value": "Fruit",
+      "synonyms": [
+        "fruits",
+        "fruit"
+      ]
+    },
+    {
+      "value": "Car",
+      "synonyms": [
+        "cars",
+        "car"
+      ]
+    },
+    {
+      "value": "Electronics",
+      "synonyms": [
+        "electronics"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

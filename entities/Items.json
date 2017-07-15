@@ -1,0 +1,1368 @@
+{
+  "id": "a1fa0c18-45cb-47c5-ab72-0c20eb78d908",
+  "name": "Items",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "artichoke",
+      "synonyms": [
+        "artichoke"
+      ]
+    },
+    {
+      "value": "arugula",
+      "synonyms": [
+        "arugula"
+      ]
+    },
+    {
+      "value": "asparagus",
+      "synonyms": [
+        "asparagus"
+      ]
+    },
+    {
+      "value": "aubergine",
+      "synonyms": [
+        "aubergine"
+      ]
+    },
+    {
+      "value": "eggplant",
+      "synonyms": [
+        "eggplant"
+      ]
+    },
+    {
+      "value": "amaranth",
+      "synonyms": [
+        "amaranth"
+      ]
+    },
+    {
+      "value": "legumes",
+      "synonyms": [
+        "legumes"
+      ]
+    },
+    {
+      "value": "alfalfa sprouts",
+      "synonyms": [
+        "alfalfa sprouts"
+      ]
+    },
+    {
+      "value": "azuki beans",
+      "synonyms": [
+        "azuki beans"
+      ]
+    },
+    {
+      "value": "bean sprouts",
+      "synonyms": [
+        "bean sprouts"
+      ]
+    },
+    {
+      "value": "black beans",
+      "synonyms": [
+        "black beans"
+      ]
+    },
+    {
+      "value": "black-eyed peas",
+      "synonyms": [
+        "black-eyed peas"
+      ]
+    },
+    {
+      "value": "borlotti bean",
+      "synonyms": [
+        "borlotti bean"
+      ]
+    },
+    {
+      "value": "broad beans",
+      "synonyms": [
+        "broad beans"
+      ]
+    },
+    {
+      "value": "chickpeas",
+      "synonyms": [
+        "chickpeas"
+      ]
+    },
+    {
+      "value": "green beans",
+      "synonyms": [
+        "green beans"
+      ]
+    },
+    {
+      "value": "kidney beans",
+      "synonyms": [
+        "kidney beans"
+      ]
+    },
+    {
+      "value": "lentils",
+      "synonyms": [
+        "lentils"
+      ]
+    },
+    {
+      "value": "lima beans",
+      "synonyms": [
+        "lima beans"
+      ]
+    },
+    {
+      "value": "mung beans",
+      "synonyms": [
+        "mung beans"
+      ]
+    },
+    {
+      "value": "navy beans",
+      "synonyms": [
+        "navy beans"
+      ]
+    },
+    {
+      "value": "pinto beans",
+      "synonyms": [
+        "pinto beans"
+      ]
+    },
+    {
+      "value": "runner beans",
+      "synonyms": [
+        "runner beans"
+      ]
+    },
+    {
+      "value": "split peas",
+      "synonyms": [
+        "split peas"
+      ]
+    },
+    {
+      "value": "soy beans",
+      "synonyms": [
+        "soy beans"
+      ]
+    },
+    {
+      "value": "peas",
+      "synonyms": [
+        "peas"
+      ]
+    },
+    {
+      "value": "mangetout",
+      "synonyms": [
+        "mangetout"
+      ]
+    },
+    {
+      "value": "beet greens",
+      "synonyms": [
+        "beet greens"
+      ]
+    },
+    {
+      "value": "bok choy",
+      "synonyms": [
+        "bok choy"
+      ]
+    },
+    {
+      "value": "broccoflower",
+      "synonyms": [
+        "broccoflower"
+      ]
+    },
+    {
+      "value": "broccoli",
+      "synonyms": [
+        "broccoli"
+      ]
+    },
+    {
+      "value": "brussels sprouts",
+      "synonyms": [
+        "brussels sprouts"
+      ]
+    },
+    {
+      "value": "cabbage",
+      "synonyms": [
+        "cabbage"
+      ]
+    },
+    {
+      "value": "calabrese",
+      "synonyms": [
+        "calabrese"
+      ]
+    },
+    {
+      "value": "carrots",
+      "synonyms": [
+        "carrots"
+      ]
+    },
+    {
+      "value": "cauliflower",
+      "synonyms": [
+        "cauliflower"
+      ]
+    },
+    {
+      "value": "celery",
+      "synonyms": [
+        "celery"
+      ]
+    },
+    {
+      "value": "chard",
+      "synonyms": [
+        "chard"
+      ]
+    },
+    {
+      "value": "collard greens",
+      "synonyms": [
+        "collard greens"
+      ]
+    },
+    {
+      "value": "corn salad",
+      "synonyms": [
+        "corn salad"
+      ]
+    },
+    {
+      "value": "endive",
+      "synonyms": [
+        "endive"
+      ]
+    },
+    {
+      "value": "fiddleheads",
+      "synonyms": [
+        "fiddleheads"
+      ]
+    },
+    {
+      "value": "frisee",
+      "synonyms": [
+        "frisee"
+      ]
+    },
+    {
+      "value": "fennel",
+      "synonyms": [
+        "fennel"
+      ]
+    },
+    {
+      "value": "herbs and spices",
+      "synonyms": [
+        "herbs and spices"
+      ]
+    },
+    {
+      "value": "anise",
+      "synonyms": [
+        "anise"
+      ]
+    },
+    {
+      "value": "basil",
+      "synonyms": [
+        "basil"
+      ]
+    },
+    {
+      "value": "caraway",
+      "synonyms": [
+        "caraway"
+      ]
+    },
+    {
+      "value": "cilantro seeds",
+      "synonyms": [
+        "cilantro seeds"
+      ]
+    },
+    {
+      "value": "chamomile",
+      "synonyms": [
+        "chamomile"
+      ]
+    },
+    {
+      "value": "dill",
+      "synonyms": [
+        "dill"
+      ]
+    },
+    {
+      "value": "fennel",
+      "synonyms": [
+        "fennel"
+      ]
+    },
+    {
+      "value": "lavender",
+      "synonyms": [
+        "lavender"
+      ]
+    },
+    {
+      "value": "lemon grass",
+      "synonyms": [
+        "lemon grass"
+      ]
+    },
+    {
+      "value": "marjoram",
+      "synonyms": [
+        "marjoram"
+      ]
+    },
+    {
+      "value": "oregano",
+      "synonyms": [
+        "oregano"
+      ]
+    },
+    {
+      "value": "parsley",
+      "synonyms": [
+        "parsley"
+      ]
+    },
+    {
+      "value": "rosemary",
+      "synonyms": [
+        "rosemary"
+      ]
+    },
+    {
+      "value": "sage",
+      "synonyms": [
+        "sage"
+      ]
+    },
+    {
+      "value": "thyme",
+      "synonyms": [
+        "thyme"
+      ]
+    },
+    {
+      "value": "kale",
+      "synonyms": [
+        "kale"
+      ]
+    },
+    {
+      "value": "kohlrabi",
+      "synonyms": [
+        "kohlrabi"
+      ]
+    },
+    {
+      "value": "lettuce lactuca sativa",
+      "synonyms": [
+        "lettuce lactuca sativa"
+      ]
+    },
+    {
+      "value": "maize",
+      "synonyms": [
+        "maize"
+      ]
+    },
+    {
+      "value": "mushrooms",
+      "synonyms": [
+        "mushrooms"
+      ]
+    },
+    {
+      "value": "mustard greens",
+      "synonyms": [
+        "mustard greens"
+      ]
+    },
+    {
+      "value": "nettles",
+      "synonyms": [
+        "nettles"
+      ]
+    },
+    {
+      "value": "new zealand spinach",
+      "synonyms": [
+        "new zealand spinach"
+      ]
+    },
+    {
+      "value": "okra",
+      "synonyms": [
+        "okra"
+      ]
+    },
+    {
+      "value": "onion family",
+      "synonyms": [
+        "onion family"
+      ]
+    },
+    {
+      "value": "chives",
+      "synonyms": [
+        "chives"
+      ]
+    },
+    {
+      "value": "garlic",
+      "synonyms": [
+        "garlic"
+      ]
+    },
+    {
+      "value": "leek allium porrum",
+      "synonyms": [
+        "leek allium porrum"
+      ]
+    },
+    {
+      "value": "onion",
+      "synonyms": [
+        "onion"
+      ]
+    },
+    {
+      "value": "shallot",
+      "synonyms": [
+        "shallot"
+      ]
+    },
+    {
+      "value": "spring onion",
+      "synonyms": [
+        "spring onion"
+      ]
+    },
+    {
+      "value": "parsley",
+      "synonyms": [
+        "parsley"
+      ]
+    },
+    {
+      "value": "peppers",
+      "synonyms": [
+        "peppers"
+      ]
+    },
+    {
+      "value": "green pepper",
+      "synonyms": [
+        "green pepper"
+      ]
+    },
+    {
+      "value": "chili pepper",
+      "synonyms": [
+        "chili pepper"
+      ]
+    },
+    {
+      "value": "jalapeno",
+      "synonyms": [
+        "jalapeno"
+      ]
+    },
+    {
+      "value": "habanero",
+      "synonyms": [
+        "habanero"
+      ]
+    },
+    {
+      "value": "paprika",
+      "synonyms": [
+        "paprika"
+      ]
+    },
+    {
+      "value": "tabasco pepper",
+      "synonyms": [
+        "tabasco pepper"
+      ]
+    },
+    {
+      "value": "cayenne pepper",
+      "synonyms": [
+        "cayenne pepper"
+      ]
+    },
+    {
+      "value": "radicchio",
+      "synonyms": [
+        "radicchio"
+      ]
+    },
+    {
+      "value": "rhubarb",
+      "synonyms": [
+        "rhubarb"
+      ]
+    },
+    {
+      "value": "root vegetables",
+      "synonyms": [
+        "root vegetables"
+      ]
+    },
+    {
+      "value": "beetroot",
+      "synonyms": [
+        "beetroot"
+      ]
+    },
+    {
+      "value": "mangel-wurzel",
+      "synonyms": [
+        "mangel-wurzel"
+      ]
+    },
+    {
+      "value": "carrot",
+      "synonyms": [
+        "carrot"
+      ]
+    },
+    {
+      "value": "celeriac",
+      "synonyms": [
+        "celeriac"
+      ]
+    },
+    {
+      "value": "daikon",
+      "synonyms": [
+        "daikon"
+      ]
+    },
+    {
+      "value": "ginger",
+      "synonyms": [
+        "ginger"
+      ]
+    },
+    {
+      "value": "parsnip",
+      "synonyms": [
+        "parsnip"
+      ]
+    },
+    {
+      "value": "rutabaga",
+      "synonyms": [
+        "rutabaga"
+      ]
+    },
+    {
+      "value": "turnip",
+      "synonyms": [
+        "turnip"
+      ]
+    },
+    {
+      "value": "radish",
+      "synonyms": [
+        "radish"
+      ]
+    },
+    {
+      "value": "swede",
+      "synonyms": [
+        "swede"
+      ]
+    },
+    {
+      "value": "turnip",
+      "synonyms": [
+        "turnip"
+      ]
+    },
+    {
+      "value": "wasabi",
+      "synonyms": [
+        "wasabi"
+      ]
+    },
+    {
+      "value": "horseradish",
+      "synonyms": [
+        "horseradish"
+      ]
+    },
+    {
+      "value": "white radish",
+      "synonyms": [
+        "white radish"
+      ]
+    },
+    {
+      "value": "salsify",
+      "synonyms": [
+        "salsify"
+      ]
+    },
+    {
+      "value": "skirret",
+      "synonyms": [
+        "skirret"
+      ]
+    },
+    {
+      "value": "spinach",
+      "synonyms": [
+        "spinach"
+      ]
+    },
+    {
+      "value": "topinambur",
+      "synonyms": [
+        "topinambur"
+      ]
+    },
+    {
+      "value": "squashes",
+      "synonyms": [
+        "squashes"
+      ]
+    },
+    {
+      "value": "acorn squash",
+      "synonyms": [
+        "acorn squash"
+      ]
+    },
+    {
+      "value": "butternut squash",
+      "synonyms": [
+        "butternut squash"
+      ]
+    },
+    {
+      "value": "banana squash",
+      "synonyms": [
+        "banana squash"
+      ]
+    },
+    {
+      "value": "courgette",
+      "synonyms": [
+        "courgette"
+      ]
+    },
+    {
+      "value": "cucumber",
+      "synonyms": [
+        "cucumber"
+      ]
+    },
+    {
+      "value": "delicata",
+      "synonyms": [
+        "delicata"
+      ]
+    },
+    {
+      "value": "gem squash",
+      "synonyms": [
+        "gem squash"
+      ]
+    },
+    {
+      "value": "hubbard squash",
+      "synonyms": [
+        "hubbard squash"
+      ]
+    },
+    {
+      "value": "marrow",
+      "synonyms": [
+        "marrow"
+      ]
+    },
+    {
+      "value": "patty pans",
+      "synonyms": [
+        "patty pans"
+      ]
+    },
+    {
+      "value": "pumpkin",
+      "synonyms": [
+        "pumpkin"
+      ]
+    },
+    {
+      "value": "spaghetti squash",
+      "synonyms": [
+        "spaghetti squash"
+      ]
+    },
+    {
+      "value": "tat soi",
+      "synonyms": [
+        "tat soi"
+      ]
+    },
+    {
+      "value": "tomato",
+      "synonyms": [
+        "tomato",
+        "tomatoes"
+      ]
+    },
+    {
+      "value": "tubers",
+      "synonyms": [
+        "tubers"
+      ]
+    },
+    {
+      "value": "jicama",
+      "synonyms": [
+        "jicama"
+      ]
+    },
+    {
+      "value": "jerusalem artichoke",
+      "synonyms": [
+        "jerusalem artichoke"
+      ]
+    },
+    {
+      "value": "potato",
+      "synonyms": [
+        "potato"
+      ]
+    },
+    {
+      "value": "sunchokes",
+      "synonyms": [
+        "sunchokes"
+      ]
+    },
+    {
+      "value": "sweet potato",
+      "synonyms": [
+        "sweet potato"
+      ]
+    },
+    {
+      "value": "taro",
+      "synonyms": [
+        "taro"
+      ]
+    },
+    {
+      "value": "yam",
+      "synonyms": [
+        "yam"
+      ]
+    },
+    {
+      "value": "turnip greens",
+      "synonyms": [
+        "turnip greens"
+      ]
+    },
+    {
+      "value": "water chestnut",
+      "synonyms": [
+        "water chestnut"
+      ]
+    },
+    {
+      "value": "watercress",
+      "synonyms": [
+        "watercress"
+      ]
+    },
+    {
+      "value": "zucchini",
+      "synonyms": [
+        "zucchini"
+      ]
+    },
+    {
+      "value": "cilantro",
+      "synonyms": [
+        "cilantro"
+      ]
+    },
+    {
+      "value": "apple",
+      "synonyms": [
+        "apple",
+        "apples"
+      ]
+    },
+    {
+      "value": "apricot",
+      "synonyms": [
+        "apricot"
+      ]
+    },
+    {
+      "value": "avocado",
+      "synonyms": [
+        "avocado"
+      ]
+    },
+    {
+      "value": "banana",
+      "synonyms": [
+        "banana"
+      ]
+    },
+    {
+      "value": "bilberry",
+      "synonyms": [
+        "bilberry"
+      ]
+    },
+    {
+      "value": "blackberry",
+      "synonyms": [
+        "blackberry"
+      ]
+    },
+    {
+      "value": "blackcurrant",
+      "synonyms": [
+        "blackcurrant"
+      ]
+    },
+    {
+      "value": "blueberry",
+      "synonyms": [
+        "blueberry"
+      ]
+    },
+    {
+      "value": "boysenberry",
+      "synonyms": [
+        "boysenberry"
+      ]
+    },
+    {
+      "value": "currant",
+      "synonyms": [
+        "currant"
+      ]
+    },
+    {
+      "value": "cherry",
+      "synonyms": [
+        "cherry"
+      ]
+    },
+    {
+      "value": "cherimoya",
+      "synonyms": [
+        "cherimoya"
+      ]
+    },
+    {
+      "value": "cloudberry",
+      "synonyms": [
+        "cloudberry"
+      ]
+    },
+    {
+      "value": "coconut",
+      "synonyms": [
+        "coconut"
+      ]
+    },
+    {
+      "value": "cranberry",
+      "synonyms": [
+        "cranberry"
+      ]
+    },
+    {
+      "value": "cucumber",
+      "synonyms": [
+        "cucumber"
+      ]
+    },
+    {
+      "value": "custard apple",
+      "synonyms": [
+        "custard apple"
+      ]
+    },
+    {
+      "value": "damson",
+      "synonyms": [
+        "damson"
+      ]
+    },
+    {
+      "value": "dragonfruit",
+      "synonyms": [
+        "dragonfruit"
+      ]
+    },
+    {
+      "value": "durian",
+      "synonyms": [
+        "durian"
+      ]
+    },
+    {
+      "value": "elderberry",
+      "synonyms": [
+        "elderberry"
+      ]
+    },
+    {
+      "value": "feijoa",
+      "synonyms": [
+        "feijoa"
+      ]
+    },
+    {
+      "value": "fig",
+      "synonyms": [
+        "fig"
+      ]
+    },
+    {
+      "value": "goji berry",
+      "synonyms": [
+        "goji berry"
+      ]
+    },
+    {
+      "value": "gooseberry",
+      "synonyms": [
+        "gooseberry"
+      ]
+    },
+    {
+      "value": "grape",
+      "synonyms": [
+        "grape"
+      ]
+    },
+    {
+      "value": "raisin",
+      "synonyms": [
+        "raisin"
+      ]
+    },
+    {
+      "value": "grapefruit",
+      "synonyms": [
+        "grapefruit"
+      ]
+    },
+    {
+      "value": "guava",
+      "synonyms": [
+        "guava"
+      ]
+    },
+    {
+      "value": "honeyberry",
+      "synonyms": [
+        "honeyberry"
+      ]
+    },
+    {
+      "value": "huckleberry",
+      "synonyms": [
+        "huckleberry"
+      ]
+    },
+    {
+      "value": "jabuticaba",
+      "synonyms": [
+        "jabuticaba"
+      ]
+    },
+    {
+      "value": "jackfruit",
+      "synonyms": [
+        "jackfruit"
+      ]
+    },
+    {
+      "value": "jambul",
+      "synonyms": [
+        "jambul"
+      ]
+    },
+    {
+      "value": "jujube",
+      "synonyms": [
+        "jujube"
+      ]
+    },
+    {
+      "value": "juniper berry",
+      "synonyms": [
+        "juniper berry"
+      ]
+    },
+    {
+      "value": "kiwifruit",
+      "synonyms": [
+        "kiwifruit"
+      ]
+    },
+    {
+      "value": "kumquat",
+      "synonyms": [
+        "kumquat"
+      ]
+    },
+    {
+      "value": "lemon",
+      "synonyms": [
+        "lemon"
+      ]
+    },
+    {
+      "value": "lime",
+      "synonyms": [
+        "lime"
+      ]
+    },
+    {
+      "value": "loquat",
+      "synonyms": [
+        "loquat"
+      ]
+    },
+    {
+      "value": "longan",
+      "synonyms": [
+        "longan"
+      ]
+    },
+    {
+      "value": "lychee",
+      "synonyms": [
+        "lychee"
+      ]
+    },
+    {
+      "value": "mango",
+      "synonyms": [
+        "mango"
+      ]
+    },
+    {
+      "value": "marionberry",
+      "synonyms": [
+        "marionberry"
+      ]
+    },
+    {
+      "value": "melon",
+      "synonyms": [
+        "melon"
+      ]
+    },
+    {
+      "value": "cantaloupe",
+      "synonyms": [
+        "cantaloupe"
+      ]
+    },
+    {
+      "value": "honeydew",
+      "synonyms": [
+        "honeydew"
+      ]
+    },
+    {
+      "value": "watermelon",
+      "synonyms": [
+        "watermelon"
+      ]
+    },
+    {
+      "value": "miracle fruit",
+      "synonyms": [
+        "miracle fruit"
+      ]
+    },
+    {
+      "value": "mulberry",
+      "synonyms": [
+        "mulberry"
+      ]
+    },
+    {
+      "value": "nectarine",
+      "synonyms": [
+        "nectarine"
+      ]
+    },
+    {
+      "value": "nance",
+      "synonyms": [
+        "nance"
+      ]
+    },
+    {
+      "value": "olive",
+      "synonyms": [
+        "olive"
+      ]
+    },
+    {
+      "value": "orange",
+      "synonyms": [
+        "orange",
+        "oranges"
+      ]
+    },
+    {
+      "value": "blood orange",
+      "synonyms": [
+        "blood orange"
+      ]
+    },
+    {
+      "value": "clementine",
+      "synonyms": [
+        "clementine"
+      ]
+    },
+    {
+      "value": "mandarine",
+      "synonyms": [
+        "mandarine"
+      ]
+    },
+    {
+      "value": "tangerine",
+      "synonyms": [
+        "tangerine"
+      ]
+    },
+    {
+      "value": "papaya",
+      "synonyms": [
+        "papaya"
+      ]
+    },
+    {
+      "value": "passionfruit",
+      "synonyms": [
+        "passionfruit"
+      ]
+    },
+    {
+      "value": "peach",
+      "synonyms": [
+        "peach"
+      ]
+    },
+    {
+      "value": "pear",
+      "synonyms": [
+        "pear"
+      ]
+    },
+    {
+      "value": "persimmon",
+      "synonyms": [
+        "persimmon"
+      ]
+    },
+    {
+      "value": "physalis",
+      "synonyms": [
+        "physalis"
+      ]
+    },
+    {
+      "value": "plantain",
+      "synonyms": [
+        "plantain"
+      ]
+    },
+    {
+      "value": "plum",
+      "synonyms": [
+        "plum"
+      ]
+    },
+    {
+      "value": "prune",
+      "synonyms": [
+        "prune"
+      ]
+    },
+    {
+      "value": "pineapple",
+      "synonyms": [
+        "pineapple"
+      ]
+    },
+    {
+      "value": "plumcot",
+      "synonyms": [
+        "plumcot"
+      ]
+    },
+    {
+      "value": "pomegranate",
+      "synonyms": [
+        "pomegranate"
+      ]
+    },
+    {
+      "value": "pomelo",
+      "synonyms": [
+        "pomelo"
+      ]
+    },
+    {
+      "value": "purple mangosteen",
+      "synonyms": [
+        "purple mangosteen"
+      ]
+    },
+    {
+      "value": "quince",
+      "synonyms": [
+        "quince"
+      ]
+    },
+    {
+      "value": "raspberry",
+      "synonyms": [
+        "raspberry"
+      ]
+    },
+    {
+      "value": "salmonberry",
+      "synonyms": [
+        "salmonberry"
+      ]
+    },
+    {
+      "value": "rambutan",
+      "synonyms": [
+        "rambutan"
+      ]
+    },
+    {
+      "value": "redcurrant",
+      "synonyms": [
+        "redcurrant"
+      ]
+    },
+    {
+      "value": "salal berry",
+      "synonyms": [
+        "salal berry"
+      ]
+    },
+    {
+      "value": "salak",
+      "synonyms": [
+        "salak"
+      ]
+    },
+    {
+      "value": "satsuma",
+      "synonyms": [
+        "satsuma"
+      ]
+    },
+    {
+      "value": "soursop",
+      "synonyms": [
+        "soursop"
+      ]
+    },
+    {
+      "value": "star fruit",
+      "synonyms": [
+        "star fruit"
+      ]
+    },
+    {
+      "value": "solanum quitoense",
+      "synonyms": [
+        "solanum quitoense"
+      ]
+    },
+    {
+      "value": "strawberry",
+      "synonyms": [
+        "strawberry"
+      ]
+    },
+    {
+      "value": "tamarillo",
+      "synonyms": [
+        "tamarillo"
+      ]
+    },
+    {
+      "value": "tamarind",
+      "synonyms": [
+        "tamarind"
+      ]
+    },
+    {
+      "value": "ugli fruit",
+      "synonyms": [
+        "ugli fruit"
+      ]
+    },
+    {
+      "value": "yuzu",
+      "synonyms": [
+        "yuzu"
+      ]
+    },
+    {
+      "value": "kiwi",
+      "synonyms": [
+        "kiwi"
+      ]
+    },
+    {
+      "value": "chromecast",
+      "synonyms": [
+        "chromecast"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

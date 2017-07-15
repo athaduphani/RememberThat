@@ -1,0 +1,74 @@
+{
+  "id": "99c79f6d-73b2-46e1-a649-a3bd348320a8",
+  "name": "purposeDelete",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "ate",
+      "synonyms": [
+        "ate"
+      ]
+    },
+    {
+      "value": "delete",
+      "synonyms": [
+        "delete",
+        "deleted"
+      ]
+    },
+    {
+      "value": "remove",
+      "synonyms": [
+        "remove",
+        "removed"
+      ]
+    },
+    {
+      "value": "threw",
+      "synonyms": [
+        "threw",
+        "have thrown"
+      ]
+    },
+    {
+      "value": "rid",
+      "synonyms": [
+        "rid",
+        "get rid",
+        "got rid"
+      ]
+    },
+    {
+      "value": "fried",
+      "synonyms": [
+        "fried"
+      ]
+    },
+    {
+      "value": "baked",
+      "synonyms": [
+        "baked"
+      ]
+    },
+    {
+      "value": "consumed",
+      "synonyms": [
+        "consumed"
+      ]
+    },
+    {
+      "value": "cooked",
+      "synonyms": [
+        "cooked"
+      ]
+    },
+    {
+      "value": "sold",
+      "synonyms": [
+        "sold"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

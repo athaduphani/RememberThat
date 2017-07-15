@@ -1,0 +1,27 @@
+{
+  "id": "8620f9b8-f178-4060-a72a-664f558b3fbe",
+  "name": "questionTag",
+  "isOverridable": true,
+  "entries": [
+    {
+      "value": "what",
+      "synonyms": [
+        "what"
+      ]
+    },
+    {
+      "value": "when",
+      "synonyms": [
+        "when"
+      ]
+    },
+    {
+      "value": "how many",
+      "synonyms": [
+        "how many"
+      ]
+    }
+  ],
+  "isEnum": false,
+  "automatedExpansion": false
+}

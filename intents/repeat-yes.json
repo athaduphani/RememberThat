@@ -1,0 +1,213 @@
+{
+  "userSays": [
+    {
+      "id": "1934266c-6dac-44af-bba4-5c630160136b",
+      "data": [
+        {
+          "text": "delete",
+          "alias": "purposeDelete",
+          "meta": "@purposeDelete",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "6de9bbf4-b023-404d-9e9d-8eda6fc24ec0",
+      "data": [
+        {
+          "text": "remove",
+          "alias": "purposeDelete",
+          "meta": "@purposeDelete",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ef99f02f-c1fd-47d8-9b6d-66a097d1a52f",
+      "data": [
+        {
+          "text": "retrieve",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "df6bed80-4dfa-4be9-9dbb-8b9f359c1e39",
+      "data": [
+        {
+          "text": "save",
+          "alias": "purpose",
+          "meta": "@purpose",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "d6b31436-78bf-43c7-8659-3ffeca9d2a28",
+      "data": [
+        {
+          "text": "i do"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "2b69295a-73a4-4612-aae0-21ff0fba20fc",
+      "data": [
+        {
+          "text": "alright"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ae4a0ae8-c622-4970-bfd3-cc9306633b38",
+      "data": [
+        {
+          "text": "definitely"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "e03fb864-8976-4c9b-a8a1-fc3dda6c47bc",
+      "data": [
+        {
+          "text": "go for it"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "21cf575d-30ab-4a95-90b4-21713a2c002a",
+      "data": [
+        {
+          "text": "of course"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "6d6a1f76-8779-4e27-8d84-3218e990df47",
+      "data": [
+        {
+          "text": "sounds good"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "3d91875b-6698-4a65-8be8-276e43228f1f",
+      "data": [
+        {
+          "text": "yeah"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "ab85745f-e705-4023-9401-fcab7cbef668",
+      "data": [
+        {
+          "text": "ok"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "84e6196c-2923-4359-9e7a-603c86165448",
+      "data": [
+        {
+          "text": "sure"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "a2da60ae-b823-4e0a-995f-d10928afa394",
+      "data": [
+        {
+          "text": "yep"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "5bae62ef-7dfd-42b9-a546-5207b62a7aab",
+      "data": [
+        {
+          "text": "yes"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "174939c9-b96a-4c49-8981-7cb80a6cc39e",
+  "name": "repeat-yes",
+  "auto": true,
+  "contexts": [
+    "repeat_yes_no"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "repeat_yes",
+      "affectedContexts": [
+        {
+          "name": "repeat_yes_no",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
+      "parameters": [
+        {
+          "dataType": "@purpose",
+          "name": "purpose",
+          "value": "$purpose",
+          "isList": false
+        },
+        {
+          "dataType": "@purposeDelete",
+          "name": "purposeDelete",
+          "value": "$purposeDelete",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {
+        "google": true
+      }
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

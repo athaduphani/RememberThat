@@ -1,0 +1,133 @@
+{
+  "userSays": [
+    {
+      "id": "ed118f51-a379-4833-84e9-a644fedc4557",
+      "data": [
+        {
+          "text": "delete",
+          "alias": "purposeDelete",
+          "meta": "@purposeDelete",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "oranges",
+          "alias": "Items",
+          "meta": "@Items",
+          "userDefined": false
+        },
+        {
+          "text": " from the list"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1
+    },
+    {
+      "id": "b69d3f54-9182-42c9-a5e9-59a6c26620fa",
+      "data": [
+        {
+          "text": "remove",
+          "alias": "purposeDelete",
+          "meta": "@purposeDelete",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "apples",
+          "alias": "Items",
+          "meta": "@Items",
+          "userDefined": false
+        },
+        {
+          "text": " from the list"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "5b12fcd6-4d13-4eac-81fe-0fa4b9b66550",
+      "data": [
+        {
+          "text": "i "
+        },
+        {
+          "text": "ate",
+          "alias": "purposeDelete",
+          "meta": "@purposeDelete",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "oranges",
+          "alias": "Items",
+          "meta": "@Items",
+          "userDefined": false
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "today",
+          "alias": "date",
+          "meta": "@sys.date",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "b9dd4b4c-af7f-41f0-998a-8904e56cf745",
+  "name": "remove",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "remove",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@purposeDelete",
+          "name": "purposeDelete",
+          "value": "$purposeDelete",
+          "isList": false
+        },
+        {
+          "dataType": "@Items",
+          "name": "Items",
+          "value": "$Items.original",
+          "isList": true
+        },
+        {
+          "dataType": "@sys.date",
+          "name": "date",
+          "value": "$date",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {
+        "google": true
+      }
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}
