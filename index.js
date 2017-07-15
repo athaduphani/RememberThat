@@ -200,7 +200,7 @@ restService.post('/transaction', function(req, res) {
                  console.log("1 record deleted");
                  db.close();
                  var response = '';
-                 if(res.value.item = ''){
+                 if(res.value.item == ''){
                    response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
                  }else{
                     response = req.body.result.parameters.Items[0] + ' removed from your items.';
