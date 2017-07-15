@@ -200,10 +200,11 @@ restService.post('/transaction', function(req, res) {
                  console.log("1 record deleted");
                  db.close();
                  var response = '';
-                 if(res.value.date == undefined ){
-                   response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
+                 if(res.value.date){
+                   response = req.body.result.parameters.Items[0] + ' removed from your items.';
+
                  }else{
-                    response = req.body.result.parameters.Items[0] + ' removed from your items.';
+                    response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
                  }
                  let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
                ask(app, prompt);
