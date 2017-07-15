@@ -111,7 +111,7 @@ restService.post('/transaction', function(req, res) {
             type: "Vegetable",
             date: req.body.result.parameters.date,
             expiryDate: "07-31-2017",
-            userId: req.body.user.user_id,
+            // userId: req.body.user.user_id,
             purpose: req.body.result.parameters.purpose
           };
           items_list = items_list +'  '+ req.body.result.parameters.Items[i] + ', ';
