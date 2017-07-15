@@ -210,19 +210,20 @@ restService.post('/transaction', function(req, res) {
     var response = ' ';
     if(result.length == 0 ){
     response = 'You don\'t have any ' + parameter;
-  }else if(result.length == 1 ){
-    response = parameter + ' removed from your items.';
-  }else{
-      for (var i = 0; i < result.length; i++) {
-        if(i == 0){
-          response = response + startStatement;
-        }else if (i == result.length-1) {
-          response = response + ' and '+ req.body.result.parameters.Items[i] + endStatement;
-        }else{
-          response = response + req.body.result.parameters.Items[i] ;
-        }
-      }
-    }
+  }
+  // else if(result.length == 1 ){
+  //   response = parameter + ' removed from your items.';
+  // }else{
+  //     for (var i = 0; i < result.length; i++) {
+  //       if(i == 0){
+  //         response = response + startStatement;
+  //       }else if (i == result.length-1) {
+  //         response = response + ' and '+ req.body.result.parameters.Items[i] + endStatement;
+  //       }else{
+  //         response = response + req.body.result.parameters.Items[i] ;
+  //       }
+  //     }
+  //   }
     return response;
   }
   // Start of repeatYes function
