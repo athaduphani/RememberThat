@@ -200,9 +200,8 @@ restService.post('/transaction', function(req, res) {
                  console.log("1 record deleted");
                  db.close();
                  var response = '';
-                 if(res.value.date){
+                 if(res){
                    response = req.body.result.parameters.Items[0] + ' removed from your items.';
-
                  }else{
                     response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
                  }
