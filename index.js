@@ -201,7 +201,7 @@ restService.post('/transaction', function(req, res) {
                  db.close();
                  var response = '';
                  if(res){
-                   response = req.body.result.parameters.Items[0] + ' removed from your items.';
+                   response = req.body.result.parameters.Items[0] + ' removed from your items.' + res;
                  }else{
                     response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
                  }
