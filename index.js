@@ -190,24 +190,28 @@ restService.post('/transaction', function(req, res) {
         }); // End DB Function
     });
   } // End retrieve function
+  // Start Remove function
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
          MongoClient.connect(url, function(err, db) {
            if (err) throw err;
-            //  db.collection("transaction").insertMany(transactions, function(err, res) {
-            //    if (err) throw err;
-            //    console.log("1 record inserted");
-            //    db.close();
-            //  });
               db.collection('transaction').deleteMany({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
                  if (err) throw err;
                  console.log("1 record deleted");
                  db.close();
                });
            });
-           let response = req.body.result.parameters.Items[0] + ' removed from your items.';
+           let response = createResponse(result,'',' removed from your items.');
+          //  let response = req.body.result.parameters.Items[0] + ' removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
+  } // End Remove Function
+  function createResponse(result, StartStatement, EndStatement){
+    var response = 'Hello Hello';
+
+
+    return response;
+
   }
   // Start of repeatYes function
   function repeatYes (app) {
