@@ -199,14 +199,14 @@ restService.post('/transaction', function(req, res) {
                  if (err) throw err;
                  console.log("1 record deleted");
                  db.close();
+                 let response = createResponse (res,'',' removed from your items.');
+                //  let response = req.body.result.parameters.Items[0] + ' removed from your items.';
+                 let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+               ask(app, prompt);
                });
            });
-           let response = createResponse(result,'',' removed from your items.');
-          //  let response = req.body.result.parameters.Items[0] + ' removed from your items.';
-           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-         ask(app, prompt);
   } // End Remove Function
-  function createResponse(result, StartStatement, EndStatement){
+  function createResponse (result, StartStatement, EndStatement){
     var response = 'Hello Hello';
 
 
