@@ -233,7 +233,7 @@ restService.post('/transaction', function(req, res) {
     }
     app.data.fallbackCount++;
     // Provide two prompts before ending game
-    if (app.data.fallbackCount === 1) {
+    if (app.data.fallbackCount < 4) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
     } else {
