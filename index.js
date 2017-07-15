@@ -202,7 +202,7 @@ restService.post('/transaction', function(req, res) {
                  db.close();
                  var response = '';
                  if(Object.keys(res).length == 3){
-                   response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
+                   response = 'You don\'t have any ' +  req.body.result.parameters.Items[0] +' '+ res.value.item;
                  }else{
                     response = req.body.result.parameters.Items[0] + ' removed from your items.';
                  }
