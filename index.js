@@ -199,17 +199,28 @@ restService.post('/transaction', function(req, res) {
                  if (err) throw err;
                  console.log("1 record deleted");
                  db.close();
-                 let response = createResponse (res,'',' removed from your items.');
+                 let response = createResponse (res, req.body.result.parameters.Items[0],'',' removed from your items.');
                 //  let response = req.body.result.parameters.Items[0] + ' removed from your items.';
                  let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
                ask(app, prompt);
                });
            });
   } // End Remove Function
-  function createResponse (result, StartStatement, EndStatement){
-    var response = 'Hello Hello';
-
-
+  function createResponse (result, parameter , startStatement, endStatement){
+    var response = '';
+    if(result.length == 0 ){
+    response = 'You don\'t have any ' + parameter;
+    }else{
+      for (var i = 0; i < result.length; i++) {
+        if(i == 0){
+          response = response + startStatement;
+        }else if (i == result.length-1) {
+          response = response + ' and '+ req.body.result.parameters.Items[i] + endStatement;
+        }else{
+          response = response + req.body.result.parameters.Items[i] ;
+        }
+      }
+    }
     return response;
 
   }
