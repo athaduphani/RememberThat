@@ -204,7 +204,7 @@ restService.post('/transaction', function(req, res) {
                  if(Object.keys(res).length == 0){
                    response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
                  }else{
-                    response = req.body.result.parameters.Items[0] + ' removed from your items.' + Object.keys(res).length;
+                    response = req.body.result.parameters.Items[0] + ' removed from your items.' + Object.keys(res)[0]+ Object.keys(res)[1]+Object.keys(res)[2];
                  }
                  let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
                ask(app, prompt);
