@@ -168,8 +168,14 @@ restService.post('/transaction', function(req, res) {
             responseGeneral='';
             if (itemName != result[i].item){
             responseForWhat = responseForWhat + result[i].item + ', ';
-          }
+            }
           }else if(req.body.result.parameters.questionTag == "when"){
+            responseForWhat = '';responseGeneral='';
+            responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
+          }else if(req.body.result.parameters.questionTag == "how"){
+            responseForWhat = '';responseGeneral='';
+            responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
+          }else if(req.body.result.parameters.questionTag == "where"){
             responseForWhat = '';responseGeneral='';
             responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
           }else{
@@ -215,8 +221,11 @@ restService.post('/transaction', function(req, res) {
 }else if (purpose == "remove") {
     app.setContext(REMOVE_CONTEXT);
     ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, REMOVE_RE_INVOCATION_PROMPT)));
-  }else {
-    ask(app, "Sorry I didnt understand.You can say Save, Retrieve or Remove");
+  }else if (req.body.result.resolvedQuery == 'yes') {
+      app.setContext(REMOVE_CONTEXT);
+      ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' You can say Save, Retrieve or Remove '));
+    }else {
+    ask(app, "Sorry I didn\'t understand.You can say Save, Retrieve or Remove");
   }
   }// End of repeatYes function
   // Start of saveNo function
