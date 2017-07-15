@@ -209,6 +209,9 @@ restService.post('/transaction', function(req, res) {
   function repeatYes (app) {
     console.log('repeatYes');
     var purpose = parameters_app.purpose;
+    if (purpose == '' && parameters_app.purposeDelete != ''){
+    purpose = parameters_app.purposeDelete;
+  }
     if (purpose == "save"){
       app.setContext(SAVE_CONTEXT);
     ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
