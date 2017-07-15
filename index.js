@@ -201,11 +201,11 @@ restService.post('/transaction', function(req, res) {
                  console.log("1 record deleted");
                  db.close();
                  var response = '';
-                 if(Object.keys(res).length == 3){
-                   response = 'You don\'t have any ' +  req.body.result.parameters.Items[0] +' '+ Object.values(res)[1];
-                 }else{
+                //  if(Object.keys(res).length == 3){
+                //    response = 'You don\'t have any ' +  req.body.result.parameters.Items[0] +' '+ Object.values(res)[0];
+                //  }else{
                     response = req.body.result.parameters.Items[0] + ' removed from your items.';
-                 }
+                //  }
                  let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
                ask(app, prompt);
                });
