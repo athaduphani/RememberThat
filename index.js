@@ -199,8 +199,10 @@ restService.post('/transaction', function(req, res) {
                  if (err) throw err;
                  console.log("1 record deleted");
                  db.close();
+                 var responseArray = toArray(res);
                 //  let response = createResponse (res, req.body.result.parameters.Items[0],'',' removed from your items.');
-                let response = res.value.date + ' length';
+                // let response = res.value.date + ' length';
+                let response = responseArray.length + ' length';
                 //  let response = req.body.result.parameters.Items[0] + ' removed from your items.';
                  let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
                ask(app, prompt);
