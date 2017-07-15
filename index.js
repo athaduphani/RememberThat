@@ -207,10 +207,12 @@ restService.post('/transaction', function(req, res) {
            });
   } // End Remove Function
   function createResponse (result, parameter , startStatement, endStatement){
-    var response = '';
+    var response = ' ';
     if(result.length == 0 ){
     response = 'You don\'t have any ' + parameter;
-    }else{
+  }else if(result.length == 1 ){
+    response = parameter + ' removed from your items.';
+  }else{
       for (var i = 0; i < result.length; i++) {
         if(i == 0){
           response = response + startStatement;
@@ -222,7 +224,6 @@ restService.post('/transaction', function(req, res) {
       }
     }
     return response;
-
   }
   // Start of repeatYes function
   function repeatYes (app) {
