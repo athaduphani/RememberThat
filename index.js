@@ -199,7 +199,11 @@ restService.post('/transaction', function(req, res) {
             //    console.log("1 record inserted");
             //    db.close();
             //  });
-              db.collection('transaction').deleteMany({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]});
+              db.collection('transaction').deleteMany({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
+                 if (err) throw err;
+                 console.log("1 record deleted");
+                 db.close();
+               });
            });
            let response = req.body.result.parameters.Items[0] + ' removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
@@ -218,10 +222,7 @@ restService.post('/transaction', function(req, res) {
   }else if (purpose == "retrieve") {
     app.setContext(RETRIEVE_CONTEXT);
     ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, RETRIEVE_RE_INVOCATION_PROMPT)));
-  // }else if (purpose == "modify") {
-  //   app.setContext(MODIFY_CONTEXT);
-  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, MODIFY_RE_INVOCATION_PROMPT)));
-}else if (purpose == "remove") {
+  }else if (purpose == "remove") {
     app.setContext(REMOVE_CONTEXT);
     ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, REMOVE_RE_INVOCATION_PROMPT)));
   }else if (req.body.result.resolvedQuery == 'yes') {
