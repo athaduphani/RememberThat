@@ -197,10 +197,11 @@ restService.post('/transaction', function(req, res) {
            if (err) throw err;
               db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
                  if (err) throw err;
+
                  console.log("1 record deleted");
                  db.close();
                  var response = '';
-                 if(res.value.item == ''){
+                 if(Object.keys(res).length == 0){
                    response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
                  }else{
                     response = req.body.result.parameters.Items[0] + ' removed from your items.';
