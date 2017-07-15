@@ -200,10 +200,10 @@ restService.post('/transaction', function(req, res) {
                  console.log("1 record deleted");
                  db.close();
                  var response = '';
-                 if(res){
-                   response = req.body.result.parameters.Items[0] + ' removed from your items.' + res;
+                 if(res.value.item = ''){
+                   response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
                  }else{
-                    response = 'You don\'t have any ' +  req.body.result.parameters.Items[0];
+                    response = req.body.result.parameters.Items[0] + ' removed from your items.';
                  }
                  let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
                ask(app, prompt);
