@@ -73,7 +73,7 @@ restService.post('/transaction', function(req, res) {
         MongoClient.connect(url, function(err, db) {
           let firstTimeUserPrompt = 'asdasd';
           if (err) throw err;
-          db.collection("transaction").find({"SessionId":req.body.sessionId}).toArray(function(err, result){
+          db.collection("transaction").find({"sessionId":req.body.sessionId}).toArray(function(err, result){
           if (err) throw err;
           if (result.length < 5) {
             firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
