@@ -151,7 +151,7 @@ restService.post('/transaction', function(req, res) {
             if(result[i].item == result[i+1].item){
               response = response + ', ' + result[i].date;
             }else{
-              response = response + ' and ' + result[i].date;
+              response = response + ' and ' + result[i].date+'].\n';
             }
           }else{
             response = response + ' and ' + result[i].date+'].\n';
