@@ -268,9 +268,9 @@ restService.post('/transaction', function(req, res) {
       let middleStatement1 = ' expire between ';
       let middleStatement2 = ' and ';
       let endStatement = '].\n ';
-      // response = response + result[0].item + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
-      // response =  response + result[1].item + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
-      response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
+      response = response + result[0].item + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
+      response =  response + result[1].item + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
+      // response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
     }
       let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
