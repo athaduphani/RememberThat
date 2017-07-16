@@ -179,7 +179,7 @@ restService.post('/transaction', function(req, res) {
                 response = response + ' and ' + result[i].date;
               }
             }else{
-              response = response + ' and ' + result[i].date+']';
+              response = response + ' and ' + result[i].date+'].\n';
             }
             }
             else{
@@ -189,7 +189,7 @@ restService.post('/transaction', function(req, res) {
               else if(i == 0){
                 response = response + 'You have  ' + result[i].item + ' which are bought on ['  + result[i].date;
               }else {
-                response = response + ']. You have ' + result[i].item + ' which are bought on ['  +result[i].date;
+                response = response + '].\n You have ' + result[i].item + ' which are bought on ['  +result[i].date;
               }
               itemName = result[i].item;
           }
