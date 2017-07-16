@@ -128,128 +128,70 @@ restService.post('/transaction', function(req, res) {
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       } // end save function
-      function responseforList(){
-
-      }
-      // Start RetrieveForType
-      function retrieve(app){
-        MongoClient.connect(url, function(err, db) {
-          if (err) throw err;
-          db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
-          if (err) throw err;
-          db.close();
-          let response = '';
-          let itemName ='NA';
-          if(result.length == 0){
-            response = 'You don\'t have any';
-            for (var i = 0; i < req.body.result.parameters.type.length; i++) {
-              response = response + req.body.result.parameters.type[i] ;
-            }
-        // }else{
-        //   for (var i = 0; i < result.length; i++) {
-        //
-        //     // if(result[i].item == itemName){
-        //     //   responseDate = responseDate + ',' + result[i].date;
-        //     // }
-        //     // else{
-        //     //   if(i == 0){
-        //     //     responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  + result[i].date;
-        //     //   }else {
-        //     //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
-        //     //   }
-        //   // }
-        //     if(req.body.result.parameters.questionTag == "what"){
-        //       responseGeneral='';
-        //       if (itemName != result[i].item){
-        //       responseForWhat = responseForWhat + result[i].item + ', ';
-        //       }
-        //     }else if(req.body.result.parameters.questionTag == "when"){
-        //       responseForWhat = '';responseGeneral='';
-        //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-        //     }else if(req.body.result.parameters.questionTag == "how"){
-        //       responseForWhat = '';responseGeneral='';
-        //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-        //     }else if(req.body.result.parameters.questionTag == "where"){
-        //       responseForWhat = '';responseGeneral='';
-        //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-        //     }else{
-        //       responseForWhat = '';
-        //     }
-        //       itemName = result[i].item;
-        //     }
-        //   }
-      }else{
-
-      }
-          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-          ask(app, prompt);
-          }); // End DB Function
-      });
-      }
       // start retrieve function
-      // function retrieve (app) {
-      //   app.setContext(REPEAT_YES_NO_CONTEXT);
-      // MongoClient.connect(url, function(err, db) {
-      //   if (err) throw err;
-      //   db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {$or:[{"type":{$in: req.body.result.parameters.type}},{"item":{$in: req.body.result.parameters.Items}}]}]}).sort({"item":1}).toArray(function(err, result){
-      //   if (err) throw err;
-      //   db.close();
-      //   let responseForWhat = 'You have ';
-      //   let responseForWhen = '';
-      //   let responseGeneral='You dont have any ';
-      //   let response = '';
-      //   let itemName ='NA';
-      //   if(result.length == 0){
-      //     responseForWhat = '';
-      //     responseGeneral = req.body.sessionId;
-      //     if (req.body.result.parameters.Items.length == 0) {
-      //       for (var i = 0; i < req.body.result.parameters.type.length; i++) {
-      //         responseGeneral = responseGeneral + req.body.result.parameters.type[i] ;
-      //       }
-      //     }else{
-      //     for (var i = 0; i < req.body.result.parameters.Items.length; i++) {
-      //       responseGeneral = responseGeneral + req.body.result.parameters.Items[i] ;
-      //     }
-      //   }
-      // }else{
-      //   for (var i = 0; i < result.length; i++) {
-      //
-      //     // if(result[i].item == itemName){
-      //     //   responseDate = responseDate + ',' + result[i].date;
-      //     // }
-      //     // else{
-      //     //   if(i == 0){
-      //     //     responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  + result[i].date;
-      //     //   }else {
-      //     //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
-      //     //   }
-      //   // }
-      //     if(req.body.result.parameters.questionTag == "what"){
-      //       responseGeneral='';
-      //       if (itemName != result[i].item){
-      //       responseForWhat = responseForWhat + result[i].item + ', ';
-      //       }
-      //     }else if(req.body.result.parameters.questionTag == "when"){
-      //       responseForWhat = '';responseGeneral='';
-      //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-      //     }else if(req.body.result.parameters.questionTag == "how"){
-      //       responseForWhat = '';responseGeneral='';
-      //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-      //     }else if(req.body.result.parameters.questionTag == "where"){
-      //       responseForWhat = '';responseGeneral='';
-      //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-      //     }else{
-      //       responseForWhat = '';
-      //     }
-      //       itemName = result[i].item;
-      //     }
-      //   }
-      //   response = responseForWhat + responseForWhen + responseGeneral;
-      //   let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-      //   ask(app, prompt);
-      //   }); // End DB Function
-  //   });
-  // } // End retrieve function
+      function retrieve (app) {
+        app.setContext(REPEAT_YES_NO_CONTEXT);
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {$or:[{"type":{$in: req.body.result.parameters.type}},{"item":{$in: req.body.result.parameters.Items}}]}]}).sort({"item":1}).toArray(function(err, result){
+        if (err) throw err;
+        db.close();
+        let responseForWhat = 'You have ';
+        let responseForWhen = '';
+        let responseGeneral='You dont have any ';
+        let response = '';
+        let itemName ='NA';
+        if(result.length == 0){
+          responseForWhat = '';
+          responseGeneral = req.body.sessionId;
+          if (req.body.result.parameters.Items.length == 0) {
+            for (var i = 0; i < req.body.result.parameters.type.length; i++) {
+              responseGeneral = responseGeneral + req.body.result.parameters.type[i] ;
+            }
+          }else{
+          for (var i = 0; i < req.body.result.parameters.Items.length; i++) {
+            responseGeneral = responseGeneral + req.body.result.parameters.Items[i] ;
+          }
+        }
+      }else{
+        for (var i = 0; i < result.length; i++) {
+
+          // if(result[i].item == itemName){
+          //   responseDate = responseDate + ',' + result[i].date;
+          // }
+          // else{
+          //   if(i == 0){
+          //     responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  + result[i].date;
+          //   }else {
+          //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
+          //   }
+        // }
+          if(req.body.result.parameters.questionTag == "what"){
+            responseGeneral='';
+            if (itemName != result[i].item){
+            responseForWhat = responseForWhat + result[i].item + ', ';
+            }
+          }else if(req.body.result.parameters.questionTag == "when"){
+            responseForWhat = '';responseGeneral='';
+            responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
+          }else if(req.body.result.parameters.questionTag == "how"){
+            responseForWhat = '';responseGeneral='';
+            responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
+          }else if(req.body.result.parameters.questionTag == "where"){
+            responseForWhat = '';responseGeneral='';
+            responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
+          }else{
+            responseForWhat = '';
+          }
+            itemName = result[i].item;
+          }
+        }
+        response = responseForWhat + responseForWhen + responseGeneral;
+        let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+        ask(app, prompt);
+        }); // End DB Function
+    });
+  } // End retrieve function
     //  Start Remove function
   // function remove (app){
   //       app.setContext(REPEAT_YES_NO_CONTEXT);
