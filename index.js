@@ -258,17 +258,17 @@ restService.post('/transaction', function(req, res) {
       db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
       if (err) throw err;
       db.close();
-      let response = '';
+      var response = '';
       if(result.length == 0){
         let startStatement = 'You don\'t have any ';
         let endStatement = '].\n ';
         response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
     }else{
-      let startStatement = ' The ';
-      let middleStatement = ' you bought on '
-      let middleStatement1 = ' expire between ';
-      let middleStatement2 = ' and ';
-      let endStatement = '].\n ';
+      var startStatement = ' The ';
+      var middleStatement = ' you bought on '
+      var middleStatement1 = ' expire between ';
+      var middleStatement2 = ' and ';
+      var endStatement = '].\n ';
       // response = response + result[0].item + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
       // response =  response + result[1].item + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
       // response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
