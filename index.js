@@ -140,6 +140,7 @@ restService.post('/transaction', function(req, res) {
             response = response + req.body.result.parameters.type[i] ;
         }
         }
+        return response;
       }
       // Start RetrieveForType
       function retrieve(app){
@@ -157,7 +158,7 @@ restService.post('/transaction', function(req, res) {
             // }
             let startStatement = 'You don\'t have any ';
             let endStatement = '.\n ';
-            responseforList(req.body.result.parameters.type, startStatement, endStatement);
+            response = responseforList(req.body.result.parameters.type, startStatement, endStatement);
         // }else{
         //   for (var i = 0; i < result.length; i++) {
         //
