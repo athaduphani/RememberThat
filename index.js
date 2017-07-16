@@ -128,7 +128,21 @@ restService.post('/transaction', function(req, res) {
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       } // end save function
-      function responseforList(parameter, startStatement, endStatement){
+      function responseforOneParam(parameter, startStatement, endStatement){
+        let response = startStatement;
+        for (var i = 0; i < req.body.result.parameters.type.length; i++) {
+          if (req.body.result.parameters.type.length == 1) {
+            response = response + req.body.result.parameters.type[i] +' '+ endStatement;
+          }
+          else if (i == req.body.result.parameters.type.length-1){
+            response = response + 'and ' + req.body.result.parameters.type[i] +' '+ endStatement ;
+          }else{
+            response = response + req.body.result.parameters.type[i]+ ' ' ;
+        }
+        }
+        return response;
+      }
+      function responseforTwoParam(parameter1,parameter2, startStatement,middleStatement, endStatement){
         let response = startStatement;
         for (var i = 0; i < req.body.result.parameters.type.length; i++) {
           if (req.body.result.parameters.type.length == 1) {
@@ -152,49 +166,32 @@ restService.post('/transaction', function(req, res) {
           let response = '';
           let itemName ='NA';
           if(result.length == 0){
-            // response = 'You don\'t have any ';
-            // for (var i = 0; i < req.body.result.parameters.type.length; i++) {
-            //   response = response + req.body.result.parameters.type[i] ;
-            // }
             let startStatement = 'You don\'t have any ';
             let endStatement = '.\n ';
-            response = responseforList(req.body.result.parameters.type, startStatement, endStatement);
-        // }else{
-        //   for (var i = 0; i < result.length; i++) {
-        //
-        //     // if(result[i].item == itemName){
-        //     //   responseDate = responseDate + ',' + result[i].date;
-        //     // }
-        //     // else{
-        //     //   if(i == 0){
-        //     //     responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  + result[i].date;
-        //     //   }else {
-        //     //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
-        //     //   }
-        //   // }
-        //     if(req.body.result.parameters.questionTag == "what"){
-        //       responseGeneral='';
-        //       if (itemName != result[i].item){
-        //       responseForWhat = responseForWhat + result[i].item + ', ';
-        //       }
-        //     }else if(req.body.result.parameters.questionTag == "when"){
-        //       responseForWhat = '';responseGeneral='';
-        //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-        //     }else if(req.body.result.parameters.questionTag == "how"){
-        //       responseForWhat = '';responseGeneral='';
-        //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-        //     }else if(req.body.result.parameters.questionTag == "where"){
-        //       responseForWhat = '';responseGeneral='';
-        //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-        //     }else{
-        //       responseForWhat = '';
-        //     }
-        //       itemName = result[i].item;
-        //     }
-        //   }
-      }else{
+            response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+        }else{
+          for (var i = 0; i < result.length; i++) {
+            if(result[i].item == itemName && i != result.length-1){
+              if(result[i].item == result[i+1].item){
+                response = response + ', ' + result[i].date;
+              }else{
+                response = response + ' and ' + result[i].date;
+              }
+            }
+            else{
+              if(result.length == 1){
+                response = response + 'You Bought ' + result[i].item + ' on '  + result[i].date+'.\n';
+              }
+              else if(i == 0){
+                response = response + 'You Bought ' + result[i].item + ' on ['  + result[i].date;
+              }else {
+                response = response + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
+              }
+              itemName = result[i].item;
+          }
 
-      }
+        }
+        }
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
           }); // End DB Function
