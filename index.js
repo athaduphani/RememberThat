@@ -143,6 +143,7 @@ restService.post('/transaction', function(req, res) {
         let itemName ='NA';
         if(result.length == 0){
           responseForWhat = '';
+          responseGeneral = ' Length Zero'
           if (req.body.result.parameters.Items.length == 0) {
             for (var i = 0; i < req.body.result.parameters.type.length; i++) {
               responseGeneral = responseGeneral + req.body.result.parameters.type[i] ;
