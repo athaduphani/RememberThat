@@ -272,7 +272,7 @@ restService.post('/transaction', function(req, res) {
       // response = response + result[0].item + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
       // response =  response + result[1].item + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
       // response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
-      for (i=0; i<result.length;++){
+      for (i=0; i<result.length;i++){
         var date = result[i].date;
         var expiryDateStart = result[i].expiryDateStart;
         var expiryDateEnd = result[i].expiryDateEnd;
