@@ -182,19 +182,18 @@ restService.post('/transaction', function(req, res) {
           var expiryDateEnd = result[i].expiryDateEnd;
           if(result[i].item == itemName){
             if( i != result.length-1){
-            if(result[i].item == result[i+1].item){
+             if(result[i].item == result[i+1].item){
               response = response + ', ' + expiryDateStart + middleStatement2 + expiryDateEnd;
-            }else{
+             }else{
               response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd;
-            }
-          }else{
+             }
+           }else{
             response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd+ endStatement;
-          }
+            }
           }else{
             if(result.length == 1){
               response = response + startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
-            }
-            else if(i == 0){
+            }else if(i == 0){
               response = response + startStatement + result[i].item + middleStatement +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
             }else if (i == result.length-1) {
               response = response + endStatement +startStatement + result[i].item + middleStatement  + expiryDateStart + middleStatement2 + expiryDateEnd+'.\n';
@@ -269,7 +268,9 @@ restService.post('/transaction', function(req, res) {
       let middleStatement1 = ' expire between ';
       let middleStatement2 = ' and ';
       let endStatement = '].\n ';
-      response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
+      reponse = response + result[0].item + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
+      reponse =  response + result[1].item + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
+      // response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
     }
       let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
