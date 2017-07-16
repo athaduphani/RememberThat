@@ -111,7 +111,7 @@ restService.post('/transaction', function(req, res) {
             type: "Vegetable",
             date: req.body.result.parameters.date,
             expiryDate: "07-31-2017",
-            userId: req.body.originalRequest.data.user.userId,
+            // userId: req.body.originalRequest.data.user.userId,
             purpose: req.body.result.parameters.purpose
           };
           items_list = items_list +'  '+ req.body.result.parameters.Items[i] + ', ';
@@ -187,7 +187,7 @@ restService.post('/transaction', function(req, res) {
         }
         response = responseForWhat + responseForWhen + responseGeneral;
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-      ask(app, prompt);
+        ask(app, prompt);
         }); // End DB Function
     });
   } // End retrieve function
