@@ -171,12 +171,16 @@ restService.post('/transaction', function(req, res) {
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         }else{
           for (var i = 0; i < result.length; i++) {
-            if(result[i].item == itemName && i != result.length-1){
+            if(result[i].item == itemName){
+              if( i != result.length-1){
               if(result[i].item == result[i+1].item){
                 response = response + ', ' + result[i].date;
               }else{
                 response = response + ' and ' + result[i].date;
               }
+            }else{
+              response = response + ' and ' + result[i].date+']';
+            }
             }
             else{
               if(result.length == 1){
