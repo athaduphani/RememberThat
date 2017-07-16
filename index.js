@@ -191,7 +191,7 @@ restService.post('/transaction', function(req, res) {
         }); // End DB Function
     });
   } // End retrieve function
-  Start Remove function
+    //  Start Remove function
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
          MongoClient.connect(url, function(err, db) {
@@ -304,7 +304,7 @@ restService.post('/transaction', function(req, res) {
     let actionMap = new Map();
     actionMap.set(SAVE_ACTION, save);
     actionMap.set(RETRIEVE_ACTION, retrieve);
-    // actionMap.set(REMOVE_ACTION, remove);
+    actionMap.set(REMOVE_ACTION, remove);
     actionMap.set(WELCOME_ACTION, welcome);
     actionMap.set(REPEAT_YES_ACTION, repeatYes);
     actionMap.set(REPEAT_NO_ACTION, repeatNo);
