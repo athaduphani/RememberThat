@@ -224,9 +224,9 @@ restService.post('/transaction', function(req, res) {
       // start retrieve function
       function retrieve(app){
         if (req.body.result.parameters.retrieveType == 1){
-            retrieveType();
+            retrieveType(app);
         }else if (req.body.result.parameters.retrieveType == 2) {
-            retrieveItems();
+            retrieveItems(app);
         }else {
             let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
             ask(app, prompt);
