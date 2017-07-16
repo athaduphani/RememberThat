@@ -269,15 +269,15 @@ restService.post('/transaction', function(req, res) {
       var middleStatement1 = ' expire between ';
       var middleStatement2 = ' and ';
       var endStatement = '].\n ';
-      response = response + result[0].date + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
-      response =  response + result[1].date + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
+      // response = response + result[0].date + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
+      // response =  response + result[1].date + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
       // response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
-    //   for (i=0; i < result.length; i++){
-    //     // var date = result[i].date;
-    //     // var expiryDateStart = result[i].expiryDateStart;
-    //     // var expiryDateEnd = result[i].expiryDateEnd;
-    //   response = response + startStatement + result[i].item + middleStatement + result[i].date + middleStatement1  + result[i].expiryDateStart + middleStatement2 + result[i].expiryDateEnd +'.\n';
-    // }
+      for (i=0; i < result.length; i++){
+        // var date = result[i].date;
+        // var expiryDateStart = result[i].expiryDateStart;
+        // var expiryDateEnd = result[i].expiryDateEnd;
+      response = response + ' The ' + result[i].item + ' you bought on ' + result[i].date + ' expire between '  + result[i].expiryDateStart + ' and ' + result[i].expiryDateEnd +'.\n';
+    }
     }
       let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
