@@ -191,27 +191,35 @@ restService.post('/transaction', function(req, res) {
         }); // End DB Function
     });
   } // End retrieve function
-  // Start Remove function
-  // function remove (app){
-  //       app.setContext(REPEAT_YES_NO_CONTEXT);
-  //        MongoClient.connect(url, function(err, db) {
-  //          if (err) throw err;
-  //             db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
-  //                if (err) throw err;
-  //
-  //                console.log("1 record deleted");
-  //                db.close();
-  //                var response = '';
-  //               //  if(Object.keys(res).length == 3){
-  //               //    response = 'You don\'t have any ' +  req.body.result.parameters.Items[0] +' '+ Object.values(res)[0];
-  //               //  }else{
-  //                   response = req.body.result.parameters.Items[0] + ' removed from your items.';
-  //               //  }
-  //                let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-  //              ask(app, prompt);
-  //              });
-  //          });
-  // } // End Remove Function
+  Start Remove function
+  function remove (app){
+        app.setContext(REPEAT_YES_NO_CONTEXT);
+         MongoClient.connect(url, function(err, db) {
+           if (err) throw err;
+        //    db.collection("transaction").find({$and:[{"userId": req.body.originalRequest.data.user.userId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        //    if (err) throw err;
+        //    db.close();
+        //    if(result.length > 1){
+        //
+        //    }else{
+        //
+        //    }
+        //  });
+              db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
+                 if (err) throw err;
+                 console.log("1 record deleted");
+                 db.close();
+                 var response = '';
+                //  if(Object.keys(res).length == 3){
+                //    response = 'You don\'t have any ' +  req.body.result.parameters.Items[0] +' '+ Object.values(res)[0];
+                //  }else{
+                    response = req.body.result.parameters.Items[0] + ' removed from your items.';
+                //  }
+                 let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+               ask(app, prompt);
+               });
+           });
+  } // End Remove Function
   // function createResponse (result, parameter , startStatement, endStatement){
   //   var response = ' ';
   //   if(result.length == 0 ){
