@@ -264,13 +264,20 @@ restService.post('/transaction', function(req, res) {
         let endStatement = '].\n ';
         response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
     }else{
-      let startStatement = ' ';
+      let startStatement = ' The ';
+      let middleStatement = ' you bought on '
       let middleStatement1 = ' expire between ';
       let middleStatement2 = ' and ';
       let endStatement = '].\n ';
       // response = response + result[0].item + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
       // response =  response + result[1].item + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
-      response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
+      // response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
+      for (i=0; i<result.length;++){
+        var date = result[i].date;
+        var expiryDateStart = result[i].expiryDateStart;
+        var expiryDateEnd = result[i].expiryDateEnd;
+      response = response + startStatement + result[i].item + middleStatement + date + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
+    }
     }
       let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
