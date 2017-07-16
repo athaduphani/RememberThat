@@ -173,6 +173,38 @@ restService.post('/transaction', function(req, res) {
       }
         return response;
       }
+      function responseforMultipleExpire(result, startStatement, middleStatement, endStatement){
+        let response = '';
+        let itemName = 'NA';
+        for (var i = 0; i < result.length; i++) {
+          var date = result[i].expiryDate;
+          if(result[i].item == itemName){
+            if( i != result.length-1){
+            if(result[i].item == result[i+1].item){
+              response = response + ', ' + date;
+            }else{
+              response = response + ' and ' + date;
+            }
+          }else{
+            response = response + ' and ' + date+ endStatement;
+          }
+          }
+          else{
+            if(result.length == 1){
+              response = response + startStatement + result[i].item + middleStatement  + date+'.\n';
+            }
+            else if(i == 0){
+              response = response + startStatement + result[i].item + middleStatement +'['  + date;
+            }else if (i == result.length-1) {
+              response = response + endStatement +startStatement + result[i].item + middleStatement  + date+'.\n';
+            }else {
+              response = response + endStatement +startStatement + result[i].item + middleStatement+'['  +date;
+            }
+            itemName = result[i].item;
+        }
+      }
+        return response;
+      }
       // Start RetrieveForType
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
@@ -181,7 +213,6 @@ restService.post('/transaction', function(req, res) {
           if (err) throw err;
           db.close();
           let response = '';
-          let itemName ='NA';
           if(result.length == 0){
             let startStatement = 'You don\'t have any ';
             let endStatement = '].\n ';
@@ -205,7 +236,6 @@ restService.post('/transaction', function(req, res) {
         if (err) throw err;
         db.close();
         let response = '';
-        let itemName ='NA';
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
           let endStatement = '].\n ';
@@ -220,13 +250,36 @@ restService.post('/transaction', function(req, res) {
         ask(app, prompt);
         }); // End DB Function
     });
+  } // End Retrieve Items Function
+  // Start Retrieve Items Expiry
+  function retrieveItemsExpiry(app){
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+      if (err) throw err;
+      db.close();
+      let response = '';
+      if(result.length == 0){
+        let startStatement = 'You don\'t have any ';
+        let endStatement = '].\n ';
+        response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+    }else{
+      let startStatement = ' ';
+      let middleStatement = ' expire on ';
+      let endStatement = '].\n ';
+      response = responseforMultipleExpire(result, startStatement, middleStatement, endStatement);
     }
+      let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+      ask(app, prompt);
+      }); // End DB Function
+  });
+} // End Retrieve Items Expiry Function
       // start retrieve function
       function retrieve(app){
         if (req.body.result.parameters.retrieveType == 1){
             retrieveType(app);
         }else if (req.body.result.parameters.retrieveType == 2) {
-            retrieveItems(app);
+            retrieveItemsExpiry(app);
         }else {
             let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
             ask(app, prompt);
