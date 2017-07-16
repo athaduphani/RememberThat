@@ -190,8 +190,7 @@ restService.post('/transaction', function(req, res) {
           }else{
             response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd+ endStatement;
           }
-          }
-          else{
+          }else{
             if(result.length == 1){
               response = response + startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
             }
@@ -200,7 +199,7 @@ restService.post('/transaction', function(req, res) {
             }else if (i == result.length-1) {
               response = response + endStatement +startStatement + result[i].item + middleStatement  + expiryDateStart + middleStatement2 + expiryDateEnd+'.\n';
             }else {
-              response = response + endStatement +startStatement + result[i].item + middleStatement+'['  +expiryDateStart + middleStatement2 + expiryDateEnd;
+              response = response + endStatement +startStatement + result[i].item + middleStatement+'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
             }
             itemName = result[i].item;
         }
@@ -282,7 +281,12 @@ restService.post('/transaction', function(req, res) {
         if (req.body.result.parameters.retrieveType == 1){
             retrieveType(app);
         }else if (req.body.result.parameters.retrieveType == 2) {
+          if (req.body.result.parameters.purpose == 'expire') {
             retrieveItemsExpiry(app);
+          }else {
+            retrieveItems(app);
+          }
+
         }else {
             let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
             ask(app, prompt);
