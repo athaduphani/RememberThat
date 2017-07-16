@@ -177,6 +177,7 @@ restService.post('/transaction', function(req, res) {
       function retrieve(app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
+          if (req.body.result.parameters.retrieveType == 1){
           db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
@@ -195,6 +196,9 @@ restService.post('/transaction', function(req, res) {
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
           }); // End DB Function
+        }else if (req.body.result.parameters.retrieveType == 2) {
+          
+        }
       });
     } //end RetrieveType function
       // start retrieve function
