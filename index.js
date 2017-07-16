@@ -259,19 +259,19 @@ restService.post('/transaction', function(req, res) {
       if (err) throw err;
       db.close();
       let response = 'Result Length ' + result.length;
-      if(result.length == 0){
-        let startStatement = 'You don\'t have any ';
-        let endStatement = '].\n ';
-        response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
-    }else{
-      let startStatement = ' ';
-      let middleStatement1 = ' expire between ';
-      let middleStatement2 = ' and ';
-      let endStatement = '].\n ';
-      // reponse = response + result[0].item + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
-      // reponse =  response + result[1].item + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
-      response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
-    }
+    //   if(result.length == 0){
+    //     let startStatement = 'You don\'t have any ';
+    //     let endStatement = '].\n ';
+    //     response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+    // }else{
+    //   let startStatement = ' ';
+    //   let middleStatement1 = ' expire between ';
+    //   let middleStatement2 = ' and ';
+    //   let endStatement = '].\n ';
+    //   // reponse = response + result[0].item + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
+    //   // reponse =  response + result[1].item + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
+    //   response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
+    // }
       let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
       }); // End DB Function
