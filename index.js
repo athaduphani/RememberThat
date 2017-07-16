@@ -128,8 +128,18 @@ restService.post('/transaction', function(req, res) {
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       } // end save function
-      function responseforList(){
-
+      function responseforList(parameter, startStatement, endStatement){
+        let response = startStatement;
+        for (var i = 0; i < req.body.result.parameters.type.length; i++) {
+          if (req.body.result.parameters.type.length == 1) {
+            response = response + req.body.result.parameters.type[i] + endStatement;
+          }
+          else if (i == req.body.result.parameters.type.length-1){
+            response = response + 'and ' + req.body.result.parameters.type[i] + endStatement ;
+          }else{
+            response = response + req.body.result.parameters.type[i] ;
+        }
+        }
       }
       // Start RetrieveForType
       function retrieve(app){
@@ -141,10 +151,13 @@ restService.post('/transaction', function(req, res) {
           let response = '';
           let itemName ='NA';
           if(result.length == 0){
-            response = 'You don\'t have any';
-            for (var i = 0; i < req.body.result.parameters.type.length; i++) {
-              response = response + req.body.result.parameters.type[i] ;
-            }
+            // response = 'You don\'t have any ';
+            // for (var i = 0; i < req.body.result.parameters.type.length; i++) {
+            //   response = response + req.body.result.parameters.type[i] ;
+            // }
+            let startStatement = 'You don\'t have any ';
+            let endStatement = '.\n ';
+            responseforList(req.body.result.parameters.type, startStatement, endStatement);
         // }else{
         //   for (var i = 0; i < result.length; i++) {
         //
@@ -185,7 +198,7 @@ restService.post('/transaction', function(req, res) {
           ask(app, prompt);
           }); // End DB Function
       });
-      }
+    } //end RetrieveType function
       // start retrieve function
       // function retrieve (app) {
       //   app.setContext(REPEAT_YES_NO_CONTEXT);
