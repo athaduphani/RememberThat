@@ -174,10 +174,9 @@ restService.post('/transaction', function(req, res) {
         return response;
       }
       // Start RetrieveForType
-      function retrieve(app){
+      function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          if (req.body.result.parameters.retrieveType == 1){
           db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
@@ -196,12 +195,43 @@ restService.post('/transaction', function(req, res) {
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
           }); // End DB Function
-        }else if (req.body.result.parameters.retrieveType == 2) {
-          
-        }
       });
     } //end RetrieveType function
+    //Start Retrieve Items
+    function retrieveItems(app){
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"type":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        if (err) throw err;
+        db.close();
+        let response = '';
+        let itemName ='NA';
+        if(result.length == 0){
+          let startStatement = 'You don\'t have any ';
+          let endStatement = '].\n ';
+          response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+      }else{
+        let startStatement = 'You bought ';
+        let middleStatement = ' on ';
+        let endStatement = '.\n ';
+        response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+      }
+        let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+        ask(app, prompt);
+        }); // End DB Function
+    });
+    }
       // start retrieve function
+      function retrieve(app){
+        if (req.body.result.parameters.retrieveType == 1){
+            retrieveType();
+        }else if (req.body.result.parameters.retrieveType == 2) {
+            retrieveItems();
+        }else {
+            let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
+            ask(app, prompt);
+        }
+      } // End Retrieve
       // function retrieve (app) {
       //   app.setContext(REPEAT_YES_NO_CONTEXT);
       // MongoClient.connect(url, function(err, db) {
