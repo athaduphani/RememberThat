@@ -267,8 +267,8 @@ restService.post('/transaction', function(req, res) {
         response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
     }else{
       let startStatement = ' ';
-      let middleStatement = ' expire between ';
-      let middleStatement = ' and ';
+      let middleStatement1 = ' expire between ';
+      let middleStatement2 = ' and ';
       let endStatement = '].\n ';
       response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
     }
