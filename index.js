@@ -110,7 +110,8 @@ restService.post('/transaction', function(req, res) {
             quantity: req.body.result.parameters.number,
             type: "Vegetable",
             date: req.body.result.parameters.date,
-            expiryDate: "07-31-2017",
+            expiryDateStart: "07-20-2017",
+            expiryDateEnd: "07-31-2017",
             // userId: req.body.originalRequest.data.user.userId,
             purpose: req.body.result.parameters.purpose
           };
@@ -173,32 +174,33 @@ restService.post('/transaction', function(req, res) {
       }
         return response;
       }
-      function responseforMultipleExpire(result, startStatement, middleStatement, endStatement){
+      function responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement){
         let response = '';
         let itemName = 'NA';
         for (var i = 0; i < result.length; i++) {
-          var date = result[i].expiryDate;
+          var expiryDateStart = result[i].expiryDateStart;
+          var expiryDateEnd = result[i].expiryDateEnd;
           if(result[i].item == itemName){
             if( i != result.length-1){
             if(result[i].item == result[i+1].item){
-              response = response + ', ' + date;
+              response = response + ', ' + expiryDateStart + middleStatement2 + expiryDateEnd;
             }else{
-              response = response + ' and ' + date;
+              response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd;
             }
           }else{
-            response = response + ' and ' + date+ endStatement;
+            response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd+ endStatement;
           }
           }
           else{
             if(result.length == 1){
-              response = response + startStatement + result[i].item + middleStatement  + date+'.\n';
+              response = response + startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
             }
             else if(i == 0){
-              response = response + startStatement + result[i].item + middleStatement +'['  + date;
+              response = response + startStatement + result[i].item + middleStatement +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
             }else if (i == result.length-1) {
-              response = response + endStatement +startStatement + result[i].item + middleStatement  + date+'.\n';
+              response = response + endStatement +startStatement + result[i].item + middleStatement  + expiryDateStart + middleStatement2 + expiryDateEnd+'.\n';
             }else {
-              response = response + endStatement +startStatement + result[i].item + middleStatement+'['  +date;
+              response = response + endStatement +startStatement + result[i].item + middleStatement+'['  +expiryDateStart + middleStatement2 + expiryDateEnd;
             }
             itemName = result[i].item;
         }
@@ -265,9 +267,10 @@ restService.post('/transaction', function(req, res) {
         response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
     }else{
       let startStatement = ' ';
-      let middleStatement = ' expire on ';
+      let middleStatement = ' expire between ';
+      let middleStatement = ' and ';
       let endStatement = '].\n ';
-      response = responseforMultipleExpire(result, startStatement, middleStatement, endStatement);
+      response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
     }
       let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
