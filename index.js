@@ -105,7 +105,7 @@ restService.post('/transaction', function(req, res) {
       for (var i = 0; i < parameters_app.Items.length; i++) {
          transactions[i] = {
             transactionId: req.body.id,
-            SessionId: req.body.sessionId,
+            sessionId: req.body.sessionId,
             item: req.body.result.parameters.Items[i],
             quantity: req.body.result.parameters.number,
             type: "Vegetable",
