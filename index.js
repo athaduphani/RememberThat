@@ -132,12 +132,12 @@ restService.post('/transaction', function(req, res) {
         let response = startStatement;
         for (var i = 0; i < req.body.result.parameters.type.length; i++) {
           if (req.body.result.parameters.type.length == 1) {
-            response = response + req.body.result.parameters.type[i] + endStatement;
+            response = response + req.body.result.parameters.type[i] +' '+ endStatement;
           }
           else if (i == req.body.result.parameters.type.length-1){
-            response = response + 'and ' + req.body.result.parameters.type[i] + endStatement ;
+            response = response + 'and ' + req.body.result.parameters.type[i] +' '+ endStatement ;
           }else{
-            response = response + req.body.result.parameters.type[i] ;
+            response = response + req.body.result.parameters.type[i]+ ' ' ;
         }
         }
         return response;
