@@ -189,7 +189,7 @@ restService.post('/transaction', function(req, res) {
         }else{
           let startStatement = 'You have ';
           let middleStatement = ' which are bought on ';
-          let endStatement = '.\n ';
+          let endStatement = '].\n ';
           response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         }
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
@@ -213,7 +213,7 @@ restService.post('/transaction', function(req, res) {
       }else{
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
-        let endStatement = '.\n ';
+        let endStatement = '].\n ';
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
       }
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
