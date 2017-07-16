@@ -180,12 +180,12 @@ restService.post('/transaction', function(req, res) {
             }
             else{
               if(result.length == 1){
-                response = response + 'You Bought ' + result[i].item + ' on '  + result[i].date+'.\n';
+                response = response + 'You have ' + result[i].item + ' which are bought on '  + result[i].date+'.\n';
               }
               else if(i == 0){
-                response = response + 'You Bought ' + result[i].item + ' on ['  + result[i].date;
+                response = response + 'You have  ' + result[i].item + ' which are bought on ['  + result[i].date;
               }else {
-                response = response + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
+                response = response + ']. You have ' + result[i].item + ' which are bought on ['  +result[i].date;
               }
               itemName = result[i].item;
           }
