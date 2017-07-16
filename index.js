@@ -142,18 +142,35 @@ restService.post('/transaction', function(req, res) {
         }
         return response;
       }
-      function responseforTwoParam(parameter1,parameter2, startStatement,middleStatement, endStatement){
-        let response = startStatement;
-        for (var i = 0; i < req.body.result.parameters.type.length; i++) {
-          if (req.body.result.parameters.type.length == 1) {
-            response = response + req.body.result.parameters.type[i] +' '+ endStatement;
-          }
-          else if (i == req.body.result.parameters.type.length-1){
-            response = response + 'and ' + req.body.result.parameters.type[i] +' '+ endStatement ;
+      function responseforMultiple(result, startStatement, middleStatement, endStatement){
+        let response = '';
+        let itemName = 'NA';
+        for (var i = 0; i < result.length; i++) {
+          if(result[i].item == itemName){
+            if( i != result.length-1){
+            if(result[i].item == result[i+1].item){
+              response = response + ', ' + result[i].date;
+            }else{
+              response = response + ' and ' + result[i].date;
+            }
           }else{
-            response = response + req.body.result.parameters.type[i]+ ' ' ;
+            response = response + ' and ' + result[i].date+'].\n';
+          }
+          }
+          else{
+            if(result.length == 1){
+              response = response + startStatement + result[i].item + middleStatement  + result[i].date+'.\n';
+            }
+            else if(i == 0){
+              response = response + startStatement + result[i].item + middleStatement +'['  + result[i].date;
+            }else if (i == result.length-1) {
+              response = response + endStatement +startStatement + result[i].item + middleStatement  +result[i].date+'.\n';
+            }else {
+              response = response + endStatement +startStatement + result[i].item + middleStatement+'['  +result[i].date;
+            }
+            itemName = result[i].item;
         }
-        }
+      }
         return response;
       }
       // Start RetrieveForType
@@ -167,34 +184,13 @@ restService.post('/transaction', function(req, res) {
           let itemName ='NA';
           if(result.length == 0){
             let startStatement = 'You don\'t have any ';
-            let endStatement = '.\n ';
+            let endStatement = '].\n ';
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         }else{
-          for (var i = 0; i < result.length; i++) {
-            if(result[i].item == itemName){
-              if( i != result.length-1){
-              if(result[i].item == result[i+1].item){
-                response = response + ', ' + result[i].date;
-              }else{
-                response = response + ' and ' + result[i].date;
-              }
-            }else{
-              response = response + ' and ' + result[i].date+'].\n';
-            }
-            }
-            else{
-              if(result.length == 1){
-                response = response + 'You have ' + result[i].item + ' which are bought on '  + result[i].date+'.\n';
-              }
-              else if(i == 0){
-                response = response + 'You have  ' + result[i].item + ' which are bought on ['  + result[i].date;
-              }else {
-                response = response + '].\n You have ' + result[i].item + ' which are bought on ['  +result[i].date;
-              }
-              itemName = result[i].item;
-          }
-
-        }
+          let startStatement = 'You have ';
+          let middleStatement = ' which are bought on ';
+          let endStatement = '.\n ';
+          response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         }
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
