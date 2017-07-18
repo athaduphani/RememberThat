@@ -123,7 +123,7 @@ restService.post('/transaction', function(req, res) {
         var items_list = '';
         var itemType = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
-         itemType = getType(req.body.result.parameters.Items[i]);
+         itemType = itemType +req.body.result.parameters.Items[i]+ getType(req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
