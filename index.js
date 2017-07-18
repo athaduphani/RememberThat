@@ -100,7 +100,7 @@ restService.post('/transaction', function(req, res) {
   function getType(item){
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-      db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item": item}]}).sort({"item":1}).toArray(function(err, result){
+      db.collection("items_data").find({$and:[{"sessionId": req.body.sessionId}, {"item": item}]}).sort({"item":1}).toArray(function(err, result){
       if (err) throw err;
       db.close();
       let type = '';
