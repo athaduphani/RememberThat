@@ -103,7 +103,7 @@ restService.post('/transaction', function(req, res) {
       db.collection("items_data").find({"name": item}).sort({"item":1}).toArray(function(err, result){
       if (err) throw err;
       db.close();
-      let type = '';
+      var type = 'Result Length ' + result.length;
       if(result.length == 0){
           console.log(" Type is not found for the item");
           item = 'Default';
@@ -121,13 +121,13 @@ restService.post('/transaction', function(req, res) {
         var transactions = [];
         var items_list = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
-        var type = getType(req.body.result.parameters.Items[i]);
+        var itemType = getType(req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
             item: req.body.result.parameters.Items[i],
             quantity: req.body.result.parameters.number,
-            type: type,
+            type: itemType,
             date: req.body.result.parameters.date,
             expiryDateStart: "07-20-2017",
             expiryDateEnd: "07-31-2017",
