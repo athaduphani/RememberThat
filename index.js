@@ -100,7 +100,7 @@ restService.post('/transaction', function(req, res) {
   function getType(item){
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-      db.collection("items_data").find({"name": item}).sort({"item":1}).toArray(function(err, result){
+      db.collection("items_data").find({"name": item}).sort({"name":1}).toArray(function(err, result){
       if (err) throw err;
       db.close();
       var type = 'Result Length ' + result.length;
