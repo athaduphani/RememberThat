@@ -98,23 +98,24 @@ restService.post('/transaction', function(req, res) {
   } //End Welcome Function
   // start get Type Function
   function getType (item){
-    var type = '';
+
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-      db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
+      var dbOutput = db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
       if (err) throw err;
       db.close();
-      type = 'Result Length ' + result.length;
+      var type = '';
       if(result.length == 0){
           console.log(" Type is not found for the item");
           type = 'Default';
     }else{
       type = result[0].type;
     }
-
+      return type;
       }); // End DB Function
+      return dbOutput;
   });
-  return type;
+
   }
 //start save function
       function save (app){
