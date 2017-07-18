@@ -103,13 +103,13 @@ restService.post('/transaction', function(req, res) {
       db.collection("items_data").find({"name": "Tomato"}).toArray(function(err, result){
       if (err) throw err;
       db.close();
-      var type = '';
-      if(result.length == 0){
-          console.log(" Type is not found for the item");
-          type = 'Default';
-    }else{
-      type = result[0].type;
-    }
+      var type = 'result[0].type';
+    //   if(result.length == 0){
+    //       console.log(" Type is not found for the item");
+    //       type = 'Default';
+    // }else{
+      // type = result[0].type;
+    // }
     // let type = 'Fruits';
       return type;
       }); // End DB Function
@@ -123,7 +123,7 @@ restService.post('/transaction', function(req, res) {
         var items_list = '';
         var itemType = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
-         itemType = itemType + getType(req.body.result.parameters.Items[i]);
+         itemType = getType(req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
