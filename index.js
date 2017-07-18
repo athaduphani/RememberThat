@@ -103,7 +103,7 @@ restService.post('/transaction', function(req, res) {
       db.collection("items_data").find({"name": "Tomato"}).toArray(function(err, result){
       if (err) throw err;
       db.close();
-      let type = "result[0].type";
+      let type = 'Hi';
     //   if(result.length == 0){
     //       console.log(" Type is not found for the item");
     //       type = 'Default';
