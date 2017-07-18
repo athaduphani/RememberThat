@@ -111,9 +111,10 @@ restService.post('/transaction', function(req, res) {
     }else{
       type = result[0].type;
     }
-      return type;
+
       }); // End DB Function
   });
+  return type;
   }
 //start save function
       function save (app){
