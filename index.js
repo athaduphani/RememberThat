@@ -98,22 +98,22 @@ restService.post('/transaction', function(req, res) {
   } //End Welcome Function
   // start get Type Function
   function getType(item){
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      db.collection("items_data").find({"name": item}).toArray(function(err, result){
-      if (err) throw err;
-      db.close();
-      var type = 'Result Length ' + result.length;
-      if(result.length == 0){
-          console.log(" Type is not found for the item");
-          item = 'Default';
-    }else{
-      type = result[0].type;
-    }
-    type = 'Fruits';
+  //   MongoClient.connect(url, function(err, db) {
+  //     if (err) throw err;
+  //     db.collection("items_data").find({"name": item}).toArray(function(err, result){
+  //     if (err) throw err;
+  //     db.close();
+  //     var type = 'Result Length ' + result.length;
+  //     if(result.length == 0){
+  //         console.log(" Type is not found for the item");
+  //         item = 'Default';
+  //   }else{
+  //     type = result[0].type;
+  //   }
+    let type = 'Fruits';
       return type;
-      }); // End DB Function
-  });
+  //     }); // End DB Function
+  // });
   }
 //start save function
       function save (app){
