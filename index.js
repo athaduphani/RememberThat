@@ -120,8 +120,9 @@ restService.post('/transaction', function(req, res) {
         var prompt = "Something went wrong. Please try again";
         var transactions = [];
         var items_list = '';
+        var itemType = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
-        var itemType = getType(req.body.result.parameters.Items[i]);
+         itemType = itemType + getType(req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
@@ -144,7 +145,8 @@ restService.post('/transaction', function(req, res) {
               db.close();
             });
           });
-          let title = "I saved that you " + req.body.result.parameters.purpose + items_list + " on " + req.body.result.parameters.date +'.' ;
+          // let title = "I saved that you " + req.body.result.parameters.purpose + items_list + " on " + req.body.result.parameters.date +'.' ;
+          let title = itemType;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       } // end save function
