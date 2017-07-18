@@ -99,7 +99,7 @@ restService.post('/transaction', function(req, res) {
   // start get Type Function
   function getType (item){
 
-    MongoClient.connect(url, function(err, db) {
+    var mongoOutput = MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var dbOutput = db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
       if (err) throw err;
@@ -115,7 +115,7 @@ restService.post('/transaction', function(req, res) {
       }); // End DB Function
       return dbOutput;
   });
-
+return mongoOutput;
   }
 //start save function
       function save (app){
