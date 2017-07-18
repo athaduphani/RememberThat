@@ -98,22 +98,21 @@ restService.post('/transaction', function(req, res) {
   } //End Welcome Function
   // start get Type Function
   function getType (item){
-    // MongoClient.connect(url, function(err, db) {
-    //   if (err) throw err;
-    //   db.collection("items_data").find({"name": "Tomato"}).toArray(function(err, result){
-    //   if (err) throw err;
-    //   db.close();
-      let type = 'Hi';
-    //   if(result.length == 0){
-    //       console.log(" Type is not found for the item");
-    //       type = 'Default';
-    // }else{
-      // type = result[0].type;
-    // }
-    // let type = 'Fruits';
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
+      if (err) throw err;
+      db.close();
+      var type = 'Result Length ' + result.length;
+      if(result.length == 0){
+          console.log(" Type is not found for the item");
+          type = 'Default';
+    }else{
+      type = result[0].type;
+    }
       return type;
-  //     }); // End DB Function
-  // });
+      }); // End DB Function
+  });
   }
 //start save function
       function save (app){
@@ -123,7 +122,7 @@ restService.post('/transaction', function(req, res) {
         var items_list = '';
         var itemType = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
-         itemType = itemType +req.body.result.parameters.Items[i]+ getType(req.body.result.parameters.Items[i]);
+         itemType = itemType + req.body.result.parameters.Items[i] + getType(req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,

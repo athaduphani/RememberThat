@@ -14,7 +14,7 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
     var firstTimeUserPrompt = '';
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("items_data").find({"name": "Tomato"}).toArray(function(err, result){
+        db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
         if (err) throw err;
         db.close();
         var type = 'Result Length ' + result.length;
