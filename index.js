@@ -109,14 +109,14 @@ restService.post('/transaction', function(req, res) {
           if (err) {
             reject(err);
           } else {
-            var type = '';
-            if(result.length == 0){
-                console.log(" Type is not found for the item");
-                type = 'Default';
-          }else{
-            type = result[0].type;
-          }
-            resolve(type);
+          //   var type = '';
+          //   if(result.length == 0){
+          //       console.log(" Type is not found for the item");
+          //       type = 'Default';
+          // }else{
+          //   type = result[0].type;
+          // }
+            resolve(result);
           }
         });
       });
