@@ -27,6 +27,7 @@
     "express": "4.15.2",
     "mongodb": "^2.2.29",
     "pg": "6.x",
-    "sprintf-js": "1.0.3"
+    "sprintf-js": "1.0.3",
+    "promise": "8.0.1"
   }
 }
