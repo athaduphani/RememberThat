@@ -96,6 +96,24 @@ restService.post('/transaction', function(req, res) {
       // ask(app, prompt);
     // }
   } //End Welcome Function
+  // start get Type Function
+  function getType(item){
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item": item}]}).sort({"item":1}).toArray(function(err, result){
+      if (err) throw err;
+      db.close();
+      let type = '';
+      if(result.length == 0){
+          console.log(" Type is not found for the item");
+          item = 'Default';
+    }else{
+      type = result[0].type;
+    }
+      return type;
+      }); // End DB Function
+  });
+  }
 //start save function
       function save (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
@@ -103,12 +121,13 @@ restService.post('/transaction', function(req, res) {
         var transactions = [];
         var items_list = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
+        var type = getType(req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
             item: req.body.result.parameters.Items[i],
             quantity: req.body.result.parameters.number,
-            type: "Vegetable",
+            type: type,
             date: req.body.result.parameters.date,
             expiryDateStart: "07-20-2017",
             expiryDateEnd: "07-31-2017",
@@ -300,70 +319,7 @@ restService.post('/transaction', function(req, res) {
             ask(app, prompt);
         }
       } // End Retrieve
-      // function retrieve (app) {
-      //   app.setContext(REPEAT_YES_NO_CONTEXT);
-      // MongoClient.connect(url, function(err, db) {
-      //   if (err) throw err;
-      //   db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {$or:[{"type":{$in: req.body.result.parameters.type}},{"item":{$in: req.body.result.parameters.Items}}]}]}).sort({"item":1}).toArray(function(err, result){
-      //   if (err) throw err;
-      //   db.close();
-      //   let responseForWhat = 'You have ';
-      //   let responseForWhen = '';
-      //   let responseGeneral='You dont have any ';
-      //   let response = '';
-      //   let itemName ='NA';
-      //   if(result.length == 0){
-      //     responseForWhat = '';
-      //     responseGeneral = req.body.sessionId;
-      //     if (req.body.result.parameters.Items.length == 0) {
-      //       for (var i = 0; i < req.body.result.parameters.type.length; i++) {
-      //         responseGeneral = responseGeneral + req.body.result.parameters.type[i] ;
-      //       }
-      //     }else{
-      //     for (var i = 0; i < req.body.result.parameters.Items.length; i++) {
-      //       responseGeneral = responseGeneral + req.body.result.parameters.Items[i] ;
-      //     }
-      //   }
-      // }else{
-      //   for (var i = 0; i < result.length; i++) {
-      //
-      //     // if(result[i].item == itemName){
-      //     //   responseDate = responseDate + ',' + result[i].date;
-      //     // }
-      //     // else{
-      //     //   if(i == 0){
-      //     //     responseDate = responseDate + 'You Bought' + result[i].item + ' on ['  + result[i].date;
-      //     //   }else {
-      //     //     responseDate = responseDate + ']. You Bought' + result[i].item + ' on ['  +result[i].date;
-      //     //   }
-      //   // }
-      //     if(req.body.result.parameters.questionTag == "what"){
-      //       responseGeneral='';
-      //       if (itemName != result[i].item){
-      //       responseForWhat = responseForWhat + result[i].item + ', ';
-      //       }
-      //     }else if(req.body.result.parameters.questionTag == "when"){
-      //       responseForWhat = '';responseGeneral='';
-      //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-      //     }else if(req.body.result.parameters.questionTag == "how"){
-      //       responseForWhat = '';responseGeneral='';
-      //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-      //     }else if(req.body.result.parameters.questionTag == "where"){
-      //       responseForWhat = '';responseGeneral='';
-      //       responseForWhen = responseForWhen + 'You Bought ' + result[i].item + ' on '  + result[i].date + '.\n';
-      //     }else{
-      //       responseForWhat = '';
-      //     }
-      //       itemName = result[i].item;
-      //     }
-      //   }
-      //   response = responseForWhat + responseForWhen + responseGeneral;
-      //   let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-      //   ask(app, prompt);
-      //   }); // End DB Function
-  //   });
-  // } // End retrieve function
-    //  Start Remove function
+  //  Start Remove function
   // function remove (app){
   //       app.setContext(REPEAT_YES_NO_CONTEXT);
   //        MongoClient.connect(url, function(err, db) {
