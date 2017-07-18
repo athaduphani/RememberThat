@@ -12,18 +12,21 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 //
 // });
     var firstTimeUserPrompt = '';
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-         //  db.collection("transaction").insertMany(transactions, function(err, res) {
-         //    if (err) throw err;
-         //    console.log("1 record inserted");
-         //    db.close();
-         //  });
-           db.collection('transaction').deleteMany({$and:[{ "sessionId" : req.body.result.parameters.sessionId},{"item": req.body.result.parameters.Items[0]}]});
-        });
-});
+        db.collection("items_data").find({"name": "Tomato"}).toArray(function(err, result){
+        if (err) throw err;
+        db.close();
+        var type = 'Result Length ' + result.length;
+        if(result.length == 0){
+            console.log(" Type is not found for the item");
+            item = 'Default';
+      }else{
+        type = result[0].type;
+      }
+        console.log(type);
+        }); // End DB Function
+    });
 // transactions[0] = {
 //    transactionId: 213123,
 //    SessionId: 123123,
