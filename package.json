@@ -28,6 +28,7 @@
     "mongodb": "^2.2.29",
     "pg": "6.x",
     "sprintf-js": "1.0.3",
-    "promise": "8.0.1"
+    "promise": "8.0.1",
+    "rsvp": "4.0.0"
   }
 }

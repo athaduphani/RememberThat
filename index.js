@@ -8,7 +8,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
-var Promise = require('promise');
+var Promise = require('rsvp').Promise;
 // const items = {
 //   "vegetable"= []
 // }
@@ -102,7 +102,7 @@ restService.post('/transaction', function(req, res) {
     return new Promise(function(resolve, reject) {
       MongoClient.connect(url, function(err, db) {
         if (err) { reject(err); } else { resolve(db); }
-      }
+      // });
     }).then(function(db) {
       return new Promise(function(resolve, reject) {
       db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
@@ -121,6 +121,7 @@ restService.post('/transaction', function(req, res) {
         });
       });
     });
+  });
   }
 //start save function
       function save (app){
