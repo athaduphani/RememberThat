@@ -20,7 +20,7 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
         var type = 'Result Length ' + result.length;
         if(result.length == 0){
             console.log(" Type is not found for the item");
-            item = 'Default';
+            type = 'Default';
       }else{
         type = result[0].type;
       }
