@@ -116,7 +116,7 @@ restService.post('/transaction', function(req, res) {
           // }else{
           //   type = result[0].type;
           // }
-            resolve(result[0].value.type);
+            resolve(Object.values(result)[0]);
           }
         });
       });
