@@ -150,7 +150,7 @@ restService.post('/transaction', function(req, res) {
           if (err) throw err;
             db.collection("transaction").insertMany(transactions, function(err, res) {
               if (err) throw err;
-              console.log("1 record inserted");
+              // console.log("1 record inserted");
               db.close();
             });
           });
