@@ -68,9 +68,7 @@ restService.post('/transaction', function(req, res) {
   function welcome(app){
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
-
     // var firstTimeUser = userExists(SessionId);
-
         MongoClient.connect(url, function(err, db) {
           let firstTimeUserPrompt = 'asdasd';
           if (err) throw err;
@@ -131,7 +129,7 @@ restService.post('/transaction', function(req, res) {
         var items_list = '';
         var itemType = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
-         itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i])[0];
+         itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
