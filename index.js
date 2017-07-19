@@ -102,7 +102,7 @@ restService.post('/transaction', function(req, res) {
     return new Promise(function(resolve, reject) {
       MongoClient.connect(url, function(err, db) {
         if (err) { reject(err); } else { resolve(db); }
-      // });
+      // }
     }).then(function(db) {
       return new Promise(function(resolve, reject) {
       db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
@@ -116,7 +116,7 @@ restService.post('/transaction', function(req, res) {
           // }else{
           //   type = result[0].type;
           // }
-            resolve(result);
+            resolve(result[0].type);
           }
         });
       });
