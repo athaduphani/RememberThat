@@ -103,7 +103,7 @@ restService.post('/transaction', function(req, res) {
       // }
     }).then(function(db) {
       return new Promise(function(resolve, reject) {
-      db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
+      db.collection("items_data").find({"name": item}).toArray(function(err, result){
           if (err) {
             reject(err);
           } else {
@@ -114,7 +114,7 @@ restService.post('/transaction', function(req, res) {
           // }else{
           //   type = result[0].type;
           // }
-            resolve(Object.values(result)[0]);
+            resolve(result);
           }
         });
       });
