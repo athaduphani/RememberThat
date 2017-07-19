@@ -8,7 +8,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
-// var Promise = require('rsvp').Promise;
+var Promise = require('rsvp').Promise;
 // const items = {
 //   "vegetable"= []
 // }
@@ -98,31 +98,31 @@ restService.post('/transaction', function(req, res) {
     // }
   } //End Welcome Function
   // start get Type Function
-  // function getType (item){
-  //   return new Promise(function(resolve, reject) {
-  //     MongoClient.connect(url, function(err, db) {
-  //       if (err) { reject(err); } else { resolve(db); }
-  //     // });
-  //   }).then(function(db) {
-  //     return new Promise(function(resolve, reject) {
-  //     db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
-  //         if (err) {
-  //           reject(err);
-  //         } else {
-  //         //   var type = '';
-  //         //   if(result.length == 0){
-  //         //       console.log(" Type is not found for the item");
-  //         //       type = 'Default';
-  //         // }else{
-  //         //   type = result[0].type;
-  //         // }
-  //           resolve(result);
-  //         }
-  //       });
-  //     });
-  //   });
-  // });
-  // }
+  function getType (item){
+    return new Promise(function(resolve, reject) {
+      MongoClient.connect(url, function(err, db) {
+        if (err) { reject(err); } else { resolve(db); }
+      // });
+    }).then(function(db) {
+      return new Promise(function(resolve, reject) {
+      db.collection("items_data").find({"name": "Banana"}).toArray(function(err, result){
+          if (err) {
+            reject(err);
+          } else {
+          //   var type = '';
+          //   if(result.length == 0){
+          //       console.log(" Type is not found for the item");
+          //       type = 'Default';
+          // }else{
+          //   type = result[0].type;
+          // }
+            resolve(result);
+          }
+        });
+      });
+    });
+  });
+  }
 //start save function
       function save (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
@@ -131,7 +131,7 @@ restService.post('/transaction', function(req, res) {
         var items_list = '';
         var itemType = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
-        //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i])[0].type;
+         itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
