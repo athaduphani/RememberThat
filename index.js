@@ -8,7 +8,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
-var Promise = require('rsvp').Promise;
+// var Promise = require('rsvp').Promise;
 // const items = {
 //   "vegetable"= []
 // }
