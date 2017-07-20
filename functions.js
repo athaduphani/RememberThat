@@ -1,5 +1,3 @@
-
-
 module.exports = {
   // Start responseforOneParam function
   responseforOneParam: function(parameter, startStatement, endStatement){
@@ -17,7 +15,7 @@ module.exports = {
     return response;
   } // End responseforOneParam function
 // Start responseforMultiple function
-responseforMultiple: function (result, startStatement, middleStatement, endStatement){
+responseforMultiple: function(result, startStatement, middleStatement, endStatement){
   let response = '';
   let itemName = 'NA';
   for (var i = 0; i < result.length; i++) {
@@ -49,35 +47,35 @@ responseforMultiple: function (result, startStatement, middleStatement, endState
   return response;
 }// End responseforMultiple function
 // Start responseforMultipleExpire function
-responseforMultipleExpire: function(result, startStatement, middleStatement1, middleStatement2, endStatement){
-  let response = '';
-  let itemName = 'NA';
-  for (var i = 0; i < result.length; i++) {
-    var expiryDateStart = result[i].expiryDateStart;
-    var expiryDateEnd = result[i].expiryDateEnd;
-    if(result[i].item == itemName){
-      if( i != result.length-1){
-       if(result[i].item == result[i+1].item){
-        response = response + ', ' + expiryDateStart + middleStatement2 + expiryDateEnd;
-       }else{
-        response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd;
-       }
-     }else{
-      response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd+ endStatement;
-      }
-    }else{
-      if(result.length == 1){
-        response = response + startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
-      }else if(i == 0){
-        response = response + startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
-      }else if(i == result.length-1) {
-        response = response + endStatement +startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd+'.\n';
-      }else {
-        response = response + endStatement +startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
-      }
-      itemName = result[i].item;
-  }
-}
-  return response;
-} // End responseforMultipleExpire function
+// responseforMultipleExpire: function(result, startStatement, middleStatement1, middleStatement2, endStatement){
+//   let response = '';
+//   let itemName = 'NA';
+//   for (var i = 0; i < result.length; i++) {
+//     var expiryDateStart = result[i].expiryDateStart;
+//     var expiryDateEnd = result[i].expiryDateEnd;
+//     if(result[i].item == itemName){
+//       if( i != result.length-1){
+//        if(result[i].item == result[i+1].item){
+//         response = response + ', ' + expiryDateStart + middleStatement2 + expiryDateEnd;
+//        }else{
+//         response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd;
+//        }
+//      }else{
+//       response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd+ endStatement;
+//       }
+//     }else{
+//       if(result.length == 1){
+//         response = response + startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
+//       }else if(i == 0){
+//         response = response + startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
+//       }else if(i == result.length-1) {
+//         response = response + endStatement +startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd+'.\n';
+//       }else {
+//         response = response + endStatement +startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
+//       }
+//       itemName = result[i].item;
+//   }
+// }
+//   return response;
+// } // End responseforMultipleExpire function
 }
