@@ -1,6 +1,6 @@
 module.exports = {
   // Start responseforOneParam function
-  responseforOneParam: function(parameter, startStatement, endStatement){
+  responseforOneParam1: function(parameter, startStatement, endStatement){
     let response = startStatement;
     for (var i = 0; i < req.body.result.parameters.type.length; i++) {
       if (req.body.result.parameters.type.length == 1) {
@@ -15,7 +15,7 @@ module.exports = {
     return response;
   } // End responseforOneParam function
 // Start responseforMultiple function
-responseforMultiple: function(result, startStatement, middleStatement, endStatement){
+responseforMultiple1: function(result, startStatement, middleStatement, endStatement){
   let response = '';
   let itemName = 'NA';
   for (var i = 0; i < result.length; i++) {
