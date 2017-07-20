@@ -8,7 +8,9 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
+var mongo = require('functions');
 var Promise = require('rsvp').Promise;
+var functions = require('./functions.js');
 // const items = {
 //   "vegetable"= []
 // }
@@ -96,31 +98,31 @@ restService.post('/transaction', function(req, res) {
     // }
   } //End Welcome Function
   // start get Type Function
-  function getType (item){
-    return new Promise(function(resolve, reject) {
-      MongoClient.connect(url, function(err, db) {
-        if (err) { reject(err); } else { resolve(db); }
-      // }
-    }).then(function(db) {
-      return new Promise(function(resolve, reject) {
-      db.collection("items_data").find({"name": item}).toArray(function(err, result){
-          if (err) {
-            reject(err);
-          } else {
-          //   var type = '';
-          //   if(result.length == 0){
-          //       console.log(" Type is not found for the item");
-          //       type = 'Default';
-          // }else{
-          //   type = result[0].type;
-          // }
-            resolve(result);
-          }
-        });
-      });
-    });
-  });
-  }
+  // function getType (item){
+  //   return new Promise(function(resolve, reject) {
+  //     MongoClient.connect(url, function(err, db) {
+  //       if (err) { reject(err); } else { resolve(db); }
+  //     // }
+  //   }).then(function(db) {
+  //     return new Promise(function(resolve, reject) {
+  //     db.collection("items_data").find({"name": item}).toArray(function(err, result){
+  //         if (err) {
+  //           reject(err);
+  //         } else {
+  //         //   var type = '';
+  //         //   if(result.length == 0){
+  //         //       console.log(" Type is not found for the item");
+  //         //       type = 'Default';
+  //         // }else{
+  //         //   type = result[0].type;
+  //         // }
+  //           resolve(result);
+  //         }
+  //       });
+  //     });
+  //   });
+  // });
+  // }
 //start save function
       function save (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
@@ -129,7 +131,7 @@ restService.post('/transaction', function(req, res) {
         var items_list = '';
         var itemType = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
-         itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
+        //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
@@ -152,8 +154,8 @@ restService.post('/transaction', function(req, res) {
               db.close();
             });
           });
-          // let title = "I saved that you " + req.body.result.parameters.purpose + items_list + " on " + req.body.result.parameters.date +'.' ;
-          let title = itemType;
+          let title = "I saved that you " + req.body.result.parameters.purpose + items_list + " on " + req.body.result.parameters.date +'.' ;
+          // let title = itemType;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       } // end save function
@@ -171,37 +173,7 @@ restService.post('/transaction', function(req, res) {
         }
         return response;
       }
-      function responseforMultiple(result, startStatement, middleStatement, endStatement){
-        let response = '';
-        let itemName = 'NA';
-        for (var i = 0; i < result.length; i++) {
-          if(result[i].item == itemName){
-            if( i != result.length-1){
-            if(result[i].item == result[i+1].item){
-              response = response + ', ' + result[i].date;
-            }else{
-              response = response + ' and ' + result[i].date;
-            }
-          }else{
-            response = response + ' and ' + result[i].date+ endStatement;
-          }
-          }
-          else{
-            if(result.length == 1){
-              response = response + startStatement + result[i].item + middleStatement  + result[i].date+'.\n';
-            }
-            else if(i == 0){
-              response = response + startStatement + result[i].item + middleStatement +'['  + result[i].date;
-            }else if (i == result.length-1) {
-              response = response + endStatement +startStatement + result[i].item + middleStatement  +result[i].date+'.\n';
-            }else {
-              response = response + endStatement +startStatement + result[i].item + middleStatement+'['  +result[i].date;
-            }
-            itemName = result[i].item;
-        }
-      }
-        return response;
-      }
+
       function responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement){
         let response = '';
         let itemName = 'NA';
@@ -249,7 +221,7 @@ restService.post('/transaction', function(req, res) {
           let startStatement = 'You have ';
           let middleStatement = ' which are bought on ';
           let endStatement = '].\n ';
-          response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+          response = functions.responseforMultiple(result, startStatement, middleStatement, endStatement);
         }
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
