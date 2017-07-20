@@ -9,7 +9,7 @@ let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
 // var Promise = require('rsvp').Promise;
-// var functions = require('./functions.js');
+var functions = require('./functions.js');
 // const items = {
 //   "vegetable"= []
 // }
@@ -172,38 +172,38 @@ restService.post('/transaction', function(req, res) {
         }
         return response;
       }
-
-      function responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement){
-        let response = '';
-        let itemName = 'NA';
-        for (var i = 0; i < result.length; i++) {
-          var expiryDateStart = result[i].expiryDateStart;
-          var expiryDateEnd = result[i].expiryDateEnd;
-          if(result[i].item == itemName){
-            if( i != result.length-1){
-             if(result[i].item == result[i+1].item){
-              response = response + ', ' + expiryDateStart + middleStatement2 + expiryDateEnd;
-             }else{
-              response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd;
-             }
-           }else{
-            response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd+ endStatement;
-            }
-          }else{
-            if(result.length == 1){
-              response = response + startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
-            }else if(i == 0){
-              response = response + startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
-            }else if(i == result.length-1) {
-              response = response + endStatement +startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd+'.\n';
-            }else {
-              response = response + endStatement +startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
-            }
-            itemName = result[i].item;
-        }
-      }
-        return response;
-      }
+// Start of responseforMultipleExpire function
+      // function responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement){
+      //   let response = '';
+      //   let itemName = 'NA';
+      //   for (var i = 0; i < result.length; i++) {
+      //     var expiryDateStart = result[i].expiryDateStart;
+      //     var expiryDateEnd = result[i].expiryDateEnd;
+      //     if(result[i].item == itemName){
+      //       if( i != result.length-1){
+      //        if(result[i].item == result[i+1].item){
+      //         response = response + ', ' + expiryDateStart + middleStatement2 + expiryDateEnd;
+      //        }else{
+      //         response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd;
+      //        }
+      //      }else{
+      //       response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd+ endStatement;
+      //       }
+      //     }else{
+      //       if(result.length == 1){
+      //         response = response + startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
+      //       }else if(i == 0){
+      //         response = response + startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
+      //       }else if(i == result.length-1) {
+      //         response = response + endStatement +startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd+'.\n';
+      //       }else {
+      //         response = response + endStatement +startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
+      //       }
+      //       itemName = result[i].item;
+      //   }
+      // }
+      //   return response;
+      // } // End of responseforMultipleExpire function
       // Start RetrieveForType
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
