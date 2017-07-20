@@ -9,7 +9,7 @@ let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
 // var Promise = require('rsvp').Promise;
-var functions = require('./functions.js');
+// var functions = require('./functions.js');
 // const items = {
 //   "vegetable"= []
 // }
@@ -158,6 +158,52 @@ restService.post('/transaction', function(req, res) {
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       } // end save function
+      function responseforOneParam(parameter, startStatement, endStatement){
+        let response = startStatement;
+        for (var i = 0; i < req.body.result.parameters.type.length; i++) {
+          if (req.body.result.parameters.type.length == 1) {
+            response = response + req.body.result.parameters.type[i] +' '+ endStatement;
+          }
+          else if (i == req.body.result.parameters.type.length-1){
+            response = response + 'and ' + req.body.result.parameters.type[i] +' '+ endStatement ;
+          }else{
+            response = response + req.body.result.parameters.type[i]+ ' ' ;
+        }
+        }
+        return response;
+      }
+
+      function responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement){
+        let response = '';
+        let itemName = 'NA';
+        for (var i = 0; i < result.length; i++) {
+          var expiryDateStart = result[i].expiryDateStart;
+          var expiryDateEnd = result[i].expiryDateEnd;
+          if(result[i].item == itemName){
+            if( i != result.length-1){
+             if(result[i].item == result[i+1].item){
+              response = response + ', ' + expiryDateStart + middleStatement2 + expiryDateEnd;
+             }else{
+              response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd;
+             }
+           }else{
+            response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd+ endStatement;
+            }
+          }else{
+            if(result.length == 1){
+              response = response + startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
+            }else if(i == 0){
+              response = response + startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
+            }else if(i == result.length-1) {
+              response = response + endStatement +startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd+'.\n';
+            }else {
+              response = response + endStatement +startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
+            }
+            itemName = result[i].item;
+        }
+      }
+        return response;
+      }
       // Start RetrieveForType
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
@@ -169,7 +215,7 @@ restService.post('/transaction', function(req, res) {
           if(result.length == 0){
             let startStatement = 'You don\'t have any ';
             let endStatement = '].\n ';
-            response = functions.responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+            response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         }else{
           let startStatement = 'You have ';
           let middleStatement = ' which are bought on ';
@@ -181,7 +227,37 @@ restService.post('/transaction', function(req, res) {
           }); // End DB Function
       });
     } //end RetrieveType function
-
+    function responseforMultiple(result, startStatement, middleStatement, endStatement){
+      let response = '';
+      let itemName = 'NA';
+      for (var i = 0; i < result.length; i++) {
+        if(result[i].item == itemName){
+          if( i != result.length-1){
+          if(result[i].item == result[i+1].item){
+            response = response + ', ' + result[i].date;
+          }else{
+            response = response + ' and ' + result[i].date;
+          }
+        }else{
+          response = response + ' and ' + result[i].date+ endStatement;
+        }
+        }
+        else{
+          if(result.length == 1){
+            response = response + startStatement + result[i].item + middleStatement  + result[i].date+'.\n';
+          }
+          else if(i == 0){
+            response = response + startStatement + result[i].item + middleStatement +'['  + result[i].date;
+          }else if (i == result.length-1) {
+            response = response + endStatement +startStatement + result[i].item + middleStatement  +result[i].date+'.\n';
+          }else {
+            response = response + endStatement +startStatement + result[i].item + middleStatement+'['  +result[i].date;
+          }
+          itemName = result[i].item;
+      }
+    }
+      return response;
+    }
     //Start Retrieve Items
     function retrieveItems(app){
       MongoClient.connect(url, function(err, db) {
@@ -193,7 +269,7 @@ restService.post('/transaction', function(req, res) {
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
           let endStatement = '].\n ';
-          response = functions.responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+          response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
       }else{
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
@@ -205,37 +281,6 @@ restService.post('/transaction', function(req, res) {
         }); // End DB Function
     });
   } // End Retrieve Items Function
-  function responseforMultiple(result, startStatement, middleStatement, endStatement){
-    let response = '';
-    let itemName = 'NA';
-    for (var i = 0; i < result.length; i++) {
-      if(result[i].item == itemName){
-        if( i != result.length-1){
-        if(result[i].item == result[i+1].item){
-          response = response + ', ' + result[i].date;
-        }else{
-          response = response + ' and ' + result[i].date;
-        }
-      }else{
-        response = response + ' and ' + result[i].date+ endStatement;
-      }
-      }
-      else{
-        if(result.length == 1){
-          response = response + startStatement + result[i].item + middleStatement  + result[i].date+'.\n';
-        }
-        else if(i == 0){
-          response = response + startStatement + result[i].item + middleStatement +'['  + result[i].date;
-        }else if (i == result.length-1) {
-          response = response + endStatement +startStatement + result[i].item + middleStatement  +result[i].date+'.\n';
-        }else {
-          response = response + endStatement +startStatement + result[i].item + middleStatement+'['  +result[i].date;
-        }
-        itemName = result[i].item;
-    }
-  }
-    return response;
-  }// End responseforMultiple function
   // Start Retrieve Items Expiry
   function retrieveItemsExpiry(app){
     MongoClient.connect(url, function(err, db) {
@@ -247,7 +292,7 @@ restService.post('/transaction', function(req, res) {
       if(result.length == 0){
         let startStatement = 'You don\'t have any ';
         let endStatement = '].\n ';
-        response = functions.responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+        response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
     }else{
       var startStatement = ' The ';
       var middleStatement = ' you bought on ';
