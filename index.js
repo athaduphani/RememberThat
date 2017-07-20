@@ -9,7 +9,7 @@ let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
 // var Promise = require('rsvp').Promise;
-var functions = require('./functions.js');
+// var functions = require('./functions.js');
 // const items = {
 //   "vegetable"= []
 // }
