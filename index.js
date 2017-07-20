@@ -243,7 +243,7 @@ restService.post('/transaction', function(req, res) {
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
         let endStatement = '].\n ';
-        response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+        response = functions.responseforMultiple(result, startStatement, middleStatement, endStatement);
       }
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
