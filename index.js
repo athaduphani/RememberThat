@@ -137,15 +137,16 @@ restService.post('/transaction', function(req, res) {
         var items_list = '';
         var itemType = '';
         var pin = "Artichoke";
-  var result = searchInObject(dataMap.itemTypeMap, "item", pin);
+
       for (var i = 0; i < parameters_app.Items.length; i++) {
+          var itemType = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
             item: req.body.result.parameters.Items[i],
             quantity: req.body.result.parameters.number,
-            type: result.type,
+            type: itemType,
             date: req.body.result.parameters.date,
             expiryDateStart: "07-20-2017",
             expiryDateEnd: "07-31-2017",
