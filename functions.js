@@ -13,7 +13,7 @@ module.exports = {
     }
     }
     return response;
-  } // End responseforOneParam function
+  }, // End responseforOneParam function
 // Start responseforMultiple function
 responseforMultiple1: function(result, startStatement, middleStatement, endStatement){
   let response = '';

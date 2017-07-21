@@ -148,7 +148,7 @@ restService.post('/transaction', function(req, res) {
             quantity: req.body.result.parameters.number,
             type: result.type,
             date: req.body.result.parameters.date,
-            expiryDateStart: "07-20-2017",
+            expiryDateStart: req.body.result.parameters.date + 5,
             expiryDateEnd: "07-31-2017",
             // userId: req.body.originalRequest.data.user.userId,
             purpose: req.body.result.parameters.purpose
