@@ -9,7 +9,7 @@ let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
 // var Promise = require('rsvp').Promise;
-var functions = require('./functions.js');
+// var functions = require('./functions.js');
 // const items = {
 //   "vegetable"= []
 // }
@@ -215,7 +215,7 @@ restService.post('/transaction', function(req, res) {
           if(result.length == 0){
             let startStatement = 'You don\'t have any ';
             let endStatement = '].\n ';
-            response = functions.responseforOneParam1(req.body.result.parameters.type, startStatement, endStatement);
+            response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         }else{
           let startStatement = 'You have ';
           let middleStatement = ' which are bought on ';
