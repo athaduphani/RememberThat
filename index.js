@@ -141,6 +141,7 @@ restService.post('/transaction', function(req, res) {
       for (var i = 0; i < parameters_app.Items.length; i++) {
           var result = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
+          // var myDate = new Date(new Date().getTime()+(5*24*60*60*1000));
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
@@ -148,7 +149,7 @@ restService.post('/transaction', function(req, res) {
             quantity: req.body.result.parameters.number,
             type: result.type,
             date: req.body.result.parameters.date,
-            expiryDateStart: req.body.result.parameters.date + 5,
+            expiryDateStart: new Date(req.body.result.parameters.date) + 5,
             expiryDateEnd: "07-31-2017",
             // userId: req.body.originalRequest.data.user.userId,
             purpose: req.body.result.parameters.purpose
