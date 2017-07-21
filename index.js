@@ -117,8 +117,8 @@ restService.post('/transaction', function(req, res) {
       for (var i = 0; i < parameters_app.Items.length; i++) {
           var result = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
-        var expiryDateStart = req.body.result.parameters.date;
-        var expiryDateEnd = req.body.result.parameters.date;
+        var expiryDateStart = new Date(req.body.result.parameters.date);
+        var expiryDateEnd = new Date(req.body.result.parameters.date);
         expiryDateStart.setDate(expiryDateStart.getDate() + 5);
         expiryDateEnd.setDate(expiryDateEnd.getDate() + 10);
         var expiryDateStart1=dateFormat(expiryDateStart, "yyyy-mm-dd");
