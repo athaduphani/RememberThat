@@ -136,8 +136,17 @@ restService.post('/transaction', function(req, res) {
         var transactions = [];
         var items_list = '';
         var itemType = '';
-        var pin = "Banana";
-  var result = searchInObject(dataMap.itemTypeMap, "item", pin);
+        var pin = "Artichoke";
+        var itemTypeMap = [
+          {
+            "item": "Artichoke",
+            "type": "Vegetable"
+          },
+          {
+            "item": "Arugula",
+            "type": "Vegetable"
+          }]
+  var result = searchInObject(itemTypeMap, "item", pin);
       for (var i = 0; i < parameters_app.Items.length; i++) {
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
          transactions[i] = {
