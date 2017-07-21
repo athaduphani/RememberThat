@@ -215,7 +215,7 @@ restService.post('/transaction', function(req, res) {
           if(result.length == 0){
             let startStatement = 'You don\'t have any ';
             let endStatement = '].\n ';
-            response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+            response = functions.responseforOneParam1(req.body.result.parameters.type, startStatement, endStatement);
         }else{
           let startStatement = 'You have ';
           let middleStatement = ' which are bought on ';
