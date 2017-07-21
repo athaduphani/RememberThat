@@ -1,6 +1,7 @@
 
-module.exports ={
-  var itemTypeMap = [
+
+
+  var itemTypeMap =  [
     {
       "item": "Artichoke",
       "type": "Vegetable"
@@ -3014,4 +3015,6 @@ module.exports ={
       "type": "Nuts"
     }
 ]
+module.exports = {
+  itemTypeMap: itemTypeMap
 }

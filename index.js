@@ -9,7 +9,7 @@ let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
 // var Promise = require('rsvp').Promise;
-var dataMap = require('./data');
+var dataMap = require('./data.js');
 // const items = {
 //   "vegetable"= []
 // }
@@ -137,16 +137,7 @@ restService.post('/transaction', function(req, res) {
         var items_list = '';
         var itemType = '';
         var pin = "Artichoke";
-        var itemTypeMap = [
-          {
-            "item": "Artichoke",
-            "type": "Vegetable"
-          },
-          {
-            "item": "Arugula",
-            "type": "Vegetable"
-          }]
-  var result = searchInObject(itemTypeMap, "item", pin);
+  var result = searchInObject(dataMap.itemTypeMap, "item", pin);
       for (var i = 0; i < parameters_app.Items.length; i++) {
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
          transactions[i] = {

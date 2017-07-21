@@ -1,8 +1,13 @@
 // var mongo = require('mongodb');
 // var MongoClient = require('mongodb').MongoClient;
 // var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
-var db = require('./db1.js');
-console.log(db.variableName);
+// var db = require('./db1.js');
+// console.log(db.variableName);
+var pin = "Banana";
+var dataMap = require('./data.js');
+var itemType = dataMap.itemTypeMap;
+  var result = searchInObject(dataMap.itemTypeMap, "item", pin);
+console.log(result);
 // var itemType = db.itemType(function(result) {
 //   // console.info('The promise was fulfilled with items!', result[0].type);
 //   itemType = result[0].type;
@@ -46,3 +51,10 @@ console.log(db.variableName);
 // console.log(vals);
 //     });
 // db.try();
+function searchInObject(object, searchKey, searchValue) {
+  for (var i in object) {
+    if (object[i][searchKey].indexOf(searchValue) > -1) {
+      return object[i];
+    }
+  }
+}
