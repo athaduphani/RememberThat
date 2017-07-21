@@ -13,7 +13,7 @@ var mongo = require('mongodb');
 // const items = {
 //   "vegetable"= []
 // }
-var data = {
+var data = [
   {
     "item": "Artichoke",
     "type": "Vegetable"
@@ -3026,7 +3026,7 @@ var data = {
     "item": "Walnut",
     "type": "Nuts"
   }
-}
+]
 const SAVE_ACTION = 'save';
 const RETRIEVE_ACTION = 'retrieve';
 const WELCOME_ACTION = 'welcome';
@@ -3152,7 +3152,6 @@ restService.post('/transaction', function(req, res) {
         var itemType = '';
         var pin = "Banana";
   var result = searchInObject(data, "item", pin);
-  console.log(result.state);
       for (var i = 0; i < parameters_app.Items.length; i++) {
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
          transactions[i] = {
@@ -3160,7 +3159,7 @@ restService.post('/transaction', function(req, res) {
             sessionId: req.body.sessionId,
             item: req.body.result.parameters.Items[i],
             quantity: req.body.result.parameters.number,
-            type: result,
+            type: result.type,
             date: req.body.result.parameters.date,
             expiryDateStart: "07-20-2017",
             expiryDateEnd: "07-31-2017",
