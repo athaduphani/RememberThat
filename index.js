@@ -8,6 +8,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
+var dateFormat = require('dateformat');
 // var Promise = require('rsvp').Promise;
 var dataMap = require('./data.js');
 // const items = {
@@ -116,7 +117,12 @@ restService.post('/transaction', function(req, res) {
       for (var i = 0; i < parameters_app.Items.length; i++) {
           var result = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
-          // var myDate = new Date(new Date().getTime()+(5*24*60*60*1000));
+        var expiryDateStart = req.body.result.parameters.date;
+        var expiryDateEnd = req.body.result.parameters.date;
+        expiryDateStart.setDate(expiryDateStart.getDate() + 5);
+        expiryDateEnd.setDate(expiryDateEnd.getDate() + 10);
+        var expiryDateStart1=dateFormat(expiryDateStart, "yyyy-mm-dd");
+        var expiryDateEnd1=dateFormat(expiryDateEnd, "yyyy-mm-dd");
          transactions[i] = {
             transactionId: req.body.id,
             sessionId: req.body.sessionId,
@@ -124,8 +130,8 @@ restService.post('/transaction', function(req, res) {
             quantity: req.body.result.parameters.number,
             type: result.type,
             date: req.body.result.parameters.date,
-            expiryDateStart: new Date(req.body.result.parameters.date) + 5,
-            expiryDateEnd: "07-31-2017",
+            expiryDateStart: expiryDateStart1,
+            expiryDateEnd: expiryDateEnd1,
             // userId: req.body.originalRequest.data.user.userId,
             purpose: req.body.result.parameters.purpose
           };
