@@ -1,5 +1,5 @@
 'use strict';
-// create valiarable
+// create variable
 process.env.DEBUG = 'actions-on-google:*';
 
 let Assistant = require('actions-on-google').ApiAiApp;
@@ -9,11 +9,8 @@ let bodyParser = require('body-parser');
 let restService = express();
 var mongo = require('mongodb');
 var dateFormat = require('dateformat');
-// var Promise = require('rsvp').Promise;
 var dataMap = require('./data.js');
-// const items = {
-//   "vegetable"= []
-// }
+
 const SAVE_ACTION = 'save';
 const RETRIEVE_ACTION = 'retrieve';
 const WELCOME_ACTION = 'welcome';
@@ -52,7 +49,7 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-
+var isApiAiRequest = isRequestFromApiAi();
   function searchInObject(object, searchKey, searchValue) {
     for (var i in object) {
       if (object[i][searchKey].indexOf(searchValue) > -1) {
@@ -81,21 +78,21 @@ restService.post('/transaction', function(req, res) {
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
     // var firstTimeUser = userExists(SessionId);
-        MongoClient.connect(url, function(err, db) {
-          let firstTimeUserPrompt = 'asdasd';
-          if (err) throw err;
-          db.collection("transaction").find({"sessionId":req.body.sessionId}).toArray(function(err, result){
-          if (err) throw err;
-          if (result.length < 5) {
-            firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
-          }else{
-            firstTimeUserPrompt = ' ';
-          }
-          let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
-          ask(app, prompt);
-      }); // End DB Function
-      });
-
+      //   MongoClient.connect(url, function(err, db) {
+      //     let firstTimeUserPrompt = 'asdasd';
+      //     if (err) throw err;
+      //     db.collection("transaction").find({"sessionId":req.body.sessionId}).toArray(function(err, result){
+      //     if (err) throw err;
+      //     if (result.length < 5) {
+      //       firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
+      //     }else{
+      //       firstTimeUserPrompt = ' ';
+      //     }
+      //     let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
+      //     ask(app, prompt);
+      // }); // End DB Function
+      // });
+app.tell(isApiAiRequest);
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
