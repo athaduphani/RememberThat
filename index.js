@@ -329,26 +329,26 @@ restService.post('/transaction', function(req, res) {
         db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         let response = '';
+        var response = '';
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
           let endStatement = '].\n ';
           response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
       }else if (result.length == 1) {
-        db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
-           if (err) throw err;
-           console.log("1 record deleted");
-           db.close();
-           var response = '';
-              response = req.body.result.parameters.Items[0] + ' removed from your items.';
-           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-         ask(app, prompt);
-                 db.close();
-         });// End DB Function
+        app.tell('You have one')
+        // db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
+        //    if (err) throw err;
+        //    console.log("1 record deleted");
+        //    db.close();
+        //       response = req.body.result.parameters.Items[0] + ' removed from your items.';
+        //    let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+        //  ask(app, prompt);
+        //          db.close();
+        //  });// End DB Function
       }else{
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
         let endStatement = '].\n ';
-        var response = '';
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         ask(app, response + ' Which one do you want to delete? ');
         }
