@@ -341,9 +341,9 @@ restService.post('/transaction', function(req, res) {
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       }else if (result.length == 1) {
-        db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
-           console.log("1 record deleted");
+           console.log("1 record Updated");
            db.close();
               response = req.body.result.parameters.Items[0] + ' removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
