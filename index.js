@@ -154,12 +154,12 @@ restService.post('/transaction', function(req, res) {
         let response = startStatement;
         for (var i = 0; i < parameter.length; i++) {
           if (parameter.length == 1) {
-            response = response + parameter.type[i] +' '+ endStatement;
+            response = response + parameter[i] +' '+ endStatement;
           }
-          else if (i == parameter.type.length-1){
-            response = response + 'and ' + parameter.type[i] +' '+ endStatement ;
+          else if (i == parameter.length-1){
+            response = response + 'and ' + parameter[i] +' '+ endStatement ;
           }else{
-            response = response + parameter.type[i]+ ' ' ;
+            response = response + parameter[i]+ ' ' ;
         }
         }
         return response;
@@ -332,8 +332,8 @@ restService.post('/transaction', function(req, res) {
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
           let endStatement = '].\n ';
-          app.tell('Zero')
-          // response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+          // app.tell('Zero')
+          response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
       }else if (result.length == 1) {
         db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
            if (err) throw err;
