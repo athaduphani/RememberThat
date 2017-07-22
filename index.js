@@ -370,7 +370,7 @@ restService.post('/transaction', function(req, res) {
       }else if (req.body.result.parameters.ordinal == 1) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
         var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
-        app.tell(contexts.parameters.item)
+        // app.tell(contexts.parameters.item)
         MongoClient.connect(url, function(err, db) {
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": contexts.parameters.item}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
