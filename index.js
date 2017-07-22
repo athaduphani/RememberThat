@@ -115,7 +115,6 @@ restService.post('/transaction', function(req, res) {
         var transactions = [];
         var items_list = '';
         var itemType = '';
-
       for (var i = 0; i < parameters_app.Items.length; i++) {
           var result = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
