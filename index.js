@@ -398,7 +398,7 @@ restService.post('/transaction', function(req, res) {
     if (app.data.fallbackCount < 2) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
-    }else if (app.data.fallbackCount < 4) {
+    }else if (app.data.fallbackCount < 5) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_2)));
     } else {
