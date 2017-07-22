@@ -325,22 +325,34 @@ restService.post('/transaction', function(req, res) {
   //  Start Remove function
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
-         MongoClient.connect(url, function(err, db) {
+        MongoClient.connect(url, function(err, db) {
+        db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        if (err) throw err;
+        db.close();
+        let response = '';
+        if(result.length == 0){
+          let startStatement = 'You don\'t have any ';
+          let endStatement = '].\n ';
+          response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+      }else if (result.length == 1) {
+        db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
            if (err) throw err;
-              db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
-                 if (err) throw err;
-                 console.log("1 record deleted");
-                 db.close();
-                 var response = '';
-                //  if(Object.keys(res).length == 3){
-                //    response = 'You don\'t have any ' +  req.body.result.parameters.Items[0] +' '+ Object.values(res)[0];
-                //  }else{
-                    response = req.body.result.parameters.Items[0] + ' removed from your items.';
-                //  }
-                 let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-               ask(app, prompt);
-               });
-           });
+           console.log("1 record deleted");
+           db.close();
+           var response = '';
+              response = req.body.result.parameters.Items[0] + ' removed from your items.';
+           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+         ask(app, prompt);
+         });
+      }else{
+        let startStatement = 'You bought ';
+        let middleStatement = ' on ';
+        let endStatement = '].\n ';
+        var response = '';
+        response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+        ask(app, response + ' Which one do you want to delete? ');
+        }); // End DB Function
+      });
   } // End Remove Function
 
   // Start of repeatYes function
