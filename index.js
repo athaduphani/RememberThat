@@ -407,6 +407,7 @@ restService.post('/transaction', function(req, res) {
   } // End of saveNo function
   //   //Start fallback function
   function defaultFallback (app) {
+    app.setContext(REPEAT_YES_NO_CONTEXT);
     console.log('defaultFallback: ' + app.data.fallbackCount);
     if (app.data.fallbackCount === undefined) {
       app.data.fallbackCount = 0;
@@ -414,7 +415,6 @@ restService.post('/transaction', function(req, res) {
     app.data.fallbackCount++;
     // Provide 3 prompts before ending the bot
     if (app.data.fallbackCount < 2) {
-      app.setContext(REPEAT_YES_NO_CONTEXT);
       ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
     }else if (app.data.fallbackCount < 5) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
