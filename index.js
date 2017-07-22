@@ -384,7 +384,7 @@ restService.post('/transaction', function(req, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
-           let response = 'Plums removed from your items.';
+           let response = item + 'removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
