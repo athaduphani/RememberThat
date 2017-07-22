@@ -308,6 +308,7 @@ restService.post('/transaction', function(req, res) {
 } // End Retrieve Items Expiry Function
       // start retrieve function
       function retrieve(app){
+        app.setContext(REPEAT_YES_NO_CONTEXT);
         if (req.body.result.parameters.retrieveType == 1){
             retrieveType(app);
         }else if (req.body.result.parameters.retrieveType == 2) {
