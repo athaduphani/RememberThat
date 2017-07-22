@@ -152,14 +152,14 @@ restService.post('/transaction', function(req, res) {
       } // end save function
       function responseforOneParam(parameter, startStatement, endStatement){
         let response = startStatement;
-        for (var i = 0; i < req.body.result.parameters.type.length; i++) {
-          if (req.body.result.parameters.type.length == 1) {
-            response = response + req.body.result.parameters.type[i] +' '+ endStatement;
+        for (var i = 0; i < parameter.length; i++) {
+          if (parameter.length == 1) {
+            response = response + parameter.type[i] +' '+ endStatement;
           }
-          else if (i == req.body.result.parameters.type.length-1){
-            response = response + 'and ' + req.body.result.parameters.type[i] +' '+ endStatement ;
+          else if (i == parameter.type.length-1){
+            response = response + 'and ' + parameter.type[i] +' '+ endStatement ;
           }else{
-            response = response + req.body.result.parameters.type[i]+ ' ' ;
+            response = response + parameter.type[i]+ ' ' ;
         }
         }
         return response;
@@ -335,7 +335,6 @@ restService.post('/transaction', function(req, res) {
           app.tell('Zero')
           // response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
       }else if (result.length == 1) {
-        app.tell('You have one')
         db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
            if (err) throw err;
            console.log("1 record deleted");
