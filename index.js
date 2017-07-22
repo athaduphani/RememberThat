@@ -355,6 +355,7 @@ restService.post('/transaction', function(req, res) {
         let middleStatement = ' on ';
         let endStatement = '].\n ';
         app.data.item = req.body.result.parameters.Items[0];
+        app.data.queryResult = result;
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         ask(app, response + ' Which one do you want to delete? ');
         }
