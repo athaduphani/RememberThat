@@ -331,7 +331,7 @@ restService.post('/transaction', function(req, res) {
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
         MongoClient.connect(url, function(err, db) {
-        db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         var response = '';
         if(result.length == 0){
