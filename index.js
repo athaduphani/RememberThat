@@ -78,7 +78,6 @@ restService.post('/transaction', function(req, res) {
   function welcome(app){
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
-    // var firstTimeUser = userExists(SessionId);
         MongoClient.connect(url, function(err, db) {
           let firstTimeUserPrompt = 'asdasd';
           if (err) throw err;
@@ -204,7 +203,7 @@ restService.post('/transaction', function(req, res) {
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": req.body.sessionId}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+          db.collection("transaction").find({$and:[{"used": "no"},{authenticationId: authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
           let response = '';
@@ -258,7 +257,7 @@ restService.post('/transaction', function(req, res) {
     function retrieveItems(app){
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:[{"used": "no"},{authenticationId: authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         db.close();
         let response = '';
@@ -282,7 +281,7 @@ restService.post('/transaction', function(req, res) {
   app.setContext(REPEAT_YES_NO_CONTEXT);
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-      db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+      db.collection("transaction").find({$and:[{authenticationId: authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
       if (err) throw err;
       db.close();
       var response = '';
@@ -332,7 +331,7 @@ restService.post('/transaction', function(req, res) {
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
         MongoClient.connect(url, function(err, db) {
-        db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:[{"used": "no"},{authenticationId: authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         var response = '';
         if(result.length == 0){
@@ -342,7 +341,7 @@ restService.post('/transaction', function(req, res) {
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       }else if (result.length == 1) {
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{authenticationId : authenticationKey},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
@@ -378,7 +377,7 @@ restService.post('/transaction', function(req, res) {
         var date = queryResult[req.body.result.parameters.ordinal-1].date;
         // app.tell(contexts.parameters.item)
         MongoClient.connect(url, function(err, db) {
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ authenticationId : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
