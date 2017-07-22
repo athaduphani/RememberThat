@@ -371,11 +371,11 @@ restService.post('/transaction', function(req, res) {
       }else if (req.body.result.parameters.ordinal == 1) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
         // app.tell(app.data.item)
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.item}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": req.body.result.contexts.parameters.item}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
-              response = req.body.result.parameters.item + ' removed from your items.';
+              response = req.body.result.contexts.parameters.item + ' removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
