@@ -49,7 +49,8 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-var isApiAiRequest = isRequestFromApiAi("key", "value");
+  var authenticationKey = req.body.sessionId;
+  var authenticationId = "sessionId";
   function searchInObject(object, searchKey, searchValue) {
     for (var i in object) {
       if (object[i][searchKey].indexOf(searchValue) > -1) {
@@ -78,21 +79,21 @@ var isApiAiRequest = isRequestFromApiAi("key", "value");
     console.log('welcome Intent');
     let title = getRandomPrompt(app, GREETING_PROMPTS);
     // var firstTimeUser = userExists(SessionId);
-      //   MongoClient.connect(url, function(err, db) {
-      //     let firstTimeUserPrompt = 'asdasd';
-      //     if (err) throw err;
-      //     db.collection("transaction").find({"sessionId":req.body.sessionId}).toArray(function(err, result){
-      //     if (err) throw err;
-      //     if (result.length < 5) {
-      //       firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
-      //     }else{
-      //       firstTimeUserPrompt = ' ';
-      //     }
-      //     let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
-      //     ask(app, prompt);
-      // }); // End DB Function
-      // });
-app.tell(isApiAiRequest);
+        MongoClient.connect(url, function(err, db) {
+          let firstTimeUserPrompt = 'asdasd';
+          if (err) throw err;
+          db.collection("transaction").find({authenticationId:authenticationKey}).toArray(function(err, result){
+          if (err) throw err;
+          if (result.length < 5) {
+            firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
+          }else{
+            firstTimeUserPrompt = ' ';
+          }
+          let prompt = printf(title + firstTimeUserPrompt +  getRandomPrompt(app, INVOCATION_PROMPTS));
+          ask(app, prompt);
+      }); // End DB Function
+      });
+
     // if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     //   let basicCard = app.buildBasicCard(IMAGE.INTRO.description)
     //     .setImage(IMAGE.INTRO.url, IMAGE.INTRO.altText);
