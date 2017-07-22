@@ -395,10 +395,10 @@ restService.post('/transaction', function(req, res) {
     }
     app.data.fallbackCount++;
     // Provide 3 prompts before ending the bot
-    if (app.data.fallbackCount < 1) {
+    if (app.data.fallbackCount < 2) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
-    }else if (app.data.fallbackCount < 3) {
+    }else if (app.data.fallbackCount < 4) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_2)));
     } else {
