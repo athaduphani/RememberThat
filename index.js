@@ -336,15 +336,14 @@ restService.post('/transaction', function(req, res) {
           // response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
       }else if (result.length == 1) {
         app.tell('You have one')
-        // db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
-        //    if (err) throw err;
-        //    console.log("1 record deleted");
-        //    db.close();
-        //       response = req.body.result.parameters.Items[0] + ' removed from your items.';
-        //    let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-        //  ask(app, prompt);
-        //          db.close();
-        //  });// End DB Function
+        db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
+           if (err) throw err;
+           console.log("1 record deleted");
+           db.close();
+              response = req.body.result.parameters.Items[0] + ' removed from your items.';
+           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+         ask(app, prompt);
+         });// End DB Function
       }else{
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
@@ -352,6 +351,7 @@ restService.post('/transaction', function(req, res) {
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         ask(app, response + ' Which one do you want to delete? ');
         }
+      db.close();
       });// End DB Function
     });
   } // End Remove Function
