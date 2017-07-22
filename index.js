@@ -281,6 +281,7 @@ restService.post('/transaction', function(req, res) {
   } // End Retrieve Items Function
   // Start Retrieve Items Expiry
   function retrieveItemsExpiry(app){
+  app.setContext(REPEAT_YES_NO_CONTEXT);
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
