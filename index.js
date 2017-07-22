@@ -353,6 +353,7 @@ restService.post('/transaction', function(req, res) {
         ask(app, response + ' Which one do you want to delete? ');
         }); // End DB Function
       });
+    });
   } // End Remove Function
 
   // Start of repeatYes function
