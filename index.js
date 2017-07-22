@@ -364,7 +364,6 @@ restService.post('/transaction', function(req, res) {
   } // End Remove Function
   //  Start RemoveOption function
   function removeOption (app){
-            var response = '';
         if(req.body.result.parameters.ordinal == 0){
           app.setContext(REMOVE_OPTION_CONTEXT);
         ask(app, "Please tell a number more than zero");
@@ -376,7 +375,7 @@ restService.post('/transaction', function(req, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
-              response =' Plums removed from your items.';
+           let response = 'Plums removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
