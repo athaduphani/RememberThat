@@ -328,7 +328,6 @@ restService.post('/transaction', function(req, res) {
         MongoClient.connect(url, function(err, db) {
         db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
-        db.close();
         let response = '';
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
@@ -343,7 +342,8 @@ restService.post('/transaction', function(req, res) {
               response = req.body.result.parameters.Items[0] + ' removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
-         });
+                 db.close();
+         });// End DB Function
       }else{
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
@@ -351,8 +351,8 @@ restService.post('/transaction', function(req, res) {
         var response = '';
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         ask(app, response + ' Which one do you want to delete? ');
-        }); // End DB Function
-      });
+        }
+      });// End DB Function
     });
   } // End Remove Function
 
