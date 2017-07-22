@@ -332,8 +332,9 @@ restService.post('/transaction', function(req, res) {
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
           let endStatement = '].\n ';
-          // app.tell('Zero')
           response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+        ask(app, prompt);
       }else if (result.length == 1) {
         db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
            if (err) throw err;
