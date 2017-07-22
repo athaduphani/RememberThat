@@ -370,15 +370,15 @@ restService.post('/transaction', function(req, res) {
         ask(app, "Please tell a number more than zero");
       }else if (req.body.result.parameters.ordinal == 1) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
-        app.tell(app.data.item)
-        // db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
-        //    if (err) throw err;
-        //    console.log("1 record Updated");
-        //    db.close();
-        //       response = req.body.result.parameters.Items[0] + ' removed from your items.';
-        //    let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-        //  ask(app, prompt);
-        //  });// End DB Function
+        // app.tell(app.data.item)
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": app.data.item}]},{$set: {"used": "yes"}}, function(err, res) {
+           if (err) throw err;
+           console.log("1 record Updated");
+           db.close();
+              response = app.data.item + ' removed from your items.';
+           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+         ask(app, prompt);
+         });// End DB Function
       }else if (req.body.result.parameters.ordinal == 2) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
         app.tell('Second');
