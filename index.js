@@ -26,7 +26,7 @@ const FIRST_INTERACTION_EXAMPLES = ['I can save dates for your household items a
 const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.','Welcome back to Dates Bot.'];
 const INVOCATION_PROMPTS = ['How can i help you today?', 'How may I assist you today?'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you','We can stop here. Let\'s talk again soon.'];
-const CONTINUATION_PROMPTS = ['Is there anything else I can help you with?'];
+const CONTINUATION_PROMPTS = ['what else can I help you with?'];
 const RE_PROMPT = ['Great!', 'Awesome!', 'Cool!'];
 const SAVE_CONTEXT = 'save';
 const RETRIEVE_CONTEXT = 'retrieve';
@@ -36,7 +36,8 @@ const REPEAT_YES_NO_CONTEXT = 'repeat_yes_no';
 const SAVE_RE_INVOCATION_PROMPT = ['What do you want to save?'];
 const RETRIEVE_RE_INVOCATION_PROMPT = ['What do you want to retrieve?'];
 const FALLBACK_PROMPT_1 = ['I didn\'t get that. Can you say it again?','I missed what you said. Say it again?','Sorry, could you say that again?','Sorry, can you say that again?','Can you say that again?','Sorry, I didn\'t get that.'];
-const FALLBACK_PROMPT_2 = ['Since I\'m still having trouble, I\'ll stop here. Talk to you soon'];
+const FALLBACK_PROMPT_2 = ['I still didn\'t get that. You can say something like \"I bought milk today\". or when are my tomatoes expiring etc.','I still didn\'t understand. You can say something like \"I bought eggs today\". or when did i buy oranges? etc.'];
+const FALLBACK_PROMPT_3 = ['Since I\'m still having trouble, I\'ll stop here. Talk to you soon'];
 // const MODIFY_RE_INVOCATION_PROMPT = ['What do you want to modify?'];
 const REMOVE_RE_INVOCATION_PROMPT = ['What do you want to remove?'];
 const QUIT_PROMPTS = ['Alright, talk to you later then.', 'OK, till next time.','OK, Make sure to ask me if you want any date you saved.','See you later.', 'OK, Make sure to ask me what items you have and how fresh they are next time'];
@@ -364,21 +365,21 @@ restService.post('/transaction', function(req, res) {
     if (purpose == '' && parameters_app.purposeDelete != ''){
     purpose = parameters_app.purposeDelete;
   }
-    if (purpose == "save"){
-      app.setContext(SAVE_CONTEXT);
-    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
-  }else if (purpose == "retrieve") {
-    app.setContext(RETRIEVE_CONTEXT);
-    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, RETRIEVE_RE_INVOCATION_PROMPT)));
-  }else if (purpose == "remove") {
-    app.setContext(REMOVE_CONTEXT);
-    ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, REMOVE_RE_INVOCATION_PROMPT)));
-  }else if (req.body.result.resolvedQuery == 'yes') {
+  //   if (purpose == "save"){
+  //     app.setContext(SAVE_CONTEXT);
+  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
+  // }else if (purpose == "retrieve") {
+  //   app.setContext(RETRIEVE_CONTEXT);
+  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, RETRIEVE_RE_INVOCATION_PROMPT)));
+  // }else if (purpose == "remove") {
+  //   app.setContext(REMOVE_CONTEXT);
+  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, REMOVE_RE_INVOCATION_PROMPT)));
+  // }else if (req.body.result.resolvedQuery == 'yes') {
     app.setContext(REPEAT_YES_NO_CONTEXT);
-      ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' You can say Save, Retrieve or Remove '));
-    }else {
-    ask(app, "Sorry I didn\'t understand.You can say Save, Retrieve or Remove");
-  }
+      ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' What else can I help you with? '));
+  //   }else {
+  //   ask(app, "Sorry I didn\'t understand.You can say Save, Retrieve or Remove");
+  // }
   }// End of repeatYes function
   // Start of saveNo function
   function repeatNo (app) {
@@ -393,12 +394,14 @@ restService.post('/transaction', function(req, res) {
       app.data.fallbackCount = 0;
     }
     app.data.fallbackCount++;
-    // Provide two prompts before ending game
-    if (app.data.fallbackCount < 4) {
+    // Provide 3 prompts before ending the bot
+    if (app.data.fallbackCount < 1) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
+    }else if (app.data.fallbackCount < 3) {
+      ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_2)));
     } else {
-      app.tell(printf(getRandomPrompt(app, FALLBACK_PROMPT_2)));
+      app.tell(printf(getRandomPrompt(app, FALLBACK_PROMPT_3)));
     }
   }
  // End of fallback function
