@@ -328,7 +328,6 @@ restService.post('/transaction', function(req, res) {
         MongoClient.connect(url, function(err, db) {
         db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
-        let response = '';
         var response = '';
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
