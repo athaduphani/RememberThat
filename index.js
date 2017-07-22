@@ -154,7 +154,7 @@ restService.post('/transaction', function(req, res) {
         let response = startStatement;
         for (var i = 0; i < parameter.length; i++) {
           if (parameter.length == 1) {
-            response = response + parameter[i] +' '+ endStatement;
+            response = response + parameter[i] +'.';
           }
           else if (i == parameter.length-1){
             response = response + 'and ' + parameter[i] +' '+ endStatement ;
