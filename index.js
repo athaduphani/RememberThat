@@ -204,7 +204,7 @@ restService.post('/transaction', function(req, res) {
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": req.body.sessionId}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+          db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
           let response = '';
@@ -258,7 +258,7 @@ restService.post('/transaction', function(req, res) {
     function retrieveItems(app){
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         db.close();
         let response = '';
@@ -281,7 +281,7 @@ restService.post('/transaction', function(req, res) {
   function retrieveItemsExpiry(app){
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-      db.collection("transaction").find({$and:[{"used","no"},{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+      db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
       if (err) throw err;
       db.close();
       var response = '';
@@ -331,7 +331,7 @@ restService.post('/transaction', function(req, res) {
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
         MongoClient.connect(url, function(err, db) {
-        db.collection("transaction").find({$and:[{"used", "no"},{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         var response = '';
         if(result.length == 0){
@@ -341,7 +341,7 @@ restService.post('/transaction', function(req, res) {
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       }else if (result.length == 1) {
-        db.collection('transaction').findOneAndUpdate({$and:[{"used", "no"},{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
