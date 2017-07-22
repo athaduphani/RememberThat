@@ -204,7 +204,7 @@ restService.post('/transaction', function(req, res) {
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          db.collection("transaction").find({$and:[{"sessionId": req.body.sessionId}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": req.body.sessionId}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
           let response = '';
