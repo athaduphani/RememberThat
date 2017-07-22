@@ -327,7 +327,7 @@ restService.post('/transaction', function(req, res) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
          MongoClient.connect(url, function(err, db) {
            if (err) throw err;
-              db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.result.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
+              db.collection('transaction').findOneAndDelete({$and:[{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]}, function(err, res) {
                  if (err) throw err;
                  console.log("1 record deleted");
                  db.close();
