@@ -49,7 +49,7 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-var isApiAiRequest = isRequestFromApiAi();
+var isApiAiRequest = isRequestFromApiAi("key", "value");
   function searchInObject(object, searchKey, searchValue) {
     for (var i in object) {
       if (object[i][searchKey].indexOf(searchValue) > -1) {
