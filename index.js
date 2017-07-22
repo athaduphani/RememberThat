@@ -365,15 +365,19 @@ restService.post('/transaction', function(req, res) {
   } // End Remove Function
   //  Start RemoveOption function
   function removeOption (app){
+    if(req.body.result.parameters.ordinal != undefined){
         if(req.body.result.parameters.ordinal == 0){
           app.setContext(REMOVE_OPTION_CONTEXT);
         ask(app, "Please tell a number more than zero");
-      }else if (req.body.result.parameters.ordinal == 1) {
+      }else {
         app.setContext(REPEAT_YES_NO_CONTEXT);
         var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
+        var item = contexts.parameters.item;
+        var queryResult = contexts.parameters.queryResult;
+        var date = queryResult[req.body.result.parameters.ordinal].item;
         // app.tell(contexts.parameters.item)
         MongoClient.connect(url, function(err, db) {
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": contexts.parameters.item}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
@@ -382,10 +386,8 @@ restService.post('/transaction', function(req, res) {
          ask(app, prompt);
          });// End DB Function
        });
-      }else if (req.body.result.parameters.ordinal == 2) {
-        app.setContext(REPEAT_YES_NO_CONTEXT);
-        app.tell('Second');
-      }else{
+      }
+    }else{
         app.tell('else');
       }
   } // End RemoveOption Function
