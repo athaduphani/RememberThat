@@ -370,13 +370,13 @@ restService.post('/transaction', function(req, res) {
         ask(app, "Please tell a number more than zero");
       }else if (req.body.result.parameters.ordinal == 1) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
-        var result = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
+        var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
         // app.tell(result.parameters.item)
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": result.parameters.item}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": contexts.parameters.item}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
-              response = res[0].item + ' removed from your items.';
+              response =' Plums removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
