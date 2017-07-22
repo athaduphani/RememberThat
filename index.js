@@ -18,6 +18,7 @@ const SAVE_ACTION = 'save';
 const RETRIEVE_ACTION = 'retrieve';
 const WELCOME_ACTION = 'welcome';
 const REMOVE_ACTION = 'remove';
+const REMOVE_OPTION_ACTION = 'remove_option';
 // const MODIFY_ACTION = 'modify';
 const REPEAT_YES_ACTION = 'repeat_yes';
 const REPEAT_NO_ACTION = 'repeat_no';
@@ -32,6 +33,7 @@ const SAVE_CONTEXT = 'save';
 const RETRIEVE_CONTEXT = 'retrieve';
 // const MODIFY_CONTEXT = 'modify';
 const REMOVE_CONTEXT = 'remove';
+const REMOVE_OPTION_CONTEXT = 'remove_option';
 const REPEAT_YES_NO_CONTEXT = 'repeat_yes_no';
 const SAVE_RE_INVOCATION_PROMPT = ['What do you want to save?'];
 const RETRIEVE_RE_INVOCATION_PROMPT = ['What do you want to retrieve?'];
@@ -347,6 +349,7 @@ restService.post('/transaction', function(req, res) {
          ask(app, prompt);
          });// End DB Function
       }else{
+        app.setContext(REMOVE_OPTION_CONTEXT);
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
         let endStatement = '].\n ';
@@ -357,7 +360,21 @@ restService.post('/transaction', function(req, res) {
       });// End DB Function
     });
   } // End Remove Function
-
+  //  Start RemoveOption function
+  function removeOption (app){
+        if(req.body.result.parameters.Ordinal == 0){
+          app.setContext(REMOVE_OPTION_CONTEXT);
+        ask(app, "Please tell a number more than zero");
+      }else if (req.body.result.parameters.Ordinal == 1) {
+        app.setContext(REPEAT_YES_NO_CONTEXT);
+app.tell('First');
+      }else if (req.body.result.parameters.Ordinal == 2) {
+        app.setContext(REPEAT_YES_NO_CONTEXT);
+app.tell('Second');
+      }else{
+        app.tell('else');
+      }
+  } // End RemoveOption Function
   // Start of repeatYes function
   function repeatYes (app) {
     console.log('repeatYes');
@@ -426,6 +443,7 @@ restService.post('/transaction', function(req, res) {
     actionMap.set(SAVE_ACTION, save);
     actionMap.set(RETRIEVE_ACTION, retrieve);
     actionMap.set(REMOVE_ACTION, remove);
+    actionMap.set(REMOVE_OPTION_ACTION, removeOption);
     actionMap.set(WELCOME_ACTION, welcome);
     actionMap.set(REPEAT_YES_ACTION, repeatYes);
     actionMap.set(REPEAT_NO_ACTION, repeatNo);
