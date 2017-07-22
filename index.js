@@ -377,7 +377,7 @@ restService.post('/transaction', function(req, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
-              response = req.body.result.contexts.parameters.item + ' removed from your items.';
+              response = result.parameters.item + ' removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
