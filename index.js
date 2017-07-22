@@ -362,15 +362,15 @@ restService.post('/transaction', function(req, res) {
   } // End Remove Function
   //  Start RemoveOption function
   function removeOption (app){
-        if(req.body.result.parameters.Ordinal == 0){
+        if(req.body.result.parameters.ordinal == 0){
           app.setContext(REMOVE_OPTION_CONTEXT);
         ask(app, "Please tell a number more than zero");
-      }else if (req.body.result.parameters.Ordinal == 1) {
+      }else if (req.body.result.parameters.ordinal == 1) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
-app.tell('First');
-      }else if (req.body.result.parameters.Ordinal == 2) {
+        app.tell('First');
+      }else if (req.body.result.parameters.ordinal == 2) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
-app.tell('Second');
+        app.tell('Second');
       }else{
         app.tell('else');
       }
