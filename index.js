@@ -354,6 +354,7 @@ restService.post('/transaction', function(req, res) {
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
         let endStatement = '].\n ';
+        app.data.item = req.body.result.parameters.Items[0];
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         ask(app, response + ' Which one do you want to delete? ');
         }
@@ -363,12 +364,21 @@ restService.post('/transaction', function(req, res) {
   } // End Remove Function
   //  Start RemoveOption function
   function removeOption (app){
+            var response = '';
         if(req.body.result.parameters.ordinal == 0){
           app.setContext(REMOVE_OPTION_CONTEXT);
         ask(app, "Please tell a number more than zero");
       }else if (req.body.result.parameters.ordinal == 1) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
-        app.tell('First');
+        app.tell(app.data.item)
+        // db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : req.body.sessionId},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+        //    if (err) throw err;
+        //    console.log("1 record Updated");
+        //    db.close();
+        //       response = req.body.result.parameters.Items[0] + ' removed from your items.';
+        //    let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+        //  ask(app, prompt);
+        //  });// End DB Function
       }else if (req.body.result.parameters.ordinal == 2) {
         app.setContext(REPEAT_YES_NO_CONTEXT);
         app.tell('Second');
