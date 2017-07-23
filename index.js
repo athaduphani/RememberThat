@@ -410,7 +410,8 @@ restService.post('/transaction', function(req, res) {
   //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, REMOVE_RE_INVOCATION_PROMPT)));
   // }else if (req.body.result.resolvedQuery == 'yes') {
     app.setContext(REPEAT_YES_NO_CONTEXT);
-      ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' What else can I help you with? '));
+      // ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' What else can I help you with? '));
+      ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
   //   }else {
   //   ask(app, "Sorry I didn\'t understand.You can say Save, Retrieve or Remove");
   // }
