@@ -20,7 +20,7 @@ const REMOVE_OPTION_ACTION = 'remove_option';
 const REPEAT_YES_ACTION = 'repeat_yes';
 const REPEAT_NO_ACTION = 'repeat_no';
 const DEFAULT_FALLBACK_ACTION = 'input.unknown';
-const FIRST_INTERACTION_EXAMPLES = ['I can save dates for your household items and tell you when u need them. For Example, You can say \"I bought milk today\".', 'I can save, retrieve and update dates for your household items. For Example, You can say \"I bought apples today\".','I can save, retrieve and update dates for your household items. For Example, You can say \"I bought toyota camry today\".']
+const FIRST_INTERACTION_EXAMPLES = ['I can save dates for your household items and tell you when u need them. For Example, You can say \"I bought milk today\".', 'I can save, retrieve and update dates for your household items. For Example, You can say \"I bought apples today\".','I can save, retrieve and update dates for your household items. For Example, You can say \"I bought chicken today\".']
 const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.','Welcome back to Dates Bot.'];
 const INVOCATION_PROMPTS = ['How can i help you today?', 'How may I assist you today?'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you','We can stop here. Let\'s talk again soon.'];
@@ -366,16 +366,21 @@ restService.post('/transaction', function(req, res) {
   } // End Remove Function
   //  Start RemoveOption function
   function removeOption (app){
+    var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
+    var item = contexts.parameters.item;
+    var queryResult = contexts.parameters.queryResult;
+    var date = queryResult[req.body.result.parameters.ordinal-1].date;
     if(req.body.result.parameters.ordinal != undefined){
         if(req.body.result.parameters.ordinal == ""){
           app.setContext(REMOVE_OPTION_CONTEXT);
         ask(app, "Please tell a number more than zero");
+      }else if (req.body.result.parameters.ordinal > queryResult.length) {
+        var length = queryResult.length + 1;
+        app.setContext(REMOVE_OPTION_CONTEXT);
+      ask(app, "Please tell a number more than zero and less than " + length);
       }else {
         app.setContext(REPEAT_YES_NO_CONTEXT);
-        var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
-        var item = contexts.parameters.item;
-        var queryResult = contexts.parameters.queryResult;
-        var date = queryResult[req.body.result.parameters.ordinal-1].date;
+
         // app.tell(contexts.parameters.item)
         MongoClient.connect(url, function(err, db) {
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
