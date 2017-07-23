@@ -133,7 +133,7 @@ restService.post('/transaction', function(req, res) {
             expiryDateStart: expiryDateStart1,
             expiryDateEnd: expiryDateEnd1,
             used: 'no',
-            userId: req.body.originalRequest.data.user.userId,
+            // userId: req.body.originalRequest.data.user.userId,
             purpose: req.body.result.parameters.purpose
           };
           items_list = items_list +'  '+ req.body.result.parameters.Items[i] + ', ';
