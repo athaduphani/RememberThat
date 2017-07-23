@@ -49,7 +49,8 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-  var authenticationKey = req.body.originalRequest.data.user.userId;
+  // var authenticationKey = req.body.originalRequest.data.user.userId;
+  var authenticationKey = req.body.sessionId;
   var authenticationId = "sessionId";
   function searchInObject(object, searchKey, searchValue) {
     for (var i in object) {
@@ -81,7 +82,7 @@ restService.post('/transaction', function(req, res) {
         MongoClient.connect(url, function(err, db) {
           let firstTimeUserPrompt = 'asdasd';
           if (err) throw err;
-          db.collection("transaction").find({"userId":authenticationKey}).toArray(function(err, result){
+          db.collection("transaction").find({"sessionId":authenticationKey}).toArray(function(err, result){
           if (err) throw err;
           if (result.length < 5) {
             firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
@@ -203,7 +204,7 @@ restService.post('/transaction', function(req, res) {
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          db.collection("transaction").find({$and:[{"used": "no"},{"userId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
           let response = '';
@@ -257,7 +258,7 @@ restService.post('/transaction', function(req, res) {
     function retrieveItems(app){
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({$and:[{"used": "no"},{"userId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         db.close();
         let response = '';
@@ -281,7 +282,7 @@ restService.post('/transaction', function(req, res) {
   app.setContext(REPEAT_YES_NO_CONTEXT);
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-      db.collection("transaction").find({$and:[{"userId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+      db.collection("transaction").find({$and:[{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
       if (err) throw err;
       db.close();
       var response = '';
@@ -331,7 +332,7 @@ restService.post('/transaction', function(req, res) {
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
         MongoClient.connect(url, function(err, db) {
-        db.collection("transaction").find({$and:[{"used": "no"},{"userId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         var response = '';
         if(result.length == 0){
@@ -341,7 +342,7 @@ restService.post('/transaction', function(req, res) {
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       }else if (result.length == 1) {
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"userId" : authenticationKey},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
@@ -366,7 +367,7 @@ restService.post('/transaction', function(req, res) {
   //  Start RemoveOption function
   function removeOption (app){
     if(req.body.result.parameters.ordinal != undefined){
-        if(req.body.result.parameters.ordinal == 0){
+        if(req.body.result.parameters.ordinal == ""){
           app.setContext(REMOVE_OPTION_CONTEXT);
         ask(app, "Please tell a number more than zero");
       }else {
@@ -377,11 +378,11 @@ restService.post('/transaction', function(req, res) {
         var date = queryResult[req.body.result.parameters.ordinal-1].date;
         // app.tell(contexts.parameters.item)
         MongoClient.connect(url, function(err, db) {
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "userId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
-           let response = item + 'removed from your items.';
+           let response = item + ' removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
