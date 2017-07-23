@@ -370,7 +370,7 @@ restService.post('/transaction', function(req, res) {
     var item = contexts.parameters.item;
     var queryResult = contexts.parameters.queryResult;
     var date = queryResult[req.body.result.parameters.ordinal-1].date;
-    if(req.body.result.parameters.ordinal != undefined){
+    if(req.body.result.parameters.indications == ""){
         if(req.body.result.parameters.ordinal == ""){
           app.setContext(REMOVE_OPTION_CONTEXT);
         ask(app, "Please tell a number more than zero");
@@ -380,8 +380,6 @@ restService.post('/transaction', function(req, res) {
       ask(app, "Please tell a number more than zero and less than " + length);
       }else {
         app.setContext(REPEAT_YES_NO_CONTEXT);
-
-        // app.tell(contexts.parameters.item)
         MongoClient.connect(url, function(err, db) {
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
@@ -393,6 +391,17 @@ restService.post('/transaction', function(req, res) {
          });// End DB Function
        });
       }
+    }else if (req.body.result.parameters.indications == "all") {
+      MongoClient.connect(url, function(err, db) {
+      db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},]},{$set: {"used": "yes"}}, function(err, res) {
+         if (err) throw err;
+         console.log("1 record Updated");
+         db.close();
+         let response = 'All the ' + item + ' removed from your items.';
+         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+       ask(app, prompt);
+       });// End DB Function
+     });
     }else{
         app.tell('else');
       }
