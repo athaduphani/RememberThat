@@ -109,6 +109,7 @@ restService.post('/transaction', function(req, res) {
 
 //start save function
       function save (app){
+        app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
         var prompt = "Something went wrong. Please try again";
         var transactions = [];
@@ -315,6 +316,7 @@ restService.post('/transaction', function(req, res) {
 } // End Retrieve Items Expiry Function
       // start retrieve function
       function retrieve(app){
+        app.data.fallbackCount = 0;
         if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
           ask(app, printf('Retrieve ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
         }
@@ -337,6 +339,7 @@ restService.post('/transaction', function(req, res) {
       } // End Retrieve
   //  Start Remove function
   function remove (app){
+    app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
       if(parameters_app.Items.length != 0 || parameters_app.purposeDelete == ''){
         MongoClient.connect(url, function(err, db) {
