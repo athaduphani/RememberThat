@@ -315,7 +315,10 @@ restService.post('/transaction', function(req, res) {
 } // End Retrieve Items Expiry Function
       // start retrieve function
       function retrieve(app){
-      if(parameters_app.Items.length != 0 || parameters_app.purpose == ''){
+        if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
+          ask(app, printf('Retrieve ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
+        }
+        else{
         app.setContext(REPEAT_YES_NO_CONTEXT);
         if (req.body.result.parameters.retrieveType == 1){
             retrieveType(app);
@@ -330,8 +333,6 @@ restService.post('/transaction', function(req, res) {
             let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
             ask(app, prompt);
         }
-      }else{
-              ask(app, printf('Retrieve' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
       }
       } // End Retrieve
   //  Start Remove function
