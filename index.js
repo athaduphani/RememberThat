@@ -336,7 +336,7 @@ restService.post('/transaction', function(req, res) {
   //  Start Remove function
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
-      if(parameters_app.Items.length != 0 || parameters_app.purpose == ''){
+      if(parameters_app.Items.length != 0 || parameters_app.purposeDelete == ''){
         MongoClient.connect(url, function(err, db) {
         db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
