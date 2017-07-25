@@ -35,7 +35,7 @@ const REMOVE_OPTION_CONTEXT = 'remove_option';
 const REPEAT_YES_NO_CONTEXT = 'repeat_yes_no';
 const SAVE_RE_INVOCATION_PROMPT = ['What do you want to save?'];
 const RETRIEVE_RE_INVOCATION_PROMPT = ['What do you want to retrieve?'];
-const FALLBACK_PROMPT_1 = ['I didn\'t get that. Can you say it again?','I missed what you said. Say it again?','Sorry, could you say that again?','Sorry, can you say that again?','Can you say that again?','Sorry, I didn\'t get that.'];
+const FALLBACK_PROMPT_1 = ['I didn\'t get that. Can you please say it again?','I missed what you said. Say it again?','Sorry, could you say that again?','Sorry, can you say that again?','Can you say that again?','Sorry, I didn\'t get that.'];
 const FALLBACK_PROMPT_2 = ['I still didn\'t get that. You can say something like \"I bought milk today\". or when are my tomatoes expiring etc.','I still didn\'t understand. You can say something like \"I bought eggs today\". or when did i buy oranges? etc.'];
 const FALLBACK_PROMPT_3 = ['Since I\'m still having trouble, I\'ll stop here. Talk to you soon'];
 // const MODIFY_RE_INVOCATION_PROMPT = ['What do you want to modify?'];
@@ -114,7 +114,9 @@ restService.post('/transaction', function(req, res) {
         var transactions = [];
         var items_list = '';
         var itemType = '';
-        if(parameters_app.Items.length != 0 || parameters_app.purpose == ''){
+        if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
+          defaultFallback(app);
+        }else{
       for (var i = 0; i < parameters_app.Items.length; i++) {
           var result = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
@@ -151,8 +153,6 @@ restService.post('/transaction', function(req, res) {
           // let title = itemType;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
-      }else{
-        ask(app, printf('save ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
       }
       } // end save function
       function responseforOneParam(parameter, startStatement, endStatement){
@@ -314,20 +314,20 @@ restService.post('/transaction', function(req, res) {
 } // End Retrieve Items Expiry Function
       // start retrieve function
       function retrieve(app){
-      if(parameters_app.Items.length != 0 || parameters_app.purpose == ''){
-        app.setContext(REPEAT_YES_NO_CONTEXT);
-        if (req.body.result.parameters.retrieveType == 1){
-            retrieveType(app);
-        }else if (req.body.result.parameters.retrieveType == 2) {
-          if (req.body.result.parameters.purpose == 'expire') {
-            retrieveItemsExpiry(app);
-          }else {
-            retrieveItems(app);
-          }
-
+      if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
+        // let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
+        // ask(app, prompt);
+        defaultFallback(app);
         }else {
-            let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
-            ask(app, prompt);
+          app.setContext(REPEAT_YES_NO_CONTEXT);
+          if (req.body.result.parameters.retrieveType == 1){
+              retrieveType(app);
+          }else if (req.body.result.parameters.retrieveType == 2) {
+            if (req.body.result.parameters.purpose == 'expire') {
+              retrieveItemsExpiry(app);
+            }else {
+              retrieveItems(app);
+            }
         }
       }else{
               ask(app, printf('Retrieve' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
@@ -336,7 +336,9 @@ restService.post('/transaction', function(req, res) {
   //  Start Remove function
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
-      if(parameters_app.Items.length != 0 || parameters_app.purposeDelete == ''){
+      if(parameters_app.Items.length == 0 || parameters_app.purposeDelete == ''){
+        defaultFallback(app);
+      }else{
         MongoClient.connect(url, function(err, db) {
         db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
@@ -369,8 +371,6 @@ restService.post('/transaction', function(req, res) {
       db.close();
       });// End DB Function
     });
-  }else{
-          ask(app, printf('Remove ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
   }
   } // End Remove Function
   //  Start RemoveOption function
