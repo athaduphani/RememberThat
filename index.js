@@ -314,20 +314,20 @@ restService.post('/transaction', function(req, res) {
 } // End Retrieve Items Expiry Function
       // start retrieve function
       function retrieve(app){
-      if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
-        let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
-        ask(app, prompt);
-        // defaultFallback(app);
+      if(parameters_app.Items.length != 0 || parameters_app.purpose == ''){
+        app.setContext(REPEAT_YES_NO_CONTEXT);
+        if (req.body.result.parameters.retrieveType == 1){
+            retrieveType(app);
+        }else if (req.body.result.parameters.retrieveType == 2) {
+          if (req.body.result.parameters.purpose == 'expire') {
+            retrieveItemsExpiry(app);
+          }else {
+            retrieveItems(app);
+          }
+
         }else {
-          app.setContext(REPEAT_YES_NO_CONTEXT);
-          if (req.body.result.parameters.retrieveType == 1){
-              retrieveType(app);
-          }else if (req.body.result.parameters.retrieveType == 2) {
-            if (req.body.result.parameters.purpose == 'expire') {
-              retrieveItemsExpiry(app);
-            }else {
-              retrieveItems(app);
-            }
+            let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
+            ask(app, prompt);
         }
       }else{
               ask(app, printf('Retrieve' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
