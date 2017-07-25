@@ -116,7 +116,7 @@ restService.post('/transaction', function(req, res) {
         var items_list = '';
         var itemType = '';
         if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
-          ask(app, printf('save ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
+          ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
         }
         else{
       for (var i = 0; i < parameters_app.Items.length; i++) {
@@ -318,7 +318,8 @@ restService.post('/transaction', function(req, res) {
       function retrieve(app){
         app.data.fallbackCount = 0;
         if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
-          ask(app, printf('Retrieve ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
+          // ask(app, printf('Retrieve ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
+          defaultFallback(app);
         }
         else{
         app.setContext(REPEAT_YES_NO_CONTEXT);
