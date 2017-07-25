@@ -114,7 +114,7 @@ restService.post('/transaction', function(req, res) {
         var transactions = [];
         var items_list = '';
         var itemType = '';
-        if(parameters_app.Items.length != 0){
+        if(parameters_app.Items.length != 0 || parameters_app.purpose == ''){
       for (var i = 0; i < parameters_app.Items.length; i++) {
           var result = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
@@ -152,7 +152,7 @@ restService.post('/transaction', function(req, res) {
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       }else{
-        ask(app, 'Sorry! I didn\'t understand that. Which items do u want me to save?');
+        ask(app, printf('save ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
       }
       } // end save function
       function responseforOneParam(parameter, startStatement, endStatement){
@@ -314,6 +314,7 @@ restService.post('/transaction', function(req, res) {
 } // End Retrieve Items Expiry Function
       // start retrieve function
       function retrieve(app){
+      if(parameters_app.Items.length != 0 || parameters_app.purpose == ''){
         app.setContext(REPEAT_YES_NO_CONTEXT);
         if (req.body.result.parameters.retrieveType == 1){
             retrieveType(app);
@@ -328,10 +329,14 @@ restService.post('/transaction', function(req, res) {
             let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
             ask(app, prompt);
         }
+      }else{
+              ask(app, printf('Retrieve' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
+      }
       } // End Retrieve
   //  Start Remove function
   function remove (app){
         app.setContext(REPEAT_YES_NO_CONTEXT);
+      if(parameters_app.Items.length != 0 || parameters_app.purpose == ''){
         MongoClient.connect(url, function(err, db) {
         db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
@@ -364,6 +369,9 @@ restService.post('/transaction', function(req, res) {
       db.close();
       });// End DB Function
     });
+  }else{
+          ask(app, printf('Remove ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
+  }
   } // End Remove Function
   //  Start RemoveOption function
   function removeOption (app){
