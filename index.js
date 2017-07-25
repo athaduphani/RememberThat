@@ -114,7 +114,10 @@ restService.post('/transaction', function(req, res) {
         var transactions = [];
         var items_list = '';
         var itemType = '';
-        if(parameters_app.Items.length != 0 || parameters_app.purpose == ''){
+        if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
+          ask(app, printf('save ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
+        }
+        else{
       for (var i = 0; i < parameters_app.Items.length; i++) {
           var result = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
@@ -151,8 +154,6 @@ restService.post('/transaction', function(req, res) {
           // let title = itemType;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
-      }else{
-        ask(app, printf('save ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
       }
       } // end save function
       function responseforOneParam(parameter, startStatement, endStatement){
