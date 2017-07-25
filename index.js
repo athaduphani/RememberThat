@@ -315,9 +315,9 @@ restService.post('/transaction', function(req, res) {
       // start retrieve function
       function retrieve(app){
       if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
-        // let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
-        // ask(app, prompt);
-        defaultFallback(app);
+        let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
+        ask(app, prompt);
+        // defaultFallback(app);
         }else {
           app.setContext(REPEAT_YES_NO_CONTEXT);
           if (req.body.result.parameters.retrieveType == 1){
