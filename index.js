@@ -317,7 +317,7 @@ restService.post('/transaction', function(req, res) {
       // start retrieve function
       function retrieve(app){
         app.data.fallbackCount = 0;
-        if(parameters_app.Items.length == 0 || parameters_app.purpose === ''){
+        if(parameters_app.purpose === ''){
           // ask(app, printf('Retrieve ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
           defaultFallback(app);
         }
