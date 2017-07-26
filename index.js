@@ -340,6 +340,11 @@ restService.post('/transaction', function(req, res) {
       } // End Retrieve
   //  Start Remove function
   function remove (app){
+    if(parameters_app.purposeDelete === ''){
+      // ask(app, printf('Retrieve ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
+      defaultFallback(app);
+    }
+    else{
     app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
       if(parameters_app.Items.length != 0 || parameters_app.purposeDelete == ''){
@@ -378,6 +383,7 @@ restService.post('/transaction', function(req, res) {
   }else{
           ask(app, printf('Remove ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
   }
+}
   } // End Remove Function
   //  Start RemoveOption function
   function removeOption (app){
