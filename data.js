@@ -3,7 +3,43 @@
     {
       "type": "Groceries",
       "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
-    }
+    },
+    {
+      "type": "Fruit",
+      "Map": ["Fruit"]
+    },
+    {
+      "type": "Spices",
+      "Map": ["Spices"]
+    },
+    {
+      "type": "Nuts",
+      "Map": ["Nuts"]
+    },
+    {
+      "type": "Dairy",
+      "Map": ["Dairy"]
+    },
+    {
+      "type": "Bread",
+      "Map": ["Bread"]
+    },
+    {
+      "type": "Flour",
+      "Map": ["Flour"]
+    },
+    {
+      "type": "Juices",
+      "Map": ["Juices"]
+    },
+    {
+      "type": "Meat",
+      "Map": ["Meat"]
+    },
+    {
+      "type": "Vegetable",
+      "Map": ["Vegetable"]
+    },
   ];
   var itemTypeMap =  [
     {
