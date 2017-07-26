@@ -168,7 +168,7 @@ restService.post('/transaction', function(req, res) {
         let response = startStatement;
         for (var i = 0; i < parameter.length; i++) {
           if (parameter.length == 1) {
-            response = response + parameter[i] +'.';
+            response = response + parameter[i] + endStatement;
           }
           else if (i == parameter.length-1){
             response = response + 'and ' + parameter[i] +' '+ endStatement ;
@@ -221,7 +221,7 @@ restService.post('/transaction', function(req, res) {
           let response = '';
           if(result.length == 0){
             let startStatement = 'You don\'t have any ';
-            let endStatement = '].\n ';
+            let endStatement = '.\n ';
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         }else{
           let startStatement = 'You have ';
