@@ -112,7 +112,9 @@ restService.post('/transaction', function(req, res) {
         if(parameters_app.purpose === ''){
           defaultFallback(app);
         }
-        else{
+        else if (parameters_app.Items.length == 0) {
+          ask(app, "Sorry! I didn't understand that. Which items do u want me to save?");
+        }else {
           app.data.fallbackCount = 0;
           app.setContext(REPEAT_YES_NO_CONTEXT);
           var prompt = "Something went wrong. Please try again";
