@@ -1,5 +1,10 @@
 
-
+var typeMap = [
+  {
+    "type": "Groceries",
+    "Map":["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
+  }
+]
 
   var itemTypeMap =  [
     {

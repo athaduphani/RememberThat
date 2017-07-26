@@ -207,7 +207,8 @@ restService.post('/transaction', function(req, res) {
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+          var type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type);
+          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: type }}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
           let response = '';
