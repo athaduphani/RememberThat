@@ -109,7 +109,7 @@ restService.post('/transaction', function(req, res) {
 
 //start save function
       function save (app){
-        if(parameters_app.purpose == ''){
+        if(parameters_app.purpose === ''){
           defaultFallback(app);
         }
         else{
