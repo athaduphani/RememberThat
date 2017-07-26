@@ -111,8 +111,7 @@ restService.post('/transaction', function(req, res) {
       function save (app){
         if(parameters_app.purpose === ''){
           defaultFallback(app);
-        }
-        else if (parameters_app.type.length != 0) {
+        }else if (parameters_app.type.length != 0 && parameters_app.Items.length == 0) {
           var response = '';
           let startStatement = '';
           let endStatement = ' do you want to save?\n ';
