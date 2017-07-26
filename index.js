@@ -214,7 +214,7 @@ restService.post('/transaction', function(req, res) {
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           var type = '';
-          var map = '';
+          var map = [];
           for (var i = 0; i < req.body.result.parameters.type.length; i++) {
             type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type[i]);
             map = map.concat(type.Map);
