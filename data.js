@@ -1,11 +1,10 @@
 
-var typeMap = [
-  {
-    "type": "Groceries",
-    "Map":["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
-  }
-]
-
+  var typeMap = [
+    {
+      "type": "Groceries",
+      "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
+    }
+  ];
   var itemTypeMap =  [
     {
       "item": "Artichoke",
@@ -3021,5 +3020,6 @@ var typeMap = [
     }
 ]
 module.exports = {
-  itemTypeMap: itemTypeMap
+  itemTypeMap: itemTypeMap,
+  typeMap: typeMap
 }

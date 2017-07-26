@@ -1,15 +1,17 @@
-var pluralize = require('pluralize')
-var isSingular = require('is-singular')
-console.log(pluralize("i bought tomato"));
-// var try = isSingular("tomato")
-console.log(isSingular("tomatoes"));
-app1();
-var var1 = 1;
-function app1(){
-  console.log("Hello");
-}
-function app2(){
-  if(var1 ==1){
-    app1();
+var dataMap = require('./data.js');
+// var typeMap = [
+//   {
+//     "type": "Groceries",
+//     "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
+//   }
+// ];
+var type = searchInObject(dataMap.typeMap, "type", "Groceries");
+console.log(type.Map);
+
+function searchInObject(object, searchKey, searchValue) {
+  for (var i in object) {
+    if (object[i][searchKey].indexOf(searchValue) > -1) {
+      return object[i];
+    }
   }
 }
