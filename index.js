@@ -109,16 +109,16 @@ restService.post('/transaction', function(req, res) {
 
 //start save function
       function save (app){
-        app.data.fallbackCount = 0;
-        app.setContext(REPEAT_YES_NO_CONTEXT);
-        var prompt = "Something went wrong. Please try again";
-        var transactions = [];
-        var items_list = '';
-        var itemType = '';
-        if(parameters_app.Items.length == 0 || parameters_app.purpose == ''){
-          ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
+        if(parameters_app.purpose == ''){
+          defaultFallback(app);
         }
         else{
+          app.data.fallbackCount = 0;
+          app.setContext(REPEAT_YES_NO_CONTEXT);
+          var prompt = "Something went wrong. Please try again";
+          var transactions = [];
+          var items_list = '';
+          var itemType = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
           var result = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
@@ -316,12 +316,12 @@ restService.post('/transaction', function(req, res) {
 } // End Retrieve Items Expiry Function
       // start retrieve function
       function retrieve(app){
-        app.data.fallbackCount = 0;
         if(parameters_app.purpose === ''){
           // ask(app, printf('Retrieve ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
           defaultFallback(app);
         }
         else{
+        app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
         if (req.body.result.parameters.retrieveType == 1){
             retrieveType(app);
