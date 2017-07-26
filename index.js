@@ -213,8 +213,13 @@ restService.post('/transaction', function(req, res) {
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
-          var type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type[0]);
-          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: type.Map }}]}).sort({"item":1}).toArray(function(err, result){
+          var type = '';
+          var map = '';
+          for (var i = 0; i < req.body.result.parameters.type.length; i++) {
+            type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type[i]);
+            map = map.concat(type.Map);
+          }
+          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map }}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
           let response = '';
