@@ -381,7 +381,7 @@ restService.post('/transaction', function(req, res) {
          ask(app, prompt);
          });// End DB Function
       }else if (result.length == req.body.result.parameters.Items.length) {
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": {$in: req.body.result.parameters.Items}}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
@@ -392,7 +392,11 @@ restService.post('/transaction', function(req, res) {
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-       }else {
+       }else if ((req.body.result.parameters.Items.length > 1) && (result.length > req.body.result.parameters.Items.length)) {
+            response = 'Sorry! I can\'t delete items which are bought on multiple dates. But, my team is helping me improve';
+            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+          ask(app, prompt);
+        }else {
         app.setContext(REMOVE_OPTION_CONTEXT);
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
