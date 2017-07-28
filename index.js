@@ -420,8 +420,10 @@ restService.post('/transaction', function(req, res) {
     var item = contexts.parameters.item;
     var queryResult = contexts.parameters.queryResult;
     var option = '';
-    if (req.body.result.parameters.ordinal != '' || req.body.result.parameters.number != '') {
-      option = req.body.result && req.body.result.parameters && req.body.result.parameters.ordinal ? req.body.result.parameters.ordinal : req.body.result.parameters.number
+    // if (req.body.result.parameters.ordinal != '' || req.body.result.parameters.number != '') {
+    //   option = req.body.result && req.body.result.parameters && req.body.result.parameters.ordinal ? req.body.result.parameters.ordinal : req.body.result.parameters.number
+    if (req.body.result.parameters.ordinal != '') {
+        option = req.body.result.parameters.ordinal
     }else if (req.body.result.parameters.date != '') {
       option = req.body.result.parameters.date;
     }else if (req.body.result.parameters.indications != '') {
