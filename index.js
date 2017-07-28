@@ -417,6 +417,8 @@ restService.post('/transaction', function(req, res) {
   //  Start RemoveOption function
   function removeOption (app){
     var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
+    var item = contexts.parameters.item;
+    var queryResult = contexts.parameters.queryResult;
     if(req.body.result.parameters.ordinal != undefined){
         if(req.body.result.parameters.ordinal == 0){
           app.setContext(REMOVE_OPTION_CONTEXT);
@@ -431,8 +433,6 @@ restService.post('/transaction', function(req, res) {
 
     }else{
         app.setContext(REPEAT_YES_NO_CONTEXT);
-        var item = contexts.parameters.item;
-        var queryResult = contexts.parameters.queryResult;
         var date = queryResult[req.body.result.parameters.ordinal-1].date;
         MongoClient.connect(url, function(err, db) {
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
