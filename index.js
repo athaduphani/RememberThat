@@ -424,7 +424,7 @@ restService.post('/transaction', function(req, res) {
       }else if (req.body.result.parameters.ordinal > queryResult.length) {
         var length = queryResult.length + 1;
         app.setContext(REMOVE_OPTION_CONTEXT);
-        let response = item + ' Please tell a number more than zero and less than ' + length;
+        let response = ' Please tell a number more than zero and less than ' + length;
         let prompt = printf(response);
       ask(app, prompt);
     // }else if (true) {
