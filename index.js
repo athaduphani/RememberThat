@@ -419,10 +419,20 @@ restService.post('/transaction', function(req, res) {
     var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
     var item = contexts.parameters.item;
     var queryResult = contexts.parameters.queryResult;
+    var option = '';
+    if (req.body.result.parameters.ordinal != '' || req.body.result.parameters.number != '') {
+      option = req.body.result && req.body.result.parameters && req.body.result.parameters.ordinal ? req.body.result.parameters.ordinal : req.body.result.parameters.number
+    }else if (req.body.result.parameters.date != '') {
+      option = req.body.result.parameters.date;
+    }else if (req.body.result.parameters.indications != '') {
+      option = req.body.result.parameters.indications;
+    }else {
+
+    }
     if(req.body.result.parameters.ordinal != undefined){
-        if(req.body.result.parameters.ordinal == 0){
+        if(req.body.result.parameters.ordinal < 1){
           app.setContext(REMOVE_OPTION_CONTEXT);
-        ask(app, "Please tell a number more than zero");
+        ask(app, "Please tell a number greater than zero");
       }else if (req.body.result.parameters.ordinal > queryResult.length) {
         var length = queryResult.length + 1;
         app.setContext(REMOVE_OPTION_CONTEXT);
