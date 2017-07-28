@@ -423,54 +423,54 @@ restService.post('/transaction', function(req, res) {
     // if (req.body.result.parameters.ordinal != '' || req.body.result.parameters.number != '') {
     //   option = req.body.result && req.body.result.parameters && req.body.result.parameters.ordinal ? req.body.result.parameters.ordinal : req.body.result.parameters.number
     if (req.body.result.parameters.ordinal != '') {
-        option = req.body.result.parameters.ordinal
+      if(req.body.result.parameters.ordinal < 1){
+        app.setContext(REMOVE_OPTION_CONTEXT);
+      ask(app, "Please tell a number greater than zero");
+    }else if (req.body.result.parameters.ordinal > queryResult.length) {
+      var length = queryResult.length + 1;
+      app.setContext(REMOVE_OPTION_CONTEXT);
+      let response = ' Please tell a number more than zero and less than ' + length;
+      let prompt = printf(response);
+    ask(app, prompt);
+  }else{
+      app.setContext(REPEAT_YES_NO_CONTEXT);
+      var date = queryResult[req.body.result.parameters.ordinal-1].date;
+      MongoClient.connect(url, function(err, db) {
+      db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
+         if (err) throw err;
+         console.log("1 record Updated");
+         db.close();
+         let response = item + ' removed from your items.';
+         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+       ask(app, prompt);
+       });// End DB Function
+     });
+    }
     }else if (req.body.result.parameters.date != '') {
       option = req.body.result.parameters.date;
+      ask(app, option);
     }else if (req.body.result.parameters.indications != '') {
       option = req.body.result.parameters.indications;
+      ask(app, option);
     }else {
 
     }
-    if(req.body.result.parameters.ordinal != undefined){
-        if(req.body.result.parameters.ordinal < 1){
-          app.setContext(REMOVE_OPTION_CONTEXT);
-        ask(app, "Please tell a number greater than zero");
-      }else if (req.body.result.parameters.ordinal > queryResult.length) {
-        var length = queryResult.length + 1;
-        app.setContext(REMOVE_OPTION_CONTEXT);
-        let response = ' Please tell a number more than zero and less than ' + length;
-        let prompt = printf(response);
-      ask(app, prompt);
-    // }else if (true) {
-
-    }else{
-        app.setContext(REPEAT_YES_NO_CONTEXT);
-        var date = queryResult[req.body.result.parameters.ordinal-1].date;
-        MongoClient.connect(url, function(err, db) {
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
-           if (err) throw err;
-           console.log("1 record Updated");
-           db.close();
-           let response = item + ' removed from your items.';
-           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-         ask(app, prompt);
-         });// End DB Function
-       });
-      }
-    // }else if (req.body.result.parameters.indications == "all") {
-    //   MongoClient.connect(url, function(err, db) {
-    //   db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},]},{$set: {"used": "yes"}}, function(err, res) {
-    //      if (err) throw err;
-    //      console.log("1 record Updated");
-    //      db.close();
-    //      let response = 'All the ' + item + ' removed from your items.';
-    //      let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-    //    ask(app, prompt);
-    //    });// End DB Function
-    //  });
-    }else{
-        app.tell('Not developed Yet. Lol');
-      }
+    // if(req.body.result.parameters.ordinal != undefined){
+    //
+    // // }else if (req.body.result.parameters.indications == "all") {
+    // //   MongoClient.connect(url, function(err, db) {
+    // //   db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},]},{$set: {"used": "yes"}}, function(err, res) {
+    // //      if (err) throw err;
+    // //      console.log("1 record Updated");
+    // //      db.close();
+    // //      let response = 'All the ' + item + ' removed from your items.';
+    // //      let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+    // //    ask(app, prompt);
+    // //    });// End DB Function
+    // //  });
+    // }else{
+    //     app.tell('Not developed Yet. Lol');
+    //   }
   } // End RemoveOption Function
   // Start of repeatYes function
   function repeatYes (app) {
