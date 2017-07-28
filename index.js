@@ -393,7 +393,7 @@ restService.post('/transaction', function(req, res) {
          ask(app, prompt);
          });// End DB Function
        }else if ((req.body.result.parameters.Items.length > 1) && (result.length > req.body.result.parameters.Items.length)) {
-            response = 'Sorry! I can\'t delete items which are bought on multiple dates. But, my team is helping me improve';
+            response = 'Sorry! I can\'t delete items which are bought on multiple dates. But, my team is helping me improve.';
             let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
         }else {
@@ -463,22 +463,9 @@ restService.post('/transaction', function(req, res) {
     if (purpose == '' && parameters_app.purposeDelete != ''){
     purpose = parameters_app.purposeDelete;
   }
-  //   if (purpose == "save"){
-  //     app.setContext(SAVE_CONTEXT);
-  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, SAVE_RE_INVOCATION_PROMPT)));
-  // }else if (purpose == "retrieve") {
-  //   app.setContext(RETRIEVE_CONTEXT);
-  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, RETRIEVE_RE_INVOCATION_PROMPT)));
-  // }else if (purpose == "remove") {
-  //   app.setContext(REMOVE_CONTEXT);
-  //   ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' ' + getRandomPrompt(app, REMOVE_RE_INVOCATION_PROMPT)));
-  // }else if (req.body.result.resolvedQuery == 'yes') {
     app.setContext(REPEAT_YES_NO_CONTEXT);
-      // ask(app, printf(getRandomPrompt(app, RE_PROMPT) + ' What else can I help you with? '));
-      ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
-  //   }else {
-  //   ask(app, "Sorry I didn\'t understand.You can say Save, Retrieve or Remove");
-  // }
+    ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
+
   }// End of repeatYes function
   // Start of saveNo function
   function repeatNo (app) {
