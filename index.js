@@ -393,7 +393,7 @@ restService.post('/transaction', function(req, res) {
          ask(app, prompt);
          });// End DB Function
        }else if ((req.body.result.parameters.Items.length > 1) && (result.length > req.body.result.parameters.Items.length)) {
-            response = 'Sorry! I can\'t delete items which are bought on multiple dates. But, my team is helping me improve.';
+            response = 'Sorry! I can\'t delete items which are bought on multiple dates. Please delete items seperately.';
             let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
         }else {
@@ -421,7 +421,7 @@ restService.post('/transaction', function(req, res) {
     var queryResult = contexts.parameters.queryResult;
     var date = queryResult[req.body.result.parameters.ordinal-1].date;
     if(req.body.result.parameters.ordinal != undefined){
-        if(req.body.result.parameters.ordinal == ""){
+        if(req.body.result.parameters.ordinal === ""){
           app.setContext(REMOVE_OPTION_CONTEXT);
         ask(app, "Please tell a number more than zero");
       // }else if (req.body.result.parameters.ordinal > queryResult.length) {
