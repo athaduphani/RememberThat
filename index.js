@@ -447,8 +447,18 @@ restService.post('/transaction', function(req, res) {
      });
     }
     }else if (req.body.result.parameters.date != '') {
-      option = req.body.result.parameters.date;
-      ask(app, option);
+      app.setContext(REPEAT_YES_NO_CONTEXT);
+      var date = req.body.result.parameters.date;
+      MongoClient.connect(url, function(err, db) {
+      db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
+         if (err) throw err;
+         console.log("1 record Updated");
+         db.close();
+         let response = item + ' removed from your items.';
+         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+       ask(app, prompt);
+       });// End DB Function
+     });
     }else if (req.body.result.parameters.indications != '') {
       option = req.body.result.parameters.indications;
       ask(app, option);
