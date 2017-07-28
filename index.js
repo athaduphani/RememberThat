@@ -112,6 +112,7 @@ restService.post('/transaction', function(req, res) {
         if(parameters_app.purpose === ''){
           defaultFallback(app);
         }else if (parameters_app.type.length != 0 && parameters_app.Items.length == 0) {
+          // Which vegetables do u want to save?
           var response = '';
           let startStatement = '';
           let endStatement = ' do you want to save?\n ';
@@ -379,7 +380,16 @@ restService.post('/transaction', function(req, res) {
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-      }else{
+      }else if (result.length == req.body.result.parameters.Items.length) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+           if (err) throw err;
+           console.log("1 record Updated");
+           db.close();
+              response = req.body.result.parameters.Items[0] + ' removed from your items.';
+           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+         ask(app, prompt);
+         });// End DB Function
+       }else {
         app.setContext(REMOVE_OPTION_CONTEXT);
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
