@@ -360,8 +360,19 @@ restService.post('/transaction', function(req, res) {
     if(parameters_app.purposeDelete === ''){
       // ask(app, printf('Retrieve ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
       defaultFallback(app);
-    }
-    else{
+    }else if (parameters_app.type.length == 0 && parameters_app.Items.length == 0) {
+      // Don't have any items or types
+      defaultFallback(app);
+    }else if (parameters_app.type.length != 0 && parameters_app.Items.length == 0) {
+      // Which vegetables do u want to delete?
+      var response = '';
+      let startStatement = '';
+      let endStatement = ' do you want to delete?\n ';
+      response = 'Sure. Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+      var prompt = printf(response);
+      ask(app, prompt);
+    }else{
+      // we have items to delete
     app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
       if(parameters_app.Items.length != 0 || parameters_app.purposeDelete == ''){
