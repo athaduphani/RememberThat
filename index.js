@@ -358,7 +358,6 @@ restService.post('/transaction', function(req, res) {
   //  Start Remove function
   function remove (app){
     if(parameters_app.purposeDelete === ''){
-      // ask(app, printf('Retrieve ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
       defaultFallback(app);
     }else if (parameters_app.type.length == 0 && parameters_app.Items.length == 0) {
       // Don't have any items or types
@@ -379,10 +378,13 @@ restService.post('/transaction', function(req, res) {
         app.setContext(REMOVE_OPTION_CONTEXT);
         app.data.type = req.body.result.parameters.type[0];
         app.data.item = '';
-        var response = '';
-        let startStatement = '';
-        let endStatement = ' do you want to delete?\n ';
-        response = 'Sure. Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+        let startStatement = 'You bought ';
+        let middleStatement = ' on ';
+        let endStatement = '].\n ';
+        var response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+        startStatement = '';
+        endStatement = ' do you want to delete?\n ';
+        response = response + 'Sure. Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         var prompt = printf(response);
         ask(app, prompt);
         }
