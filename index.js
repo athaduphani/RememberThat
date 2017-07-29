@@ -341,6 +341,7 @@ restService.post('/transaction', function(req, res) {
       } // End Retrieve
   //  Start Remove function
   function remove (app){
+    parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
     if(parameters_app.purposeDelete === ''){
       defaultFallback(app);
     }else if (parameters_app.type.length == 0 && parameters_app.Items.length == 0) {
