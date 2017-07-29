@@ -280,7 +280,7 @@ restService.post('/transaction', function(req, res) {
         let response = '';
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
-          let endStatement = '].\n ';
+          let endStatement = '.\n ';
           response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
       }else{
         let startStatement = 'You bought ';
@@ -304,7 +304,7 @@ restService.post('/transaction', function(req, res) {
       var response = '';
       if(result.length == 0){
         let startStatement = 'You don\'t have any ';
-        let endStatement = '].\n ';
+        let endStatement = '.\n ';
         response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
     }else{
       var startStatement = ' The ';
@@ -367,7 +367,7 @@ restService.post('/transaction', function(req, res) {
         var response = '';
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
-          let endStatement = '].\n ';
+          let endStatement = '.\n ';
           response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
