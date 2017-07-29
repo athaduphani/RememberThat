@@ -376,7 +376,7 @@ restService.post('/transaction', function(req, res) {
        });// End DB Function
     }else{
         app.setContext(REMOVE_OPTION_CONTEXT);
-        app.data.type = req.body.result.parameters.type[0];
+        app.data.type = req.body.result.parameters.type;
         app.data.item = '';
         let startStatement = 'You have ';
         let endStatement = '.\n ';
