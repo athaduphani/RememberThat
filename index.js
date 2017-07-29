@@ -367,7 +367,7 @@ restService.post('/transaction', function(req, res) {
         response = itemsForType(result, startStatement, endStatement);
         startStatement = '';
         endStatement = ' do you want to delete?\n ';
-        response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type[0], startStatement, endStatement);
+        response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         var prompt = printf(response);
         ask(app, prompt);
         }
@@ -460,7 +460,6 @@ restService.post('/transaction', function(req, res) {
        ask(app, prompt);
        });// End DB Function
      });
-    }
     }else if (req.body.result.parameters.date != '') {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var date = req.body.result.parameters.date;
@@ -500,27 +499,13 @@ restService.post('/transaction', function(req, res) {
             });// End DB Function
        }
      });
-    }else {
+   }else if (req.body.result.parameters.Items.length != 0) {
+     remove(app);
+   }else {
       app.setContext(REMOVE_OPTION_CONTEXT);
           ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
     }
-    // if(req.body.result.parameters.ordinal != undefined){
-    //
-    // // }else if (req.body.result.parameters.indications == "all") {
-    // //   MongoClient.connect(url, function(err, db) {
-    // //   db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},]},{$set: {"used": "yes"}}, function(err, res) {
-    // //      if (err) throw err;
-    // //      console.log("1 record Updated");
-    // //      db.close();
-    // //      let response = 'All the ' + item + ' removed from your items.';
-    // //      let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-    // //    ask(app, prompt);
-    // //    });// End DB Function
-    // //  });
-    // }else{
-    //     app.tell('Not developed Yet. Lol');
-    //   }
-  } // End RemoveOption Function
+    } // End RemoveOption Function
   // Start of repeatYes function
   function repeatYes (app) {
     console.log('repeatYes');
