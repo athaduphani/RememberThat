@@ -184,6 +184,20 @@ restService.post('/transaction', function(req, res) {
         }
         return response;
       } // End responseforOneParam function
+      function itemsForType(result, startStatement, endStatement){
+        let response = startStatement;
+        for (var i = 0; i < result.length; i++) {
+          if (result.length == 1) {
+            response = response + result[i].item + endStatement;
+          }
+          else if (i == result.length-1){
+            response = response + 'and ' + result[i].item +' '+ endStatement ;
+          }else{
+            response = response + result[i].item+ ' ' ;
+        }
+        }
+        return response;
+      } // End responseforOneParam function
       // Start RetrieveForType
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
@@ -348,13 +362,12 @@ restService.post('/transaction', function(req, res) {
         app.setContext(REMOVE_OPTION_CONTEXT);
         app.data.type = req.body.result.parameters.type[0];
         app.data.item = '';
-        let startStatement = 'You bought ';
-        let middleStatement = ' on ';
-        let endStatement = '].\n ';
-        var response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+        let startStatement = 'You have ';
+        let endStatement = '.\n ';
+        response = itemsForType(result, startStatement, endStatement);
         startStatement = '';
         endStatement = ' do you want to delete?\n ';
-        response = response + 'Sure. Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+        response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type[0], startStatement, endStatement);
         var prompt = printf(response);
         ask(app, prompt);
         }
