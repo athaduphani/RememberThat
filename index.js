@@ -500,7 +500,7 @@ restService.post('/transaction', function(req, res) {
        }
      });
    }else if (req.body.result.parameters.Items.length != 0) {
-     remove(app);
+    //  remove(app);
    }else {
       app.setContext(REMOVE_OPTION_CONTEXT);
           ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
