@@ -380,6 +380,7 @@ restService.post('/transaction', function(req, res) {
         app.setContext(REMOVE_OPTION_CONTEXT);
         app.data.type = req.body.result.parameters.type;
         app.data.item = [];
+        app.data.queryResult = result;
         let startStatement = 'You have ';
         let endStatement = '.\n ';
         response = itemsForType(result, startStatement, endStatement);
