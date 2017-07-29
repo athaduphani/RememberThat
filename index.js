@@ -450,7 +450,7 @@ restService.post('/transaction', function(req, res) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var date = req.body.result.parameters.date;
       MongoClient.connect(url, function(err, db) {
-      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date":{$in: date}}]},{$set: {"used": "yes"}}, function(err, res) {
+      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
          db.close();
