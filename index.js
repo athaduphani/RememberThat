@@ -186,15 +186,21 @@ restService.post('/transaction', function(req, res) {
       } // End responseforOneParam function
       function itemsForType(result, startStatement, endStatement){
         let response = startStatement;
+        var itemName = 'NA';
         for (var i = 0; i < result.length; i++) {
+          if(itemName != result[i].item){
           if (result.length == 1) {
             response = response + result[i].item + endStatement;
           }
           else if (i == result.length-1){
             response = response + 'and ' + result[i].item +' '+ endStatement ;
           }else{
-            response = response + result[i].item+ ' ' ;
+            response = response + result[i].item+ ', ' ;
+            itemName = result[i].item;
         }
+      }else{
+
+      }
         }
         return response;
       } // End responseforOneParam function
