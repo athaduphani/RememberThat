@@ -369,8 +369,8 @@ restService.post('/transaction', function(req, res) {
       db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: req.body.result.parameters.type}}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
-         db.close();
-            response = 'You have ' + res[0].item + ' and I removed it from your items.';
+        //  db.close();
+        response = 'You have ..... and I removed it from your items.';
          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
        ask(app, prompt);
        });// End DB Function
