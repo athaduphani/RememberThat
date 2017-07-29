@@ -373,9 +373,8 @@ restService.post('/transaction', function(req, res) {
       ask(app, prompt);
     }else{
       // we have items to delete
-    app.data.fallbackCount = 0;
+        app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
-      if(parameters_app.Items.length != 0 || parameters_app.purposeDelete == ''){
         MongoClient.connect(url, function(err, db) {
         db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
@@ -424,9 +423,6 @@ restService.post('/transaction', function(req, res) {
       db.close();
       });// End DB Function
     });
-  }else{
-          ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
-  }
 }
   } // End Remove Function
   //  Start RemoveOption function
