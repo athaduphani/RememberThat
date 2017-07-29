@@ -365,15 +365,29 @@ restService.post('/transaction', function(req, res) {
       defaultFallback(app);
     }else if (parameters_app.type.length != 0 && parameters_app.Items.length == 0) {
       // Which vegetables do u want to delete?
-      app.setContext(REMOVE_OPTION_CONTEXT);
-      app.data.type = req.body.result.parameters.type[0];
-      app.data.item = '';
+      MongoClient.connect(url, function(err, db) {
+      db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+      if (err) throw err;
       var response = '';
-      let startStatement = '';
-      let endStatement = ' do you want to delete?\n ';
-      response = 'Sure. Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
-      var prompt = printf(response);
+      if(result.length == 0){
+        let startStatement = 'You don\'t have any ';
+        let endStatement = '.\n ';
+        response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+        let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
+      }else{
+        app.setContext(REMOVE_OPTION_CONTEXT);
+        app.data.type = req.body.result.parameters.type[0];
+        app.data.item = '';
+        var response = '';
+        let startStatement = '';
+        let endStatement = ' do you want to delete?\n ';
+        response = 'Sure. Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+        var prompt = printf(response);
+        ask(app, prompt);
+        }
+      });
+    });
     }else{
       // we have items to delete
         app.data.fallbackCount = 0;
