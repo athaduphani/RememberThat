@@ -366,6 +366,7 @@ restService.post('/transaction', function(req, res) {
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
       ask(app, prompt);
     }else if (result.length == 1) {
+      // only one vegatble
       db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: req.body.result.parameters.type}}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
@@ -375,9 +376,10 @@ restService.post('/transaction', function(req, res) {
        ask(app, prompt);
        });// End DB Function
     }else{
+      //many vegetables
         app.setContext(REMOVE_OPTION_CONTEXT);
         app.data.type = req.body.result.parameters.type;
-        app.data.item = '';
+        app.data.item = [];
         let startStatement = 'You have ';
         let endStatement = '.\n ';
         response = itemsForType(result, startStatement, endStatement);
@@ -404,6 +406,7 @@ restService.post('/transaction', function(req, res) {
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       }else if (result.length == 1) {
+        // just one item
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
@@ -413,6 +416,7 @@ restService.post('/transaction', function(req, res) {
          ask(app, prompt);
          });// End DB Function
       }else if (result.length == req.body.result.parameters.Items.length) {
+        // many items to delete
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": {$in: req.body.result.parameters.Items}}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
@@ -424,17 +428,17 @@ restService.post('/transaction', function(req, res) {
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-       }else if ((req.body.result.parameters.Items.length > 1) && (result.length > req.body.result.parameters.Items.length)) {
-            response = 'Sorry! I can\'t delete multiple items which are bought on multiple dates. Please delete items seperately.';
-            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-          ask(app, prompt);
+      //  }else if ((req.body.result.parameters.Items.length > 1) && (result.length > req.body.result.parameters.Items.length)) {
+      //       response = 'Sorry! I can\'t delete multiple items which are bought on multiple dates. Please delete items seperately.';
+      //       let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+      //     ask(app, prompt);
         }else {
         app.setContext(REMOVE_OPTION_CONTEXT);
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
         let endStatement = '].\n ';
-        app.data.item = req.body.result.parameters.Items[0];
-        app.data.type = '';
+        app.data.item = req.body.result.parameters.Items;
+        app.data.type = [];
         app.data.queryResult = result;
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         ask(app, response + ' Which one do you want to delete? ');
@@ -467,7 +471,7 @@ restService.post('/transaction', function(req, res) {
           var date = queryResult[req.body.result.parameters.ordinal-1].date;
           var item = contexts.parameters.item;
           MongoClient.connect(url, function(err, db) {
-          db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
+          db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
              if (err) throw err;
              console.log("1 record Updated");
              db.close();
@@ -482,7 +486,7 @@ restService.post('/transaction', function(req, res) {
       var date = req.body.result.parameters.date;
       var item = contexts.parameters.item;
       MongoClient.connect(url, function(err, db) {
-      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
+      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
          db.close();
@@ -496,8 +500,8 @@ restService.post('/transaction', function(req, res) {
       var item = contexts.parameters.item;
       var type = contexts.parameters.type;
       MongoClient.connect(url, function(err, db) {
-      if (item != ''){
-      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item}]},{$set: {"used": "yes"}}, function(err, res) {
+      if (item.length != 0){
+      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
          db.close();
@@ -505,8 +509,8 @@ restService.post('/transaction', function(req, res) {
          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-       }else if (type != '') {
-         db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type": type}]},{$set: {"used": "yes"}}, function(err, res) {
+       }else if (type.length != 0) {
+         db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type":{$in: type}}]},{$set: {"used": "yes"}}, function(err, res) {
             if (err) throw err;
             console.log("1 record Updated");
             db.close();
