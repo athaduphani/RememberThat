@@ -428,7 +428,7 @@ restService.post('/transaction', function(req, res) {
   //  Start RemoveOption function
   function removeOption (app){
     var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
-    var item = contexts.parameters.item;
+
     var queryResult = contexts.parameters.queryResult;
     var option = '';
     // if (req.body.result.parameters.ordinal != '' || req.body.result.parameters.number != '') {
@@ -446,6 +446,7 @@ restService.post('/transaction', function(req, res) {
   }else{
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var date = queryResult[req.body.result.parameters.ordinal-1].date;
+      var item = contexts.parameters.item;
       MongoClient.connect(url, function(err, db) {
       db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
@@ -460,6 +461,7 @@ restService.post('/transaction', function(req, res) {
     }else if (req.body.result.parameters.date != '') {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var date = req.body.result.parameters.date;
+      var item = contexts.parameters.item;
       MongoClient.connect(url, function(err, db) {
       db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
@@ -473,15 +475,28 @@ restService.post('/transaction', function(req, res) {
     }else if (req.body.result.parameters.indications != '') {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var date = req.body.result.parameters.date;
+      var item = contexts.parameters.item;
+      var type = contexts.parameters.type;
       MongoClient.connect(url, function(err, db) {
+      if (item.length != 0){
       db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
          db.close();
          let response = item + ' removed from your items.';
          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-       ask(app, prompt);
-       });// End DB Function
+         ask(app, prompt);
+         });// End DB Function
+       }else if (type.length != 0) {
+         db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type": type}]},{$set: {"used": "yes"}}, function(err, res) {
+            if (err) throw err;
+            console.log("1 record Updated");
+            db.close();
+            let response = type + ' removed from your items.';
+            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+            ask(app, prompt);
+            });// End DB Function
+       }
      });
     }else {
       app.setContext(REMOVE_OPTION_CONTEXT);
