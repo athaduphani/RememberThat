@@ -410,7 +410,7 @@ restService.post('/transaction', function(req, res) {
       });// End DB Function
     });
   }else{
-          ask(app, printf('Remove ' + getRandomPrompt(app, FALLBACK_PROMPT_1)));
+          ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
   }
 }
   } // End Remove Function
@@ -471,8 +471,10 @@ restService.post('/transaction', function(req, res) {
          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
        ask(app, prompt);
        });// End DB Function
+     });
     }else {
-
+      app.setContext(REMOVE_OPTION_CONTEXT);
+          ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
     }
     // if(req.body.result.parameters.ordinal != undefined){
     //
