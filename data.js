@@ -1,6 +1,10 @@
 
   var typeMap = [
     {
+      "type": "all",
+      "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
+    },
+    {
       "type": "Groceries",
       "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
     },
