@@ -367,7 +367,6 @@ restService.post('/transaction', function(req, res) {
       // Which vegetables do u want to delete?
       app.setContext(REMOVE_OPTION_CONTEXT);
       app.data.type = req.body.result.parameters.type[0];
-      app.data.item = req.body.result.parameters.Items[0];
       var response = '';
       let startStatement = '';
       let endStatement = ' do you want to delete?\n ';
@@ -418,7 +417,6 @@ restService.post('/transaction', function(req, res) {
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
         let endStatement = '].\n ';
-        app.data.type = req.body.result.parameters.type[0];
         app.data.item = req.body.result.parameters.Items[0];
         app.data.queryResult = result;
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
