@@ -10,6 +10,7 @@ let restService = express();
 var mongo = require('mongodb');
 var dateFormat = require('dateformat');
 var dataMap = require('./data.js');
+// var botFunctions = require('./functions.js');
 var pluralize = require('pluralize')
 
 const SAVE_ACTION = 'save';
@@ -168,6 +169,7 @@ restService.post('/transaction', function(req, res) {
         ask(app, prompt);
       }
       } // end save function
+      // Start responseforOneParam function
       function responseforOneParam(parameter, startStatement, endStatement){
         let response = startStatement;
         for (var i = 0; i < parameter.length; i++) {
@@ -181,39 +183,7 @@ restService.post('/transaction', function(req, res) {
         }
         }
         return response;
-      }
-// Start of responseforMultipleExpire function
-      // function responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement){
-      //   let response = '';
-      //   let itemName = 'NA';
-      //   for (var i = 0; i < result.length; i++) {
-      //     var expiryDateStart = result[i].expiryDateStart;
-      //     var expiryDateEnd = result[i].expiryDateEnd;
-      //     if(result[i].item == itemName){
-      //       if( i != result.length-1){
-      //        if(result[i].item == result[i+1].item){
-      //         response = response + ', ' + expiryDateStart + middleStatement2 + expiryDateEnd;
-      //        }else{
-      //         response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd;
-      //        }
-      //      }else{
-      //       response = response + ' and ' + expiryDateStart + middleStatement2 + expiryDateEnd+ endStatement;
-      //       }
-      //     }else{
-      //       if(result.length == 1){
-      //         response = response + startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
-      //       }else if(i == 0){
-      //         response = response + startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
-      //       }else if(i == result.length-1) {
-      //         response = response + endStatement +startStatement + result[i].item + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd+'.\n';
-      //       }else {
-      //         response = response + endStatement +startStatement + result[i].item + middleStatement1 +'['  + expiryDateStart + middleStatement2 + expiryDateEnd;
-      //       }
-      //       itemName = result[i].item;
-      //   }
-      // }
-      //   return response;
-      // } // End of responseforMultipleExpire function
+      } // End responseforOneParam function
       // Start RetrieveForType
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
