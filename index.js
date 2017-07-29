@@ -110,6 +110,10 @@ restService.post('/transaction', function(req, res) {
 //start save function
       function save (app){
         if(parameters_app.purpose === ''){
+          // Didn't understand the purpose
+          defaultFallback(app);
+        }else if (parameters_app.type.length == 0 && parameters_app.Items.length == 0) {
+          // Don't have any items or types
           defaultFallback(app);
         }else if (parameters_app.type.length != 0 && parameters_app.Items.length == 0) {
           // Which vegetables do u want to save?
@@ -393,7 +397,7 @@ restService.post('/transaction', function(req, res) {
          ask(app, prompt);
          });// End DB Function
        }else if ((req.body.result.parameters.Items.length > 1) && (result.length > req.body.result.parameters.Items.length)) {
-            response = 'Sorry! I can\'t delete items which are bought on multiple dates. Please delete items seperately.';
+            response = 'Sorry! I can\'t delete multiple items which are bought on multiple dates. Please delete items seperately.';
             let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
         }else {
