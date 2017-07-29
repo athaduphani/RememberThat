@@ -367,6 +367,7 @@ restService.post('/transaction', function(req, res) {
       // Which vegetables do u want to delete?
       app.setContext(REMOVE_OPTION_CONTEXT);
       app.data.type = req.body.result.parameters.type[0];
+      app.data.item = '';
       var response = '';
       let startStatement = '';
       let endStatement = ' do you want to delete?\n ';
@@ -418,6 +419,7 @@ restService.post('/transaction', function(req, res) {
         let middleStatement = ' on ';
         let endStatement = '].\n ';
         app.data.item = req.body.result.parameters.Items[0];
+        app.data.type = '';
         app.data.queryResult = result;
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         ask(app, response + ' Which one do you want to delete? ');
@@ -479,7 +481,7 @@ restService.post('/transaction', function(req, res) {
       var item = contexts.parameters.item;
       var type = contexts.parameters.type;
       MongoClient.connect(url, function(err, db) {
-      if (item.length != 0){
+      if (item != ''){
       db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
@@ -488,7 +490,7 @@ restService.post('/transaction', function(req, res) {
          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-       }else if (type.length != 0) {
+       }else if (type != '') {
          db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type": type}]},{$set: {"used": "yes"}}, function(err, res) {
             if (err) throw err;
             console.log("1 record Updated");
