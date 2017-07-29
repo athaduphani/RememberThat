@@ -460,8 +460,17 @@ restService.post('/transaction', function(req, res) {
        });// End DB Function
      });
     }else if (req.body.result.parameters.indications != '') {
-      option = req.body.result.parameters.indications;
-      ask(app, option);
+      app.setContext(REPEAT_YES_NO_CONTEXT);
+      var date = req.body.result.parameters.date;
+      MongoClient.connect(url, function(err, db) {
+      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item": item}]},{$set: {"used": "yes"}}, function(err, res) {
+         if (err) throw err;
+         console.log("1 record Updated");
+         db.close();
+         let response = item + ' removed from your items.';
+         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+       ask(app, prompt);
+       });// End DB Function
     }else {
 
     }
