@@ -428,15 +428,21 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
   function removeItems (app){
     var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
     var item = [];
-    if(contexts.parameters.hasOwnProperty('item')){
-      var item = contexts.parameters.item;
-    }else {
-      item = req.body.result.parameters.Items;
+    if (req.body.result.parameters.Items !=0) {
+        item = req.body.result.parameters.Items;
+    }else if(contexts.parameters.hasOwnProperty('item') ){
+      if(contexts.parameters.item.length !=0){
+        item = contexts.parameters.item;
+      }else{
+        // Item length is empty
+      }
+    else{
+      // Items not available from both result and Google Actions context
     }
     parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
     if(parameters_app.purposeDelete === ''){
       defaultFallback(app);
-    }else if (parameters_app.Items.length == 0) { // Don't have any items
+    }else if (item.length == 0) { // Don't have any items
       defaultFallback(app);
     }else{  // we have items to delete
         app.data.fallbackCount = 0;
