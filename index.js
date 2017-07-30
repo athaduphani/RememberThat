@@ -521,7 +521,6 @@ restService.post('/transaction', function(req, res) {
             let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
             ask(app, prompt);
             });// End DB Function
-        ask(app, type.length)
        }
      });
          ask(app, 'Type ' + type + ' Item ' + item)
