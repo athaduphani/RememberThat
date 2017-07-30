@@ -492,6 +492,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
     var queryResult = contexts.parameters.queryResult;
     var option = '';
+    var item = [];
     if (req.body.result.parameters.ordinal != '') { // response is a number
         if(req.body.result.parameters.ordinal < 1){
           app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
@@ -504,7 +505,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
           ask(app, prompt);
         }else{ // number is within the expected limits
           app.setContext(REPEAT_YES_NO_CONTEXT);
-          var item = queryResult[req.body.result.parameters.ordinal-1];
+          item.push(queryResult[req.body.result.parameters.ordinal-1]);
           app.data.item = item;
           removeItems(app);
        }
