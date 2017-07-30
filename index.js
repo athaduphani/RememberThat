@@ -432,7 +432,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     }else {
       app.data.item = req.body.result.parameters.Items;
     }
-    ask(app, 'Hello');
+    var item1 = contexts.parameters.item
+    ask(app, item1);
     // parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
     // if(parameters_app.purposeDelete === ''){
     //   defaultFallback(app);
