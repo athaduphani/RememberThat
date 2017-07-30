@@ -511,7 +511,7 @@ restService.post('/transaction', function(req, res) {
          ask(app, prompt);
          });// End DB Function
        }else if (type.length != 0) {
-         db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type":{$in: type}}]},{$set: {"used": "yes"}}, function(err, res) {
+         db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type": type[0]}]},{$set: {"used": "yes"}}, function(err, res) {
             if (err) throw err;
             console.log("1 record Updated");
             db.close();
