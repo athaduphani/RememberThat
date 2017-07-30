@@ -436,7 +436,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
       }else{
         // Item length is empty
       }
-    else{
+    }else{
       // Items not available from both result and Google Actions context
     }
     parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
