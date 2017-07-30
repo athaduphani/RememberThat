@@ -431,8 +431,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     if (req.body.result.parameters.Items !=0) {
         item = req.body.result.parameters.Items;
     }else if(contexts.parameters.hasOwnProperty('item') ){
-      if(contexts.parameters.item.length !=0){
-        item = contexts.parameters.item;
+      if(contexts.parameters.queryResult.length !=0){
+        item.push(contexts.parameters.queryResult[req.body.result.parameters.ordinal-1]);
       }else{
         // Item length is empty
       }
@@ -444,7 +444,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
       defaultFallback(app);
     }else if (item.length == 0) { // Don't have any items
       // defaultFallback(app);
-      ask(app, 'Item length ' + contexts.parameters.item);
+      ask(app, 'Item length ' + item);
     }else{  // we have items to delete
         app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
