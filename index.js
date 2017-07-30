@@ -33,8 +33,8 @@ const SAVE_CONTEXT = 'save';
 const RETRIEVE_CONTEXT = 'retrieve';
 // const MODIFY_CONTEXT = 'modify';
 const REMOVE_CONTEXT = 'remove';
-const REMOVE_ITEMS_OPTION_ACTION = 'remove_items_option';
-const REMOVE_TYPE_OPTION_ACTION = 'remove_type_option';
+const REMOVE_ITEMS_OPTION_CONTEXT = 'remove_items_option';
+const REMOVE_TYPE_OPTION_CONTEXT = 'remove_type_option';
 const REPEAT_YES_NO_CONTEXT = 'repeat_yes_no';
 const SAVE_RE_INVOCATION_PROMPT = ['What do you want to save?'];
 const RETRIEVE_RE_INVOCATION_PROMPT = ['What do you want to retrieve?'];
@@ -403,7 +403,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
              ask(app, prompt);
              });// End DB Function
           }else{ //many vegetables
-            app.setContext(REMOVE_OPTION_CONTEXT);
+            app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
             app.data.type = req.body.result.parameters.type;
             app.data.item = [];
             db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, res){
@@ -458,7 +458,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
          ask(app, prompt);
          });// End DB Function
        }else { //Many transactions for an item
-        app.setContext(REMOVE_OPTION_CONTEXT);
+        app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
         let endStatement = '].\n ';
@@ -480,11 +480,11 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     var option = '';
     if (req.body.result.parameters.ordinal != '') { // response is a number
         if(req.body.result.parameters.ordinal < 1){
-          app.setContext(REMOVE_OPTION_CONTEXT);
+          app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
           ask(app, "Please tell a number greater than zero");
         }else if (req.body.result.parameters.ordinal > queryResult.length) {
           var length = queryResult.length + 1;
-          app.setContext(REMOVE_OPTION_CONTEXT);
+          app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
           let response = ' Please tell a number less than ' + length;
           let prompt = printf(response);
           ask(app, prompt);
@@ -510,7 +510,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
    }else if (req.body.result.parameters.Items.length != 0) {
      removeItems(app);
    }else {
-      app.setContext(REMOVE_OPTION_CONTEXT);
+      app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
           ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
     }
   } // End removeTypeOption Function
@@ -521,11 +521,11 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     var option = '';
     if (req.body.result.parameters.ordinal != '') { // response is a number
         if(req.body.result.parameters.ordinal < 1){
-          app.setContext(REMOVE_OPTION_CONTEXT);
+          app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
           ask(app, "Please tell a number greater than zero");
         }else if (req.body.result.parameters.ordinal > queryResult.length) {
           var length = queryResult.length + 1;
-          app.setContext(REMOVE_OPTION_CONTEXT);
+          app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
           let response = ' Please tell a number less than ' + length;
           let prompt = printf(response);
           ask(app, prompt);
@@ -561,9 +561,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
    }else if (req.body.result.parameters.indications != '') { // response is all
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var item = contexts.parameters.item;
-      // var type = queryResult[0].type;
       MongoClient.connect(url, function(err, db) {
-      // if (item.length != 0){
       db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
@@ -572,21 +570,11 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-      //  }else if (type.length != 0) {
-      //    db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type": type}]},{$set: {"used": "yes"}}, function(err, res) {
-      //       if (err) throw err;
-      //       console.log("1 record Updated");
-      //       db.close();
-      //       let response = type + ' removed from your items.';
-      //       let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-      //       ask(app, prompt);
-      //       });// End DB Function
-      //  }
      });
    }else if (req.body.result.parameters.Items.length != 0) {
      removeItems(app);
    }else {
-      app.setContext(REMOVE_OPTION_CONTEXT);
+      app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
           ask(app, printf(getRandomPrompt(app, FALLBACK_PROMPT_1)));
     }
   } // End removeItemsOption Function
