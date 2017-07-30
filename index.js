@@ -432,52 +432,53 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     }else {
       app.data.item = req.body.result.parameters.Items;
     }
-    parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-    if(parameters_app.purposeDelete === ''){
-      defaultFallback(app);
-    }else if (parameters_app.Items.length == 0) { // Don't have any items
-      defaultFallback(app);
-    }else{  // we have items to delete
-        app.data.fallbackCount = 0;
-        app.setContext(REPEAT_YES_NO_CONTEXT);
-        MongoClient.connect(url, function(err, db) {
-        db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: contexts.parameters.item}}]}).sort({"item":1}).toArray(function(err, result){
-        if (err) throw err;
-        var response = '';
-        if (result.length == 1) { // just one item
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": contexts.parameters.item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
-           if (err) throw err;
-           console.log("1 record Updated");
-           db.close();
-              response = contexts.parameters.item[0] + ' removed from your items.';
-           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-         ask(app, prompt);
-         });// End DB Function
-      }else if (result.length == contexts.parameters.item.length) { // many items to delete but no. of transactions is same
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": {$in: contexts.parameters.item}}]},{$set: {"used": "yes"}}, function(err, res) {
-           if (err) throw err;
-           console.log("1 record Updated");
-           db.close();
-           let startStatement = '';
-           let endStatement = ' removed from your items.\n ';
-           response = responseforOneParam(contexts.parameters.item, startStatement, endStatement);
-           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-         ask(app, prompt);
-         });// End DB Function
-       }else { //Many transactions for an item
-        app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
-        let startStatement = 'You bought ';
-        let middleStatement = ' on ';
-        let endStatement = '].\n ';
-        // app.data.item = req.body.result.parameters.Items;
-        app.data.type = [];
-        app.data.queryResult = result;
-        response = responseforMultiple(result, startStatement, middleStatement, endStatement);
-        ask(app, response + ' Which one do you want to delete? ');
-        }
-      db.close();
-      });// End DB Function
-    });
+    ask(app, 'Hello');
+    // parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
+    // if(parameters_app.purposeDelete === ''){
+    //   defaultFallback(app);
+    // }else if (parameters_app.Items.length == 0) { // Don't have any items
+    //   defaultFallback(app);
+    // }else{  // we have items to delete
+    //     app.data.fallbackCount = 0;
+    //     app.setContext(REPEAT_YES_NO_CONTEXT);
+    //     MongoClient.connect(url, function(err, db) {
+    //     db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: contexts.parameters.item}}]}).sort({"item":1}).toArray(function(err, result){
+    //     if (err) throw err;
+    //     var response = '';
+    //     if (result.length == 1) { // just one item
+    //     db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": contexts.parameters.item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+    //        if (err) throw err;
+    //        console.log("1 record Updated");
+    //        db.close();
+    //           response = contexts.parameters.item[0] + ' removed from your items.';
+    //        let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+    //      ask(app, prompt);
+    //      });// End DB Function
+    //   }else if (result.length == contexts.parameters.item.length) { // many items to delete but no. of transactions is same
+    //     db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": {$in: contexts.parameters.item}}]},{$set: {"used": "yes"}}, function(err, res) {
+    //        if (err) throw err;
+    //        console.log("1 record Updated");
+    //        db.close();
+    //        let startStatement = '';
+    //        let endStatement = ' removed from your items.\n ';
+    //        response = responseforOneParam(contexts.parameters.item, startStatement, endStatement);
+    //        let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+    //      ask(app, prompt);
+    //      });// End DB Function
+    //    }else { //Many transactions for an item
+    //     app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
+    //     let startStatement = 'You bought ';
+    //     let middleStatement = ' on ';
+    //     let endStatement = '].\n ';
+    //     // app.data.item = req.body.result.parameters.Items;
+    //     app.data.type = [];
+    //     app.data.queryResult = result;
+    //     response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+    //     ask(app, response + ' Which one do you want to delete? ');
+    //     }
+    //   db.close();
+    //   });// End DB Function
+    // });
 }
   } // End RemoveItems Function
   //  Start removeTypeOption function
