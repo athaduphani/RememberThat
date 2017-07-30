@@ -442,10 +442,9 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
     if(parameters_app.purposeDelete === ''){
       defaultFallback(app);
-      ask(app, 'Delete ' + item);
     }else if (item.length == 0) { // Don't have any items
       // defaultFallback(app);
-      ask(app, 'Item length ' + item);
+      ask(app, 'Item length ' + contexts.parameters.item);
     }else{  // we have items to delete
         app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
