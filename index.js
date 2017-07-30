@@ -500,7 +500,7 @@ restService.post('/transaction', function(req, res) {
 
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var item = contexts.parameters.item;
-      var type = contexts.parameters.type;
+      var type = queryResult[0].type;
     //   MongoClient.connect(url, function(err, db) {
     //   if (item.length != 0){
     //   // db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
