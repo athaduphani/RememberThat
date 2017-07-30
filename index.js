@@ -501,29 +501,29 @@ restService.post('/transaction', function(req, res) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var item = contexts.parameters.item;
       var type = queryResult[0].type;
-    //   MongoClient.connect(url, function(err, db) {
-    //   if (item.length != 0){
-    //   // db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
-    //   //    if (err) throw err;
-    //   //    console.log("1 record Updated");
-    //   //    db.close();
-    //   //    let response = item + ' removed from your items.';
-    //   //    let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-    //   //    ask(app, prompt);
-    //   //    });// End DB Function
-    //     ask(app, item.length)
-    //    }else if (type.length != 0) {
-    //     //  db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type": type[0]}]},{$set: {"used": "yes"}}, function(err, res) {
-    //     //     if (err) throw err;
-    //     //     console.log("1 record Updated");
-    //     //     db.close();
-    //     //     let response = type + ' removed from your items.';
-    //     //     let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-    //     //     ask(app, prompt);
-    //     //     });// End DB Function
-    //     ask(app, type.length)
-    //    }
-    //  });
+      MongoClient.connect(url, function(err, db) {
+      if (item.length != 0){
+      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
+         if (err) throw err;
+         console.log("1 record Updated");
+         db.close();
+         let response = item + ' removed from your items.';
+         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+         ask(app, prompt);
+         });// End DB Function
+        ask(app, item.length)
+       }else if (type.length != 0) {
+         db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type": type}]},{$set: {"used": "yes"}}, function(err, res) {
+            if (err) throw err;
+            console.log("1 record Updated");
+            db.close();
+            let response = type + ' removed from your items.';
+            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+            ask(app, prompt);
+            });// End DB Function
+        ask(app, type.length)
+       }
+     });
          ask(app, 'Type ' + type + ' Item ' + item)
    }else if (req.body.result.parameters.Items.length != 0) {
      remove(app);
