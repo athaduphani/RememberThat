@@ -502,23 +502,25 @@ restService.post('/transaction', function(req, res) {
       var type = contexts.parameters.type;
       MongoClient.connect(url, function(err, db) {
       if (item.length != 0){
-      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
-         if (err) throw err;
-         console.log("1 record Updated");
-         db.close();
-         let response = item + ' removed from your items.';
-         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-         ask(app, prompt);
-         });// End DB Function
+      // db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
+      //    if (err) throw err;
+      //    console.log("1 record Updated");
+      //    db.close();
+      //    let response = item + ' removed from your items.';
+      //    let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+      //    ask(app, prompt);
+      //    });// End DB Function
+        ask(app, item.length)
        }else if (type.length != 0) {
-         db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type": type[0]}]},{$set: {"used": "yes"}}, function(err, res) {
-            if (err) throw err;
-            console.log("1 record Updated");
-            db.close();
-            let response = type + ' removed from your items.';
-            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-            ask(app, prompt);
-            });// End DB Function
+        //  db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"type": type[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+        //     if (err) throw err;
+        //     console.log("1 record Updated");
+        //     db.close();
+        //     let response = type + ' removed from your items.';
+        //     let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+        //     ask(app, prompt);
+        //     });// End DB Function
+        ask(app, type.length)
        }
      });
    }else if (req.body.result.parameters.Items.length != 0) {
