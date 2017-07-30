@@ -524,7 +524,7 @@ restService.post('/transaction', function(req, res) {
     //     ask(app, type.length)
     //    }
     //  });
-         ask(app, type[0])
+         ask(app, 'Type ' + type + ' Item ' + item)
    }else if (req.body.result.parameters.Items.length != 0) {
      remove(app);
    }else {
