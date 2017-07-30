@@ -16,7 +16,8 @@ var pluralize = require('pluralize')
 const SAVE_ACTION = 'save';
 const RETRIEVE_ACTION = 'retrieve';
 const WELCOME_ACTION = 'welcome';
-const REMOVE_ACTION = 'remove';
+const REMOVE_ITEMS_ACTION = 'remove_items';
+const REMOVE_TYPE_ACTION = 'remove_type';
 const REMOVE_OPTION_ACTION = 'remove_option';
 // const MODIFY_ACTION = 'modify';
 const REPEAT_YES_ACTION = 'repeat_yes';
@@ -364,7 +365,6 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
           }else {
             retrieveType(app);
           }
-
         }else if (req.body.result.parameters.retrieveType == 2) {
           if (req.body.result.parameters.purpose == 'expire') {
             retrieveItemsExpiry(app);
@@ -378,69 +378,60 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         }
       }
       } // End Retrieve
-  //  Start Remove function
-  function remove (app){
+      // Start removeType function
+      function removeType (app){
+        parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
+        if(parameters_app.purposeDelete === ''){
+          defaultFallback(app);
+        }else if (parameters_app.type.length == 0) { // Don't have any type
+          defaultFallback(app);
+        }else { // Which vegetables do u want to delete?
+          MongoClient.connect(url, function(err, db) {
+          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+          if (err) throw err;
+          var response = '';
+          if (result.length == 1) { // only one vegetable bought only once
+            db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: req.body.result.parameters.type}}]},{$set: {"used": "yes"}}, function(err, res) {
+               if (err) throw err;
+               console.log("1 record Updated");
+              //  db.close();
+              response = 'You have '+ result[0].item +' and I removed it from your items.';
+               let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+             ask(app, prompt);
+             });// End DB Function
+          }else{ //many vegetables
+            app.setContext(REMOVE_OPTION_CONTEXT);
+            app.data.type = req.body.result.parameters.type;
+            app.data.item = [];
+            app.data.queryResult = result;
+            let startStatement = 'You have ';
+            let endStatement = '.\n ';
+            response = itemsForType(result, startStatement, endStatement);
+            startStatement = '';
+            endStatement = ' do you want to delete?\n ';
+            response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+            var prompt = printf(response);
+            ask(app, prompt);
+            }
+          });
+        });
+      }
+      } // End removeType function
+  //  Start RemoveItems function
+  function removeItems (app){
     parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
     if(parameters_app.purposeDelete === ''){
       defaultFallback(app);
-    }else if (parameters_app.type.length == 0 && parameters_app.Items.length == 0) {
-      // Don't have any items or types
+    }else if (parameters_app.Items.length == 0) { // Don't have any items
       defaultFallback(app);
-    }else if (parameters_app.type.length != 0 && parameters_app.Items.length == 0) {
-      // Which vegetables do u want to delete?
-      MongoClient.connect(url, function(err, db) {
-      db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
-      if (err) throw err;
-      var response = '';
-      if(result.length == 0){
-        let startStatement = 'You don\'t have any ';
-        let endStatement = '.\n ';
-        response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
-        let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-      ask(app, prompt);
-    }else if (result.length == 1) {
-      // only one vegatble
-      db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: req.body.result.parameters.type}}]},{$set: {"used": "yes"}}, function(err, res) {
-         if (err) throw err;
-         console.log("1 record Updated");
-        //  db.close();
-        response = 'You have '+ result[0].item +' and I removed it from your items.';
-         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-       ask(app, prompt);
-       });// End DB Function
-    }else{
-      //many vegetables
-        app.setContext(REMOVE_OPTION_CONTEXT);
-        app.data.type = req.body.result.parameters.type;
-        app.data.item = [];
-        app.data.queryResult = result;
-        let startStatement = 'You have ';
-        let endStatement = '.\n ';
-        response = itemsForType(result, startStatement, endStatement);
-        startStatement = '';
-        endStatement = ' do you want to delete?\n ';
-        response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
-        var prompt = printf(response);
-        ask(app, prompt);
-        }
-      });
-    });
-    }else{
-      // we have items to delete
+    }else{  // we have items to delete
         app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
         MongoClient.connect(url, function(err, db) {
         db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         var response = '';
-        if(result.length == 0){
-          let startStatement = 'You don\'t have any ';
-          let endStatement = '.\n ';
-          response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
-          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-        ask(app, prompt);
-      }else if (result.length == 1) {
-        // just one item
+        if (result.length == 1) { // just one item
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": req.body.result.parameters.Items[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
@@ -449,8 +440,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-      }else if (result.length == req.body.result.parameters.Items.length) {
-        // many items to delete
+      }else if (result.length == req.body.result.parameters.Items.length) { // many items to delete but no. of transactions is same
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": {$in: req.body.result.parameters.Items}}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
@@ -458,15 +448,10 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
            let startStatement = '';
            let endStatement = ' removed from your items.\n ';
            response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
-              // response = req.body.result.parameters.Items[0] + ' removed from your items.';
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-      //  }else if ((req.body.result.parameters.Items.length > 1) && (result.length > req.body.result.parameters.Items.length)) {
-      //       response = 'Sorry! I can\'t delete multiple items which are bought on multiple dates. Please delete items seperately.';
-      //       let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-      //     ask(app, prompt);
-        }else {
+       }else { //Many transactions for an item
         app.setContext(REMOVE_OPTION_CONTEXT);
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
@@ -481,7 +466,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
       });// End DB Function
     });
 }
-  } // End Remove Function
+  } // End RemoveItems Function
   //  Start RemoveOption function
   function removeOption (app){
     var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
@@ -497,7 +482,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         }else if (req.body.result.parameters.ordinal > queryResult.length) {
           var length = queryResult.length + 1;
           app.setContext(REMOVE_OPTION_CONTEXT);
-          let response = ' Please tell a number more than zero and less than ' + length;
+          let response = ' Please tell a number less than ' + length;
           let prompt = printf(response);
           ask(app, prompt);
         }else{
@@ -618,7 +603,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     let actionMap = new Map();
     actionMap.set(SAVE_ACTION, save);
     actionMap.set(RETRIEVE_ACTION, retrieve);
-    actionMap.set(REMOVE_ACTION, remove);
+    actionMap.set(REMOVE_ITEMS_ACTION, removeItems);
+    actionMap.set(REMOVE_TYPE_ACTION, removeType);
     actionMap.set(REMOVE_OPTION_ACTION, removeOption);
     actionMap.set(WELCOME_ACTION, welcome);
     actionMap.set(REPEAT_YES_ACTION, repeatYes);
