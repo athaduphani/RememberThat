@@ -443,8 +443,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     if(parameters_app.purposeDelete === ''){
       defaultFallback(app);
     }else if (item.length == 0) { // Don't have any items
-      // defaultFallback(app);
-      ask(app, 'Item length ' + item);
+      defaultFallback(app);
     }else{  // we have items to delete
         app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
