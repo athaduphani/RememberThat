@@ -479,7 +479,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     //   db.close();
     //   });// End DB Function
     // });
-}
+// }
   } // End RemoveItems Function
   //  Start removeTypeOption function
   function removeTypeOption (app){
