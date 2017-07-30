@@ -523,7 +523,6 @@ restService.post('/transaction', function(req, res) {
             });// End DB Function
        }
      });
-         ask(app, 'Type ' + type + ' Item ' + item)
    }else if (req.body.result.parameters.Items.length != 0) {
      remove(app);
    }else {
