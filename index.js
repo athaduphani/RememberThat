@@ -306,9 +306,6 @@ restService.post('/transaction', function(req, res) {
       var middleStatement1 = ' expire between ';
       var middleStatement2 = ' and ';
       var endStatement = '].\n ';
-      // response = response + result[0].date + ' - ' + result[0].expiryDateStart + ' , ' + result[0].expiryDateEnd + ';';
-      // response =  response + result[1].date + ' - ' + result[1].expiryDateStart + ' , ' + result[1].expiryDateEnd + ';';
-      // response = responseforMultipleExpire(result, startStatement, middleStatement1, middleStatement2, endStatement);
       for (var i=0; i < result.length; i++){
         var date = result[i].date;
         var expiryDateStart = result[i].expiryDateStart;
@@ -321,6 +318,37 @@ restService.post('/transaction', function(req, res) {
       }); // End DB Function
   });
 } // End Retrieve Items Expiry Function
+// Start Retrieve Type Expiry
+function retrieveTypeExpiry(app){
+app.setContext(REPEAT_YES_NO_CONTEXT);
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    db.collection("transaction").find({$and:[{used: "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+    if (err) throw err;
+    db.close();
+    var response = '';
+    if(result.length == 0){
+      let startStatement = 'You don\'t have any ';
+      let endStatement = '.\n ';
+      response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+  }else{
+    var startStatement = ' The ';
+    var middleStatement = ' you bought on ';
+    var middleStatement1 = ' expire between ';
+    var middleStatement2 = ' and ';
+    var endStatement = '].\n ';
+    for (var i=0; i < result.length; i++){
+      var date = result[i].date;
+      var expiryDateStart = result[i].expiryDateStart;
+      var expiryDateEnd = result[i].expiryDateEnd;
+    response = response + startStatement + result[i].item + middleStatement + date + middleStatement1  + expiryDateStart + middleStatement2 + expiryDateEnd +'.\n';
+  }
+  }
+    let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+    ask(app, prompt);
+    }); // End DB Function
+});
+} // End Retrieve Type Expiry Function
       // start retrieve function
       function retrieve(app){
         if(parameters_app.purpose === ''){
@@ -331,7 +359,12 @@ restService.post('/transaction', function(req, res) {
         app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
         if (req.body.result.parameters.retrieveType == 1){
+          if (req.body.result.parameters.purpose == 'expire') {
+            retrieveTypeExpiry(app);
+          }else {
             retrieveType(app);
+          }
+
         }else if (req.body.result.parameters.retrieveType == 2) {
           if (req.body.result.parameters.purpose == 'expire') {
             retrieveItemsExpiry(app);
