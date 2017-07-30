@@ -507,7 +507,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
           app.setContext(REPEAT_YES_NO_CONTEXT);
           item.push(queryResult[req.body.result.parameters.ordinal-1]);
           app.data.item = item;
-          removeItems(app);
+          ask(app, item[0]);
+          // removeItems(app);
        }
     }else if (req.body.result.parameters.indications != '') { // response is all
       app.setContext(REPEAT_YES_NO_CONTEXT);
