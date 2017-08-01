@@ -488,8 +488,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
       //    });// End DB Function
        }else { //Many transactions for an item
         app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
-      //   let itemsList = [];
-      //   let resultItemsList = []
+        let itemsList = [];
+        let resultItemsList = [];
       //   for(i=0; i < result.length;i++){
       //     resultItemsList.push(result[i].item)
       //   }
