@@ -132,7 +132,7 @@ restService.post('/transaction', function(req, res) {
           app.setContext(REPEAT_YES_NO_CONTEXT);
           var prompt = "Something went wrong. Please try again";
           var transactions = [];
-          var items_list = '';
+          var items_list = [];
           var itemType = '';
       for (var i = 0; i < parameters_app.Items.length; i++) {
           var result = searchInObject(dataMap.itemTypeMap, "item", req.body.result.parameters.Items[i]);
@@ -156,7 +156,7 @@ restService.post('/transaction', function(req, res) {
             // userId: req.body.originalRequest.data.user.userId,
             purpose: req.body.result.parameters.purpose
           };
-          items_list = items_list +'  '+ req.body.result.parameters.Items[i] + ', ';
+          items_list.push(req.body.result.parameters.Items[i]);
         }
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
@@ -166,8 +166,10 @@ restService.post('/transaction', function(req, res) {
               db.close();
             });
           });
-          let title = "I saved that you " + req.body.result.parameters.purpose + items_list + " on " + req.body.result.parameters.date +'.' ;
-          // let title = itemType;
+          let startStatement = '';
+          let endStatement = '';
+          let response = itemsForType(items_list, startStatement, endStatement);
+          let title = "I saved that you " + req.body.result.parameters.purpose +' '+ response + " on " + req.body.result.parameters.date +'.' ;
           prompt = printf(title + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       }
@@ -464,15 +466,15 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
           response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
-      }else if (result.length == 1) { // just one item
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
-           if (err) throw err;
-           console.log("1 record Updated");
-           db.close();
-              response = item[0] + ' removed from your items.';
-           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-         ask(app, prompt);
-         });// End DB Function
+      // }else if (result.length == 1) { // just one item
+      //   db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+      //      if (err) throw err;
+      //      console.log("1 record Updated");
+      //      db.close();
+      //         response = item[0] + ' removed from your items.';
+      //      let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+      //    ask(app, prompt);
+      //    });// End DB Function
       }else if (result.length == item.length) { // many items to delete but no. of transactions is same
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": {$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
