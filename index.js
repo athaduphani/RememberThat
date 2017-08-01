@@ -490,9 +490,9 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
         let itemsList = [];
         let resultItemsList = [];
-      //   for(i=0; i < result.length;i++){
-      //     resultItemsList.push(result[i].item)
-      //   }
+        for(i = 0; i < result.length; i++){
+          resultItemsList.push(result[i].item)
+        }
       //   for (var j = 0; j < req.body.result.parameters.Items.length; j++) {
       //     itemsList.push(req.body.result.parameters.Items[j])
       //   }
