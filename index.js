@@ -488,29 +488,28 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
       //    });// End DB Function
        }else { //Many transactions for an item
         app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
-        let itemsList = [];
-        let resultItemsList = [];
-        // for(i=0; i < result.length; i++){
-        //   resultItemsList.push(result[i].item)
-        // }
-        // for (var j = 0; j < req.body.result.parameters.Items.length; j++) {
-        //   itemsList.push(req.body.result.parameters.Items[j])
-        // }
-        ask(app, result.length );
+      //   let itemsList = [];
+      //   let resultItemsList = []
+      //   for(i=0; i < result.length;i++){
+      //     resultItemsList.push(result[i].item)
+      //   }
+      //   for (var j = 0; j < req.body.result.parameters.Items.length; j++) {
+      //     itemsList.push(req.body.result.parameters.Items[j])
+      //   }
       //   var noResultItemsList = itemsList.filter( function( el ) {
       //     return resultItemsList.indexOf( el ) < 0;
       //   });
       //   if(noResultItemsList.length >0){
       //   response = 'You dont have any ' + itemsForType(noResultItemsList,'','.')
       // }
-      //   let startStatement = 'You bought ';
-      //   let middleStatement = ' on ';
-      //   let endStatement = '].\n ';
-      //   app.data.item = item;
-      //   app.data.type = [];
-      //   app.data.queryResult = result;
-      //   response =response + responseforMultiple(result, startStatement, middleStatement, endStatement);
-      //   ask(app, response + ' Which one do you want to delete? ');
+        let startStatement = 'You bought ';
+        let middleStatement = ' on ';
+        let endStatement = '].\n ';
+        app.data.item = item;
+        app.data.type = [];
+        app.data.queryResult = result;
+        response =response + responseforMultiple(result, startStatement, middleStatement, endStatement);
+        ask(app, response + ' Which one do you want to delete? ');
         }
       db.close();
       });// End DB Function
