@@ -489,14 +489,14 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
        }else { //Many transactions for an item
         app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
         let itemsList = [];
-        let resultItemsList = []
-        for(i=0; i < result.length;i++){
-          resultItemsList.push(result[i].item)
-        }
-        for (var j = 0; j < req.body.result.parameters.Items.length; j++) {
-          itemsList.push(req.body.result.parameters.Items[j])
-        }
-        ask(app, itemsList.length +' '+resultItemsList.length );
+        let resultItemsList = [];
+        // for(i=0; i < result.length; i++){
+        //   resultItemsList.push(result[i].item)
+        // }
+        // for (var j = 0; j < req.body.result.parameters.Items.length; j++) {
+        //   itemsList.push(req.body.result.parameters.Items[j])
+        // }
+        ask(app, result.length );
       //   var noResultItemsList = itemsList.filter( function( el ) {
       //     return resultItemsList.indexOf( el ) < 0;
       //   });
