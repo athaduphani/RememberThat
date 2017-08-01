@@ -219,7 +219,7 @@ restService.post('/transaction', function(req, res) {
             type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type[i]);
             map = map.concat(type.Map);
           }
-          
+
           db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map }}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
@@ -395,7 +395,11 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
           db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           var response = '';
-          if (result.length == 1) { // only one vegetable bought only once
+          if (result.length == 0) { // only one vegetable bought only once
+            let startStatement = 'You don\'t have any ';
+            let endStatement = '.\n ';
+            response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+          }else if (result.length == 1) { // only one vegetable bought only once
             db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: req.body.result.parameters.type}}]},{$set: {"used": "yes"}}, function(err, res) {
                if (err) throw err;
                console.log("1 record Updated");
@@ -452,7 +456,11 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: item}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         var response = '';
-        if (result.length == 1) { // just one item
+        if(result.length == 0){
+          let startStatement = 'You don\'t have any ';
+          let endStatement = '.\n ';
+          response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+      }else if (result.length == 1) { // just one item
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
