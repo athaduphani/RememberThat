@@ -10,7 +10,7 @@ let restService = express();
 var mongo = require('mongodb');
 var dateFormat = require('dateformat');
 var dataMap = require('./data.js');
-var botFunctions = require('./functions.js');
+// var botFunctions = require('./functions.js');
 var pluralize = require('pluralize')
 
 const SAVE_ACTION = 'save';
@@ -223,7 +223,7 @@ restService.post('/transaction', function(req, res) {
             map = map.concat(type.Map);
           }
 
-          db.collection("transaction").distinct({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map }}]},function(err, result){
+          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map }}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
           let response = '';
@@ -233,11 +233,11 @@ restService.post('/transaction', function(req, res) {
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         }else{
           let startStatement = 'You have ';
-          // let middleStatement = ' which are bought on ';
-          // let endStatement = '].\n ';
-          let endStatement = '.\n ';
-          response = botFunctions.itemsForResult (result, startStatement, endStatement);
-          // response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+          let middleStatement = ' which are bought on ';
+          let endStatement = '].\n ';
+          // let endStatement = '.\n ';
+          // response = botFunctions.itemsForResult (result, startStatement, endStatement);
+          response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         }
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
