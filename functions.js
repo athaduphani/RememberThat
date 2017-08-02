@@ -27,6 +27,7 @@ itemsForResult: function(result, startStatement, endStatement){
         response = response + ' and ' + result[i].item + endStatement ;
       }else if (i == 0){
         response = response + result[i].item ;
+        itemName = result[i];
       }else{
         response = response +', '+ result[i].item ;
         itemName = result[i].item;
