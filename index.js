@@ -10,7 +10,7 @@ let restService = express();
 var mongo = require('mongodb');
 var dateFormat = require('dateformat');
 var dataMap = require('./data.js');
-// var botFunctions = require('./functions.js');
+var botFunctions = require('./functions.js');
 var pluralize = require('pluralize')
 
 const SAVE_ACTION = 'save';
@@ -189,6 +189,7 @@ restService.post('/transaction', function(req, res) {
         }
         return response;
       } // End responseforOneParam function
+      // Start itemsForType function
       function itemsForType(result, startStatement, endStatement){
         let response = startStatement;
         var itemName = 'NA';
@@ -206,11 +207,10 @@ restService.post('/transaction', function(req, res) {
             itemName = result[i];
         }
       }else{
-
       }
         }
         return response;
-      } // End responseforOneParam function
+      } // End itemsForType function
       // Start RetrieveForType
       function retrieveType(app){
         MongoClient.connect(url, function(err, db) {
@@ -232,9 +232,11 @@ restService.post('/transaction', function(req, res) {
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         }else{
           let startStatement = 'You have ';
-          let middleStatement = ' which are bought on ';
-          let endStatement = '].\n ';
-          response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+          // let middleStatement = ' which are bought on ';
+          // let endStatement = '].\n ';
+          let endStatement = '.\n ';
+          response = botFunctions.itemsForResult (result, startStatement, endStatement);
+          // response = responseforMultiple(result, startStatement, middleStatement, endStatement);
         }
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
