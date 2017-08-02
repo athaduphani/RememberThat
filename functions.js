@@ -22,8 +22,7 @@ itemsForResult: function(result, startStatement, endStatement){
       if(itemName != result[i].item){
       if (result.length == 1) {
         response = response + result[i].item + endStatement;
-      }
-      else if (i == result.length-1){
+      }else if (i == result.length-1){
         response = response + ' and ' + result[i].item + endStatement ;
       }else if (i == 0){
         response = response + result[i].item ;

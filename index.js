@@ -223,7 +223,7 @@ restService.post('/transaction', function(req, res) {
             map = map.concat(type.Map);
           }
 
-          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map }}]}).sort({"item":1}).toArray(function(err, result){
+          db.collection("transaction").distinct({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map }}]},function(err, result){
           if (err) throw err;
           db.close();
           let response = '';
