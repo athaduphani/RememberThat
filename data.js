@@ -2,15 +2,28 @@
   var typeMap = [
     {
       "type": "all",
-      "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
+      // "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
+      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups"]
     },
     {
       "type": "Groceries",
-      "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
+      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups"]
     },
     {
-      "type": "Fruit",
-      "Map": ["Fruit"]
+      "type": "Produce",
+      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups"]
+    },
+    {
+      "type": "Fruits",
+      "Map": ["Fruits"]
+    },
+    {
+      "type": "Seafood",
+      "Map": ["Seafood"]
+    },
+    {
+      "type": "Soups",
+      "Map": ["Soups"]
     },
     {
       "type": "Spices",
