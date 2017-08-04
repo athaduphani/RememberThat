@@ -493,7 +493,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
         var itemsList = [];
         var resultItemsList = [];
-        for(i = 0; i < result.length; i++){
+        for(var i = 0; i < result.length; i++){
           resultItemsList.push(result[i].item)
         }
       //   for (var j = 0; j < req.body.result.parameters.Items.length; j++) {
