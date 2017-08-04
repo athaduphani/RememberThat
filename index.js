@@ -139,8 +139,8 @@ restService.post('/transaction', function(req, res) {
         //  itemType = itemType + req.body.result.parameters.Items[i] + getType (req.body.result.parameters.Items[i]);
         var expiryDateStart = new Date(req.body.result.parameters.date);
         var expiryDateEnd = new Date(req.body.result.parameters.date);
-        expiryDateStart.setDate(expiryDateStart.getDate() + 5);
-        expiryDateEnd.setDate(expiryDateEnd.getDate() + 10);
+        expiryDateStart.setDate(expiryDateStart.getDate() + result.expiry_start);
+        expiryDateEnd.setDate(expiryDateEnd.getDate() + result.expiry_end);
         var expiryDateStart1=dateFormat(expiryDateStart, "yyyy-mm-dd");
         var expiryDateEnd1=dateFormat(expiryDateEnd, "yyyy-mm-dd");
          transactions[i] = {
