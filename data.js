@@ -47,2155 +47,2155 @@
   ];
   var itemTypeMap =  [
   {
-    "name": "ANCHOVIES",
+    "item": "ANCHOVIES",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 540
   },
   {
-    "name": "ARCTIC CHAR",
+    "item": "ARCTIC CHAR",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "BLUEFISH",
+    "item": "BLUEFISH",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CARP",
+    "item": "CARP",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CATFISH",
+    "item": "CATFISH",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CAVIAR",
+    "item": "CAVIAR",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 365
   },
   {
-    "name": "CLAM CHOWDER",
+    "item": "CLAM CHOWDER",
     "type": "Seafood",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Clams",
+    "item": "Clams",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "COD",
+    "item": "COD",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CRAB",
+    "item": "CRAB",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CRAB MEAT",
+    "item": "CRAB MEAT",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CRAYFISH",
+    "item": "CRAYFISH",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CREAM OF SHRIMP SOUP",
+    "item": "CREAM OF SHRIMP SOUP",
     "type": "Seafood",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "ESCARGOTS",
+    "item": "ESCARGOTS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 365
   },
   {
-    "name": "FISH CHOWDER",
+    "item": "FISH CHOWDER",
     "type": "Seafood",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "FISH STOCK OR BROTH",
+    "item": "FISH STOCK OR BROTH",
     "type": "Seafood",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "FLOUNDER",
+    "item": "FLOUNDER",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "FROG LEGS",
+    "item": "FROG LEGS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "GEFILTE FISH",
+    "item": "GEFILTE FISH",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 1460
   },
   {
-    "name": "GROUPER",
+    "item": "GROUPER",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "HADDOCK",
+    "item": "HADDOCK",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "HALIBUT",
+    "item": "HALIBUT",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "IMITATION CRAB MEAT",
+    "item": "IMITATION CRAB MEAT",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 14
   },
   {
-    "name": "LOBSTER",
+    "item": "LOBSTER",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "LOBSTER TAILS",
+    "item": "LOBSTER TAILS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "LOX",
+    "item": "LOX",
     "type": "Seafood",
     "expiry_start": 5,
     "expiry_end": 8
   },
   {
-    "name": "LOX PACKAGE",
+    "item": "LOX PACKAGE",
     "type": "Seafood",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "MACKEREL",
+    "item": "MACKEREL",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "MAHI-MAHI",
+    "item": "MAHI-MAHI",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "MONKFISH",
+    "item": "MONKFISH",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "MULLET",
+    "item": "MULLET",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "MUSSELS",
+    "item": "MUSSELS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "OCTOPUS",
+    "item": "OCTOPUS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "ORANGE ROUGHY",
+    "item": "ORANGE ROUGHY",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "OYSTERS",
+    "item": "OYSTERS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "PERCH",
+    "item": "PERCH",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "POLLOCK",
+    "item": "POLLOCK",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "ROCKFISH",
+    "item": "ROCKFISH",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SABLE",
+    "item": "SABLE",
     "type": "Seafood",
     "expiry_start": 5,
     "expiry_end": 8
   },
   {
-    "name": "BLACK COD",
+    "item": "BLACK COD",
     "type": "Seafood",
     "expiry_start": 5,
     "expiry_end": 8
   },
   {
-    "name": "SALMON",
+    "item": "SALMON",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SALMON ROE",
+    "item": "SALMON ROE",
     "type": "Seafood",
     "expiry_start": 21,
     "expiry_end": 28
   },
   {
-    "name": "SALT COD",
+    "item": "SALT COD",
     "type": "Seafood",
     "expiry_start": 300,
     "expiry_end": 365
   },
   {
-    "name": "SARDINES",
+    "item": "SARDINES",
     "type": "Seafood",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "SCALLOPS",
+    "item": "SCALLOPS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SEA BASS",
+    "item": "SEA BASS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SEA TROUT",
+    "item": "SEA TROUT",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SEAFOOD BISQUE",
+    "item": "SEAFOOD BISQUE",
     "type": "Seafood",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "SHARK STEAK",
+    "item": "SHARK STEAK",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SHRIMP",
+    "item": "SHRIMP",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SKATE",
+    "item": "SKATE",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SMELTS",
+    "item": "SMELTS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SMOKED HERRING FILLETS",
+    "item": "SMOKED HERRING FILLETS",
     "type": "Seafood",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "SMOKED OYSTERS",
+    "item": "SMOKED OYSTERS",
     "type": "Seafood",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "SMOKED SALMON",
+    "item": "SMOKED SALMON",
     "type": "Seafood",
     "expiry_start": 5,
     "expiry_end": 8
   },
   {
-    "name": "CALAMARI",
+    "item": "CALAMARI",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SOLE",
+    "item": "SOLE",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SQUID",
+    "item": "SQUID",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CALAMARI",
+    "item": "CALAMARI",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "STRIPED BASS",
+    "item": "STRIPED BASS",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "STURGEON",
+    "item": "STURGEON",
     "type": "Seafood",
     "expiry_start": 5,
     "expiry_end": 8
   },
   {
-    "name": "SUSHI",
+    "item": "SUSHI",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SWORDFISH",
+    "item": "SWORDFISH",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "TILAPIA",
+    "item": "TILAPIA",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "TROUT",
+    "item": "TROUT",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SMOKED TROUT",
+    "item": "SMOKED TROUT",
     "type": "Seafood",
     "expiry_start": 5,
     "expiry_end": 8
   },
   {
-    "name": "TUNA",
+    "item": "TUNA",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "TUNA CANNED",
+    "item": "TUNA CANNED",
     "type": "Seafood",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "TURBOT",
+    "item": "TURBOT",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "WHITEFISH",
+    "item": "WHITEFISH",
     "type": "Seafood",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "SMOKED WHITEFISH",
+    "item": "SMOKED WHITEFISH",
     "type": "Seafood",
     "expiry_start": 5,
     "expiry_end": 8
   },
   {
-    "name": "APPLES",
+    "item": "APPLES",
     "type": "Fruits",
     "expiry_start": 30,
     "expiry_end": 60
   },
   {
-    "name": "APRICOTS",
+    "item": "APRICOTS",
     "type": "Fruits",
     "expiry_start": 4,
     "expiry_end": 5
   },
   {
-    "name": "AVOCADOS",
+    "item": "AVOCADOS",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "BANANAS",
+    "item": "BANANAS",
     "type": "Fruits",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "BLACKBERRIES",
+    "item": "BLACKBERRIES",
     "type": "Fruits",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "BLUEBERRIES",
+    "item": "BLUEBERRIES",
     "type": "Fruits",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "BOYSENBERRIES",
+    "item": "BOYSENBERRIES",
     "type": "Fruits",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "CANTALOUPE",
+    "item": "CANTALOUPE",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "CASABA MELONS",
+    "item": "CASABA MELONS",
     "type": "Fruits",
     "expiry_start": 7,
     "expiry_end": 10
   },
   {
-    "name": "CHERIMOYA",
+    "item": "CHERIMOYA",
     "type": "Fruits",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CHERRIES",
+    "item": "CHERRIES",
     "type": "Fruits",
     "expiry_start": 4,
     "expiry_end": 7
   },
   {
-    "name": "CLEMENTINES",
+    "item": "CLEMENTINES",
     "type": "Fruits",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "CRANBERRIES",
+    "item": "CRANBERRIES",
     "type": "Fruits",
     "expiry_start": 21,
     "expiry_end": 28
   },
   {
-    "name": "CRENSHAW MELONS",
+    "item": "CRENSHAW MELONS",
     "type": "Fruits",
     "expiry_start": 7,
     "expiry_end": 10
   },
   {
-    "name": "CURRANTS",
+    "item": "CURRANTS",
     "type": "Fruits",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "DATES",
+    "item": "DATES",
     "type": "Fruits",
     "expiry_start": "",
     "expiry_end": 365
   },
   {
-    "name": "ELDERBERRIES",
+    "item": "ELDERBERRIES",
     "type": "Fruits",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "FEIJOA",
+    "item": "FEIJOA",
     "type": "Fruits",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "FIGS",
+    "item": "FIGS",
     "type": "Fruits",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "FRUIT COCKTAIL",
+    "item": "FRUIT COCKTAIL",
     "type": "Fruits",
     "expiry_start": 540,
     "expiry_end": 730
   },
   {
-    "name": "FRUIT SALAD",
+    "item": "FRUIT SALAD",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "GOOSEBERRIES",
+    "item": "GOOSEBERRIES",
     "type": "Fruits",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "GRAPEFRUIT",
+    "item": "GRAPEFRUIT",
     "type": "Fruits",
     "expiry_start": 21,
     "expiry_end": 28
   },
   {
-    "name": "GRAPES",
+    "item": "GRAPES",
     "type": "Fruits",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "GUAVA",
+    "item": "GUAVA",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 4
   },
   {
-    "name": "HONEYDEW MELONS",
+    "item": "HONEYDEW MELONS",
     "type": "Fruits",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "HUCKLEBERRIES",
+    "item": "HUCKLEBERRIES",
     "type": "Fruits",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "KIWI FRUIT",
+    "item": "KIWI FRUIT",
     "type": "Fruits",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "KUMQUATS",
+    "item": "KUMQUATS",
     "type": "Fruits",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "LEMONS",
+    "item": "LEMONS",
     "type": "Fruits",
     "expiry_start": 21,
     "expiry_end": 28
   },
   {
-    "name": "LIMES",
+    "item": "LIMES",
     "type": "Fruits",
     "expiry_start": 21,
     "expiry_end": 28
   },
   {
-    "name": "LITCHIS",
+    "item": "LITCHIS",
     "type": "Fruits",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "LOOSE OLIVES",
+    "item": "LOOSE OLIVES",
     "type": "Fruits",
     "expiry_start": 30,
     "expiry_end": 60
   },
   {
-    "name": "MANGOS",
+    "item": "MANGOS",
     "type": "Fruits",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "NECTARINES",
+    "item": "NECTARINES",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "ORANGES",
+    "item": "ORANGES",
     "type": "Fruits",
     "expiry_start": 21,
     "expiry_end": 28
   },
   {
-    "name": "PAPAYA NECTAR",
+    "item": "PAPAYA NECTAR",
     "type": "Fruits",
     "expiry_start": 365,
     "expiry_end": 540
   },
   {
-    "name": "PAPAYAS",
+    "item": "PAPAYAS",
     "type": "Fruits",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "PASSION FRUIT",
+    "item": "PASSION FRUIT",
     "type": "Fruits",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "PEACHES",
+    "item": "PEACHES",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "PEAR NECTAR",
+    "item": "PEAR NECTAR",
     "type": "Fruits",
     "expiry_start": 365,
     "expiry_end": 540
   },
   {
-    "name": "PEARS",
+    "item": "PEARS",
     "type": "Fruits",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "PERSIMMONS",
+    "item": "PERSIMMONS",
     "type": "Fruits",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "PINEAPPLES",
+    "item": "PINEAPPLES",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "PLANTAINS",
+    "item": "PLANTAINS",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "PLUMS",
+    "item": "PLUMS",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "POMEGRANATES",
+    "item": "POMEGRANATES",
     "type": "Fruits",
     "expiry_start": 30,
     "expiry_end": 60
   },
   {
-    "name": "PRICKLY PEARS",
+    "item": "PRICKLY PEARS",
     "type": "Fruits",
     "expiry_start": 1,
     "expiry_end": 3
   },
   {
-    "name": "QUINCES",
+    "item": "QUINCES",
     "type": "Fruits",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "RAISINS",
+    "item": "RAISINS",
     "type": "Fruits",
     "expiry_start": 180,
     "expiry_end": 365
   },
   {
-    "name": "RASPBERRIES",
+    "item": "RASPBERRIES",
     "type": "Fruits",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "SAPOTE",
+    "item": "SAPOTE",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "STAR FRUIT",
+    "item": "STAR FRUIT",
     "type": "Fruits",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "STRAWBERRIES",
+    "item": "STRAWBERRIES",
     "type": "Fruits",
     "expiry_start": 3,
     "expiry_end": 7
   },
   {
-    "name": "TAMARIND PASTE",
+    "item": "TAMARIND PASTE",
     "type": "Fruits",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "TANGERINES",
+    "item": "TANGERINES",
     "type": "Fruits",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "UGLI FRUIT",
+    "item": "UGLI FRUIT",
     "type": "Fruits",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "WATERMELON",
+    "item": "WATERMELON",
     "type": "Fruits",
     "expiry_start": "",
     "expiry_end": 14
   },
   {
-    "name": "ALFALFA SPROUTS",
+    "item": "ALFALFA SPROUTS",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "ANCHO PEPPERS",
+    "item": "ANCHO PEPPERS",
     "type": "Vegetables",
     "expiry_start": 300,
     "expiry_end": 365
   },
   {
-    "name": "ARTICHOKES",
+    "item": "ARTICHOKES",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Canned ARTICHOKES",
+    "item": "Canned ARTICHOKES",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "ARUGULA",
+    "item": "ARUGULA",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "ASPARAGUS",
+    "item": "ASPARAGUS",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "Canned ASPARAGUS",
+    "item": "Canned ASPARAGUS",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "BABY CARROTS",
+    "item": "BABY CARROTS",
     "type": "Vegetables",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "BAMBOO SHOOTS",
+    "item": "BAMBOO SHOOTS",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Canned BAMBOO SHOOTS",
+    "item": "Canned BAMBOO SHOOTS",
     "type": "Vegetables",
     "expiry_start": 1825,
     "expiry_end": 2555
   },
   {
-    "name": "BANANA PEPPERS",
+    "item": "BANANA PEPPERS",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "BEANS",
+    "item": "BEANS",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Canned Beans",
+    "item": "Canned Beans",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "BEET GREENS",
+    "item": "BEET GREENS",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "BEETS",
+    "item": "BEETS",
     "type": "Vegetables",
     "expiry_start": 12,
     "expiry_end": 14
   },
   {
-    "name": "Canned Beets",
+    "item": "Canned Beets",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "BELGIAN ENDIVE",
+    "item": "BELGIAN ENDIVE",
     "type": "Vegetables",
     "expiry_start": 4,
     "expiry_end": 5
   },
   {
-    "name": "Bell Peppers",
+    "item": "Bell Peppers",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Green Peppers",
+    "item": "Green Peppers",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Yellow Peppers",
+    "item": "Yellow Peppers",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Red Peppers",
+    "item": "Red Peppers",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "BITTER MELON",
+    "item": "BITTER MELON",
     "type": "Vegetables",
     "expiry_start": 4,
     "expiry_end": 7
   },
   {
-    "name": "BLACK-EYED PEAS",
+    "item": "BLACK-EYED PEAS",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "BOK CHOY",
+    "item": "BOK CHOY",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 4
   },
   {
-    "name": "BROAD BEANS",
+    "item": "BROAD BEANS",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "BROCCOLI",
+    "item": "BROCCOLI",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "BROCCOLI RAAB",
+    "item": "BROCCOLI RAAB",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "BRUSSELS SPROUTS",
+    "item": "BRUSSELS SPROUTS",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "GOBO ROOT",
+    "item": "GOBO ROOT",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "BURDOCK ROOT",
+    "item": "BURDOCK ROOT",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "CABBAGE",
+    "item": "CABBAGE",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "CARDOON",
+    "item": "CARDOON",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CARROT JUICE",
+    "item": "CARROT JUICE",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 7
   },
   {
-    "name": "CARROTS",
+    "item": "CARROTS",
     "type": "Vegetables",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "Canned Carrots",
+    "item": "Canned Carrots",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "CASSAVA",
+    "item": "CASSAVA",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "YUCCA",
+    "item": "YUCCA",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "MANIOC",
+    "item": "MANIOC",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "CAULIFLOWER",
+    "item": "CAULIFLOWER",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "CELERY ROOT",
+    "item": "CELERY ROOT",
     "type": "Vegetables",
     "expiry_start": 10,
     "expiry_end": 14
   },
   {
-    "name": "CELERY",
+    "item": "CELERY",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Chayote",
+    "item": "Chayote",
     "type": "Vegetables",
     "expiry_start": 21,
     "expiry_end": 28
   },
   {
-    "name": "Chickpeas",
+    "item": "Chickpeas",
     "type": "Vegetables",
     "expiry_start": 0,
     "expiry_end": 2
   },
   {
-    "name": "Chichory Green",
+    "item": "Chichory Green",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Canned Chilli Peppers",
+    "item": "Canned Chilli Peppers",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Coleslaw",
+    "item": "Coleslaw",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "collards",
+    "item": "collards",
     "type": "Vegetables",
     "expiry_start": 4,
     "expiry_end": 5
   },
   {
-    "name": "Frozen Corn",
+    "item": "Frozen Corn",
     "type": "Vegetables",
     "expiry_start": 300,
     "expiry_end": 360
   },
   {
-    "name": "Corn Cob",
+    "item": "Corn Cob",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 3
   },
   {
-    "name": "Cranberry Beans",
+    "item": "Cranberry Beans",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 4
   },
   {
-    "name": "Asparagus Soup",
+    "item": "Asparagus Soup",
     "type": "Soups",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Broccoli Soup",
+    "item": "Broccoli Soup",
     "type": "Soups",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Celery Soup",
+    "item": "Celery Soup",
     "type": "Soups",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Mushroom Soup",
+    "item": "Mushroom Soup",
     "type": "Soups",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Onion Soup",
+    "item": "Onion Soup",
     "type": "Soups",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Potato Soup",
+    "item": "Potato Soup",
     "type": "Soups",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Cucumber",
+    "item": "Cucumber",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 7
   },
   {
-    "name": "Dandelion Greens",
+    "item": "Dandelion Greens",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Dried Vegetables",
+    "item": "Dried Vegetables",
     "type": "Vegetables",
     "expiry_start": 180,
     "expiry_end": 365
   },
   {
-    "name": "Eggplant",
+    "item": "Eggplant",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Escarole",
+    "item": "Escarole",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Edamame",
+    "item": "Edamame",
     "type": "Vegetables",
     "expiry_start": 300,
     "expiry_end": 365
   },
   {
-    "name": "Fennel",
+    "item": "Fennel",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 10
   },
   {
-    "name": "Fiddlehead Ferns",
+    "item": "Fiddlehead Ferns",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "French Onion Soup",
+    "item": "French Onion Soup",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Frisee Greens",
+    "item": "Frisee Greens",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Garlic",
+    "item": "Garlic",
     "type": "Vegetables",
     "expiry_start": 90,
     "expiry_end": 150
   },
   {
-    "name": "Canned Garlic",
+    "item": "Canned Garlic",
     "type": "Vegetables",
     "expiry_start": 365,
     "expiry_end": 730
   },
   {
-    "name": "Ginger",
+    "item": "Ginger",
     "type": "Vegetables",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "Grape Leaves",
+    "item": "Grape Leaves",
     "type": "Vegetables",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "Scallions",
+    "item": "Scallions",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 10
   },
   {
-    "name": "Guero peppers",
+    "item": "Guero peppers",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "habanero peppers",
+    "item": "habanero peppers",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "HEARTS OF PALM",
+    "item": "HEARTS OF PALM",
     "type": "Vegetables",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "HASH BROWNS",
+    "item": "HASH BROWNS",
     "type": "Vegetables",
     "expiry_start": 300,
     "expiry_end": 365
   },
   {
-    "name": "Horseradish",
+    "item": "Horseradish",
     "type": "Vegetables",
     "expiry_start": 30,
     "expiry_end": 60
   },
   {
-    "name": "Jalapeno peppers",
+    "item": "Jalapeno peppers",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Canned Jalapeno peppers",
+    "item": "Canned Jalapeno peppers",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Sunchokes",
+    "item": "Sunchokes",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Jicama",
+    "item": "Jicama",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Kale",
+    "item": "Kale",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Kohlrabi",
+    "item": "Kohlrabi",
     "type": "Vegetables",
     "expiry_start": 4,
     "expiry_end": 5
   },
   {
-    "name": "Leeks",
+    "item": "Leeks",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Lettuce",
+    "item": "Lettuce",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 4
   },
   {
-    "name": "Lettuce Leaf",
+    "item": "Lettuce Leaf",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Lima Beans",
+    "item": "Lima Beans",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Mesclun Greens",
+    "item": "Mesclun Greens",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "MINESTRONE SOUP",
+    "item": "MINESTRONE SOUP",
     "type": "Soups",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Mixed Vegetables",
+    "item": "Mixed Vegetables",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Mung Beans",
+    "item": "Mung Beans",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Canned Mushrooms",
+    "item": "Canned Mushrooms",
     "type": "Vegetables",
     "expiry_start": 300,
     "expiry_end": 365
   },
   {
-    "name": "Mushrooms",
+    "item": "Mushrooms",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Mustard Greens",
+    "item": "Mustard Greens",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Nopales",
+    "item": "Nopales",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Okra",
+    "item": "Okra",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "Onion Rings",
+    "item": "Onion Rings",
     "type": "Vegetables",
     "expiry_start": 300,
     "expiry_end": 365
   },
   {
-    "name": "Canned onions",
+    "item": "Canned onions",
     "type": "Vegetables",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "Onions",
+    "item": "Onions",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Parsnips",
+    "item": "Parsnips",
     "type": "Vegetables",
     "expiry_start": 21,
     "expiry_end": 28
   },
   {
-    "name": "Green Peas",
+    "item": "Green Peas",
     "type": "Vegetables",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "Canned Carrots",
+    "item": "Canned Carrots",
     "type": "Vegetables",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "Frozen Peas",
+    "item": "Frozen Peas",
     "type": "Vegetables",
     "expiry_start": 300,
     "expiry_end": 365
   },
   {
-    "name": "Picked Peppers",
+    "item": "Picked Peppers",
     "type": "Vegetables",
     "expiry_start": 365,
     "expiry_end": 730
   },
   {
-    "name": "Potatoes",
+    "item": "Potatoes",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Pumpkin",
+    "item": "Pumpkin",
     "type": "Vegetables",
     "expiry_start": 30,
     "expiry_end": 60
   },
   {
-    "name": "Canned Pumpkin",
+    "item": "Canned Pumpkin",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Radicchio",
+    "item": "Radicchio",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Radishes",
+    "item": "Radishes",
     "type": "Vegetables",
     "expiry_start": 10,
     "expiry_end": 14
   },
   {
-    "name": "Rutabages",
+    "item": "Rutabages",
     "type": "Vegetables",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "Rhubarb",
+    "item": "Rhubarb",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Salsify",
+    "item": "Salsify",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "SAUERKRAUT",
+    "item": "SAUERKRAUT",
     "type": "Vegetables",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "Seaweed",
+    "item": "Seaweed",
     "type": "Vegetables",
     "expiry_start": 60,
     "expiry_end": 240
   },
   {
-    "name": "Serano Peppers",
+    "item": "Serano Peppers",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Shallots",
+    "item": "Shallots",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "Sorrel",
+    "item": "Sorrel",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Soybeans",
+    "item": "Soybeans",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Spinach",
+    "item": "Spinach",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Spinch bag",
+    "item": "Spinch bag",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 10
   },
   {
-    "name": "Squash",
+    "item": "Squash",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "Canned Squash",
+    "item": "Canned Squash",
     "type": "Vegetables",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "Sweet Potatoes",
+    "item": "Sweet Potatoes",
     "type": "Vegetables",
     "expiry_start": 7,
     "expiry_end": 14
   },
   {
-    "name": "Swiss Chard",
+    "item": "Swiss Chard",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "Taro",
+    "item": "Taro",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "Tomatillos",
+    "item": "Tomatillos",
     "type": "Vegetables",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "Tomato Bisque",
+    "item": "Tomato Bisque",
     "type": "Vegetables",
     "expiry_start": 360,
     "expiry_end": 540
   },
   {
-    "name": "Tomato paste",
+    "item": "Tomato paste",
     "type": "Vegetables",
     "expiry_start": 730,
     "expiry_end": 1095
   },
   {
-    "name": "Tomatoes",
+    "item": "Tomatoes",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 4
   },
   {
-    "name": "Sun Dried Tomatoes",
+    "item": "Sun Dried Tomatoes",
     "type": "Vegetables",
     "expiry_start": 240,
     "expiry_end": 270
   },
   {
-    "name": "Truffles",
+    "item": "Truffles",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 14
   },
   {
-    "name": "Canned Truffles",
+    "item": "Canned Truffles",
     "type": "Vegetables",
     "expiry_start": 730,
     "expiry_end": 1825
   },
   {
-    "name": "Trunip Greens",
+    "item": "Trunip Greens",
     "type": "Vegetables",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Trunips",
+    "item": "Trunips",
     "type": "Vegetables",
     "expiry_start": 14,
     "expiry_end": 21
   },
   {
-    "name": "Vegetable Broth",
+    "item": "Vegetable Broth",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Vegetable Soup",
+    "item": "Vegetable Soup",
     "type": "Soups",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Yardlong Beans",
+    "item": "Yardlong Beans",
     "type": "Vegetables",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Canned Yams",
+    "item": "Canned Yams",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Yams",
+    "item": "Yams",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Watercress",
+    "item": "Watercress",
     "type": "Vegetables",
     "expiry_start": 2,
     "expiry_end": 3
   },
   {
-    "name": "Canned Water Chestnuts",
+    "item": "Canned Water Chestnuts",
     "type": "Vegetables",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Water Chestnuts",
+    "item": "Water Chestnuts",
     "type": "Vegetables",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "Veggie Burgers",
+    "item": "Veggie Burgers",
     "type": "Vegetables",
     "expiry_start": 130,
     "expiry_end": 180
   },
   {
-    "name": "Abruzzese sausage",
+    "item": "Abruzzese sausage",
     "type": "Meat",
     "expiry_start": 182,
     "expiry_end": 182
   },
   {
-    "name": "Bacon bits",
+    "item": "Bacon bits",
     "type": "Meat",
     "expiry_start": 365,
     "expiry_end": 365
   },
   {
-    "name": "Bacon",
+    "item": "Bacon",
     "type": "Meat",
     "expiry_start": 7,
     "expiry_end": 7
   },
   {
-    "name": "Beef brisket",
+    "item": "Beef brisket",
     "type": "Meat",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Beef broth",
+    "item": "Beef broth",
     "type": "Meat",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Beef burgers",
+    "item": "Beef burgers",
     "type": "Meat",
     "expiry_start": 182,
     "expiry_end": 182
   },
   {
-    "name": "Beef heart",
+    "item": "Beef heart",
     "type": "Meat",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Beef Jerky",
+    "item": "Beef Jerky",
     "type": "Meat",
     "expiry_start": 365,
     "expiry_end": 365
   },
   {
-    "name": "Beef Kidneys",
+    "item": "Beef Kidneys",
     "type": "Meat",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Beef liver",
+    "item": "Beef liver",
     "type": "Meat",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Beef ribs",
+    "item": "Beef ribs",
     "type": "Meat",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Frozen Beef roast",
+    "item": "Frozen Beef roast",
     "type": "Meat",
     "expiry_start": 365,
     "expiry_end": 365
   },
   {
-    "name": "Beef roast",
+    "item": "Beef roast",
     "type": "Meat",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Beef soup",
+    "item": "Beef soup",
     "type": "Meat",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "Beef steak",
+    "item": "Beef steak",
     "type": "Meat",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Beef tougue",
+    "item": "Beef tougue",
     "type": "Meat",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Ground beef",
+    "item": "Ground beef",
     "type": "Meat",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Beef stew meat",
+    "item": "Beef stew meat",
     "type": "Meat",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "Bison chops",
+    "item": "Bison chops",
     "type": "Meat",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Bison roast",
+    "item": "Bison roast",
     "type": "Meat",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Bison steak",
+    "item": "Bison steak",
     "type": "Meat",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "Ground bison",
+    "item": "Ground bison",
     "type": "Meat",
     "expiry_start": 1,
     "expiry_end": 2
   },
   {
-    "name": "AMERICAN CHEESE",
+    "item": "AMERICAN CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 35
   },
   {
-    "name": "APPENZELLER CHEESE",
+    "item": "APPENZELLER CHEESE",
     "type": "Dairy",
     "expiry_start": 35,
     "expiry_end": 65
   },
   {
-    "name": "ASIAGO CHEESE",
+    "item": "ASIAGO CHEESE",
     "type": "Dairy",
     "expiry_start": 525,
     "expiry_end": 365
   },
   {
-    "name": "BEAUFORT CHEESE",
+    "item": "BEAUFORT CHEESE",
     "type": "Dairy",
     "expiry_start": 35,
     "expiry_end": 65
   },
   {
-    "name": "BEL PAESE CHEESE",
+    "item": "BEL PAESE CHEESE",
     "type": "Dairy",
     "expiry_start": 15,
     "expiry_end": 21
   },
   {
-    "name": "BLUE CHEESE",
+    "item": "BLUE CHEESE",
     "type": "Dairy",
     "expiry_start": 21,
     "expiry_end": 35
   },
   {
-    "name": "BOURSAULT CHEESE",
+    "item": "BOURSAULT CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "BRICK CHEESE",
+    "item": "BRICK CHEESE",
     "type": "Dairy",
     "expiry_start": 21,
     "expiry_end": 35
   },
   {
-    "name": "BRIE CHEESE",
+    "item": "BRIE CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "BUTTER",
+    "item": "BUTTER",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 35
   },
   {
-    "name": "BUTTERMILK",
+    "item": "BUTTERMILK",
     "type": "Dairy",
     "expiry_start": 7,
     "expiry_end": 15
   },
   {
-    "name": "CAMEMBERT CHEESE",
+    "item": "CAMEMBERT CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "CHEDDAR CHEESE",
+    "item": "CHEDDAR CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "CHEESE SOUP",
+    "item": "CHEESE SOUP",
     "type": "Dairy",
     "expiry_start": 1095,
     "expiry_end": 1825
   },
   {
-    "name": "CHESHIRE CHEESE",
+    "item": "CHESHIRE CHEESE",
     "type": "Dairy",
     "expiry_start": 35,
     "expiry_end": 65
   },
   {
-    "name": "CHOCOLATE MILK / FLAVORED MILK",
+    "item": "CHOCOLATE MILK / FLAVORED MILK",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "COLBY CHEESE",
+    "item": "COLBY CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "COTTAGE CHEESE",
+    "item": "COTTAGE CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "CREAM CHEESE",
+    "item": "CREAM CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 35
   },
   {
-    "name": "CREAM, FLUID",
+    "item": "CREAM, FLUID",
     "type": "Dairy",
     "expiry_start": 21,
     "expiry_end": 35
   },
   {
-    "name": "CREME FRAICHE",
+    "item": "CREME FRAICHE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 35
   },
   {
-    "name": "DERBY CHEESE",
+    "item": "DERBY CHEESE",
     "type": "Dairy",
     "expiry_start": 35,
     "expiry_end": 65
   },
   {
-    "name": "DESSERT TOPPING MIX",
+    "item": "DESSERT TOPPING MIX",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 365
   },
   {
-    "name": "CREAM CHEESE",
+    "item": "CREAM CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 15
   },
   {
-    "name": "DUBLINER CHEESE",
+    "item": "DUBLINER CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "EDAM CHEESE",
+    "item": "EDAM CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "EGG SUBSTITUTES",
+    "item": "EGG SUBSTITUTES",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 95
   },
   {
-    "name": "EGGNOG",
+    "item": "EGGNOG",
     "type": "Dairy",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "EMMENTAL CHEESE",
+    "item": "EMMENTAL CHEESE",
     "type": "Dairy",
     "expiry_start": 35,
     "expiry_end": 65
   },
   {
-    "name": "FARMER CHEESE",
+    "item": "FARMER CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "FETA CHEESE",
+    "item": "FETA CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "FONTINA CHEESE",
+    "item": "FONTINA CHEESE",
     "type": "Dairy",
     "expiry_start": 35,
     "expiry_end": 65
   },
   {
-    "name": "GLOUCESTER CHEESE",
+    "item": "GLOUCESTER CHEESE",
     "type": "Dairy",
     "expiry_start": 35,
     "expiry_end": 65
   },
   {
-    "name": "GOAT CHEESE",
+    "item": "GOAT CHEESE",
     "type": "Dairy",
     "expiry_start": 15,
     "expiry_end": 21
   },
   {
-    "name": "GORGONZOLA CHEESE",
+    "item": "GORGONZOLA CHEESE",
     "type": "Dairy",
     "expiry_start": 21,
     "expiry_end": 35
   },
   {
-    "name": "GOUDA CHEESE",
+    "item": "GOUDA CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "GRUYERE CHEESE",
+    "item": "GRUYERE CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "HALF-AND-HALF",
+    "item": "HALF-AND-HALF",
     "type": "Dairy",
     "expiry_start": 7,
     "expiry_end": 15
   },
   {
-    "name": "HAVARTI CHEESE",
+    "item": "HAVARTI CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "HEAVY CREAM",
+    "item": "HEAVY CREAM",
     "type": "Dairy",
     "expiry_start": 15,
     "expiry_end": 21
   },
   {
-    "name": "JARLSBERG CHEESE",
+    "item": "JARLSBERG CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "LANCASHIRE CHEESE",
+    "item": "LANCASHIRE CHEESE",
     "type": "Dairy",
     "expiry_start": 35,
     "expiry_end": 65
   },
   {
-    "name": "LIGHT CREAM",
+    "item": "LIGHT CREAM",
     "type": "Dairy",
     "expiry_start": 7,
     "expiry_end": 15
   },
   {
-    "name": "LIMBURGER CHEESE",
+    "item": "LIMBURGER CHEESE",
     "type": "Dairy",
     "expiry_start": 15,
     "expiry_end": 21
   },
   {
-    "name": "MASCARPONE CHEESE",
+    "item": "MASCARPONE CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 65
   },
   {
-    "name": "MILK",
+    "item": "MILK",
     "type": "Dairy",
     "expiry_start": 7,
     "expiry_end": 15
   },
   {
-    "name": "MONTEREY JACK CHEESE",
+    "item": "MONTEREY JACK CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "MOZZARELLA CHEESE",
+    "item": "MOZZARELLA CHEESE",
     "type": "Dairy",
     "expiry_start": 7,
     "expiry_end": 15
   },
   {
-    "name": "MUENSTER CHEESE",
+    "item": "MUENSTER CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "NEUFCHATEL CHEESE",
+    "item": "NEUFCHATEL CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 15
   },
   {
-    "name": "NON-DAIRY COFFEE CREAMER",
+    "item": "NON-DAIRY COFFEE CREAMER",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "PARMESAN CHEESE",
+    "item": "PARMESAN CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "PARMIGIANO-REGGIANO CHEESE",
+    "item": "PARMIGIANO-REGGIANO CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 365
   },
   {
-    "name": "PASTEURIZED PROCESSED CHEESE",
+    "item": "PASTEURIZED PROCESSED CHEESE",
     "type": "Dairy",
     "expiry_start": 175,
     "expiry_end": 210
   },
   {
-    "name": "PORT DU SALUT CHEESE",
+    "item": "PORT DU SALUT CHEESE",
     "type": "Dairy",
     "expiry_start": 15,
     "expiry_end": 21
   },
   {
-    "name": "POWDERED MILK",
+    "item": "POWDERED MILK",
     "type": "Dairy",
     "expiry_start": 365,
     "expiry_end": 630
   },
   {
-    "name": "PROVOLONE CHEESE",
+    "item": "PROVOLONE CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "RICOTTA CHEESE",
+    "item": "RICOTTA CHEESE",
     "type": "Dairy",
     "expiry_start": 3,
     "expiry_end": 5
   },
   {
-    "name": "ROMANO CHEESE",
+    "item": "ROMANO CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "ROQUEFORT CHEESE",
+    "item": "ROQUEFORT CHEESE",
     "type": "Dairy",
     "expiry_start": 15,
     "expiry_end": 21
   },
   {
-    "name": "SOUR CREAM",
+    "item": "SOUR CREAM",
     "type": "Dairy",
     "expiry_start": 15,
     "expiry_end": 14
   },
   {
-    "name": "STILTON CHEESE",
+    "item": "STILTON CHEESE",
     "type": "Dairy",
     "expiry_start": 21,
     "expiry_end": 35
   },
   {
-    "name": "SWISS CHEESE",
+    "item": "SWISS CHEESE",
     "type": "Dairy",
     "expiry_start": 5,
     "expiry_end": 7
   },
   {
-    "name": "TILSITER CHEESE",
+    "item": "TILSITER CHEESE",
     "type": "Dairy",
     "expiry_start": 15,
     "expiry_end": 21
   },
   {
-    "name": "WHIPPED CREAM",
+    "item": "WHIPPED CREAM",
     "type": "Dairy",
     "expiry_start": 7,
     "expiry_end": 15
   },
   {
-    "name": "YOGURT",
+    "item": "YOGURT",
     "type": "Dairy",
     "expiry_start": 7,
     "expiry_end": 21
