@@ -496,23 +496,23 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         for(var i = 0; i < result.length; i++){
           resultItemsList.push(result[i].item)
         }
-      //   for (var j = 0; j < req.body.result.parameters.Items.length; j++) {
-      //     itemsList.push(req.body.result.parameters.Items[j])
-      //   }
-      //   var noResultItemsList = itemsList.filter( function( el ) {
-      //     return resultItemsList.indexOf( el ) < 0;
-      //   });
-      //   if(noResultItemsList.length >0){
-      //   response = 'You dont have any ' + itemsForType(noResultItemsList,'','.')
-      // }
-        // let startStatement = 'You bought ';
-        // let middleStatement = ' on ';
-        // let endStatement = '].\n ';
-        // app.data.item = item;
-        // app.data.type = [];
-        // app.data.queryResult = result;
-        // response =response + responseforMultiple(result, startStatement, middleStatement, endStatement);
-        response = resultItemsList[0];
+        for (var j = 0; j < req.body.result.parameters.Items.length; j++) {
+          itemsList.push(req.body.result.parameters.Items[j])
+        }
+        var noResultItemsList = itemsList.filter( function( el ) {
+          return resultItemsList.indexOf( el ) < 0;
+        });
+        if(noResultItemsList.length >0){
+        response = 'You dont have ' + itemsForType(noResultItemsList,'','.')
+      }
+        let startStatement = 'You bought ';
+        let middleStatement = ' on ';
+        let endStatement = '].\n ';
+        app.data.item = item;
+        app.data.type = [];
+        app.data.queryResult = result;
+        response =response + responseforMultiple(result, startStatement, middleStatement, endStatement);
+        // response = resultItemsList[0];
         ask(app, response + ' Which one do you want to delete? ');
         }
       db.close();
