@@ -195,9 +195,8 @@ restService.post('/transaction', function(req, res) {
         var itemName = 'NA';
         for (var i = 0; i < result.length; i++) {
           if(itemName != result[i]){
-            var modifiedResult = pluralize(result[i])
           if (result.length == 1) {
-            response = response + modifiedResult + endStatement;
+            response = response + result[i] + endStatement;
           }
           else if (i == result.length-1){
             response = response + ' and ' + result[i] +' '+ endStatement ;
@@ -470,7 +469,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
           response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
-      }else if (result.length == 1) { // just one item
+      }else if (result.length == 1 && req.body.result.parameters.Items == 1) { // just one item
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
@@ -479,17 +478,17 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-      }else if (result.length == item.length) { // many items to delete but no. of transactions is same
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": {$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
-           if (err) throw err;
-           console.log("1 record Updated");
-           db.close();
-           let startStatement = '';
-           let endStatement = ' removed from your items.\n ';
-           response = responseforOneParam(item, startStatement, endStatement);
-           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-         ask(app, prompt);
-         });// End DB Function
+      // }else if (result.length == item.length) { // many items to delete but no. of transactions is same
+      //   db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": {$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
+      //      if (err) throw err;
+      //      console.log("1 record Updated");
+      //      db.close();
+      //      let startStatement = '';
+      //      let endStatement = ' removed from your items.\n ';
+      //      response = responseforOneParam(item, startStatement, endStatement);
+      //      let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+      //    ask(app, prompt);
+      //    });// End DB Function
        }else { //Many transactions for an item
         app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
         let itemsList = [];
