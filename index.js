@@ -195,18 +195,17 @@ restService.post('/transaction', function(req, res) {
         var itemName = 'NA';
         for (var i = 0; i < result.length; i++) {
           if(itemName != result[i]){
-            var modifiedResult = pluralize(result[i]);
           if (result.length == 1) {
-            response = response + modifiedResult + endStatement;
+            response = response + result[i] + endStatement;
           }
           else if (i == result.length-1){
-            response = response + ' and ' + modifiedResult +' '+ endStatement ;
+            response = response + ' and ' + result[i] +' '+ endStatement ;
           }else if (i == 0){
-            response = response + modifiedResult ;
-            itemName = modifiedResult;
+            response = response + result[i] ;
+            itemName = result[i];
           }else{
-            response = response +', '+ modifiedResult ;
-            itemName = modifiedResult;
+            response = response +', '+ result[i] ;
+            itemName = result[i];
         }
       }else{
       }
