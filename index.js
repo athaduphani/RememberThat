@@ -197,7 +197,7 @@ restService.post('/transaction', function(req, res) {
           if(itemName != result[i]){
             var modifiedResult = pluralize(result[i])
           if (result.length == 1) {
-            response = response + result[i] + endStatement;
+            response = response + modifiedResult + endStatement;
           }
           else if (i == result.length-1){
             response = response + ' and ' + result[i] +' '+ endStatement ;
