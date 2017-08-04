@@ -195,7 +195,7 @@ restService.post('/transaction', function(req, res) {
         var itemName = 'NA';
         for (var i = 0; i < result.length; i++) {
           if(itemName != result[i]){
-            
+            var modifiedResult = pluralize(result[i])
           if (result.length == 1) {
             response = response + result[i] + endStatement;
           }
