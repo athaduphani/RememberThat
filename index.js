@@ -26,7 +26,7 @@ const REPEAT_NO_ACTION = 'repeat_no';
 const DEFAULT_FALLBACK_ACTION = 'input.unknown';
 const FIRST_INTERACTION_EXAMPLES = ['I can save dates for your household items and tell you when u need them. For Example, You can say \"I bought milk today\".', 'I can save, retrieve and delete dates for your household items. For Example, You can say \"I bought apples today\".','I can save, retrieve and update dates for your household items. For Example, You can say \"I bought chicken today\".'];
 const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.','Welcome back to Dates Bot.'];
-const INVOCATION_PROMPTS = ['How can i help you today?', 'How may I assist you today?'];
+const INVOCATION_PROMPTS = ['How can i help you?', 'How may I assist you?'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Can you please repeat it', 'If you\'re still there, please tell me how can I help you','We can stop here. Let\'s talk again soon.'];
 const CONTINUATION_PROMPTS = ['what else can I help you with?'];
 const RE_PROMPT = ['Great!', 'Awesome!', 'Cool!'];
@@ -195,17 +195,18 @@ restService.post('/transaction', function(req, res) {
         var itemName = 'NA';
         for (var i = 0; i < result.length; i++) {
           if(itemName != result[i]){
+            var modifiedResult = pluralize(result[i]);
           if (result.length == 1) {
-            response = response + result[i] + endStatement;
+            response = response + modifiedResult + endStatement;
           }
           else if (i == result.length-1){
-            response = response + ' and ' + result[i] +' '+ endStatement ;
+            response = response + ' and ' + modifiedResult +' '+ endStatement ;
           }else if (i == 0){
-            response = response + result[i] ;
-            itemName = result[i];
+            response = response + modifiedResult ;
+            itemName = modifiedResult;
           }else{
-            response = response +', '+ result[i] ;
-            itemName = result[i];
+            response = response +', '+ modifiedResult ;
+            itemName = modifiedResult;
         }
       }else{
       }
