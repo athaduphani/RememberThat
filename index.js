@@ -406,7 +406,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
             let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
-          }else if (result.length == 1) { // only one vegetable bought only once
+        }else if (result.length == 1 && req.body.result.parameters.type == 1) { // only one vegetable bought only once
             db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: req.body.result.parameters.type}}]},{$set: {"used": "yes"}}, function(err, res) {
                if (err) throw err;
                console.log("1 record Updated");
@@ -422,11 +422,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, res){
             if (err) throw err;
             app.data.queryResult = res;
-            var resultItemsList = [];
+            var resultTypeList = [];
             for(var i = 0; i < res.length; i++){
-              if(resultItemsList.indexOf(res[i].item) > -1){
-                // Item already added
-              }else {
                 resultItemsList.push(res[i].item)
               }
             }
@@ -436,7 +433,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               let endStatement = '].\n ';
               // let endStatement = '.\n ';
               // response = botFunctions.itemsForResult (result, startStatement, endStatement);
-              response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+              response = responseforMultiple(res, startStatement, middleStatement, endStatement);
             }else{
               let startStatement = 'You have ';
               let endStatement = '.\n ';
