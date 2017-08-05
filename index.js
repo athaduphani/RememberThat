@@ -400,7 +400,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
           db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           var response = '';
-          if (result.length == 0) { // only one vegetable bought only once
+          if (result.length == 0) {
             let startStatement = 'You don\'t have any ';
             let endStatement = '.\n ';
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
@@ -423,24 +423,28 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             if (err) throw err;
             app.data.queryResult = res;
             let startStatement = '';
+            let middleStatement = '';
             let endStatement = '';
-            if(res.length == 1){
-              // let startStatement = 'You have ';
-              // let middleStatement = ' which are bought on ';
-              // let endStatement = '].\n ';
-              // // let endStatement = '.\n ';
-              // // response = botFunctions.itemsForResult (result, startStatement, endStatement);
-              // response = responseforMultiple(res, startStatement, middleStatement, endStatement);
-            }else{
+            if(res.length == 1){ //One vegetable bought multiple times
+              app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
+              startStatement = 'You bought ';
+              middleStatement = ' on ';
+              endStatement = '].\n ';
+              app.data.item = res[0];
+              app.data.type = [];
+              app.data.queryResult = res;
+              response = response + responseforMultiple(res, startStatement, middleStatement, endStatement);
+              ask(app, response + ' Which one do you want to delete? ');
+            }else{ // More than one vegetable bought multiple times
               startStatement = 'You have ';
               endStatement = '.\n ';
               response = itemsForType(res, startStatement, endStatement);
+              startStatement = '';
+              endStatement = ' do you want to remove?\n ';
+              response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+              var prompt = printf(response);
+              ask(app, prompt);
             }
-            startStatement = '';
-            endStatement = ' do you want to remove?\n ';
-            response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
-            var prompt = printf(response);
-            ask(app, prompt);
           });
             }
           });
