@@ -406,7 +406,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
             let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
-        }else if (result.length == 1 && req.body.result.parameters.type == 1) { // only one vegetable bought only once
+        }else if (result.length == 1 && req.body.result.parameters.type.length == 1) { // only one vegetable bought only once
             db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: req.body.result.parameters.type}}]},{$set: {"used": "yes"}}, function(err, res) {
                if (err) throw err;
                console.log("1 record Updated");
@@ -424,9 +424,9 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             app.data.queryResult = res;
             var resultTypeList = [];
             for(var i = 0; i < res.length; i++){
-                resultItemsList.push(res[i].item)
+                resultTypeList.push(res[i].item)
               }
-            if(resultItemsList.length == 1){
+            if(resultTypeList.length == 1){
               let startStatement = 'You have ';
               let middleStatement = ' which are bought on ';
               let endStatement = '].\n ';
