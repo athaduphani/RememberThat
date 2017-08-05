@@ -415,7 +415,31 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
                let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
              ask(app, prompt);
              });// End DB Function
-          }else{ //many vegetables
+          }else if (result.length == 1 && req.body.result.parameters.type.length > 1) { // only one vegetable bought only once
+              db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: req.body.result.parameters.type}}]},{$set: {"used": "yes"}}, function(err, res) {
+                 if (err) throw err;
+                 var typeList = [];
+                 var resultTypeList = [];
+                 for(var i = 0; i < result.length; i++){
+                   resultTypeList.push(result[i].type)
+                 }
+                 var type = req.body.result.parameters.type;
+                 for (var j = 0; j < type.length; j++) {
+                   typeList.push(type[j])
+                 }
+                 var noResultTypeList = typeList.filter( function( el ) {
+                   return resultTypeList.indexOf( el ) < 0;
+                 });
+                 if(noResultTypeList.length >0){ // these type dont have any transactions
+                 response = 'You dont have ' + itemsForType(noResultItemsList,'','. ')
+               }
+                 console.log("1 record Updated");
+                //  db.close();
+                response = 'You have '+ result[0].item +' and I removed it from your items.';
+                 let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+               ask(app, prompt);
+               });// End DB Function
+            }else{ //many transactions
             app.data.type = req.body.result.parameters.type;
             app.data.item = [];
             db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, res){
@@ -589,7 +613,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
          if (err) throw err;
          console.log("1 record Updated");
          db.close();
-         let response = item + ' removed from your items.';
+         let itemsList = itemsForType(item,'','')
+         let response = itemsList + ' removed from your items.';
          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
