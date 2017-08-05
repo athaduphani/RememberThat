@@ -498,18 +498,32 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
          ask(app, prompt);
          });// End DB Function
-      // }else if (result.length == item.length) { // many items to delete but no. of transactions is same
-      //   db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": {$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
-      //      if (err) throw err;
-      //      console.log("1 record Updated");
-      //      db.close();
-      //      let startStatement = '';
-      //      let endStatement = ' removed from your items.\n ';
-      //      response = responseforOneParam(item, startStatement, endStatement);
-      //      let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
-      //    ask(app, prompt);
-      //    });// End DB Function
-       }else { //Many transactions for an item
+       }else if (result.length == 1 && item.length > 1){ //Many Items. Only one time has one result
+         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+            if (err) throw err;
+            console.log("1 record Updated");
+            db.close();
+            var itemsList = [];
+            var resultItemsList = [];
+            for(var i = 0; i < result.length; i++){
+              resultItemsList.push(result[i].item)
+            }
+            for (var j = 0; j < item.length; j++) {
+              itemsList.push(item[j])
+            }
+            var noResultItemsList = itemsList.filter( function( el ) {
+              return resultItemsList.indexOf( el ) < 0;
+            });
+            if(noResultItemsList.length >0){ // these items dont have any transactions
+            response = 'You dont have ' + itemsForType(noResultItemsList,'','. ')
+          }
+          response = response + item[0] + ' removed from your items.';
+            let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
+          ask(app, prompt);
+          });// End DB Function
+
+
+      }else{ //Many transactions for an item
         app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
         var itemsList = [];
         var resultItemsList = [];
@@ -522,9 +536,10 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         var noResultItemsList = itemsList.filter( function( el ) {
           return resultItemsList.indexOf( el ) < 0;
         });
-        if(noResultItemsList.length >0){
+        if(noResultItemsList.length >0){ // these items dont have any transactions
         response = 'You dont have ' + itemsForType(noResultItemsList,'','.')
       }
+
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
         let endStatement = '].\n ';
@@ -534,7 +549,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         response =response + responseforMultiple(result, startStatement, middleStatement, endStatement);
         // response = resultItemsList[0];
         ask(app, response + ' Which one do you want to delete? ');
-        }
+      }
       db.close();
       });// End DB Function
     });
