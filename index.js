@@ -416,7 +416,6 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
              ask(app, prompt);
              });// End DB Function
           }else{ //many vegetables
-            app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
             app.data.type = req.body.result.parameters.type;
             app.data.item = [];
             db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, res){
@@ -439,6 +438,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               ask(app, response + ' Which one do you want to delete? ');
             });
             }else{ // More than one vegetable bought multiple times
+              app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
               startStatement = 'You have ';
               endStatement = '.\n ';
               response = itemsForType(res, startStatement, endStatement);
