@@ -484,10 +484,10 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         if(result.length == 0){
           let startStatement = 'You don\'t have any ';
           let endStatement = '.\n ';
-          response = responseforOneParam(req.body.result.parameters.Items, startStatement, endStatement);
+          response = responseforOneParam(item, startStatement, endStatement);
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
-      }else if (result.length == 1 && req.body.result.parameters.Items.length == 1) { // just one item
+      }else if (result.length == 1 && item.length == 1) { // just one item
         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
@@ -514,8 +514,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         for(var i = 0; i < result.length; i++){
           resultItemsList.push(result[i].item)
         }
-        for (var j = 0; j < req.body.result.parameters.Items.length; j++) {
-          itemsList.push(req.body.result.parameters.Items[j])
+        for (var j = 0; j < item.length; j++) {
+          itemsList.push(item[j])
         }
         var noResultItemsList = itemsList.filter( function( el ) {
           return resultItemsList.indexOf( el ) < 0;
