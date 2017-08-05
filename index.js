@@ -528,7 +528,11 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         var itemsList = [];
         var resultItemsList = [];
         for(var i = 0; i < result.length; i++){
-          resultItemsList.push(result[i].item)
+          // if(resultItemsList.indexOf(result[i].item) > -1){
+          //   //Item already exists in the list
+          // }else{
+            resultItemsList.push(result[i].item)
+          // }
         }
         for (var j = 0; j < item.length; j++) {
           itemsList.push(item[j])
@@ -621,7 +625,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
              if (err) throw err;
              console.log("1 record Updated");
              db.close();
-             let response = item + ' removed from your items.';
+             let response = item[req.body.result.parameters.ordinal-1] + ' removed from your items.';
              let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
            ask(app, prompt);
            });// End DB Function
