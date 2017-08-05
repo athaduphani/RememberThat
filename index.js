@@ -431,9 +431,9 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               endStatement = '].\n ';
               app.data.item = res[0];
               app.data.type = [];
-              app.data.queryResult = res;
               db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: res}}]}).sort({"item":1}).toArray(function(err, result){
               if (err) throw err;
+              app.data.queryResult = result;
               let response = responseforMultiple(result, startStatement, middleStatement, endStatement);
               ask(app, response + ' Which one do you want to delete? ');
             });
