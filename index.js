@@ -640,7 +640,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
          if (err) throw err;
          console.log("1 record Updated");
          db.close();
-         let response = item + ' removed from your items.';
+         let itemsList = itemsForType(item,'','')
+         let response = itemsList + ' removed from your items.';
          let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
        ask(app, prompt);
        });// End DB Function
