@@ -420,9 +420,9 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
                  if (err) throw err;
                  var typeList = [];
                  var resultTypeList = [];
-                 for(var i = 0; i < result.length; i++){
-                   resultTypeList.push(result[i].type)
-                 }
+                //  for(var i = 0; i < result.length; i++){
+                   resultTypeList.push(result[0].type)
+                //  }
                  var type = req.body.result.parameters.type;
                  for (var j = 0; j < type.length; j++) {
                    typeList.push(type[j])
@@ -431,7 +431,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
                    return resultTypeList.indexOf( el ) < 0;
                  });
                  if(noResultTypeList.length >0){ // these type dont have any transactions
-                 response = 'You dont have ' + itemsForType(noResultItemsList,'','. ')
+                 response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
                }
                  console.log("1 record Updated");
                 //  db.close();
