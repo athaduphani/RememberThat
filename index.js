@@ -433,8 +433,11 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               app.data.item = res[0];
               app.data.type = [];
               app.data.queryResult = res;
-              response = response + responseforMultiple(res, startStatement, middleStatement, endStatement);
+              db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: res}}]}).sort({"item":1}).toArray(function(err, result){
+              if (err) throw err;
+              let response = responseforMultiple(result, startStatement, middleStatement, endStatement);
               ask(app, response + ' Which one do you want to delete? ');
+            });
             }else{ // More than one vegetable bought multiple times
               startStatement = 'You have ';
               endStatement = '.\n ';
