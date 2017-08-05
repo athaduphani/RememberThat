@@ -422,22 +422,22 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, res){
             if (err) throw err;
             app.data.queryResult = res;
-            var resultTypeList = [];
-            for(var i = 0; i < res.length; i++){
-                resultTypeList.push(res[i].item)
-              }
-            if(resultTypeList.length == 1){
-              let startStatement = 'You have ';
-              let middleStatement = ' which are bought on ';
-              let endStatement = '].\n ';
-              // let endStatement = '.\n ';
-              // response = botFunctions.itemsForResult (result, startStatement, endStatement);
-              response = responseforMultiple(res, startStatement, middleStatement, endStatement);
-            }else{
+            // var resultTypeList = [];
+            // for(var i = 0; i < res.length; i++){
+            //     resultTypeList.push(res[i].item)
+            //   }
+            // if(resultTypeList.length == 1){
+            //   let startStatement = 'You have ';
+            //   let middleStatement = ' which are bought on ';
+            //   let endStatement = '].\n ';
+            //   // let endStatement = '.\n ';
+            //   // response = botFunctions.itemsForResult (result, startStatement, endStatement);
+            //   response = responseforMultiple(res, startStatement, middleStatement, endStatement);
+            // }else{
               let startStatement = 'You have ';
               let endStatement = '.\n ';
               response = itemsForType(res, startStatement, endStatement);
-            }
+            // }
             startStatement = '';
             endStatement = ' do you want to remove?\n ';
             response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
