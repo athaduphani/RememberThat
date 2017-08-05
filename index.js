@@ -426,7 +426,6 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             for(var i = 0; i < res.length; i++){
                 resultItemsList.push(res[i].item)
               }
-            }
             if(resultItemsList.length == 1){
               let startStatement = 'You have ';
               let middleStatement = ' which are bought on ';
