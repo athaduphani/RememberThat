@@ -422,20 +422,18 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, res){
             if (err) throw err;
             app.data.queryResult = res;
-            var resultTypeList = [];
-            // for(var i = 0; i < res.length; i++){
-            //     resultTypeList.push(res[i].item)
-            //   }
+            let startStatement = '';
+            let endStatement = '';
             if(res.length == 1){
-              let startStatement = 'You have ';
-              let middleStatement = ' which are bought on ';
-              let endStatement = '].\n ';
-              // let endStatement = '.\n ';
-              // response = botFunctions.itemsForResult (result, startStatement, endStatement);
-              response = responseforMultiple(res, startStatement, middleStatement, endStatement);
+              // let startStatement = 'You have ';
+              // let middleStatement = ' which are bought on ';
+              // let endStatement = '].\n ';
+              // // let endStatement = '.\n ';
+              // // response = botFunctions.itemsForResult (result, startStatement, endStatement);
+              // response = responseforMultiple(res, startStatement, middleStatement, endStatement);
             }else{
-              let startStatement = 'You have ';
-              let endStatement = '.\n ';
+              startStatement = 'You have ';
+              endStatement = '.\n ';
               response = itemsForType(res, startStatement, endStatement);
             }
             startStatement = '';
