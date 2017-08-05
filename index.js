@@ -458,7 +458,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
   function removeItems (app){
     var contexts = searchInObject(req.body.result.contexts, "name", "_actions_on_google_");
     var item = [];
-    if (req.body.result.parameters.Items !=0) {
+    if (req.body.result.parameters.Items.length !=0) {
         item = req.body.result.parameters.Items;
     }else if(contexts.parameters.hasOwnProperty('item') ){
       if(contexts.parameters.queryResult.length !=0){
