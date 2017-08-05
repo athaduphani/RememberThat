@@ -543,7 +543,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
         let endStatement = '].\n ';
-        app.data.item = item;
+        app.data.item = resultItemsList;
         app.data.type = [];
         app.data.queryResult = result;
         response =response + responseforMultiple(result, startStatement, middleStatement, endStatement);
