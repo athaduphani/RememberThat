@@ -422,11 +422,28 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, res){
             if (err) throw err;
             app.data.queryResult = res;
-            let startStatement = 'You have ';
-            let endStatement = '.\n ';
-            response = itemsForType(res, startStatement, endStatement);
+            var resultItemsList = [];
+            for(var i = 0; i < res.length; i++){
+              if(resultItemsList.indexOf(res[i].item) > -1){
+                // Item already added
+              }else {
+                resultItemsList.push(res[i].item)
+              }
+            }
+            if(resultItemsList.length == 1){
+              let startStatement = 'You have ';
+              let middleStatement = ' which are bought on ';
+              let endStatement = '].\n ';
+              // let endStatement = '.\n ';
+              // response = botFunctions.itemsForResult (result, startStatement, endStatement);
+              response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+            }else{
+              let startStatement = 'You have ';
+              let endStatement = '.\n ';
+              response = itemsForType(res, startStatement, endStatement);
+            }
             startStatement = '';
-            endStatement = ' do you want to delete?\n ';
+            endStatement = ' do you want to remove?\n ';
             response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
             var prompt = printf(response);
             ask(app, prompt);

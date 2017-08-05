@@ -8,5 +8,7 @@
 // result = ['apple','apple', 'orange']
 // let response = botFunctions.itemsForResult (result, startStatement, endStatement);
 // console.log(response);
-var pluralize = require('pluralize');
-console.log(pluralize('apple'));
+// var pluralize = require('pluralize');
+// console.log(pluralize('apple'));
+var mylist = [1, 2, 3];
+console.log((mylist.indexOf(1)));
