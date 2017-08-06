@@ -14,4 +14,5 @@ var currentYear = currentTime.getFullYear()
 var givenDate = new Date("06-20-2018");
 var year = givenDate.getFullYear()
 var modifiedDate=dateFormat(givenDate, "mm-dd");
-console.log(year);
+  var finalDate = new Date(modifiedDate)
+console.log(finalDate);

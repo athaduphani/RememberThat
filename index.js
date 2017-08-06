@@ -298,7 +298,8 @@ restService.post('/transaction', function(req, res) {
       let response = '';
       let itemName = 'NA';
       for (var i = 0; i < result.length; i++) {
-        var date = modifyDateFormat(result[i].date);
+        // var date = modifyDateFormat(result[i].date);
+        var date = result[i].date;
         if(result[i].item == itemName){
           if( i != result.length-1){
           if(result[i].item == result[i+1].item){
@@ -393,13 +394,14 @@ function modifyDateFormat(date){
   var currentYear = currentTime.getFullYear();
   var givenDate = new Date(date);
   var year = givenDate.getFullYear();
-  var modifiedDate=dateFormat(givenDate, "yyyy-mm-dd");
+  var modifiedDate= dateFormat(givenDate, "yyyy-mm-dd");
   if(currentYear == year){
-    modifiedDate=dateFormat(givenDate, "mm-dd")
+    modifiedDate= dateFormat(givenDate, "mm-dd")
   }else{
     modifiedDate=dateFormat(givenDate, "yyyy-mm-dd")
   }
-  return modifiedDate;
+  var finalDate = new Date(modifiedDate)
+  return finalDate;
 }
 // Start Retrieve Type Expiry
 function retrieveTypeExpiry(app){
