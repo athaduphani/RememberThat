@@ -465,10 +465,10 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             });
             }else{ // More than one vegetable bought multiple times
               app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
-              var typeList = [];
-              var resultTypeList = [];
               db.collection("transaction").distinct('type',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, itemResult){
               if (err) throw err;
+              var typeList = [];
+              var resultTypeList = [];
                for(var i = 0; i < result.length; i++){
                  resultTypeList.push(result[i].item)
                }
