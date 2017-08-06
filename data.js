@@ -54,8 +54,8 @@
       "Map": ["Meat"]
     },
     {
-      "type": "Vegetable",
-      "Map": ["Vegetable"]
+      "type": "Vegetables",
+      "Map": ["Vegetables"]
     },
   ];
   var itemTypeMap =  [

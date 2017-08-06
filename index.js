@@ -222,7 +222,6 @@ restService.post('/transaction', function(req, res) {
             type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type[i]);
             map = map.concat(type.Map);
           }
-
           db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map }}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
