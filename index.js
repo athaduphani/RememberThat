@@ -442,8 +442,14 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         }else if (parameters_app.type.length == 0) { // Don't have any type
           defaultFallback(app);
         }else { // Which vegetables do u want to delete?
+          var type = '';
+          var map = [];
+          for (var i = 0; i < req.body.result.parameters.type.length; i++) {
+            type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type[i]);
+            map = map.concat(type.Map);
+          }
           MongoClient.connect(url, function(err, db) {
-          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           var response = '';
           if (result.length == 0) {
@@ -473,6 +479,9 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
                  for (var j = 0; j < type.length; j++) {
                    typeList.push(type[j])
                  }
+                 typeList = typeList.filter( function( el ) {
+                   return dataMap.typeOfTypes.indexOf( el ) < 0;
+                 });
                  var noResultTypeList = typeList.filter( function( el ) {
                    return resultTypeList.indexOf( el ) < 0;
                  });
