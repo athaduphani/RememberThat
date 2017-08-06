@@ -469,7 +469,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               var typeList = [];
               var resultTypeList = [];
                for(var i = 0; i < result.length; i++){
-                 if(resultItemsList.indexOf(result[i].type) > -1){
+                 if(resultTypeList.indexOf(result[i].type) > -1){
                    //Item already exists in the list
                  }else{
                  resultTypeList.push(result[i].type)
