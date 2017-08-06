@@ -458,8 +458,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
                 resultTypeList.push(result[i].type)
               }
               }
-              let item = [];
-              item.push(res[0]);
+              var type = req.body.result.parameters.type;
               for (var j = 0; j < type.length; j++) {
                 typeList.push(type[j])
               }
@@ -472,8 +471,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               startStatement = 'You bought ';
               middleStatement = ' on ';
               endStatement = '].\n ';
-              // let item = [];
-              // item.push(res[0]);
+              let item = [];
+              item.push(res[0]);
               app.data.item = item;
               app.data.type = [];
               db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: res}}]}).sort({"item":1}).toArray(function(err, result){
