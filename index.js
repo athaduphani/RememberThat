@@ -233,7 +233,7 @@ restService.post('/transaction', function(req, res) {
         }else{
           let startStatement = 'You have ';
           let middleStatement = ' which are bought on ';
-          let endStatement = '].\n ';
+          let endStatement = '.\n ';
           // let endStatement = '.\n ';
           // response = botFunctions.itemsForResult (result, startStatement, endStatement);
           response = responseforMultiple(result, startStatement, middleStatement, endStatement);
@@ -263,11 +263,11 @@ restService.post('/transaction', function(req, res) {
             response = response + startStatement + result[i].item + middleStatement  + result[i].date+'.\n';
           }
           else if(i == 0){
-            response = response + startStatement + result[i].item + middleStatement +'['  + result[i].date;
+            response = response + startStatement + result[i].item + middleStatement  + result[i].date;
           }else if (i == result.length-1) {
             response = response + endStatement +startStatement + result[i].item + middleStatement  +result[i].date+'.\n';
           }else {
-            response = response + endStatement +startStatement + result[i].item + middleStatement+'['  +result[i].date;
+            response = response + endStatement +startStatement + result[i].item + middleStatement+result[i].date;
           }
           itemName = result[i].item;
       }
@@ -289,7 +289,7 @@ restService.post('/transaction', function(req, res) {
       }else{
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
-        let endStatement = '].\n ';
+        let endStatement = '.\n ';
         response = responseforMultiple(result, startStatement, middleStatement, endStatement);
       }
         let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
@@ -315,7 +315,7 @@ restService.post('/transaction', function(req, res) {
       var middleStatement = ' you bought on ';
       var middleStatement1 = ' expire between ';
       var middleStatement2 = ' and ';
-      var endStatement = '].\n ';
+      var endStatement = '.\n ';
       for (var i=0; i < result.length; i++){
         var date = result[i].date;
         var expiryDateStart = result[i].expiryDateStart;
