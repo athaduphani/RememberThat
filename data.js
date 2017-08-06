@@ -1,4 +1,4 @@
-
+  var typeOfTypes =["Groceries", "Produce"];
   var typeMap = [
     {
       "type": "all",

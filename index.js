@@ -242,6 +242,9 @@ restService.post('/transaction', function(req, res) {
              resultTypeList.push(result[i].type)
            }
            }
+           resultTypeList = resultTypeList.filter( function( el ) {
+             return dataMap.typeOfTypes.indexOf( el ) < 0;
+           });
            var type = req.body.result.parameters.type;
            for (var j = 0; j < type.length; j++) {
              typeList.push(type[j])
@@ -249,6 +252,7 @@ restService.post('/transaction', function(req, res) {
            var noResultTypeList = typeList.filter( function( el ) {
              return resultTypeList.indexOf( el ) < 0;
            });
+
            if(noResultTypeList.length >0){ // these type dont have any transactions
            response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
          }
