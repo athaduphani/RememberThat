@@ -233,8 +233,8 @@ restService.post('/transaction', function(req, res) {
             let endStatement = '.\n ';
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         }else{
-          var typeList = [];
-          var resultTypeList = [];
+          var typeList = []; // Contains the types provided by user
+          var resultTypeList = []; // Contains the types from database
            for(var i = 0; i < result.length; i++){
              if(resultTypeList.indexOf(result[i].type) > -1){
                //Item already exists in the list
@@ -242,13 +242,13 @@ restService.post('/transaction', function(req, res) {
              resultTypeList.push(result[i].type)
            }
            }
-           resultTypeList = resultTypeList.filter( function( el ) {
-             return dataMap.typeOfTypes.indexOf( el ) < 0;
-           });
            var type = req.body.result.parameters.type;
            for (var j = 0; j < type.length; j++) {
              typeList.push(type[j])
            }
+           typeList = typeList.filter( function( el ) {
+             return dataMap.typeOfTypes.indexOf( el ) < 0;
+           });
            var noResultTypeList = typeList.filter( function( el ) {
              return resultTypeList.indexOf( el ) < 0;
            });
