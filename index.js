@@ -485,7 +485,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               response = response + itemsForType(res, startStatement, endStatement);
               startStatement = '';
               endStatement = ' do you want to remove?\n ';
-              response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
+              response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
               var prompt = printf(response);
               ask(app, prompt);
             }
