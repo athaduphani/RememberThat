@@ -469,15 +469,19 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               var typeList = [];
               var resultTypeList = [];
                for(var i = 0; i < result.length; i++){
-                 resultTypeList.push(result[i])
+                 if(resultItemsList.indexOf(result[i].type) > -1){
+                   //Item already exists in the list
+                 }else{
+                 resultTypeList.push(result[i].type)
+               }
                }
                var type = req.body.result.parameters.type;
                for (var j = 0; j < type.length; j++) {
                  typeList.push(type[j])
                }
-            //    var noResultTypeList = typeList.filter( function( el ) {
-            //      return resultTypeList.indexOf( el ) < 0;
-            //    });
+               var noResultTypeList = typeList.filter( function( el ) {
+                 return resultTypeList.indexOf( el ) < 0;
+               });
             //    if(noResultTypeList.length >0){ // these type dont have any transactions
             //    response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
             //  }
@@ -488,7 +492,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             //   // endStatement = ' do you want to remove?\n ';
             //   // response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
             //   // response = response + ' Which one do you want to remove?';
-              var prompt = printf(resultTypeList.length +' '+resultTypeList[0].type+' '+resultTypeList[1].type+' '+resultTypeList[2].type);
+              var prompt = printf(resultTypeList.length +' '+resultTypeList[0]+' '+resultTypeList[1]+' '+resultTypeList[2]);
               ask(app, prompt);
             });
             }
