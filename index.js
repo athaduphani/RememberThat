@@ -54,8 +54,8 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-  // var authenticationKey = req.body.originalRequest.data.user.userId;
-  var authenticationKey = req.body.sessionId;
+  var authenticationKey = req.body.originalRequest.data.user.userId;
+  // var authenticationKey = req.body.sessionId;
   function searchInObject(object, searchKey, searchValue) {
     for (var i in object) {
       if (object[i][searchKey].indexOf(searchValue) > -1) {
@@ -86,7 +86,7 @@ restService.post('/transaction', function(req, res) {
         MongoClient.connect(url, function(err, db) {
           let firstTimeUserPrompt = 'asdasd';
           if (err) throw err;
-          db.collection("transaction").find({"sessionId":authenticationKey}).toArray(function(err, result){
+          db.collection("transaction").find({"userId":authenticationKey}).toArray(function(err, result){
           if (err) throw err;
           if (result.length < 5) {
             firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
@@ -155,7 +155,7 @@ restService.post('/transaction', function(req, res) {
             expiryDateStart: expiryDateStart1,
             expiryDateEnd: expiryDateEnd1,
             used: 'no',
-            // userId: req.body.originalRequest.data.user.userId,
+            userId: req.body.originalRequest.data.user.userId,
             purpose: req.body.result.parameters.purpose
           };
           items_list.push(req.body.result.parameters.Items[i]);
