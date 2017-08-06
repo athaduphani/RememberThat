@@ -569,7 +569,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
              }
               startStatement = 'You have ';
               endStatement = '.\n ';
-              response = response + itemsForType(res, startStatement, endStatement) + ' Which ones do you want to remove?';
+              response = response + itemsForType(res, startStatement, endStatement) + ' Which one do you want to remove?';
             //   // startStatement = '';
             //   // endStatement = ' do you want to remove?\n ';
             //   // response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
