@@ -254,9 +254,9 @@ restService.post('/transaction', function(req, res) {
           let middleStatement = ' which are bought on ';
           let endStatement = '.\n ';
           // let endStatement = '.\n ';
-          // response = botFunctions.itemsForResult (result, startStatement, endStatement);
+          response = response + botFunctions.itemsForResult (result, startStatement, endStatement);
           // response = response + responseforMultiple(result, startStatement, middleStatement, endStatement);
-          response = response + itemsForType(resultTypeList, startStatement, endStatement);
+          // response = response + itemsForType(resultTypeList, startStatement, endStatement);
         }
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
