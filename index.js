@@ -485,14 +485,14 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
                if(noResultTypeList.length >0){ // these type dont have any transactions
                response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
              }
-            //   startStatement = 'You have ';
-            //   endStatement = '.\n ';
-            //   response = response + itemsForType(res, startStatement, endStatement) + ' Which ones do you want to remove?';
+              startStatement = 'You have ';
+              endStatement = '.\n ';
+              response = response + itemsForType(res, startStatement, endStatement) + ' Which ones do you want to remove?';
             //   // startStatement = '';
             //   // endStatement = ' do you want to remove?\n ';
             //   // response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
             //   // response = response + ' Which one do you want to remove?';
-              var prompt = printf(noResultTypeList.length +' '+noResultTypeList[0]+' '+noResultTypeList[1]+' '+noResultTypeList[2]);
+              var prompt = printf(response);
               ask(app, prompt);
             });
             }
