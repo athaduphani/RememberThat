@@ -298,7 +298,7 @@ restService.post('/transaction', function(req, res) {
       let response = '';
       let itemName = 'NA';
       for (var i = 0; i < result.length; i++) {
-        var date = result[i].date;
+        var date = modifyDateFormat(result[i].date);
         if(result[i].item == itemName){
           if( i != result.length-1){
           if(result[i].item == result[i+1].item){
