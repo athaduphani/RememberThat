@@ -393,7 +393,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     var middleStatement = ' you bought on ';
     var middleStatement1 = ' expire between ';
     var middleStatement2 = ' and ';
-    var endStatement = '].\n ';
+    var endStatement = '.\n ';
     for (var i=0; i < result.length; i++){
       var date = result[i].date;
       var expiryDateStart = result[i].expiryDateStart;
@@ -672,7 +672,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
 
         let startStatement = 'You bought ';
         let middleStatement = ' on ';
-        let endStatement = '].\n ';
+        let endStatement = '.\n ';
         app.data.item = resultItemsList;
         app.data.type = [];
         app.data.queryResult = result;
