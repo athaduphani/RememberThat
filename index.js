@@ -231,12 +231,31 @@ restService.post('/transaction', function(req, res) {
             let endStatement = '.\n ';
             response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
         }else{
+          var typeList = [];
+          var resultTypeList = [];
+           for(var i = 0; i < result.length; i++){
+             if(resultTypeList.indexOf(result[i].type) > -1){
+               //Item already exists in the list
+             }else{
+             resultTypeList.push(result[i].type)
+           }
+           }
+           var type = req.body.result.parameters.type;
+           for (var j = 0; j < type.length; j++) {
+             typeList.push(type[j])
+           }
+           var noResultTypeList = typeList.filter( function( el ) {
+             return resultTypeList.indexOf( el ) < 0;
+           });
+           if(noResultTypeList.length >0){ // these type dont have any transactions
+           response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
+         }
           let startStatement = 'You have ';
           let middleStatement = ' which are bought on ';
           let endStatement = '.\n ';
           // let endStatement = '.\n ';
           // response = botFunctions.itemsForResult (result, startStatement, endStatement);
-          response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+          response = response + responseforMultiple(result, startStatement, middleStatement, endStatement);
         }
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
