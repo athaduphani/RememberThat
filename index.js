@@ -449,17 +449,37 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             let endStatement = '';
             if(res.length == 1){ //One vegetable bought multiple times
               app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
+              var typeList = [];
+              var resultTypeList = [];
+              for(var i = 0; i < result.length; i++){
+                if(resultTypeList.indexOf(result[i].type) > -1){
+                  //Item already exists in the list
+                }else{
+                resultTypeList.push(result[i].type)
+              }
+              }
+              let item = [];
+              item.push(res[0]);
+              for (var j = 0; j < type.length; j++) {
+                typeList.push(type[j])
+              }
+              var noResultTypeList = typeList.filter( function( el ) {
+                return resultTypeList.indexOf( el ) < 0;
+              });
+              if(noResultTypeList.length >0){ // these type dont have any transactions
+              response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
+            }
               startStatement = 'You bought ';
               middleStatement = ' on ';
               endStatement = '].\n ';
-              let item = [];
-              item.push(res[0]);
+              // let item = [];
+              // item.push(res[0]);
               app.data.item = item;
               app.data.type = [];
               db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: res}}]}).sort({"item":1}).toArray(function(err, result){
               if (err) throw err;
               app.data.queryResult = result;
-              let response = responseforMultiple(result, startStatement, middleStatement, endStatement);
+              let response = response + responseforMultiple(result, startStatement, middleStatement, endStatement);
               ask(app, response + ' Which one do you want to delete? ');
             });
             }else{ // More than one vegetable bought multiple times
