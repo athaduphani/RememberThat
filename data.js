@@ -2323,6 +2323,7 @@
   }
 ]
 module.exports = {
+  typeOfTypes:typeOfTypes,
   itemTypeMap: itemTypeMap,
   typeMap: typeMap
 }
