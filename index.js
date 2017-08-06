@@ -471,7 +471,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             }
               startStatement = 'You bought ';
               middleStatement = ' on ';
-              endStatement = '].\n ';
+              endStatement = '.\n ';
               let item = [];
               item.push(res[0]);
               app.data.item = item;
@@ -592,11 +592,11 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
         var itemsList = [];
         var resultItemsList = [];
         for(var i = 0; i < result.length; i++){
-          // if(resultItemsList.indexOf(result[i].item) > -1){
-          //   //Item already exists in the list
-          // }else{
+          if(resultItemsList.indexOf(result[i].item) > -1){
+            //Item already exists in the list
+          }else{
             resultItemsList.push(result[i].item)
-          // }
+          }
         }
         for (var j = 0; j < item.length; j++) {
           itemsList.push(item[j])
