@@ -470,12 +470,16 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               var typeList = [];
               var resultTypeList = [];
                for(var i = 0; i < result.length; i++){
+                 if(resultTypeList.indexOf(result[i].item) > -1){
+                   //Item already exists in the list
+                 }else{
                  resultTypeList.push(result[i])
                }
-            //    var type = req.body.result.parameters.type;
-            //    for (var j = 0; j < type.length; j++) {
-            //      typeList.push(type[j])
-            //    }
+               }
+               var type = req.body.result.parameters.type;
+               for (var j = 0; j < type.length; j++) {
+                 typeList.push(type[j])
+               }
             //    var noResultTypeList = typeList.filter( function( el ) {
             //      return resultTypeList.indexOf( el ) < 0;
             //    });
