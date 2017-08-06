@@ -260,7 +260,7 @@ restService.post('/transaction', function(req, res) {
            response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
          }
           let startStatement = 'You have ';
-          let middleStatement = ' which are bought on ';
+          // let middleStatement = ' which are bought on ';
           let endStatement = '.\n ';
           // let endStatement = '.\n ';
           response = response + itemsForResult (result, startStatement, endStatement);
@@ -298,27 +298,28 @@ restService.post('/transaction', function(req, res) {
       let response = '';
       let itemName = 'NA';
       for (var i = 0; i < result.length; i++) {
+        var date = result[i].date;
         if(result[i].item == itemName){
           if( i != result.length-1){
           if(result[i].item == result[i+1].item){
-            response = response + ', ' + result[i].date;
+            response = response + ', ' + date;
           }else{
-            response = response + ' and ' + result[i].date;
+            response = response + ' and ' + date;
           }
         }else{
-          response = response + ' and ' + result[i].date+ endStatement;
+          response = response + ' and ' + date+ endStatement;
         }
         }
         else{
           if(result.length == 1){
-            response = response + startStatement + result[i].item + middleStatement  + result[i].date+'.\n';
+            response = response + startStatement + result[i].item + middleStatement  + date+'.\n';
           }
           else if(i == 0){
-            response = response + startStatement + result[i].item + middleStatement  + result[i].date;
+            response = response + startStatement + result[i].item + middleStatement  + date;
           }else if (i == result.length-1) {
-            response = response + endStatement +startStatement + result[i].item + middleStatement  +result[i].date+'.\n';
+            response = response + endStatement +startStatement + result[i].item + middleStatement  +date+'.\n';
           }else {
-            response = response + endStatement +startStatement + result[i].item + middleStatement+result[i].date;
+            response = response + endStatement +startStatement + result[i].item + middleStatement+date;
           }
           itemName = result[i].item;
       }
@@ -387,6 +388,19 @@ restService.post('/transaction', function(req, res) {
   });
 }
 } // End Retrieve Items Expiry Function
+function modifyDateFormat(date){
+  var currentTime = new Date();
+  var currentYear = currentTime.getFullYear();
+  var givenDate = new Date(date);
+  var year = givenDate.getFullYear();
+  var modifiedDate=dateFormat(givenDate, "yyyy-mm-dd");
+  if(currentYear == year){
+    modifiedDate=dateFormat(givenDate, "mm-dd")
+  }else{
+    modifiedDate=dateFormat(givenDate, "yyyy-mm-dd")
+  }
+  return modifiedDate;
+}
 // Start Retrieve Type Expiry
 function retrieveTypeExpiry(app){
   if (req.body.result.parameters.type.length == 0) {
