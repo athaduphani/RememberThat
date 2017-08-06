@@ -216,6 +216,9 @@ restService.post('/transaction', function(req, res) {
       } // End itemsForType function
       // Start RetrieveForType
       function retrieveType(app){
+        if (req.body.result.parameters.type.length == 0) {
+          defaultFallback(app);
+        }else {
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           var type = '';
@@ -268,28 +271,9 @@ restService.post('/transaction', function(req, res) {
           ask(app, prompt);
           }); // End DB Function
       });
-      function itemsForResult(result, startStatement, endStatement){
-          let response = startStatement;
-          var itemName = 'NA';
-          for (var i = 0; i < result.length; i++) {
-            if(itemName != result[i].item){
-            if (result.length == 1) {
-              response = response + result[i].item + endStatement;
-            }else if (i == result.length-1){
-              response = response + ' and ' + result[i].item + endStatement ;
-            }else if (i == 0){
-              response = response + result[i].item ;
-              itemName = result[i].item;
-            }else{
-              response = response +', '+ result[i].item ;
-              itemName = result[i].item;
-          }
-        }else{
-        }
-          }
-          return response;
-        } // End itemsForResult function
+      }
     } //end RetrieveType function
+
     function responseforMultiple(result, startStatement, middleStatement, endStatement){
       let response = '';
       let itemName = 'NA';
@@ -323,6 +307,9 @@ restService.post('/transaction', function(req, res) {
     }
     //Start Retrieve Items
     function retrieveItems(app){
+      if (req.body.result.parameters.Items.length == 0) {
+          defaultFallback(app);
+      }else{
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         db.collection("transaction").find({$and:[{"used": "no"},{"userId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
@@ -343,9 +330,13 @@ restService.post('/transaction', function(req, res) {
         ask(app, prompt);
         }); // End DB Function
     });
+  }
   } // End Retrieve Items Function
   // Start Retrieve Items Expiry
   function retrieveItemsExpiry(app){
+    if (req.body.result.parameters.Items.length == 0) {
+        defaultFallback(app);
+    }else{
   app.setContext(REPEAT_YES_NO_CONTEXT);
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
@@ -374,9 +365,13 @@ restService.post('/transaction', function(req, res) {
       ask(app, prompt);
       }); // End DB Function
   });
+}
 } // End Retrieve Items Expiry Function
 // Start Retrieve Type Expiry
 function retrieveTypeExpiry(app){
+  if (req.body.result.parameters.type.length == 0) {
+    defaultFallback(app);
+  }else {
 app.setContext(REPEAT_YES_NO_CONTEXT);
 var type = '';
 var map = [];
@@ -434,6 +429,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
     ask(app, prompt);
     }); // End DB Function
 });
+}
 } // End Retrieve Type Expiry Function
       // start retrieve function
       function retrieve(app){
