@@ -119,6 +119,11 @@ restService.post('/transaction', function(req, res) {
         }else if (parameters_app.type.length == 0 && parameters_app.Items.length == 0) {
           // Don't have any items or types
           defaultFallback(app);
+        }else if (parameters_app.type.date !instanceOf Date) {
+          // Didn't understand the date?
+          let response = 'Sorry. When did you buy these items  ' );
+          var prompt = printf(response);
+          ask(app, prompt);
         }else if (parameters_app.type.length != 0 && parameters_app.Items.length == 0) {
           // Which vegetables do u want to save?
           var response = '';
