@@ -468,7 +468,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               var typeList = [];
               var resultTypeList = [];
                for(var i = 0; i < res.length; i++){
-                 resultTypeList.push(res[i].type)
+                 resultTypeList.push(res[i])
                }
                var type = req.body.result.parameters.type;
                for (var j = 0; j < type.length; j++) {
