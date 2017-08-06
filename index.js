@@ -467,8 +467,10 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
               var typeList = [];
               var resultTypeList = [];
-               for(var i = 0; i < res.length; i++){
-                 resultTypeList.push(res[i])
+              db.collection("transaction").distinct('type',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, itemResult){
+              if (err) throw err;
+               for(var i = 0; i < result.length; i++){
+                 resultTypeList.push(result[i].item)
                }
                var type = req.body.result.parameters.type;
                for (var j = 0; j < type.length; j++) {
@@ -489,6 +491,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               // response = response + ' Which one do you want to remove?';
               var prompt = printf(response);
               ask(app, prompt);
+            });
             }
           });
             }
