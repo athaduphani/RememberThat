@@ -482,9 +482,9 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
                var noResultTypeList = typeList.filter( function( el ) {
                  return resultTypeList.indexOf( el ) < 0;
                });
-            //    if(noResultTypeList.length >0){ // these type dont have any transactions
-            //    response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
-            //  }
+               if(noResultTypeList.length >0){ // these type dont have any transactions
+               response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
+             }
             //   startStatement = 'You have ';
             //   endStatement = '.\n ';
             //   response = response + itemsForType(res, startStatement, endStatement) + ' Which ones do you want to remove?';
@@ -492,7 +492,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             //   // endStatement = ' do you want to remove?\n ';
             //   // response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
             //   // response = response + ' Which one do you want to remove?';
-              var prompt = printf(resultTypeList.length +' '+resultTypeList[0]+' '+resultTypeList[1]+' '+resultTypeList[2]);
+              var prompt = printf(noResultTypeList.length +' '+noResultTypeList[0]+' '+noResultTypeList[1]+' '+noResultTypeList[2]);
               ask(app, prompt);
             });
             }
