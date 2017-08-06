@@ -465,31 +465,31 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             });
             }else{ // More than one vegetable bought multiple times
               app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
-              db.collection("transaction").distinct('type',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, itemResult){
+              db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, res){
               if (err) throw err;
               var typeList = [];
               var resultTypeList = [];
-               for(var i = 0; i < itemResult.length; i++){
-                 resultTypeList.push(itemResult[i])
+               for(var i = 0; i < result.length; i++){
+                 resultTypeList.push(result[i])
                }
-               var type = req.body.result.parameters.type;
-               for (var j = 0; j < type.length; j++) {
-                 typeList.push(type[j])
-               }
-               var noResultTypeList = typeList.filter( function( el ) {
-                 return resultTypeList.indexOf( el ) < 0;
-               });
-               if(noResultTypeList.length >0){ // these type dont have any transactions
-               response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
-             }
-              startStatement = 'You have ';
-              endStatement = '.\n ';
-              response = response + itemsForType(res, startStatement, endStatement) + ' Which ones do you want to remove?';
-              // startStatement = '';
-              // endStatement = ' do you want to remove?\n ';
-              // response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
-              // response = response + ' Which one do you want to remove?';
-              var prompt = printf(response);
+            //    var type = req.body.result.parameters.type;
+            //    for (var j = 0; j < type.length; j++) {
+            //      typeList.push(type[j])
+            //    }
+            //    var noResultTypeList = typeList.filter( function( el ) {
+            //      return resultTypeList.indexOf( el ) < 0;
+            //    });
+            //    if(noResultTypeList.length >0){ // these type dont have any transactions
+            //    response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
+            //  }
+            //   startStatement = 'You have ';
+            //   endStatement = '.\n ';
+            //   response = response + itemsForType(res, startStatement, endStatement) + ' Which ones do you want to remove?';
+            //   // startStatement = '';
+            //   // endStatement = ' do you want to remove?\n ';
+            //   // response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
+            //   // response = response + ' Which one do you want to remove?';
+              var prompt = printf(resultTypeList.length +' '+resultTypeList[0]+' '+resultTypeList[1]+' '+resultTypeList[2]);
               ask(app, prompt);
             });
             }
