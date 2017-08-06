@@ -591,7 +591,9 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
     if (req.body.result.parameters.Items.length !=0) {
         item = req.body.result.parameters.Items;
     }else if(contexts.parameters.hasOwnProperty('item') ){
-      if(contexts.parameters.queryResult.length !=0){
+      if (contexts.parameters.item.length == 0 ) {
+        defaultFallback(app);
+      }else if(contexts.parameters.queryResult.length !=0){
         item.push(contexts.parameters.queryResult[req.body.result.parameters.ordinal-1]);
       }else{
         // Item length is empty
