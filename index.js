@@ -255,18 +255,21 @@ restService.post('/transaction', function(req, res) {
            var noResultTypeList = typeList.filter( function( el ) {
              return resultTypeList.indexOf( el ) < 0;
            });
-
            if(noResultTypeList.length >0){ // these type dont have any transactions
            response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
          }
-          let startStatement = 'You have ';
-          // let middleStatement = ' which are bought on ';
-          let endStatement = '.\n ';
-          // let endStatement = '.\n ';
-          response = response + itemsForResult (result, startStatement, endStatement);
-          // response = response + responseforMultiple(result, startStatement, middleStatement, endStatement);
-          // response = response + itemsForType(resultTypeList, startStatement, endStatement);
-        }
+         if (req.body.result.parameters.questionTag == "when") {
+           let startStatement = 'You have ';
+           let middleStatement = ' which are bought on ';
+           let endStatement = '.\n ';
+          //  response = response + itemsForResult (result, startStatement, endStatement);
+           response = response + responseforMultiple(result, startStatement, middleStatement, endStatement);
+         }else{
+           let startStatement = 'You have ';
+           let endStatement = '.\n ';
+           response = response + itemsForResult (result, startStatement, endStatement);
+         }
+         }
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
           }); // End DB Function
