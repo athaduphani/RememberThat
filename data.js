@@ -16,7 +16,7 @@
     },
     {
       "type": "Groceries",
-      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups","Juices"]
+      "Map": ["Vegetables","Fruits","Dairy","Meat","Seafood","Soups","Juices"]
     },
     {
       "type": "Produce",
