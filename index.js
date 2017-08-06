@@ -254,7 +254,7 @@ restService.post('/transaction', function(req, res) {
           let middleStatement = ' which are bought on ';
           let endStatement = '.\n ';
           // let endStatement = '.\n ';
-          response = response + botFunctions.itemsForResult (result, startStatement, endStatement);
+          response = response + itemsForResult (result, startStatement, endStatement);
           // response = response + responseforMultiple(result, startStatement, middleStatement, endStatement);
           // response = response + itemsForType(resultTypeList, startStatement, endStatement);
         }
@@ -262,6 +262,27 @@ restService.post('/transaction', function(req, res) {
           ask(app, prompt);
           }); // End DB Function
       });
+      function itemsForResult(result, startStatement, endStatement){
+          let response = startStatement;
+          var itemName = 'NA';
+          for (var i = 0; i < result.length; i++) {
+            if(itemName != result[i].item){
+            if (result.length == 1) {
+              response = response + result[i].item + endStatement;
+            }else if (i == result.length-1){
+              response = response + ' and ' + result[i].item + endStatement ;
+            }else if (i == 0){
+              response = response + result[i].item ;
+              itemName = result[i];
+            }else{
+              response = response +', '+ result[i].item ;
+              itemName = result[i].item;
+          }
+        }else{
+        }
+          }
+          return response;
+        } // End itemsForResult function
     } //end RetrieveType function
     function responseforMultiple(result, startStatement, middleStatement, endStatement){
       let response = '';
