@@ -435,7 +435,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
                }
                  console.log("1 record Updated");
                 //  db.close();
-                response = 'You have '+ result[0].item +' and I removed it from your items.';
+                response = response + 'You have '+ result[0].item +' and I removed it from your items.';
                  let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
                ask(app, prompt);
                });// End DB Function
