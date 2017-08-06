@@ -273,7 +273,7 @@ restService.post('/transaction', function(req, res) {
               response = response + ' and ' + result[i].item + endStatement ;
             }else if (i == 0){
               response = response + result[i].item ;
-              itemName = result[i];
+              itemName = result[i].item;
             }else{
               response = response +', '+ result[i].item ;
               itemName = result[i].item;
