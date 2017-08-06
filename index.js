@@ -497,7 +497,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             }else{ //many transactions
             app.data.type = req.body.result.parameters.type;
             app.data.item = [];
-            db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]},function(err, res){
+            db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map}}]},function(err, res){
             if (err) throw err;
             app.data.queryResult = res;
             let startStatement = '';
@@ -519,6 +519,9 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               for (var j = 0; j < type.length; j++) {
                 typeList.push(type[j])
               }
+              typeList = typeList.filter( function( el ) {
+                return dataMap.typeOfTypes.indexOf( el ) < 0;
+              });
               var noResultTypeList = typeList.filter( function( el ) {
                 return resultTypeList.indexOf( el ) < 0;
               });

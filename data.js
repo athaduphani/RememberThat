@@ -3,15 +3,15 @@
     {
       "type": "all",
       // "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
-      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups"]
+      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups","Juices"]
     },
     {
       "type": "Groceries",
-      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups"]
+      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups","Juices"]
     },
     {
       "type": "Produce",
-      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups"]
+      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups","Juices"]
     },
     {
       "type": "Fruits",
