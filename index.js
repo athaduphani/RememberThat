@@ -465,9 +465,24 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             });
             }else{ // More than one vegetable bought multiple times
               app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
+              var typeList = [];
+              var resultTypeList = [];
+               for(var i = 0; i < result.length; i++){
+                 resultTypeList.push(result[0].type)
+               }
+               var type = req.body.result.parameters.type;
+               for (var j = 0; j < type.length; j++) {
+                 typeList.push(type[j])
+               }
+               var noResultTypeList = typeList.filter( function( el ) {
+                 return resultTypeList.indexOf( el ) < 0;
+               });
+               if(noResultTypeList.length >0){ // these type dont have any transactions
+               response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
+             }
               startStatement = 'You have ';
               endStatement = '.\n ';
-              response = itemsForType(res, startStatement, endStatement);
+              response = response + itemsForType(res, startStatement, endStatement);
               startStatement = '';
               endStatement = ' do you want to remove?\n ';
               response = response + ' Which ' + responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
@@ -545,8 +560,6 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
           });// End DB Function
-
-
       }else{ //Many transactions for an item
         app.setContext(REMOVE_ITEMS_OPTION_CONTEXT);
         var itemsList = [];
