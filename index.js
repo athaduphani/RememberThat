@@ -482,10 +482,11 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
              }
               startStatement = 'You have ';
               endStatement = '.\n ';
-              response = response + itemsForType(res, startStatement, endStatement);
-              startStatement = '';
-              endStatement = ' do you want to remove?\n ';
-              response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
+              response = response + itemsForType(res, startStatement, endStatement) + ' Which ones do you want to remove?';
+              // startStatement = '';
+              // endStatement = ' do you want to remove?\n ';
+              // response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
+              // response = response + ' Which one do you want to remove?';
               var prompt = printf(response);
               ask(app, prompt);
             }
