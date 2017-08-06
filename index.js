@@ -489,7 +489,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             //   // endStatement = ' do you want to remove?\n ';
             //   // response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
             //   // response = response + ' Which one do you want to remove?';
-              var prompt = printf(resultTypeList.length +' '+resultTypeList[0]+' '+resultTypeList[1]+' '+resultTypeList[2]);
+              var prompt = printf(resultTypeList.length +' '+resultTypeList[0].type+' '+resultTypeList[1].type+' '+resultTypeList[2].type);
               ask(app, prompt);
             });
             }
