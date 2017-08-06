@@ -467,8 +467,8 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
               var typeList = [];
               var resultTypeList = [];
-               for(var i = 0; i < result.length; i++){
-                 resultTypeList.push(result[i].type)
+               for(var i = 0; i < res.length; i++){
+                 resultTypeList.push(res[i].type)
                }
                var type = req.body.result.parameters.type;
                for (var j = 0; j < type.length; j++) {
