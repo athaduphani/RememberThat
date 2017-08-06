@@ -222,6 +222,7 @@ restService.post('/transaction', function(req, res) {
             type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type[i]);
             map = map.concat(type.Map);
           }
+
           db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map }}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
@@ -427,7 +428,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
                    typeList.push(type[j])
                  }
                  var noResultTypeList = typeList.filter( function( el ) {
-                   return resultTypeList.;
+                   return resultTypeList.indexOf( el ) < 0;
                  });
                  if(noResultTypeList.length >0){ // these type dont have any transactions
                  response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
@@ -469,19 +470,15 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               var typeList = [];
               var resultTypeList = [];
                for(var i = 0; i < result.length; i++){
-                //  if(resultTypeList.indexOf(result[i].item) > -1){
-                //    //Item already exists in the list
-                 }else{
                  resultTypeList.push(result[i])
                }
-              //  }
                var type = req.body.result.parameters.type;
                for (var j = 0; j < type.length; j++) {
                  typeList.push(type[j])
                }
-               var noResultTypeList = typeList.filter( function( el ) {
-                 return resultTypeList.;
-               });
+            //    var noResultTypeList = typeList.filter( function( el ) {
+            //      return resultTypeList.indexOf( el ) < 0;
+            //    });
             //    if(noResultTypeList.length >0){ // these type dont have any transactions
             //    response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
             //  }
@@ -492,7 +489,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
             //   // endStatement = ' do you want to remove?\n ';
             //   // response = response + ' Which ' + responseforOneParam(resultTypeList, startStatement, endStatement);
             //   // response = response + ' Which one do you want to remove?';
-              var prompt = printf(typeList.length +' '+typeList[0]+' '+typeList[1]+' '+typeList[2]);
+              var prompt = printf(resultTypeList.length +' '+resultTypeList[0].type+' '+resultTypeList[1].type+' '+resultTypeList[2].type);
               ask(app, prompt);
             });
             }
@@ -558,7 +555,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
               itemsList.push(item[j])
             }
             var noResultItemsList = itemsList.filter( function( el ) {
-              return resultItemsList.;
+              return resultItemsList.indexOf( el ) < 0;
             });
             if(noResultItemsList.length >0){ // these items dont have any transactions
             response = 'You dont have ' + itemsForType(noResultItemsList,'','. ')
@@ -582,7 +579,7 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
           itemsList.push(item[j])
         }
         var noResultItemsList = itemsList.filter( function( el ) {
-          return resultItemsList.;
+          return resultItemsList.indexOf( el ) < 0;
         });
         if(noResultItemsList.length >0){ // these items dont have any transactions
         response = 'You dont have ' + itemsForType(noResultItemsList,'','.')
