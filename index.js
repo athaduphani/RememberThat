@@ -378,9 +378,15 @@ restService.post('/transaction', function(req, res) {
 // Start Retrieve Type Expiry
 function retrieveTypeExpiry(app){
 app.setContext(REPEAT_YES_NO_CONTEXT);
+var type = '';
+var map = [];
+for (var i = 0; i < req.body.result.parameters.type.length; i++) {
+  type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type[i]);
+  map = map.concat(type.Map);
+}
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    db.collection("transaction").find({$and:[{used: "no"},{"userId": authenticationKey}, {"type":{$in: req.body.result.parameters.type}}]}).sort({"item":1}).toArray(function(err, result){
+    db.collection("transaction").find({$and:[{used: "no"},{"userId": authenticationKey}, {"type":{$in: map}}]}).sort({"item":1}).toArray(function(err, result){
     if (err) throw err;
     db.close();
     var response = '';
@@ -389,6 +395,29 @@ app.setContext(REPEAT_YES_NO_CONTEXT);
       let endStatement = '.\n ';
       response = responseforOneParam(req.body.result.parameters.type, startStatement, endStatement);
   }else{
+    var typeList = []; // Contains the types provided by user
+    var resultTypeList = []; // Contains the types from database
+     for(var i = 0; i < result.length; i++){
+       if(resultTypeList.indexOf(result[i].type) > -1){
+         //Item already exists in the list
+       }else{
+       resultTypeList.push(result[i].type)
+     }
+     }
+     var type = req.body.result.parameters.type;
+     for (var j = 0; j < type.length; j++) {
+       typeList.push(type[j])
+     }
+     typeList = typeList.filter( function( el ) {
+       return dataMap.typeOfTypes.indexOf( el ) < 0;
+     });
+     var noResultTypeList = typeList.filter( function( el ) {
+       return resultTypeList.indexOf( el ) < 0;
+     });
+
+     if(noResultTypeList.length >0){ // these type dont have any transactions
+     response = 'You dont have ' + itemsForType(noResultTypeList,'','. ')
+   }
     var startStatement = ' The ';
     var middleStatement = ' you bought on ';
     var middleStatement1 = ' expire between ';
