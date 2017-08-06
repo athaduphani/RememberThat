@@ -472,7 +472,6 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
           }else {
             retrieveItems(app);
           }
-
         }else {
             let prompt = printf(getRandomPrompt(app, CONTINUATION_PROMPTS));
             ask(app, prompt);

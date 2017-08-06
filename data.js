@@ -1,4 +1,4 @@
-  var typeOfTypes =["Groceries", "Produce"];
+  var typeOfTypes =["Groceries", "Produce", "Grocery"];
   var typeMap = [
     {
       "type": "Electronics",
@@ -8,6 +8,10 @@
     {
       "type": "all",
       // "Map": ["Vegetable", "Fruit","Spices","Nuts","Dairy","Bread","Flour","Juices","Meat"]
+      "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups","Juices"]
+    },
+    {
+      "type": "Grocery",
       "Map": ["Vegetables", "Fruits","Dairy","Meat","Seafood","Soups","Juices"]
     },
     {
