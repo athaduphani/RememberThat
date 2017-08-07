@@ -1695,138 +1695,6 @@
     "expiry_end": 180
   },
   {
-    "item": "abruzzese sausage",
-    "type": "Meat",
-    "expiry_start": 182,
-    "expiry_end": 182
-  },
-  {
-    "item": "bacon bits",
-    "type": "Meat",
-    "expiry_start": 365,
-    "expiry_end": 365
-  },
-  {
-    "item": "bacon",
-    "type": "Meat",
-    "expiry_start": 7,
-    "expiry_end": 7
-  },
-  {
-    "item": "beef brisket",
-    "type": "Meat",
-    "expiry_start": 3,
-    "expiry_end": 5
-  },
-  {
-    "item": "beef broth",
-    "type": "Meat",
-    "expiry_start": 1095,
-    "expiry_end": 1825
-  },
-  {
-    "item": "beef burgers",
-    "type": "Meat",
-    "expiry_start": 182,
-    "expiry_end": 182
-  },
-  {
-    "item": "beef heart",
-    "type": "Meat",
-    "expiry_start": 1,
-    "expiry_end": 2
-  },
-  {
-    "item": "beef jerky",
-    "type": "Meat",
-    "expiry_start": 365,
-    "expiry_end": 365
-  },
-  {
-    "item": "beef kidneys",
-    "type": "Meat",
-    "expiry_start": 1,
-    "expiry_end": 2
-  },
-  {
-    "item": "beef liver",
-    "type": "Meat",
-    "expiry_start": 1,
-    "expiry_end": 2
-  },
-  {
-    "item": "beef ribs",
-    "type": "Meat",
-    "expiry_start": 3,
-    "expiry_end": 5
-  },
-  {
-    "item": "frozen beef roast",
-    "type": "Meat",
-    "expiry_start": 365,
-    "expiry_end": 365
-  },
-  {
-    "item": "beef roast",
-    "type": "Meat",
-    "expiry_start": 3,
-    "expiry_end": 5
-  },
-  {
-    "item": "beef soup",
-    "type": "Meat",
-    "expiry_start": 1095,
-    "expiry_end": 1825
-  },
-  {
-    "item": "beef steak",
-    "type": "Meat",
-    "expiry_start": 3,
-    "expiry_end": 5
-  },
-  {
-    "item": "beef tougue",
-    "type": "Meat",
-    "expiry_start": 1,
-    "expiry_end": 2
-  },
-  {
-    "item": "ground beef",
-    "type": "Meat",
-    "expiry_start": 1,
-    "expiry_end": 2
-  },
-  {
-    "item": "beef stew meat",
-    "type": "Meat",
-    "expiry_start": 1,
-    "expiry_end": 2
-  },
-  {
-    "item": "bison chops",
-    "type": "Meat",
-    "expiry_start": 3,
-    "expiry_end": 5
-  },
-  {
-    "item": "bison roast",
-    "type": "Meat",
-    "expiry_start": 3,
-    "expiry_end": 5
-  },
-  {
-    "item": "bison steak",
-    "type": "Meat",
-    "expiry_start": 3,
-    "expiry_end": 5
-  },
-  {
-    "item": "ground bison",
-    "type": "Meat",
-    "expiry_start": 1,
-    "expiry_end": 2
-  },
-  {
     "item": "american cheese",
     "type": "Dairy",
     "expiry_start": 5,
@@ -1941,7 +1809,7 @@
     "expiry_end": 35
   },
   {
-    "item": "cream, fluid",
+    "item": "cream",
     "type": "Dairy",
     "expiry_start": 21,
     "expiry_end": 35
@@ -2329,6 +2197,270 @@
     "type": "Juice",
     "expiry_start": 365,
     "expiry_end": 540
+  },
+  {
+    "item": "Abruzzese sausage",
+    "type": "Meat",
+    "expiry_start": 182,
+    "expiry_end": 182
+  },
+  {
+    "item": "Bacon bits",
+    "type": "Meat",
+    "expiry_start": 365,
+    "expiry_end": 365
+  },
+  {
+    "item": "Bacon",
+    "type": "Meat",
+    "expiry_start": 7,
+    "expiry_end": 7
+  },
+  {
+    "item": "Beef brisket",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 5
+  },
+  {
+    "item": "Beef broth",
+    "type": "Meat",
+    "expiry_start": 1095,
+    "expiry_end": 1825
+  },
+  {
+    "item": "Beef burgers",
+    "type": "Meat",
+    "expiry_start": 182,
+    "expiry_end": 182
+  },
+  {
+    "item": "Beef heart",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Beef Jerky",
+    "type": "Meat",
+    "expiry_start": 365,
+    "expiry_end": 365
+  },
+  {
+    "item": "Beef Kidneys",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Beef liver",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Beef ribs",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 5
+  },
+  {
+    "item": "Frozen Beef roast",
+    "type": "Meat",
+    "expiry_start": 365,
+    "expiry_end": 365
+  },
+  {
+    "item": "Beef roast",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 5
+  },
+  {
+    "item": "Beef soup",
+    "type": "Meat",
+    "expiry_start": 1095,
+    "expiry_end": 1825
+  },
+  {
+    "item": "Beef steak",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 5
+  },
+  {
+    "item": "Beef tougue",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Ground beef",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Beef stew meat",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Bison chops",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 5
+  },
+  {
+    "item": "Bison roast",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 5
+  },
+  {
+    "item": "Bison steak",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 5
+  },
+  {
+    "item": "Ground bison",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Bison stew meat",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Blood sausage",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Bologna deli meat",
+    "type": "Meat",
+    "expiry_start": 5,
+    "expiry_end": 7
+  },
+  {
+    "item": "Bratwurst sausages",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Breakfast sausages",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Canadian bacon",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 4
+  },
+  {
+    "item": "Capon",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Caribou",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 4
+  },
+  {
+    "item": "Chicken",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 3
+  },
+  {
+    "item": "Chicken broth",
+    "type": "Meat",
+    "expiry_start": 1095,
+    "expiry_end": 1825
+  },
+  {
+    "item": "Chicken Deli",
+    "type": "Meat",
+    "expiry_start": 3,
+    "expiry_end": 5
+  },
+  {
+    "item": "Chicken strips",
+    "type": "Meat",
+    "expiry_start": 25,
+    "expiry_end": 30
+  },
+  {
+    "item": "Chicken tenderloins",
+    "type": "Meat",
+    "expiry_start": 25,
+    "expiry_end": 30
+  },
+  {
+    "item": "Chicken tenders",
+    "type": "Meat",
+    "expiry_start": 25,
+    "expiry_end": 30
+  },
+  {
+    "item": "Chicken nuggets",
+    "type": "Meat",
+    "expiry_start": 182,
+    "expiry_end": 273
+  },
+  {
+    "item": "Ground chicken",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Whole chicken",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Deer",
+    "type": "Meat",
+    "expiry_start": 1,
+    "expiry_end": 2
+  },
+  {
+    "item": "Goat",
+    "type": "Meat",
+    "expiry_start": 4,
+    "expiry_end": 7
+  },
+  {
+    "item": "Lamb",
+    "type": "Meat",
+    "expiry_start": 4,
+    "expiry_end": 7
+  },
+  {
+    "item": "Lamb Shanks",
+    "type": "Meat",
+    "expiry_start": 4,
+    "expiry_end": 7
+  },
+  {
+    "item": "Eggs",
+    "type": "Dairy",
+    "expiry_start": 7,
+    "expiry_end": 10
   }
 ]
 module.exports = {
