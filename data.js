@@ -2463,6 +2463,7 @@
     "expiry_end": 10
   }
 ]
+
 module.exports = {
   typeOfTypes:typeOfTypes,
   itemTypeMap: itemTypeMap,
