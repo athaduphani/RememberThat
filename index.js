@@ -12,7 +12,6 @@ var dateFormat = require('dateformat');
 var dataMap = require('./data.js');
 // var botFunctions = require('./functions.js');
 var pluralize = require('pluralize')
-
 const SAVE_ACTION = 'save';
 const RETRIEVE_ACTION = 'retrieve';
 const WELCOME_ACTION = 'welcome';
