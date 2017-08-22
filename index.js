@@ -25,7 +25,7 @@ const REPEAT_YES_ACTION = 'repeat_yes';
 const REPEAT_NO_ACTION = 'repeat_no';
 const DEFAULT_FALLBACK_ACTION = 'input.unknown';
 const FIRST_INTERACTION_EXAMPLES = ['I can save dates for your household items and tell you when u need them. For Example, You can say \"I bought milk today\".', 'I can save, retrieve and delete dates for your household items. For Example, You can say \"I bought apples today\".','I can save, retrieve and update dates for your household items. For Example, You can say \"I bought chicken today\".'];
-const GREETING_PROMPTS = ['Welcome to Dates Bot!', 'Hi! This is Dates Bot.','Welcome back to Dates Bot.'];
+const GREETING_PROMPTS = ['Welcome to Dates Catalog!', 'Hi! This is Dates Catalog.','Welcome back to Dates Catalog.'];
 const INVOCATION_PROMPTS = ['How can i help you?', 'How may I assist you?'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear it. Could you please repeat it', 'If you\'re still there, please tell me how can I help you','We can stop here. Let\'s talk again soon.'];
 const CONTINUATION_PROMPTS = ['what else can I help you with?'];
@@ -54,8 +54,8 @@ var url = "mongodb://aarti:Columbus23@ds139072.mlab.com:39072/heroku_wpdkpvk8";
 restService.post('/transaction', function(req, res) {
   const app = new Assistant({request: req, response: res });
   var parameters_app = req.body.result && req.body.result.parameters ? req.body.result.parameters : "Seems like some problem. Speak again."
-  // var authenticationKey = req.body.originalRequest.data.user.userId;
-  var authenticationKey = req.body.sessionId;
+  var authenticationKey = req.body.originalRequest.data.user.userId;
+  // var authenticationKey = req.body.sessionId;
   function searchInObject(object, searchKey, searchValue) {
     for (var i in object) {
       if (object[i][searchKey].indexOf(searchValue) > -1) {
@@ -86,7 +86,7 @@ restService.post('/transaction', function(req, res) {
         MongoClient.connect(url, function(err, db) {
           let firstTimeUserPrompt = 'asdasd';
           if (err) throw err;
-          db.collection("transaction").find({"sessionId":authenticationKey}).toArray(function(err, result){
+          db.collection("transaction").find({"userId":authenticationKey}).toArray(function(err, result){
           if (err) throw err;
           if (result.length < 5) {
             firstTimeUserPrompt = getRandomPrompt(app, FIRST_INTERACTION_EXAMPLES);
@@ -155,7 +155,7 @@ restService.post('/transaction', function(req, res) {
             expiryDateStart: expiryDateStart1,
             expiryDateEnd: expiryDateEnd1,
             used: 'no',
-            // userId: req.body.originalRequest.data.user.userId,
+            userId: req.body.originalRequest.data.user.userId,
             purpose: req.body.result.parameters.purpose
           };
           items_list.push(req.body.result.parameters.Items[i]);
@@ -227,7 +227,7 @@ restService.post('/transaction', function(req, res) {
             type = searchInObject(dataMap.typeMap, "type", req.body.result.parameters.type[i]);
             map = map.concat(type.Map);
           }
-          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map }}]}).sort({"item":1}).toArray(function(err, result){
+          db.collection("transaction").find({$and:[{"used": "no"},{"userId": authenticationKey}, {"type":{$in: map }}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           db.close();
           let response = '';
@@ -337,7 +337,7 @@ restService.post('/transaction', function(req, res) {
       }else{
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:[{"used": "no"},{"userId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         db.close();
         let response = '';
@@ -365,7 +365,7 @@ restService.post('/transaction', function(req, res) {
   app.setContext(REPEAT_YES_NO_CONTEXT);
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-      db.collection("transaction").find({$and:[{used: "no"},{"sessionId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
+      db.collection("transaction").find({$and:[{used: "no"},{"userId": authenticationKey}, {"item":{$in: req.body.result.parameters.Items}}]}).sort({"item":1}).toArray(function(err, result){
       if (err) throw err;
       db.close();
       var response = '';
@@ -420,7 +420,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
 }
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    db.collection("transaction").find({$and:[{used: "no"},{"sessionId": authenticationKey}, {"type":{$in: map}}]}).sort({"item":1}).toArray(function(err, result){
+    db.collection("transaction").find({$and:[{used: "no"},{"userId": authenticationKey}, {"type":{$in: map}}]}).sort({"item":1}).toArray(function(err, result){
     if (err) throw err;
     db.close();
     var response = '';
@@ -512,7 +512,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
             map = map.concat(type.Map);
           }
           MongoClient.connect(url, function(err, db) {
-          db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map}}]}).sort({"item":1}).toArray(function(err, result){
+          db.collection("transaction").find({$and:[{"used": "no"},{"userId": authenticationKey}, {"type":{$in: map}}]}).sort({"item":1}).toArray(function(err, result){
           if (err) throw err;
           var response = '';
           if (result.length == 0) {
@@ -522,7 +522,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
             let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
           ask(app, prompt);
         }else if (result.length == 1 && req.body.result.parameters.type.length == 1) { // only one vegetable bought only once
-            db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: map}}]},{$set: {"used": "yes"}}, function(err, res) {
+            db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"userId" : authenticationKey},{"type":{$in: map}}]},{$set: {"used": "yes"}}, function(err, res) {
                if (err) throw err;
                console.log("1 record Updated");
               //  db.close();
@@ -531,7 +531,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
              ask(app, prompt);
              });// End DB Function
           }else if (result.length == 1 && req.body.result.parameters.type.length > 1) { // only one vegetable bought only once
-              db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"type":{$in: map}}]},{$set: {"used": "yes"}}, function(err, res) {
+              db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"userId" : authenticationKey},{"type":{$in: map}}]},{$set: {"used": "yes"}}, function(err, res) {
                  if (err) throw err;
                  var typeList = [];
                  var resultTypeList = [];
@@ -560,7 +560,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
             }else{ //many transactions
             app.data.type = req.body.result.parameters.type;
             app.data.item = [];
-            db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map}}]},function(err, res){
+            db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"userId": authenticationKey}, {"type":{$in: map}}]},function(err, res){
             if (err) throw err;
             app.data.queryResult = res;
             let startStatement = '';
@@ -598,7 +598,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
               item.push(res[0]);
               app.data.item = item;
               app.data.type = [];
-              db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: res}}]}).sort({"item":1}).toArray(function(err, result){
+              db.collection("transaction").find({$and:[{"used": "no"},{"userId": authenticationKey}, {"item":{$in: res}}]}).sort({"item":1}).toArray(function(err, result){
               if (err) throw err;
               app.data.queryResult = result;
               response = response + responseforMultiple(result, startStatement, middleStatement, endStatement);
@@ -606,7 +606,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
             });
             }else{ // More than one vegetable bought multiple times
               app.setContext(REMOVE_TYPE_OPTION_CONTEXT);
-              db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"sessionId": authenticationKey}, {"type":{$in: map}}]},function(err, res){
+              db.collection("transaction").distinct('item',{$and:[{"used": "no"},{"userId": authenticationKey}, {"type":{$in: map}}]},function(err, res){
               if (err) throw err;
               var typeList = [];
               var resultTypeList = [];
@@ -673,7 +673,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
         app.data.fallbackCount = 0;
         app.setContext(REPEAT_YES_NO_CONTEXT);
         MongoClient.connect(url, function(err, db) {
-        db.collection("transaction").find({$and:[{"used": "no"},{"sessionId": authenticationKey}, {"item":{$in: item}}]}).sort({"item":1}).toArray(function(err, result){
+        db.collection("transaction").find({$and:[{"used": "no"},{"userId": authenticationKey}, {"item":{$in: item}}]}).sort({"item":1}).toArray(function(err, result){
         if (err) throw err;
         var response = '';
         if(result.length == 0){
@@ -683,7 +683,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
           let prompt = printf(response + ' ' + getRandomPrompt(app, CONTINUATION_PROMPTS));
         ask(app, prompt);
       }else if (result.length == 1 && item.length == 1) { // just one item
-        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+        db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"userId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
            if (err) throw err;
            console.log("1 record Updated");
            db.close();
@@ -692,7 +692,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
          ask(app, prompt);
          });// End DB Function
        }else if (result.length == 1 && item.length > 1){ //Many Items. Only one time has one result
-         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"sessionId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
+         db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{"userId" : authenticationKey},{"item": item[0]}]},{$set: {"used": "yes"}}, function(err, res) {
             if (err) throw err;
             console.log("1 record Updated");
             db.close();
@@ -776,7 +776,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var item = contexts.parameters.queryResult;
       MongoClient.connect(url, function(err, db) {
-      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
+      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "userId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
          db.close();
@@ -813,7 +813,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
           var date = queryResult[req.body.result.parameters.ordinal-1].date;
           var item = contexts.parameters.item;
           MongoClient.connect(url, function(err, db) {
-          db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
+          db.collection('transaction').findOneAndUpdate({$and:[{"used": "no"},{ "userId" : authenticationKey},{"item":{$in: item}},{"date": date}]},{$set: {"used": "yes"}}, function(err, res) {
              if (err) throw err;
              console.log("1 record Updated");
              db.close();
@@ -828,7 +828,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
       var date = req.body.result.parameters.date;
       var item = contexts.parameters.item;
       MongoClient.connect(url, function(err, db) {
-      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}},{"date":{$in: date}}]},{$set: {"used": "yes"}}, function(err, res) {
+      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "userId" : authenticationKey},{"item":{$in: item}},{"date":{$in: date}}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
          db.close();
@@ -842,7 +842,7 @@ for (var i = 0; i < req.body.result.parameters.type.length; i++) {
       app.setContext(REPEAT_YES_NO_CONTEXT);
       var item = contexts.parameters.item;
       MongoClient.connect(url, function(err, db) {
-      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "sessionId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
+      db.collection('transaction').updateMany({$and:[{"used": "no"},{ "userId" : authenticationKey},{"item":{$in: item}}]},{$set: {"used": "yes"}}, function(err, res) {
          if (err) throw err;
          console.log("1 record Updated");
          db.close();
